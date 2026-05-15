@@ -270,6 +270,7 @@ body.galeria-mode{overflow:auto;}
   transition:transform .26s cubic-bezier(.4,0,.2,1),box-shadow .26s;
   z-index:1;will-change:transform;
   background:transparent;
+  contain:layout style;
 }
 .card.ready{background:var(--card-bg);}
 .card:hover{transform:scale(1.04) translateY(-3px);box-shadow:0 20px 60px rgba(0,0,0,.7);z-index:20;}
@@ -318,15 +319,40 @@ body.galeria-mode{overflow:auto;}
 .no-results-ico{font-size:3rem;margin-bottom:16px;}
 .no-results h3{font-family:'Syne',sans-serif;font-size:1.1rem;margin-bottom:8px;color:var(--muted2);}
 
-/* Load more */
-.load-more-wrap{text-align:center;padding:32px;}
-.load-more-btn{
-  padding:13px 40px;border-radius:100px;
-  border:1px solid var(--border2);background:transparent;
-  color:var(--muted2);font-family:'Syne',sans-serif;font-size:.85rem;font-weight:600;
-  cursor:pointer;transition:all .22s;
+/* ── PAGINACIÓN NUMERADA ── */
+.pagination{
+  display:flex;align-items:center;justify-content:center;
+  gap:6px;padding:36px 24px 48px;flex-wrap:wrap;
 }
-.load-more-btn:hover{background:var(--accent);border-color:var(--accent);color:#fff;}
+.pg-btn{
+  min-width:42px;height:42px;padding:0 14px;
+  border-radius:10px;border:1px solid var(--border2);
+  background:transparent;color:var(--muted2);
+  font-family:'Syne',sans-serif;font-size:.82rem;font-weight:700;
+  cursor:pointer;transition:all .18s;
+  display:flex;align-items:center;justify-content:center;
+  position:relative;
+}
+.pg-btn:hover:not(:disabled){border-color:var(--accent);color:var(--accent);}
+.pg-btn.active{
+  background:var(--accent);border-color:var(--accent);
+  color:#fff;box-shadow:0 4px 18px var(--glow);
+}
+.pg-btn.active:hover{opacity:.88;}
+.pg-btn:disabled{opacity:.28;cursor:default;pointer-events:none;}
+.pg-btn.pg-prev,.pg-btn.pg-next{font-size:1rem;padding:0 16px;}
+.pg-ready{
+  position:absolute;top:4px;right:4px;
+  width:7px;height:7px;border-radius:50%;
+  background:var(--accent);opacity:.65;display:none;
+}
+.pg-btn.prefetched .pg-ready{display:block;}
+.pg-info{
+  width:100%;text-align:center;
+  font-size:.7rem;color:var(--muted2);
+  margin-top:-16px;padding-bottom:8px;
+  font-family:'Inter',sans-serif;
+}
 
 /* ═══════════════════════════════════════
    SECCIÓN TEXTURAS ESPECIAL
@@ -549,9 +575,9 @@ body.galeria-mode{overflow:auto;}
 <div id="pg-inicio">
   <canvas id="bgCanvas"></canvas>
   <div class="mosaic-bg" id="heroMosaic">
-    <img data-src="https://fondoblanco.b-cdn.net/textura-pizarra-negra-fracturada-lava-naranja.jpg" alt="" loading="lazy">
-    <img data-src="https://fondoblanco.b-cdn.net/textura-marmol-negro-vetas-doradas-lujo.jpg" alt="" loading="lazy">
-    <img data-src="https://fondoblanco.b-cdn.net/textura-foil-met%C3%A1lico-plisada-magenta-dorado-intenso-verde-teal-arco%C3%ADris.jpg" alt="" loading="lazy">
+    <img data-src="https://fondoblanco.b-cdn.net/textura-pizarra-negra-fracturada-lava-naranja.jpg" alt="" fetchpriority="high">
+    <img data-src="https://fondoblanco.b-cdn.net/textura-marmol-negro-vetas-doradas-lujo.jpg" alt="" fetchpriority="high">
+    <img data-src="https://fondoblanco.b-cdn.net/textura-foil-met%C3%A1lico-plisada-magenta-dorado-intenso-verde-teal-arco%C3%ADris.jpg" alt="" fetchpriority="high">
     <img data-src="https://fondoblanco.b-cdn.net/textura-granito-negro-blanco-salpicado-dorado.jpg" alt="" loading="lazy">
     <img data-src="https://fondoblanco.b-cdn.net/textura-%C3%B3nix-negro-vetas-doradas-mineral-negro-azul-oro-brillante-ondulado-vertical.jpg" alt="" loading="lazy">
     <img data-src="https://fondoblanco.b-cdn.net/textura-splash-l%C3%ADquido-viscoso-corona-salpicada-magenta-naranja-vibrante-morado-fondo-negro.jpg" alt="" loading="lazy">
@@ -654,9 +680,7 @@ body.galeria-mode{overflow:auto;}
   <!-- Grid masonry -->
   <div class="g-main">
     <div class="masonry" id="grid"></div>
-    <div class="load-more-wrap" id="lmWrap" style="display:none;">
-      <button class="load-more-btn" onclick="loadMore()">Cargar más imágenes</button>
-    </div>
+    <div id="pagination" class="pagination"></div>
   </div>
 
   <!-- Lightbox -->
@@ -774,11 +798,14 @@ var cvs=document.getElementById('bgCanvas'),ctx2=cvs.getContext('2d');
 var CW,CH,pts=[],orbs2=[];
 function rsz(){CW=cvs.width=window.innerWidth;CH=cvs.height=window.innerHeight;}
 rsz(); window.addEventListener('resize',rsz);
-for(var i=0;i<55;i++)pts.push({x:Math.random()*CW,y:Math.random()*CH,r:Math.random()*1.5+.2,vx:(Math.random()-.5)*.3,vy:(Math.random()-.5)*.3,a:Math.random()*.45+.08,c:['176,96,255','100,150,255','255,100,150','0,220,180'][Math.floor(Math.random()*4)]});
+for(var i=0;i<32;i++)pts.push({x:Math.random()*CW,y:Math.random()*CH,r:Math.random()*1.5+.2,vx:(Math.random()-.5)*.3,vy:(Math.random()-.5)*.3,a:Math.random()*.45+.08,c:['176,96,255','100,150,255','255,100,150','0,220,180'][Math.floor(Math.random()*4)]});
 orbs2=[{x:.3,y:.3,r:.5,vx:.0003,vy:.0002,c:'100,30,200'},{x:.7,y:.6,r:.4,vx:-.0002,vy:.0003,c:'50,100,200'},{x:.5,y:.8,r:.35,vx:.0002,vy:-.0003,c:'180,50,220'}];
-var _canvasOn=true;
+var _canvasOn=true,_lastFrame=0;
 function drawCanvas(){
   if(!_canvasOn)return;
+  var now=performance.now();
+  if(now-_lastFrame<33){requestAnimationFrame(drawCanvas);return;}
+  _lastFrame=now;
   ctx2.clearRect(0,0,CW,CH);
   ctx2.fillStyle='rgba(10,10,15,.55)';ctx2.fillRect(0,0,CW,CH);
   orbs2.forEach(function(o){
@@ -796,17 +823,25 @@ function drawCanvas(){
   requestAnimationFrame(drawCanvas);
 }
 drawCanvas();
+document.addEventListener('visibilitychange',function(){
+  if(document.hidden){_canvasOn=false;}
+  else if(document.getElementById('pg-inicio').style.display!=='none'){_canvasOn=true;_lastFrame=0;drawCanvas();}
+});
 
 // ═══════════════════════════════════════════
 // HERO MOSAIC
 // ═══════════════════════════════════════════
 (function(){
   var mi=document.querySelectorAll('#heroMosaic img[data-src]');
-  mi.forEach(function(img,i){setTimeout(function(){
-    img.onload=function(){img.classList.add('vis');};
-    img.onerror=function(){img.style.display='none';};
-    img.src=img.getAttribute('data-src');img.removeAttribute('data-src');
-  },i*110);});
+  mi.forEach(function(img,i){
+    var delay=i<3?0:((i-3)*65+60);
+    setTimeout(function(){
+      img.onload=function(){img.classList.add('vis');};
+      img.onerror=function(){img.style.display='none';};
+      img.src=img.getAttribute('data-src');
+      img.removeAttribute('data-src');
+    },delay);
+  });
 })();
 
 // ═══════════════════════════════════════════
@@ -1155,7 +1190,12 @@ var imgs=[
 // ═══════════════════════════════════════════
 var curFilter='Todas', curSearch='', curSort='default';
 var filteredImgs=[], lbIdx=0;
-var PAGE_SIZE=40, curPage=0;
+var TOTAL_PAGES=5;          // siempre 5 páginas exactas
+var PAGE_SIZE=64;           // se recalcula dinámicamente en render()
+var curPage=0;
+
+// caché de prefetch: {pageIdx: true} cuando todas sus imgs terminaron
+var _prefetchCache={};
 
 // ═══════════════════════════════════════════
 // LIKES
@@ -1231,15 +1271,15 @@ function getFiltered(){
   for(var i=0;i<mx;i++)cats.forEach(function(c){if(groups[c][i])out.push(groups[c][i]);});
   return out;
 }
-function doSearch(){curSearch=document.getElementById('searchInput').value;curPage=0;render();}
+function doSearch(){curSearch=document.getElementById('searchInput').value;curPage=0;_prefetchCache={};render();}
 function setFilter(cat,btn){
   curFilter=cat;
   document.querySelectorAll('.cat-pill').forEach(function(b){b.classList.remove('active');});
   if(btn)btn.classList.add('active');
-  document.getElementById('searchInput').value='';curSearch='';curPage=0;render();
+  document.getElementById('searchInput').value='';curSearch='';curPage=0;_prefetchCache={};render();
   document.getElementById('texBanner').style.display=(cat==='Texturas')?'flex':'none';
 }
-function setSort(v){curSort=v;curPage=0;render();}
+function setSort(v){curSort=v;curPage=0;_prefetchCache={};render();}
 
 // ═══════════════════════════════════════════
 // MASONRY
@@ -1262,67 +1302,222 @@ function layoutMasonry(){
   var mx=ch[0];for(var x=1;x<cols;x++){if(ch[x]>mx)mx=ch[x];}
   grid.style.height=(mx-GAP)+'px';
 }
-function sched(){clearTimeout(_mt2);_mt2=setTimeout(layoutMasonry,45);}
+function sched(){
+  clearTimeout(_mt2);
+  _mt2=setTimeout(function(){requestAnimationFrame(layoutMasonry);},80);
+}
 window.addEventListener('resize',sched);
 
 // ═══════════════════════════════════════════
-// INTERSECTION OBSERVER (lazy load)
+// INTERSECTION OBSERVER (lazy load visible)
+// Se crea uno nuevo en cada render() para evitar el bug de
+// disconnect() que impedía cargar imágenes al hacer scroll
 // ═══════════════════════════════════════════
-var _obs=('IntersectionObserver' in window)?new IntersectionObserver(function(entries){
-  entries.forEach(function(e){
-    if(!e.isIntersecting)return;
-    var img=e.target.querySelector('img[data-src]');
-    if(img){img.src=img.getAttribute('data-src');img.removeAttribute('data-src');}
-    _obs.unobserve(e.target);
-  });
-},{rootMargin:'250px 0px',threshold:.01}):null;
+var _obsSupported=('IntersectionObserver' in window);
+var _obs=null;
+function makeObserver(){
+  if(!_obsSupported)return null;
+  return new IntersectionObserver(function(entries,obs){
+    entries.forEach(function(e){
+      if(!e.isIntersecting)return;
+      var img=e.target.querySelector('img[data-src]');
+      if(img){img.src=img.getAttribute('data-src');img.removeAttribute('data-src');}
+      obs.unobserve(e.target);
+    });
+  },{rootMargin:'120px 0px',threshold:.01});
+}
 
 // ═══════════════════════════════════════════
-// RENDER
+// PREFETCH: pre-carga imgs de una página en segundo plano
+// Usa una cola con máx 4 descargas paralelas para no saturar la red
+// Marca la página como lista solo cuando TODAS sus imágenes cargaron
+// ═══════════════════════════════════════════
+function prefetchPage(pageIdx){
+  var total=filteredImgs.length;
+  if(!total)return;
+  var totalPg=Math.ceil(total/PAGE_SIZE);
+  if(pageIdx<0||pageIdx>=totalPg)return;
+  if(_prefetchCache[pageIdx])return;        // ya en proceso o terminada
+  _prefetchCache[pageIdx]='loading';        // marcar "en proceso"
+
+  var start=pageIdx*PAGE_SIZE;
+  var end=Math.min(start+PAGE_SIZE,total);
+  var pids=[];
+  for(var i=start;i<end;i++) pids.push(filteredImgs[i].pid);
+
+  var done=0, total2=pids.length, CONCURRENCY=4;
+  var qi=0; // índice en la cola
+
+  function next(){
+    if(qi>=pids.length) return;
+    var pid=pids[qi++];
+    var im=new Image();
+    im.onload=im.onerror=function(){
+      done++;
+      if(done===total2){
+        _prefetchCache[pageIdx]=true;
+        // Marcar botón visualmente
+        var btn=document.querySelector('.pg-btn[data-pg="'+pageIdx+'"]');
+        if(btn) btn.classList.add('prefetched');
+      }
+      next(); // siguiente en cola
+    };
+    im.src=THUMB+pid;
+  }
+  // Arrancar CONCURRENCY descargas en paralelo
+  for(var k=0;k<Math.min(CONCURRENCY,pids.length);k++) next();
+}
+
+// ═══════════════════════════════════════════
+// PAGINACIÓN: 5 botones siempre visibles
+// ═══════════════════════════════════════════
+function buildPagination(totalPages){
+  var pag=document.getElementById('pagination');
+  pag.innerHTML='';
+  if(totalPages<=1){return;}
+
+  // Info de página
+  var from=curPage*PAGE_SIZE+1;
+  var to=Math.min((curPage+1)*PAGE_SIZE, filteredImgs.length);
+  var info=document.createElement('div');
+  info.className='pg-info';
+  info.textContent='Mostrando '+from+'–'+to+' de '+filteredImgs.length+' imágenes';
+  pag.appendChild(info);
+
+  // ← Anterior
+  var prev=document.createElement('button');
+  prev.className='pg-btn pg-prev';
+  prev.innerHTML='&#8592;';
+  prev.title='Página anterior';
+  prev.disabled=(curPage===0);
+  prev.onclick=function(){goToPage(curPage-1);};
+  pag.appendChild(prev);
+
+  // Botones numerados (máximo totalPages, siempre ≤5)
+  for(var i=0;i<totalPages;i++){
+    var btn=document.createElement('button');
+    btn.className='pg-btn'+(i===curPage?' active':'');
+    btn.setAttribute('data-pg',i);
+    btn.innerHTML=''+(i+1);
+    if(_prefetchCache[i]===true) btn.classList.add('prefetched');
+    // dot indicador
+    var dot=document.createElement('span');
+    dot.className='pg-ready';
+    btn.appendChild(dot);
+    btn.title='Página '+(i+1);
+    btn.disabled=(i===curPage);
+    btn.onclick=(function(idx){return function(){goToPage(idx);};})(i);
+    pag.appendChild(btn);
+  }
+
+  // → Siguiente
+  var nxt=document.createElement('button');
+  nxt.className='pg-btn pg-next';
+  nxt.innerHTML='&#8594;';
+  nxt.title='Página siguiente';
+  nxt.disabled=(curPage>=totalPages-1);
+  nxt.onclick=function(){goToPage(curPage+1);};
+  pag.appendChild(nxt);
+}
+
+// ═══════════════════════════════════════════
+// RENDER: dibuja solo la página actual
 // ═══════════════════════════════════════════
 function render(){
   filteredImgs=getFiltered();
   var grid=document.getElementById('grid');
   var total=filteredImgs.length;
+
+  // ── PAGE_SIZE dinámico: siempre 5 páginas exactas ──
+  // Si hay pocas imágenes (filtros/búsqueda), puede haber menos de 5 páginas
+  var totalPages=total?Math.min(TOTAL_PAGES,Math.ceil(total/1)):1;
+  PAGE_SIZE=total?Math.ceil(total/Math.min(TOTAL_PAGES,totalPages)):1;
+  totalPages=Math.ceil(total/PAGE_SIZE)||1;
+
+  // Asegurar curPage dentro de rango
+  if(curPage>=totalPages)curPage=totalPages-1;
+  if(curPage<0)curPage=0;
+
+  // Contador superior
+  var from=total?curPage*PAGE_SIZE+1:0;
+  var to=Math.min((curPage+1)*PAGE_SIZE,total);
   document.getElementById('gCount').innerHTML=
-    'Mostrando <span>'+Math.min((curPage+1)*PAGE_SIZE,total)+'</span> de <span>'+total+'</span> imágenes';
-  if(curPage===0){
-    if(_obs)try{_obs.disconnect();}catch(e){}
-    grid.innerHTML='';grid.style.height='0';
-  }
+    total?'Mostrando <span>'+from+'–'+to+'</span> de <span>'+total+'</span> imágenes'
+         :'<span>0</span> resultados';
+
+  // Destruir observer anterior y crear uno nuevo limpio
+  if(_obs){try{_obs.disconnect();}catch(e){} _obs=null;}
+  _obs=makeObserver();
+
+  // Limpiar grid
+  grid.innerHTML='';grid.style.height='0';
+
   if(!total){
     grid.innerHTML='<div class="no-results"><div class="no-results-ico">&#128269;</div><h3>Sin resultados</h3><p>Prueba otra búsqueda</p></div>';
     grid.style.height='auto';
-    document.getElementById('lmWrap').style.display='none';return;
+    document.getElementById('pagination').innerHTML='';
+    return;
   }
+
+  // Construir paginación
+  buildPagination(totalPages);
+
+  // Renderizar cards de esta página
   var frag=document.createDocumentFragment();
-  var start=curPage*PAGE_SIZE, end=Math.min(start+PAGE_SIZE,total);
+  var start=curPage*PAGE_SIZE;
+  var end=Math.min(start+PAGE_SIZE,total);
+
   for(var idx=start;idx<end;idx++){
-    (function(img,idx){
+    (function(img,absIdx){
       var card=document.createElement('div');
-      card.className='card';card.setAttribute('data-id',img.id);
+      card.className='card';
+      card.setAttribute('data-id',img.id);
       var isFruta=(img.cat==='Comida');
       card.style.setProperty('--card-bg',isFruta?'#ffffff':'var(--bg2)');
-      card.onclick=function(){openLb(idx);};
+      card.onclick=function(){openLb(absIdx);};
 
       var im=document.createElement('img');
-      im.alt=img.name;im.className='loading';im.loading='lazy';im.decoding='async';
+      im.alt=img.name;
+      im.className='loading';
+      im.loading='lazy';
+      im.decoding='async';
       im.onload=function(){
-        this.classList.remove('loading');this.classList.add('loaded');
-        this.parentElement.classList.add('ready');sched();
+        this.classList.remove('loading');
+        this.classList.add('loaded');
+        this.parentElement.classList.add('ready');
+        sched();
       };
-      im.onerror=function(){this.parentElement.style.display='none';sched();};
+      // Reintento único antes de ocultar — por errores transitorios de red
+      im._retried=false;
+      im.onerror=function(){
+        if(!this._retried){
+          this._retried=true;
+          var s=this.src;
+          this.src='';
+          this.src=s;  // forzar re-request
+        } else {
+          this.parentElement.style.display='none';
+          sched();
+        }
+      };
 
-      if(_obs){im.setAttribute('data-src',THUMB+img.pid);}
-      else{im.src=THUMB+img.pid;}
+      // La imagen usa data-src para lazy load con observer
+      // Si ya está en caché del browser (por prefetch), cargará al instante
+      var url=THUMB+img.pid;
+      if(_obs){im.setAttribute('data-src',url);}
+      else{im.src=url;}
 
       var lc=getLikes(img.id);
-      var badge=document.createElement('div');badge.className='card-like-count';
-      badge.style.display=lc>0?'flex':'none';badge.innerHTML=lc>0?('&#9829; '+lc):'';
+      var badge=document.createElement('div');
+      badge.className='card-like-count';
+      badge.style.display=lc>0?'flex':'none';
+      badge.innerHTML=lc>0?('&#9829; '+lc):'';
 
       var isLiked=getIsLiked(img.id);
-      var likebtn=document.createElement('button');likebtn.className='card-like'+(isLiked?' liked':'');
-      likebtn.innerHTML=isLiked?'&#9829;':'&#9825;';likebtn.title='Me gusta';
+      var likebtn=document.createElement('button');
+      likebtn.className='card-like'+(isLiked?' liked':'');
+      likebtn.innerHTML=isLiked?'&#9829;':'&#9825;';
+      likebtn.title='Me gusta';
       likebtn.onclick=function(e){e.stopPropagation();toggleLike(img.id,this,badge);};
 
       if(img.cat==='Texturas'){
@@ -1340,9 +1535,29 @@ function render(){
   }
   grid.appendChild(frag);
   sched();
-  document.getElementById('lmWrap').style.display=end<total?'block':'none';
+
+  // ── PREFETCH AUTOMÁTICO ──
+  // A los 1.5s empieza la siguiente página; a los 3s la anterior también
+  (function(pg,tot){
+    setTimeout(function(){if(pg+1<tot)prefetchPage(pg+1);},1500);
+    setTimeout(function(){if(pg-1>=0)prefetchPage(pg-1);},3000);
+  })(curPage,totalPages);
 }
-function loadMore(){curPage++;render();}
+
+// ═══════════════════════════════════════════
+// NAVEGACIÓN ENTRE PÁGINAS
+// ═══════════════════════════════════════════
+function goToPage(idx){
+  curPage=idx;
+  render();
+  var header=document.querySelector('.g-header');
+  var hh=header?header.offsetHeight:60;
+  var grid=document.getElementById('grid');
+  if(grid){
+    var top=grid.getBoundingClientRect().top+window.scrollY-hh-16;
+    window.scrollTo({top:Math.max(0,top),behavior:'smooth'});
+  }
+}
 
 // ═══════════════════════════════════════════
 // LIGHTBOX
