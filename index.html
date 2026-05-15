@@ -319,7 +319,33 @@ body.galeria-mode{overflow:auto;}
 .no-results-ico{font-size:3rem;margin-bottom:16px;}
 .no-results h3{font-family:'Syne',sans-serif;font-size:1.1rem;margin-bottom:8px;color:var(--muted2);}
 
-/* ─── SKELETON SHIMMER (mientras carga la img) ─── */
+/* ─── AD CARD en grid — misma posición que una imagen ─── */
+.ad-card{
+  position:absolute;
+  border-radius:10px;
+  overflow:hidden;
+  background:var(--bg2);
+  border:1px solid var(--border);
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  min-height:220px;
+  contain:layout style;
+}
+.ad-card-label{
+  font-size:.55rem;
+  letter-spacing:.14em;
+  text-transform:uppercase;
+  color:var(--muted2);
+  opacity:.45;
+  margin-bottom:6px;
+  font-family:'Inter',sans-serif;
+}
+/* La card de anuncio no debe activar hover ni cursor pointer */
+.ad-card:hover{transform:none;box-shadow:none;cursor:default;}
+/* Que el iframe/anuncio no desborde */
+.ad-card iframe{max-width:100%!important;border:none;}
 @keyframes shimmer{
   0%{background-position:-400px 0}
   100%{background-position:400px 0}
@@ -504,6 +530,25 @@ body.galeria-mode{overflow:auto;}
 .lb-panel{
   width:280px;flex-shrink:0;padding:28px 24px;
   display:flex;flex-direction:column;gap:16px;overflow-y:auto;
+}
+/* Contenedor del anuncio dentro del lightbox — 160×300 cabe en 280px */
+.lb-ad-wrap{
+  width:100%;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  gap:4px;
+  margin-top:4px;
+}
+.lb-ad-wrap .ad-label{
+  font-size:.55rem;letter-spacing:.14em;text-transform:uppercase;
+  color:var(--muted);opacity:.5;font-family:'Inter',sans-serif;
+}
+.lb-ad-wrap iframe{
+  max-width:100%!important;
+  border:none;
+  border-radius:6px;
+  display:block;
 }
 .lb-title{font-family:'Syne',sans-serif;font-size:1rem;font-weight:700;color:var(--text);line-height:1.4;}
 .lb-divider{height:1px;background:var(--border);}
@@ -874,11 +919,19 @@ body.galeria-mode{overflow:auto;}
         <div class="lb-free">&#10003; Sin registro · Sin costo · Descarga libre</div>
         <button class="lb-like-btn" id="lbLikeBtn" onclick="toggleLikeLb()">&#9825; 0 Me gusta</button>
 
-        <!-- AD 3: Rectangle 300×250 — panel del lightbox -->
-        <p class="ad-label" style="margin-top:12px">Publicidad</p>
-        <div class="ad-lb-rect">
-          <script async="async" data-cfasync="false" src="https://pl29459968.effectivecpmnetwork.com/98a46a018569f4d52e55f77e3149b5a6/invoke.js"></script>
-          <div id="container-98a46a018569f4d52e55f77e3149b5a6"></div>
+        <!-- Anuncio 160×300 — encaja en panel de 280px -->
+        <div class="lb-ad-wrap">
+          <span class="ad-label">Publicidad</span>
+          <script>
+            atOptions = {
+              'key' : '66fe6e63386169af45bc5ebe129576ec',
+              'format' : 'iframe',
+              'height' : 300,
+              'width' : 160,
+              'params' : {}
+            };
+          </script>
+          <script src="https://www.highperformanceformat.com/66fe6e63386169af45bc5ebe129576ec/invoke.js"></script>
         </div>
       </div>
     </div>
@@ -1604,7 +1657,6 @@ function render(){
       card.style.setProperty('--card-bg',(img.cat==='Comida')?'#ffffff':'var(--bg2)');
       card.onclick=function(){openLb(absIdx);};
 
-      // Skeleton visible mientras carga
       var skel=document.createElement('div');skel.className='card-skel';
       card.appendChild(skel);
 
