@@ -5,6 +5,8 @@
 <meta name="viewport" content="width=device-width,initial-scale=1.0">
 <meta name="theme-color" content="#0a0a0f">
 <meta name="description" content="FondoBlanco — banco de imágenes gratis. Texturas, frutas, naturaleza y más. Sin registro.">
+<link rel="dns-prefetch" href="https://fondoblanco.b-cdn.net">
+<link rel="preconnect" href="https://fondoblanco.b-cdn.net" crossorigin>
 <title>FondoBlanco · Banco de imágenes gratis</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -62,8 +64,6 @@
   --accent:#ff2060;--accent2:#ff8099;--accent3:#cc003a;
   --glow:rgba(255,32,96,0.32);--card-bg:#1c0610;--header-bg:rgba(15,4,8,0.93);
 }
-<script async="async" data-cfasync="false" src="https://pl29459968.effectivecpmnetwork.com/98a46a018569f4d52e55f77e3149b5a6/invoke.js"></script>
-<div id="container-98a46a018569f4d52e55f77e3149b5a6"></div>
 
 /* ═══════════════════════════════════════
    RESET & BASE
@@ -270,9 +270,7 @@ body.galeria-mode{overflow:auto;}
 .card{
   position:absolute;border-radius:10px;overflow:hidden;cursor:pointer;
   transition:transform .26s cubic-bezier(.4,0,.2,1),box-shadow .26s;
-  z-index:1;will-change:transform;
-  background:transparent;
-  contain:layout style;
+  z-index:1;will-change:transform;background:transparent;contain:layout style;
 }
 .card.ready{background:var(--card-bg);}
 .card:hover{transform:scale(1.04) translateY(-3px);box-shadow:0 20px 60px rgba(0,0,0,.7);z-index:20;}
@@ -321,7 +319,20 @@ body.galeria-mode{overflow:auto;}
 .no-results-ico{font-size:3rem;margin-bottom:16px;}
 .no-results h3{font-family:'Syne',sans-serif;font-size:1.1rem;margin-bottom:8px;color:var(--muted2);}
 
-/* ── PAGINACIÓN NUMERADA ── */
+/* ─── SKELETON SHIMMER (mientras carga la img) ─── */
+@keyframes shimmer{
+  0%{background-position:-400px 0}
+  100%{background-position:400px 0}
+}
+.card-skel{
+  background:linear-gradient(90deg,var(--bg2) 25%,var(--bg3) 50%,var(--bg2) 75%);
+  background-size:800px 100%;
+  animation:shimmer 1.4s infinite linear;
+  min-height:160px;
+  width:100%;
+}
+
+/* ─── PAGINACIÓN ─── */
 .pagination{
   display:flex;align-items:center;justify-content:center;
   gap:6px;padding:36px 24px 48px;flex-wrap:wrap;
@@ -330,30 +341,116 @@ body.galeria-mode{overflow:auto;}
   min-width:42px;height:42px;padding:0 14px;
   border-radius:10px;border:1px solid var(--border2);
   background:transparent;color:var(--muted2);
-  font-family:'Syne',sans-serif;font-size:.82rem;font-weight:700;
+  font-family:'Syne',sans-serif;font-size:.85rem;font-weight:700;
   cursor:pointer;transition:all .18s;
   display:flex;align-items:center;justify-content:center;
   position:relative;
 }
 .pg-btn:hover:not(:disabled){border-color:var(--accent);color:var(--accent);}
-.pg-btn.active{
-  background:var(--accent);border-color:var(--accent);
-  color:#fff;box-shadow:0 4px 18px var(--glow);
-}
-.pg-btn.active:hover{opacity:.88;}
-.pg-btn:disabled{opacity:.28;cursor:default;pointer-events:none;}
-.pg-btn.pg-prev,.pg-btn.pg-next{font-size:1rem;padding:0 16px;}
-.pg-ready{
-  position:absolute;top:4px;right:4px;
-  width:7px;height:7px;border-radius:50%;
-  background:var(--accent);opacity:.65;display:none;
-}
+.pg-btn.active{background:var(--accent);border-color:var(--accent);color:#fff;box-shadow:0 4px 18px var(--glow);}
+.pg-btn:disabled{opacity:.32;cursor:default;pointer-events:none;}
+.pg-btn.pg-prev,.pg-btn.pg-next{font-size:1.1rem;}
+.pg-ready{position:absolute;top:4px;right:4px;width:7px;height:7px;border-radius:50%;background:var(--accent);opacity:.7;display:none;}
 .pg-btn.prefetched .pg-ready{display:block;}
-.pg-info{
-  width:100%;text-align:center;
-  font-size:.7rem;color:var(--muted2);
-  margin-top:-16px;padding-bottom:8px;
+.pg-info{width:100%;text-align:center;font-size:.7rem;color:var(--muted2);margin-top:-16px;padding-bottom:8px;font-family:'Inter',sans-serif;}
+
+/* ─── ADSTERRA ADS ─── */
+/* Leaderboard 728×90 — barra horizontal */
+.ad-leaderboard{
+  display:flex;align-items:center;justify-content:center;
+  width:100%;padding:10px 0;
+  background:var(--bg2);
+  border-top:1px solid var(--border);
+  border-bottom:1px solid var(--border);
+  overflow:hidden;
+  min-height:90px;
+}
+.ad-leaderboard iframe,.ad-leaderboard>*{max-width:100%!important;}
+
+/* Rectangle 300×250 — dentro del panel del lightbox */
+.ad-lb-rect{
+  margin-top:16px;
+  display:flex;align-items:center;justify-content:center;
+  width:100%;
+  overflow:hidden;
+  border-radius:8px;
+  min-height:250px;
+  background:var(--bg2);
+}
+.ad-lb-rect iframe,.ad-lb-rect>*{max-width:100%!important;}
+
+/* Label "Publicidad" encima de cada anuncio */
+.ad-label{
+  text-align:center;
+  font-size:.6rem;
+  letter-spacing:.12em;
+  text-transform:uppercase;
+  color:var(--muted2);
+  opacity:.5;
+  padding:4px 0 2px;
   font-family:'Inter',sans-serif;
+}
+
+/* ─── AD SKYSCRAPER 160×600 — flotante derecha en desktop ─── */
+.ad-sky-wrap{
+  position:fixed;
+  top:50%;right:0;
+  transform:translateY(-50%);
+  z-index:400;
+  display:flex;flex-direction:column;align-items:center;gap:4px;
+  /* Aparece solo si hay espacio suficiente (>1240px) */
+}
+.ad-sky-label{
+  font-size:.52rem;letter-spacing:.12em;text-transform:uppercase;
+  color:rgba(255,255,255,.25);font-family:'Inter',sans-serif;
+  writing-mode:vertical-rl;
+  margin-bottom:4px;
+}
+.ad-sky-close{
+  position:absolute;top:-8px;left:-8px;
+  width:20px;height:20px;border-radius:50%;
+  background:var(--bg2);border:1px solid var(--border);
+  color:var(--muted2);font-size:.7rem;
+  display:flex;align-items:center;justify-content:center;
+  cursor:pointer;z-index:1;transition:background .15s;
+  line-height:1;padding:0;font-family:sans-serif;
+}
+.ad-sky-close:hover{background:var(--border2);color:var(--text);}
+.ad-sky-inner{
+  overflow:hidden;
+  border-radius:4px 0 0 4px;
+  border:1px solid var(--border);
+  border-right:none;
+  background:var(--bg2);
+  width:160px;
+  min-height:600px;
+  display:flex;align-items:center;justify-content:center;
+}
+/* Solo visible en pantallas muy anchas donde no tapa la galería */
+@media(max-width:1400px){.ad-sky-wrap{display:none;}}
+
+/* ─── AD MOBILE STICKY BANNER 320×50 — fijo abajo en móvil ─── */
+.ad-mobile-sticky{
+  position:fixed;bottom:0;left:0;right:0;
+  display:none;  /* solo móvil */
+  align-items:center;justify-content:center;
+  background:var(--bg);
+  border-top:1px solid var(--border);
+  padding:4px 0 2px;
+  z-index:600;
+  box-shadow:0 -4px 20px rgba(0,0,0,.35);
+}
+.ad-mobile-sticky-close{
+  position:absolute;top:4px;right:8px;
+  background:transparent;border:none;
+  color:var(--muted2);font-size:.75rem;cursor:pointer;
+  font-family:sans-serif;line-height:1;padding:2px 4px;
+}
+.ad-mobile-sticky-close:hover{color:var(--text);}
+@media(max-width:760px){
+  .ad-mobile-sticky{display:flex;}
+  /* Empujar el contenido para que no quede tapado por el banner sticky */
+  #pg-galeria{padding-bottom:60px;}
 }
 
 /* ═══════════════════════════════════════
@@ -630,6 +727,41 @@ body.galeria-mode{overflow:auto;}
      ═══════════════════════════════ -->
 <div id="pg-galeria">
 
+  <!-- AD SKYSCRAPER 160×600 — flotante lateral derecho, solo desktop >1400px -->
+  <div class="ad-sky-wrap" id="adSkyWrap">
+    <span class="ad-sky-label">Publicidad</span>
+    <div style="position:relative">
+      <button class="ad-sky-close" onclick="document.getElementById('adSkyWrap').style.display='none'" title="Cerrar">✕</button>
+      <div class="ad-sky-inner">
+        <script>
+          atOptions = {
+            'key' : '2979ddc08560cbeea39c4629d12fab6d',
+            'format' : 'iframe',
+            'height' : 600,
+            'width' : 160,
+            'params' : {}
+          };
+        </script>
+        <script src="https://www.highperformanceformat.com/2979ddc08560cbeea39c4629d12fab6d/invoke.js"></script>
+      </div>
+    </div>
+  </div>
+
+  <!-- AD MOBILE STICKY 320×50 — fijo abajo, solo móvil ≤760px -->
+  <div class="ad-mobile-sticky" id="adMobileSticky">
+    <button class="ad-mobile-sticky-close" onclick="document.getElementById('adMobileSticky').style.display='none'" title="Cerrar">✕</button>
+    <script>
+      atOptions = {
+        'key' : '6be047e0c4ce65c11ef08b36a8497fcf',
+        'format' : 'iframe',
+        'height' : 50,
+        'width' : 320,
+        'params' : {}
+      };
+    </script>
+    <script src="https://www.highperformanceformat.com/6be047e0c4ce65c11ef08b36a8497fcf/invoke.js"></script>
+  </div>
+
   <!-- Header sticky -->
   <header class="g-header">
     <div class="g-header-top">
@@ -676,12 +808,43 @@ body.galeria-mode{overflow:auto;}
     </div>
   </div>
 
+  <!-- AD 1: Leaderboard 728×90 — debajo de filtros, antes de la galería -->
+  <p class="ad-label">Publicidad</p>
+  <div class="ad-leaderboard">
+    <script>
+      atOptions = {
+        'key' : 'b9b30440f04feaa6f4621f9c2aa9b82f',
+        'format' : 'iframe',
+        'height' : 90,
+        'width' : 728,
+        'params' : {}
+      };
+    </script>
+    <script src="https://www.highperformanceformat.com/b9b30440f04feaa6f4621f9c2aa9b82f/invoke.js"></script>
+  </div>
+
   <!-- Contador -->
   <div class="g-count" id="gCount">Cargando...</div>
 
   <!-- Grid masonry -->
   <div class="g-main">
     <div class="masonry" id="grid"></div>
+
+    <!-- AD 2: Leaderboard 728×90 — entre galería y paginación -->
+    <p class="ad-label">Publicidad</p>
+    <div class="ad-leaderboard">
+      <script>
+        atOptions = {
+          'key' : 'b9b30440f04feaa6f4621f9c2aa9b82f',
+          'format' : 'iframe',
+          'height' : 90,
+          'width' : 728,
+          'params' : {}
+        };
+      </script>
+      <script src="https://www.highperformanceformat.com/b9b30440f04feaa6f4621f9c2aa9b82f/invoke.js"></script>
+    </div>
+
     <div id="pagination" class="pagination"></div>
   </div>
 
@@ -710,6 +873,13 @@ body.galeria-mode{overflow:auto;}
         </a>
         <div class="lb-free">&#10003; Sin registro · Sin costo · Descarga libre</div>
         <button class="lb-like-btn" id="lbLikeBtn" onclick="toggleLikeLb()">&#9825; 0 Me gusta</button>
+
+        <!-- AD 3: Rectangle 300×250 — panel del lightbox -->
+        <p class="ad-label" style="margin-top:12px">Publicidad</p>
+        <div class="ad-lb-rect">
+          <script async="async" data-cfasync="false" src="https://pl29459968.effectivecpmnetwork.com/98a46a018569f4d52e55f77e3149b5a6/invoke.js"></script>
+          <div id="container-98a46a018569f4d52e55f77e3149b5a6"></div>
+        </div>
       </div>
     </div>
   </div>
@@ -799,15 +969,17 @@ body.galeria-mode{overflow:auto;}
 var cvs=document.getElementById('bgCanvas'),ctx2=cvs.getContext('2d');
 var CW,CH,pts=[],orbs2=[];
 function rsz(){CW=cvs.width=window.innerWidth;CH=cvs.height=window.innerHeight;}
-rsz(); window.addEventListener('resize',rsz);
+rsz();window.addEventListener('resize',rsz);
+// 32 partículas (era 55) — misma apariencia, menos CPU
 for(var i=0;i<32;i++)pts.push({x:Math.random()*CW,y:Math.random()*CH,r:Math.random()*1.5+.2,vx:(Math.random()-.5)*.3,vy:(Math.random()-.5)*.3,a:Math.random()*.45+.08,c:['176,96,255','100,150,255','255,100,150','0,220,180'][Math.floor(Math.random()*4)]});
 orbs2=[{x:.3,y:.3,r:.5,vx:.0003,vy:.0002,c:'100,30,200'},{x:.7,y:.6,r:.4,vx:-.0002,vy:.0003,c:'50,100,200'},{x:.5,y:.8,r:.35,vx:.0002,vy:-.0003,c:'180,50,220'}];
-var _canvasOn=true,_lastFrame=0;
+var _canvasOn=true,_lastF=0;
 function drawCanvas(){
   if(!_canvasOn)return;
   var now=performance.now();
-  if(now-_lastFrame<33){requestAnimationFrame(drawCanvas);return;}
-  _lastFrame=now;
+  // Throttle a ~30fps (1000/33≈30)
+  if(now-_lastF<33){requestAnimationFrame(drawCanvas);return;}
+  _lastF=now;
   ctx2.clearRect(0,0,CW,CH);
   ctx2.fillStyle='rgba(10,10,15,.55)';ctx2.fillRect(0,0,CW,CH);
   orbs2.forEach(function(o){
@@ -825,9 +997,10 @@ function drawCanvas(){
   requestAnimationFrame(drawCanvas);
 }
 drawCanvas();
+// Pausa el canvas cuando la pestaña no está visible
 document.addEventListener('visibilitychange',function(){
   if(document.hidden){_canvasOn=false;}
-  else if(document.getElementById('pg-inicio').style.display!=='none'){_canvasOn=true;_lastFrame=0;drawCanvas();}
+  else if(document.getElementById('pg-inicio').style.display!=='none'){_canvasOn=true;_lastF=0;drawCanvas();}
 });
 
 // ═══════════════════════════════════════════
@@ -1187,21 +1360,19 @@ var imgs=[
   {id:316,pid:'zanahorias-naranja-tabla-rustica-luz-dorada-horizontal.jpg',name:'Zanahorias naranja tabla rustica luz dorada horizontal',cat:'Comida'}
 ];
 
-// ═══════════════════════════════════════════
+// ══════════════════════════════════════════════════════
 // ESTADO
-// ═══════════════════════════════════════════
+// ══════════════════════════════════════════════════════
 var curFilter='Todas', curSearch='', curSort='default';
 var filteredImgs=[], lbIdx=0;
-var TOTAL_PAGES=5;          // siempre 5 páginas exactas
-var PAGE_SIZE=64;           // se recalcula dinámicamente en render()
+var TOTAL_PAGES=5;   // siempre 5 páginas
+var PAGE_SIZE=64;    // se recalcula en render()
 var curPage=0;
+var _pfCache={};     // prefetch cache: {idx:'loading'|true}
 
-// caché de prefetch: {pageIdx: true} cuando todas sus imgs terminaron
-var _prefetchCache={};
-
-// ═══════════════════════════════════════════
+// ══════════════════════════════════════════════════════
 // LIKES
-// ═══════════════════════════════════════════
+// ══════════════════════════════════════════════════════
 function getLikes(id){return parseInt(localStorage.getItem('lc_'+id)||'0');}
 function getIsLiked(id){return localStorage.getItem('lk_'+id)==='1';}
 function toggleLike(id,btn,badge){
@@ -1209,7 +1380,7 @@ function toggleLike(id,btn,badge){
   if(liked){count=Math.max(0,count-1);localStorage.setItem('lk_'+id,'0');btn.classList.remove('liked');btn.innerHTML='&#9825;';}
   else{count++;localStorage.setItem('lk_'+id,'1');btn.classList.add('liked');btn.innerHTML='&#9829;';}
   localStorage.setItem('lc_'+id,count);
-  if(badge){badge.textContent=count>0?('&#9829; '+count):'';badge.style.display=count>0?'flex':'none';}
+  if(badge){badge.innerHTML=count>0?('&#9829; '+count):'';badge.style.display=count>0?'flex':'none';}
   if(document.getElementById('lb').classList.contains('open')&&filteredImgs[lbIdx]&&filteredImgs[lbIdx].id===id)updateLbLike(id);
 }
 function updateLbLike(id){
@@ -1228,13 +1399,13 @@ function toggleLikeLb(){
   document.querySelectorAll('.card[data-id="'+img.id+'"]').forEach(function(card){
     var b=card.querySelector('.card-like'),bg=card.querySelector('.card-like-count');
     if(b){b.classList.toggle('liked',!liked);b.innerHTML=(!liked)?'&#9829;':'&#9825;';}
-    if(bg){bg.textContent=count>0?'&#9829; '+count:'';bg.style.display=count>0?'flex':'none';}
+    if(bg){bg.innerHTML=count>0?'&#9829; '+count:'';bg.style.display=count>0?'flex':'none';}
   });
 }
 
-// ═══════════════════════════════════════════
+// ══════════════════════════════════════════════════════
 // SHUFFLE DIARIO
-// ═══════════════════════════════════════════
+// ══════════════════════════════════════════════════════
 function getDailySeed(){var d=new Date();return d.getFullYear()*10000+(d.getMonth()+1)*100+d.getDate();}
 function seedShuffle(arr,seed){
   var a=arr.slice();
@@ -1242,16 +1413,15 @@ function seedShuffle(arr,seed){
   return a;
 }
 
-// ═══════════════════════════════════════════
+// ══════════════════════════════════════════════════════
 // FILTRADO
-// ═══════════════════════════════════════════
+// ══════════════════════════════════════════════════════
 function getFiltered(){
   var SYN={'rojo':['naranja','lava','magenta','crimson','coral','rosa'],'azul':['cyan','turquesa','marino','celeste','hielo','glaciar'],'verde':['esmeralda','jade','teal','menta'],'negro':['oscuro','carbon','antracita','noche'],'blanco':['claro','luminoso','nieve'],'dorado':['oro','bronce','ambar'],'piedra':['mineral','roca','caliza','granito','marmol'],'agua':['liquido','fluido','gotas'],'metal':['acero','hierro','cobre','oxidado']};
   var terms=[];
   if(curSearch){
     var words=curSearch.toLowerCase().split(' ').filter(function(w){return w.length>0;});
-    var set={};
-    words.forEach(function(w){set[w]=1;});
+    var set={};words.forEach(function(w){set[w]=1;});
     words.forEach(function(w){Object.keys(SYN).forEach(function(k){if(k===w||SYN[k].indexOf(w)>=0){set[k]=1;SYN[k].forEach(function(s){set[s]=1;});}});});
     terms=Object.keys(set);
   }
@@ -1263,8 +1433,7 @@ function getFiltered(){
   if(curSort==='az')return base.sort(function(a,b){return a.name.localeCompare(b.name);});
   if(curSort==='za')return base.sort(function(a,b){return b.name.localeCompare(a.name);});
   if(curSort==='liked')return base.sort(function(a,b){return getLikes(b.id)-getLikes(a.id);});
-  var seed=getDailySeed();
-  var groups={};
+  var seed=getDailySeed(),groups={};
   base.forEach(function(i){if(!groups[i.cat])groups[i.cat]=[];groups[i.cat].push(i);});
   var cats=seedShuffle(Object.keys(groups),seed+999);
   cats.forEach(function(c){groups[c]=seedShuffle(groups[c],seed+c.charCodeAt(0));});
@@ -1273,52 +1442,46 @@ function getFiltered(){
   for(var i=0;i<mx;i++)cats.forEach(function(c){if(groups[c][i])out.push(groups[c][i]);});
   return out;
 }
-function doSearch(){curSearch=document.getElementById('searchInput').value;curPage=0;_prefetchCache={};render();}
+function doSearch(){curSearch=document.getElementById('searchInput').value;curPage=0;_pfCache={};render();}
 function setFilter(cat,btn){
   curFilter=cat;
   document.querySelectorAll('.cat-pill').forEach(function(b){b.classList.remove('active');});
   if(btn)btn.classList.add('active');
-  document.getElementById('searchInput').value='';curSearch='';curPage=0;_prefetchCache={};render();
+  document.getElementById('searchInput').value='';curSearch='';curPage=0;_pfCache={};render();
   document.getElementById('texBanner').style.display=(cat==='Texturas')?'flex':'none';
 }
-function setSort(v){curSort=v;curPage=0;_prefetchCache={};render();}
+function setSort(v){curSort=v;curPage=0;_pfCache={};render();}
 
-// ═══════════════════════════════════════════
-// MASONRY
-// ═══════════════════════════════════════════
-var GAP=8,_mt2=null;
+// ══════════════════════════════════════════════════════
+// MASONRY — debounce + rAF
+// ══════════════════════════════════════════════════════
+var GAP=8,_mt=null;
 function getCols(){var w=window.innerWidth;if(w<=480)return 2;if(w<=768)return 3;if(w<=1100)return 4;return 5;}
 function layoutMasonry(){
   var grid=document.getElementById('grid');if(!grid)return;
   var cards=Array.from(grid.querySelectorAll('.card')).filter(function(c){return c.style.display!=='none';});
   if(!cards.length){grid.style.height='0';return;}
-  var cols=getCols(),tw=grid.offsetWidth;
-  var cw=Math.floor((tw-(cols-1)*GAP)/cols);
-  var ch=[];for(var c=0;c<cols;c++)ch.push(0);
+  var cols=getCols(),tw=grid.offsetWidth,cw=Math.floor((tw-(cols-1)*GAP)/cols);
+  var ch=new Array(cols).fill(0);
   cards.forEach(function(card){
     card.style.width=cw+'px';
-    var min=ch[0],col=0;for(var x=1;x<cols;x++){if(ch[x]<min){min=ch[x];col=x;}}
+    var min=ch[0],col=0;
+    for(var x=1;x<cols;x++){if(ch[x]<min){min=ch[x];col=x;}}
     card.style.left=col*(cw+GAP)+'px';card.style.top=min+'px';
     ch[col]+=card.offsetHeight+GAP;
   });
-  var mx=ch[0];for(var x=1;x<cols;x++){if(ch[x]>mx)mx=ch[x];}
+  var mx=Math.max.apply(null,ch);
   grid.style.height=(mx-GAP)+'px';
 }
-function sched(){
-  clearTimeout(_mt2);
-  _mt2=setTimeout(function(){requestAnimationFrame(layoutMasonry);},80);
-}
+function sched(){clearTimeout(_mt);_mt=setTimeout(function(){requestAnimationFrame(layoutMasonry);},80);}
 window.addEventListener('resize',sched);
 
-// ═══════════════════════════════════════════
-// INTERSECTION OBSERVER (lazy load visible)
-// Se crea uno nuevo en cada render() para evitar el bug de
-// disconnect() que impedía cargar imágenes al hacer scroll
-// ═══════════════════════════════════════════
-var _obsSupported=('IntersectionObserver' in window);
+// ══════════════════════════════════════════════════════
+// INTERSECTION OBSERVER — se crea fresco en cada render
+// ══════════════════════════════════════════════════════
 var _obs=null;
-function makeObserver(){
-  if(!_obsSupported)return null;
+function makeObs(){
+  if(!('IntersectionObserver' in window))return null;
   return new IntersectionObserver(function(entries,obs){
     entries.forEach(function(e){
       if(!e.isIntersecting)return;
@@ -1326,132 +1489,101 @@ function makeObserver(){
       if(img){img.src=img.getAttribute('data-src');img.removeAttribute('data-src');}
       obs.unobserve(e.target);
     });
-  },{rootMargin:'120px 0px',threshold:.01});
+  },{rootMargin:'220px 0px',threshold:.01});
 }
 
-// ═══════════════════════════════════════════
-// PREFETCH: pre-carga imgs de una página en segundo plano
-// Usa una cola con máx 4 descargas paralelas para no saturar la red
-// Marca la página como lista solo cuando TODAS sus imágenes cargaron
-// ═══════════════════════════════════════════
-function prefetchPage(pageIdx){
+// ══════════════════════════════════════════════════════
+// PREFETCH — cola con 6 conexiones paralelas (HTTP/2)
+// Solo descarga cuando el Image Optimizer NO está activo
+// Usa las URLs originales — sin params que rompan el CDN
+// ══════════════════════════════════════════════════════
+function prefetchPage(pgIdx){
   var total=filteredImgs.length;
   if(!total)return;
-  var totalPg=Math.ceil(total/PAGE_SIZE);
-  if(pageIdx<0||pageIdx>=totalPg)return;
-  if(_prefetchCache[pageIdx])return;        // ya en proceso o terminada
-  _prefetchCache[pageIdx]='loading';        // marcar "en proceso"
-
-  var start=pageIdx*PAGE_SIZE;
-  var end=Math.min(start+PAGE_SIZE,total);
-  var pids=[];
-  for(var i=start;i<end;i++) pids.push(filteredImgs[i].pid);
-
-  var done=0, total2=pids.length, CONCURRENCY=4;
-  var qi=0; // índice en la cola
-
+  var totPg=Math.ceil(total/PAGE_SIZE);
+  if(pgIdx<0||pgIdx>=totPg||_pfCache[pgIdx])return;
+  _pfCache[pgIdx]='loading';
+  var s=pgIdx*PAGE_SIZE,e=Math.min(s+PAGE_SIZE,total);
+  var pids=filteredImgs.slice(s,e).map(function(i){return i.pid;});
+  var done=0,tot=pids.length,qi=0,C=6;
   function next(){
-    if(qi>=pids.length) return;
+    if(qi>=pids.length)return;
     var pid=pids[qi++];
     var im=new Image();
     im.onload=im.onerror=function(){
       done++;
-      if(done===total2){
-        _prefetchCache[pageIdx]=true;
-        // Marcar botón visualmente
-        var btn=document.querySelector('.pg-btn[data-pg="'+pageIdx+'"]');
-        if(btn) btn.classList.add('prefetched');
+      if(done===tot){
+        _pfCache[pgIdx]=true;
+        var btn=document.querySelector('.pg-btn[data-pg="'+pgIdx+'"]');
+        if(btn)btn.classList.add('prefetched');
       }
-      next(); // siguiente en cola
+      next();
     };
     im.src=THUMB+pid;
   }
-  // Arrancar CONCURRENCY descargas en paralelo
-  for(var k=0;k<Math.min(CONCURRENCY,pids.length);k++) next();
+  for(var k=0;k<Math.min(C,pids.length);k++)next();
 }
 
-// ═══════════════════════════════════════════
-// PAGINACIÓN: 5 botones siempre visibles
-// ═══════════════════════════════════════════
+// ══════════════════════════════════════════════════════
+// PAGINACIÓN — 5 botones siempre
+// ══════════════════════════════════════════════════════
 function buildPagination(totalPages){
   var pag=document.getElementById('pagination');
   pag.innerHTML='';
-  if(totalPages<=1){return;}
-
-  // Info de página
+  if(totalPages<=1)return;
   var from=curPage*PAGE_SIZE+1;
-  var to=Math.min((curPage+1)*PAGE_SIZE, filteredImgs.length);
+  var to=Math.min((curPage+1)*PAGE_SIZE,filteredImgs.length);
   var info=document.createElement('div');
   info.className='pg-info';
   info.textContent='Mostrando '+from+'–'+to+' de '+filteredImgs.length+' imágenes';
   pag.appendChild(info);
-
-  // ← Anterior
+  // Anterior
   var prev=document.createElement('button');
-  prev.className='pg-btn pg-prev';
-  prev.innerHTML='&#8592;';
-  prev.title='Página anterior';
-  prev.disabled=(curPage===0);
-  prev.onclick=function(){goToPage(curPage-1);};
+  prev.className='pg-btn pg-prev';prev.innerHTML='&#8592;';
+  prev.disabled=(curPage===0);prev.onclick=function(){goToPage(curPage-1);};
   pag.appendChild(prev);
-
-  // Botones numerados (máximo totalPages, siempre ≤5)
+  // Números
   for(var i=0;i<totalPages;i++){
     var btn=document.createElement('button');
     btn.className='pg-btn'+(i===curPage?' active':'');
     btn.setAttribute('data-pg',i);
     btn.innerHTML=''+(i+1);
-    if(_prefetchCache[i]===true) btn.classList.add('prefetched');
-    // dot indicador
-    var dot=document.createElement('span');
-    dot.className='pg-ready';
-    btn.appendChild(dot);
-    btn.title='Página '+(i+1);
     btn.disabled=(i===curPage);
+    if(_pfCache[i]===true)btn.classList.add('prefetched');
+    var dot=document.createElement('span');dot.className='pg-ready';btn.appendChild(dot);
     btn.onclick=(function(idx){return function(){goToPage(idx);};})(i);
     pag.appendChild(btn);
   }
-
-  // → Siguiente
+  // Siguiente
   var nxt=document.createElement('button');
-  nxt.className='pg-btn pg-next';
-  nxt.innerHTML='&#8594;';
-  nxt.title='Página siguiente';
-  nxt.disabled=(curPage>=totalPages-1);
-  nxt.onclick=function(){goToPage(curPage+1);};
+  nxt.className='pg-btn pg-next';nxt.innerHTML='&#8594;';
+  nxt.disabled=(curPage>=totalPages-1);nxt.onclick=function(){goToPage(curPage+1);};
   pag.appendChild(nxt);
 }
 
-// ═══════════════════════════════════════════
-// RENDER: dibuja solo la página actual
-// ═══════════════════════════════════════════
+// ══════════════════════════════════════════════════════
+// RENDER
+// ══════════════════════════════════════════════════════
 function render(){
   filteredImgs=getFiltered();
   var grid=document.getElementById('grid');
   var total=filteredImgs.length;
 
-  // ── PAGE_SIZE dinámico: siempre 5 páginas exactas ──
-  // Si hay pocas imágenes (filtros/búsqueda), puede haber menos de 5 páginas
-  var totalPages=total?Math.min(TOTAL_PAGES,Math.ceil(total/1)):1;
-  PAGE_SIZE=total?Math.ceil(total/Math.min(TOTAL_PAGES,totalPages)):1;
-  totalPages=Math.ceil(total/PAGE_SIZE)||1;
-
-  // Asegurar curPage dentro de rango
+  // PAGE_SIZE dinámico → siempre 5 páginas
+  PAGE_SIZE=total?Math.ceil(total/TOTAL_PAGES):1;
+  var totalPages=total?Math.ceil(total/PAGE_SIZE):1;
   if(curPage>=totalPages)curPage=totalPages-1;
   if(curPage<0)curPage=0;
 
-  // Contador superior
+  // Contador
   var from=total?curPage*PAGE_SIZE+1:0;
   var to=Math.min((curPage+1)*PAGE_SIZE,total);
   document.getElementById('gCount').innerHTML=
-    total?'Mostrando <span>'+from+'–'+to+'</span> de <span>'+total+'</span> imágenes'
-         :'<span>0</span> resultados';
+    total?'Mostrando <span>'+from+'–'+to+'</span> de <span>'+total+'</span> imágenes':'<span>0</span> resultados';
 
-  // Destruir observer anterior y crear uno nuevo limpio
-  if(_obs){try{_obs.disconnect();}catch(e){} _obs=null;}
-  _obs=makeObserver();
-
-  // Limpiar grid
+  // Observer limpio nuevo
+  if(_obs){try{_obs.disconnect();}catch(e){}_obs=null;}
+  _obs=makeObs();
   grid.innerHTML='';grid.style.height='0';
 
   if(!total){
@@ -1460,76 +1592,63 @@ function render(){
     document.getElementById('pagination').innerHTML='';
     return;
   }
-
-  // Construir paginación
   buildPagination(totalPages);
 
-  // Renderizar cards de esta página
   var frag=document.createDocumentFragment();
-  var start=curPage*PAGE_SIZE;
-  var end=Math.min(start+PAGE_SIZE,total);
+  var start=curPage*PAGE_SIZE,end=Math.min(start+PAGE_SIZE,total);
 
   for(var idx=start;idx<end;idx++){
     (function(img,absIdx){
       var card=document.createElement('div');
-      card.className='card';
-      card.setAttribute('data-id',img.id);
-      var isFruta=(img.cat==='Comida');
-      card.style.setProperty('--card-bg',isFruta?'#ffffff':'var(--bg2)');
+      card.className='card';card.setAttribute('data-id',img.id);
+      card.style.setProperty('--card-bg',(img.cat==='Comida')?'#ffffff':'var(--bg2)');
       card.onclick=function(){openLb(absIdx);};
 
+      // Skeleton visible mientras carga
+      var skel=document.createElement('div');skel.className='card-skel';
+      card.appendChild(skel);
+
       var im=document.createElement('img');
-      im.alt=img.name;
-      im.className='loading';
-      im.loading='lazy';
-      im.decoding='async';
+      im.alt=img.name;im.className='loading';im.loading='lazy';im.decoding='async';
       im.onload=function(){
-        this.classList.remove('loading');
-        this.classList.add('loaded');
+        this.classList.remove('loading');this.classList.add('loaded');
+        var sk=this.parentElement.querySelector('.card-skel');
+        if(sk)sk.remove();
         this.parentElement.classList.add('ready');
         sched();
       };
-      // Reintento único antes de ocultar — por errores transitorios de red
-      im._retried=false;
+      im._retry=false;
       im.onerror=function(){
-        if(!this._retried){
-          this._retried=true;
-          var s=this.src;
-          this.src='';
-          this.src=s;  // forzar re-request
+        if(!this._retry){
+          this._retry=true;
+          var s=this.src;this.src='';this.src=s;
         } else {
-          this.parentElement.style.display='none';
+          var sk=this.parentElement.querySelector('.card-skel');
+          if(sk)sk.style.background='var(--bg3)';
+          this.style.display='none';
           sched();
         }
       };
 
-      // La imagen usa data-src para lazy load con observer
-      // Si ya está en caché del browser (por prefetch), cargará al instante
       var url=THUMB+img.pid;
-      if(_obs){im.setAttribute('data-src',url);}
-      else{im.src=url;}
+      if(_obs){im.setAttribute('data-src',url);}else{im.src=url;}
 
       var lc=getLikes(img.id);
-      var badge=document.createElement('div');
-      badge.className='card-like-count';
-      badge.style.display=lc>0?'flex':'none';
-      badge.innerHTML=lc>0?('&#9829; '+lc):'';
+      var badge=document.createElement('div');badge.className='card-like-count';
+      badge.style.display=lc>0?'flex':'none';badge.innerHTML=lc>0?('&#9829; '+lc):'';
 
       var isLiked=getIsLiked(img.id);
       var likebtn=document.createElement('button');
       likebtn.className='card-like'+(isLiked?' liked':'');
-      likebtn.innerHTML=isLiked?'&#9829;':'&#9825;';
-      likebtn.title='Me gusta';
+      likebtn.innerHTML=isLiked?'&#9829;':'&#9825;';likebtn.title='Me gusta';
       likebtn.onclick=function(e){e.stopPropagation();toggleLike(img.id,this,badge);};
 
       if(img.cat==='Texturas'){
         var tb=document.createElement('div');tb.className='card-tex-badge';tb.textContent='Textura';
         card.appendChild(tb);
       }
-
       var ov=document.createElement('div');ov.className='card-ov';
       ov.innerHTML='<div class="card-name">'+img.name+'</div><div class="card-cat">'+img.cat+'</div>';
-
       card.appendChild(im);card.appendChild(badge);card.appendChild(likebtn);card.appendChild(ov);
       frag.appendChild(card);
       if(_obs)_obs.observe(card);
@@ -1538,25 +1657,23 @@ function render(){
   grid.appendChild(frag);
   sched();
 
-  // ── PREFETCH AUTOMÁTICO ──
-  // A los 1.5s empieza la siguiente página; a los 3s la anterior también
+  // Prefetch silencioso: siguiente página a 1s, anterior a 2.5s
   (function(pg,tot){
-    setTimeout(function(){if(pg+1<tot)prefetchPage(pg+1);},1500);
-    setTimeout(function(){if(pg-1>=0)prefetchPage(pg-1);},3000);
+    setTimeout(function(){if(pg+1<tot)prefetchPage(pg+1);},1000);
+    setTimeout(function(){if(pg-1>=0)prefetchPage(pg-1);},2500);
   })(curPage,totalPages);
 }
 
-// ═══════════════════════════════════════════
-// NAVEGACIÓN ENTRE PÁGINAS
-// ═══════════════════════════════════════════
+// ══════════════════════════════════════════════════════
+// NAVEGACIÓN DE PÁGINA
+// ══════════════════════════════════════════════════════
 function goToPage(idx){
-  curPage=idx;
-  render();
+  curPage=idx;render();
   var header=document.querySelector('.g-header');
   var hh=header?header.offsetHeight:60;
-  var grid=document.getElementById('grid');
-  if(grid){
-    var top=grid.getBoundingClientRect().top+window.scrollY-hh-16;
+  var gridEl=document.getElementById('grid');
+  if(gridEl){
+    var top=gridEl.getBoundingClientRect().top+window.scrollY-hh-16;
     window.scrollTo({top:Math.max(0,top),behavior:'smooth'});
   }
 }
