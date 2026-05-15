@@ -1,0 +1,1451 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<meta name="theme-color" content="#0a0a0f">
+<meta name="description" content="FondoBlanco — banco de imágenes gratis. Texturas, frutas, naturaleza y más. Sin registro.">
+<title>FondoBlanco · Banco de imágenes gratis</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preload" href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=Inter:wght@300;400;500;600&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet"></noscript>
+<style>
+/* ═══════════════════════════════════════
+   CSS VARIABLES — 5 PALETAS DE COLOR
+   ═══════════════════════════════════════ */
+:root {
+  /* Paleta 1: Nocturno (default) */
+  --hero-em-from:var(--accent2);--hero-em-mid:var(--accent);--hero-em-to:var(--accent3);
+  --bg:       #0a0a0f;
+  --bg2:      #13131a;
+  --bg3:      #1c1c26;
+  --border:   rgba(255,255,255,0.07);
+  --border2:  rgba(255,255,255,0.14);
+  --text:     #f0f0f5;
+  --muted:    #4a4a5a;
+  --muted2:   #8888a0;
+  --accent:   #7c4dff;
+  --accent2:  #b388ff;
+  --accent3:  #4d1fcc;
+  --glow:     rgba(124,77,255,0.35);
+  --card-bg:  #13131a;
+  --header-bg:rgba(10,10,15,0.85);
+}
+[data-theme="aurora"] {
+  --bg:#020e10;--bg2:#061c1f;--bg3:#0d2a2e;
+  --border:rgba(0,229,176,0.1);--border2:rgba(0,229,176,0.24);
+  --text:#eafffa;--muted:#0e3535;--muted2:#72d4be;
+  --accent:#00e5b0;--accent2:#5fffd4;--accent3:#00b888;
+  --glow:rgba(0,229,176,0.32);--card-bg:#061c1f;--header-bg:rgba(2,14,16,0.92);
+}
+[data-theme="sol"] {
+  --bg:#fdf6ee;--bg2:#f9ede0;--bg3:#f2e0cc;
+  --border:rgba(120,60,0,0.12);--border2:rgba(120,60,0,0.22);
+  --text:#1c0800;--muted:#b88855;--muted2:#5a2e00;
+  --accent:#c85500;--accent2:#e06a10;--accent3:#963d00;
+  --glow:rgba(200,85,0,0.22);--card-bg:#f9ede0;--header-bg:rgba(253,246,238,0.94);
+  --hero-em-from:#ffffff;--hero-em-mid:#ffe0b2;--hero-em-to:#ffcc80;
+  --hero-sub-color:rgba(255,240,220,0.85);
+}
+[data-theme="obsidiana"] {
+  --bg:#0c0c0c;--bg2:#181818;--bg3:#242424;
+  --border:rgba(255,255,255,0.08);--border2:rgba(255,255,255,0.18);
+  --text:#f2f2f2;--muted:#3c3c3c;--muted2:#9a9a9a;
+  --accent:#d0d0d0;--accent2:#f2f2f2;--accent3:#909090;
+  --glow:rgba(210,210,210,0.14);--card-bg:#181818;--header-bg:rgba(12,12,12,0.95);
+}
+[data-theme="crimson"] {
+  --bg:#0f0408;--bg2:#1c0610;--bg3:#2a0a1a;
+  --border:rgba(255,60,100,0.12);--border2:rgba(255,60,100,0.26);
+  --text:#fff0f4;--muted:#3e0f20;--muted2:#d06880;
+  --accent:#ff2060;--accent2:#ff8099;--accent3:#cc003a;
+  --glow:rgba(255,32,96,0.32);--card-bg:#1c0610;--header-bg:rgba(15,4,8,0.93);
+}
+
+/* ═══════════════════════════════════════
+   RESET & BASE
+   ═══════════════════════════════════════ */
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);min-height:100vh;transition:background .4s,color .4s;}
+body.inicio-mode{overflow:hidden;height:100vh;}
+body.galeria-mode{overflow:auto;}
+::-webkit-scrollbar{width:4px;}
+::-webkit-scrollbar-track{background:var(--bg);}
+::-webkit-scrollbar-thumb{background:var(--accent);border-radius:2px;}
+
+/* ═══════════════════════════════════════
+   PÁGINA INICIO
+   ═══════════════════════════════════════ */
+#pg-inicio{display:block;position:relative;height:100vh;overflow:hidden;}
+#pg-galeria{display:none;}
+
+/* Canvas */
+#bgCanvas{position:absolute;inset:0;width:100%;height:100%;z-index:0;}
+
+/* Mosaico fondo */
+.mosaic-bg{
+  position:absolute;inset:0;z-index:1;
+  display:grid;
+  grid-template-columns:repeat(5,1fr);
+  grid-template-rows:repeat(3,1fr);
+  gap:2px;overflow:hidden;pointer-events:none;
+}
+.mosaic-bg img{
+  width:100%;height:100%;object-fit:cover;
+  opacity:0;transition:opacity 1.6s ease;
+  filter:brightness(.28) saturate(1.3);
+}
+.mosaic-bg img.vis{opacity:1;}
+.mosaic-bg::after{
+  content:'';position:absolute;inset:0;z-index:2;pointer-events:none;
+  background:
+    radial-gradient(ellipse 100% 90% at 50% 50%, rgba(10,10,15,.05) 0%, rgba(10,10,15,.82) 100%),
+    linear-gradient(to bottom, rgba(10,10,15,.72) 0%, transparent 22%, transparent 78%, rgba(10,10,15,.72) 100%);
+}
+
+/* Nav inicio */
+.inicio-nav{
+  position:absolute;top:0;left:0;right:0;z-index:10;
+  display:flex;align-items:center;justify-content:space-between;
+  padding:0 48px;height:68px;
+  background:rgba(10,10,15,.4);backdrop-filter:blur(14px);
+  border-bottom:1px solid var(--border);
+}
+.logo{display:flex;align-items:center;gap:12px;text-decoration:none;}
+.logo-mark{width:38px;height:38px;flex-shrink:0;}
+.logo-type{font-family:'Syne',sans-serif;font-size:1.25rem;font-weight:800;color:#ffffff;}
+.logo-type span{color:var(--accent);}
+.nav-right{display:flex;align-items:center;gap:16px;}
+
+/* Paletas */
+.palette-bar{display:flex;align-items:center;gap:6px;}
+.pal-dot{
+  width:18px;height:18px;border-radius:50%;cursor:pointer;
+  border:2px solid transparent;transition:transform .2s,border-color .2s;
+}
+.pal-dot:hover,.pal-dot.active{transform:scale(1.25);border-color:var(--text);}
+.pal-nocturno{background:linear-gradient(135deg,#7c4dff,#4d1fcc);}
+.pal-aurora  {background:linear-gradient(135deg,#00e5b0,#009970);}
+.pal-sol     {background:linear-gradient(135deg,#ff9933,#f07000);}
+.pal-obsidiana{background:linear-gradient(135deg,#e8e8e8,#777);}
+.pal-crimson {background:linear-gradient(135deg,#ff2060,#cc0040);}
+
+/* Hero */
+.hero{
+  position:absolute;inset:0;z-index:5;
+  display:flex;flex-direction:column;align-items:center;justify-content:center;
+  text-align:center;padding:80px 24px 60px;
+  color:#ffffff;
+}
+.hero-badge{
+  display:inline-flex;align-items:center;gap:8px;
+  background:color-mix(in srgb,var(--accent) 12%,transparent);border:1px solid color-mix(in srgb,var(--accent) 35%,transparent);
+  border-radius:100px;padding:6px 18px;font-size:.72rem;font-weight:600;
+  letter-spacing:1.5px;text-transform:uppercase;color:var(--accent2);margin-bottom:32px;
+  animation:fadeDown .7s ease both;
+}
+.hero-badge-dot{width:7px;height:7px;border-radius:50%;background:var(--accent);animation:pulse 2s infinite;}
+@keyframes pulse{0%,100%{opacity:1;transform:scale(1);}50%{opacity:.5;transform:scale(.7);}}
+
+.hero-title{
+  font-family:'Syne',sans-serif;
+  font-size:clamp(3rem,9vw,8rem);
+  font-weight:800;line-height:1.05;
+  letter-spacing:-3px;margin-bottom:24px;
+  animation:fadeUp .8s .15s ease both;
+  text-shadow:0 2px 40px rgba(0,0,0,0.5);
+}
+.hero-title em{
+  font-style:normal;
+  background:linear-gradient(135deg,var(--hero-em-from,var(--accent2)) 0%,var(--hero-em-mid,var(--accent)) 50%,var(--hero-em-to,var(--accent3)) 100%);
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
+}
+.hero-sub{
+  font-size:clamp(.9rem,2vw,1.15rem);font-weight:300;
+  color:var(--hero-sub-color,var(--muted2));max-width:520px;line-height:1.7;margin-bottom:44px;
+  animation:fadeUp .8s .3s ease both;
+}
+.hero-actions{display:flex;gap:14px;flex-wrap:wrap;justify-content:center;animation:fadeUp .8s .45s ease both;}
+.btn-primary{
+  display:inline-flex;align-items:center;gap:10px;
+  background:var(--accent);color:#fff;
+  font-family:'Syne',sans-serif;font-size:1rem;font-weight:700;
+  padding:16px 40px;border-radius:100px;border:none;cursor:pointer;
+  box-shadow:0 8px 40px var(--glow);transition:all .28s;text-decoration:none;
+  position:relative;overflow:hidden;
+}
+.btn-primary::before{content:'';position:absolute;inset:0;background:rgba(255,255,255,.12);opacity:0;transition:opacity .2s;}
+.btn-primary:hover::before{opacity:1;}
+.btn-primary:hover{transform:translateY(-3px);box-shadow:0 16px 56px var(--glow);}
+.btn-secondary{
+  display:inline-flex;align-items:center;gap:8px;
+  background:transparent;color:var(--muted2);
+  font-family:'Inter',sans-serif;font-size:.9rem;font-weight:500;
+  padding:16px 32px;border-radius:100px;border:1px solid var(--border2);
+  cursor:pointer;transition:all .2s;text-decoration:none;
+}
+.btn-secondary:hover{color:var(--text);border-color:var(--accent);background:color-mix(in srgb,var(--accent) 8%,transparent);}
+
+@keyframes fadeUp{from{opacity:0;transform:translateY(24px);}to{opacity:1;transform:none;}}
+@keyframes fadeDown{from{opacity:0;transform:translateY(-16px);}to{opacity:1;transform:none;}}
+
+/* Transition overlay */
+.t-overlay{
+  position:fixed;inset:0;background:var(--accent);z-index:9999;
+  transform:scaleY(0);transform-origin:bottom;pointer-events:none;
+  transition:transform .5s cubic-bezier(.86,0,.07,1);
+}
+.t-overlay.in{transform:scaleY(1);transform-origin:bottom;}
+.t-overlay.out{transform:scaleY(0);transform-origin:top;}
+
+/* ═══════════════════════════════════════
+   GALERÍA — HEADER
+   ═══════════════════════════════════════ */
+.g-header{
+  position:sticky;top:0;z-index:100;
+  background:var(--header-bg);backdrop-filter:blur(16px);
+  border-bottom:1px solid var(--border);
+  padding:0 32px;
+}
+.g-header-top{
+  display:flex;align-items:center;justify-content:space-between;
+  height:60px;
+}
+.g-logo-txt{font-family:'Syne',sans-serif;font-size:1.05rem;font-weight:800;color:var(--text);}
+.g-logo-txt span{color:var(--accent);}
+.g-header-actions{display:flex;align-items:center;gap:10px;}
+.g-palette-mini{display:flex;gap:5px;}
+
+/* Barra de filtros */
+.g-filters{
+  display:flex;align-items:center;gap:10px;
+  padding:10px 0 14px;flex-wrap:wrap;
+}
+.search-wrap{
+  flex:1;min-width:200px;max-width:420px;
+  position:relative;display:flex;align-items:center;
+}
+.search-input{
+  width:100%;background:var(--bg3);border:1px solid var(--border);
+  color:var(--text);font-family:'Inter',sans-serif;font-size:.85rem;
+  padding:10px 42px 10px 16px;border-radius:100px;
+  outline:none;transition:border-color .2s,background .2s;
+}
+.search-input::placeholder{color:var(--muted2);}
+.search-input:focus{border-color:var(--accent);background:var(--bg2);}
+.search-ico{
+  position:absolute;right:14px;background:none;border:none;
+  color:var(--muted2);cursor:pointer;font-size:.9rem;padding:4px;
+}
+.cat-pills{display:flex;gap:6px;flex-wrap:wrap;}
+.cat-pill{
+  padding:7px 16px;border-radius:100px;border:1px solid var(--border);
+  background:transparent;color:var(--muted2);font-family:'Inter',sans-serif;
+  font-size:.75rem;font-weight:500;cursor:pointer;transition:all .18s;white-space:nowrap;
+}
+.cat-pill:hover{border-color:var(--accent);color:var(--accent);}
+.cat-pill.active{background:var(--accent);border-color:var(--accent);color:#fff;}
+.g-sort{
+  background:var(--bg3);border:1px solid var(--border);color:var(--text);
+  font-family:'Inter',sans-serif;font-size:.78rem;padding:9px 14px;
+  border-radius:100px;outline:none;cursor:pointer;
+}
+
+/* Contador */
+.g-count{
+  font-size:.75rem;color:var(--muted2);padding:6px 32px 14px;
+  border-bottom:1px solid var(--border);
+}
+.g-count span{color:var(--accent);font-weight:600;}
+
+/* ═══════════════════════════════════════
+   GALERÍA — GRID MASONRY
+   ═══════════════════════════════════════ */
+.g-main{padding:20px 24px 60px;}
+.masonry{position:relative;width:100%;}
+.card{
+  position:absolute;border-radius:10px;overflow:hidden;cursor:pointer;
+  transition:transform .26s cubic-bezier(.4,0,.2,1),box-shadow .26s;
+  z-index:1;will-change:transform;
+  background:transparent;
+}
+.card.ready{background:var(--card-bg);}
+.card:hover{transform:scale(1.04) translateY(-3px);box-shadow:0 20px 60px rgba(0,0,0,.7);z-index:20;}
+.card img{width:100%;height:auto;display:block;transition:opacity .4s;}
+.card img.loading{opacity:0;}
+.card img.loaded{opacity:1;}
+.card-ov{
+  position:absolute;inset:0;
+  background:linear-gradient(to bottom,transparent 45%,rgba(0,0,0,.85) 100%);
+  opacity:0;transition:opacity .22s;display:flex;flex-direction:column;
+  justify-content:flex-end;padding:12px;
+}
+.card:hover .card-ov{opacity:1;}
+.card-name{font-family:'Syne',sans-serif;font-size:.75rem;font-weight:700;color:#fff;margin-bottom:2px;}
+.card-cat{font-size:.58rem;letter-spacing:1.2px;text-transform:uppercase;color:rgba(255,255,255,.55);}
+/* Like button */
+.card-like{
+  position:absolute;top:9px;right:9px;width:34px;height:34px;
+  border-radius:50%;background:rgba(0,0,0,.55);backdrop-filter:blur(6px);
+  border:1px solid rgba(255,255,255,.15);
+  display:flex;align-items:center;justify-content:center;
+  cursor:pointer;font-size:15px;opacity:0;
+  transition:opacity .2s,transform .15s,background .15s;z-index:5;color:#fff;padding:0;
+}
+.card:hover .card-like,.card-like.liked{opacity:1;}
+.card-like:hover{transform:scale(1.2);}
+.card-like.liked{background:rgba(220,40,75,.85);border-color:rgba(255,80,110,.4);}
+.card-like-count{
+  position:absolute;top:9px;left:9px;
+  background:rgba(0,0,0,.6);backdrop-filter:blur(4px);
+  border-radius:20px;padding:4px 8px;
+  font-size:.58rem;font-weight:700;color:#fff;
+  display:none;align-items:center;gap:3px;z-index:5;
+}
+/* Texturas badge */
+.card-tex-badge{
+  position:absolute;top:9px;left:9px;
+  background:rgba(124,77,255,.75);backdrop-filter:blur(4px);
+  border-radius:6px;padding:3px 8px;
+  font-size:.55rem;font-weight:700;letter-spacing:1px;
+  text-transform:uppercase;color:#fff;z-index:5;
+}
+
+/* No results */
+.no-results{text-align:center;padding:80px 20px;color:var(--muted2);}
+.no-results-ico{font-size:3rem;margin-bottom:16px;}
+.no-results h3{font-family:'Syne',sans-serif;font-size:1.1rem;margin-bottom:8px;color:var(--muted2);}
+
+/* Load more */
+.load-more-wrap{text-align:center;padding:32px;}
+.load-more-btn{
+  padding:13px 40px;border-radius:100px;
+  border:1px solid var(--border2);background:transparent;
+  color:var(--muted2);font-family:'Syne',sans-serif;font-size:.85rem;font-weight:600;
+  cursor:pointer;transition:all .22s;
+}
+.load-more-btn:hover{background:var(--accent);border-color:var(--accent);color:#fff;}
+
+/* ═══════════════════════════════════════
+   SECCIÓN TEXTURAS ESPECIAL
+   ═══════════════════════════════════════ */
+.tex-hero{
+  background:linear-gradient(135deg,var(--bg2),var(--bg3));
+  border:1px solid var(--border);border-radius:16px;
+  padding:32px;margin:0 24px 24px;
+  display:flex;align-items:center;justify-content:space-between;gap:24px;
+  flex-wrap:wrap;
+}
+.tex-hero-text h2{
+  font-family:'Syne',sans-serif;font-size:1.6rem;font-weight:800;
+  color:var(--text);margin-bottom:8px;
+}
+.tex-hero-text p{font-size:.85rem;color:var(--muted2);line-height:1.6;max-width:420px;}
+.tex-hero-stats{display:flex;gap:24px;flex-wrap:wrap;}
+.tex-stat{text-align:center;}
+.tex-stat-n{font-family:'Syne',sans-serif;font-size:1.8rem;font-weight:800;color:var(--accent);}
+.tex-stat-l{font-size:.62rem;letter-spacing:1.2px;text-transform:uppercase;color:var(--muted2);}
+
+/* ═══════════════════════════════════════
+   LIGHTBOX
+   ═══════════════════════════════════════ */
+.lb{
+  position:fixed;inset:0;z-index:9000;
+  background:rgba(0,0,0,.92);backdrop-filter:blur(12px);
+  display:none;align-items:center;justify-content:center;
+  padding:20px;
+}
+.lb.open{display:flex;}
+.lb-inner{
+  display:flex;gap:0;max-width:1100px;width:100%;
+  max-height:90vh;border-radius:16px;overflow:hidden;
+  background:var(--bg2);border:1px solid var(--border);
+  box-shadow:0 40px 120px rgba(0,0,0,.8);
+  animation:lbIn .3s ease;
+}
+@keyframes lbIn{from{opacity:0;transform:scale(.94);}to{opacity:1;transform:scale(1);}}
+.lb-img-area{
+  flex:1;min-width:0;display:flex;align-items:center;justify-content:center;
+  background:var(--bg);position:relative;min-height:320px;
+}
+.lb-spinner{
+  width:36px;height:36px;border:3px solid var(--border);
+  border-top-color:var(--accent);border-radius:50%;animation:spin .8s linear infinite;
+}
+@keyframes spin{to{transform:rotate(360deg);}}
+#lbImg{max-width:100%;max-height:80vh;object-fit:contain;display:none;}
+.lb-panel{
+  width:280px;flex-shrink:0;padding:28px 24px;
+  display:flex;flex-direction:column;gap:16px;overflow-y:auto;
+}
+.lb-title{font-family:'Syne',sans-serif;font-size:1rem;font-weight:700;color:var(--text);line-height:1.4;}
+.lb-divider{height:1px;background:var(--border);}
+.lb-spec{display:flex;flex-direction:column;gap:3px;}
+.lb-spec-label{font-size:.62rem;letter-spacing:1.2px;text-transform:uppercase;color:var(--muted);}
+.lb-spec-value{font-size:.82rem;color:var(--muted2);font-weight:500;}
+.lb-dl{
+  display:flex;align-items:center;justify-content:center;gap:10px;
+  background:var(--accent);color:#fff;
+  font-family:'Syne',sans-serif;font-size:.88rem;font-weight:700;
+  padding:13px;border-radius:10px;text-decoration:none;
+  transition:all .2s;border:none;cursor:pointer;
+}
+.lb-dl:hover{opacity:.88;transform:translateY(-1px);}
+.lb-dl svg{width:16px;height:16px;}
+.lb-free{
+  font-size:.7rem;text-align:center;color:var(--muted2);
+  padding:8px;background:var(--bg3);border-radius:8px;
+}
+.lb-like-btn{
+  display:flex;align-items:center;justify-content:center;gap:8px;
+  background:transparent;border:1px solid rgba(220,40,75,.3);
+  color:rgba(255,120,150,.9);font-family:'Syne',sans-serif;
+  font-size:.82rem;font-weight:700;padding:11px;border-radius:10px;cursor:pointer;transition:all .18s;
+}
+.lb-like-btn:hover,.lb-like-btn.liked{background:rgba(220,40,75,.2);border-color:rgba(220,40,75,.5);color:#ff7090;}
+.lb-nav-btn{
+  position:absolute;top:50%;transform:translateY(-50%);
+  width:44px;height:44px;border-radius:50%;
+  background:rgba(0,0,0,.7);backdrop-filter:blur(8px);
+  border:1px solid var(--border2);color:var(--text);
+  font-size:1.3rem;display:flex;align-items:center;justify-content:center;
+  cursor:pointer;transition:all .18s;z-index:10;
+}
+.lb-nav-btn:hover{background:var(--accent);border-color:var(--accent);}
+.lb-prev{left:-56px;}
+.lb-next{right:-56px;}
+.lb-close{
+  position:fixed;top:24px;right:24px;
+  width:44px;height:44px;border-radius:50%;
+  background:rgba(0,0,0,.7);border:1px solid var(--border2);
+  color:var(--text);font-size:1.1rem;
+  display:flex;align-items:center;justify-content:center;
+  cursor:pointer;z-index:9001;transition:all .18s;
+}
+.lb-close:hover{background:var(--accent);}
+.lb-cat-badge{
+  display:inline-flex;align-items:center;gap:6px;
+  background:rgba(124,77,255,.15);border:1px solid rgba(124,77,255,.25);
+  border-radius:100px;padding:4px 12px;font-size:.68rem;font-weight:600;
+  text-transform:uppercase;letter-spacing:1px;color:var(--accent2);align-self:flex-start;
+}
+
+/* ═══════════════════════════════════════
+   TÉRMINOS MODAL
+   ═══════════════════════════════════════ */
+.terms-overlay{
+  position:fixed;inset:0;z-index:8000;
+  background:rgba(0,0,0,.85);backdrop-filter:blur(8px);
+  display:flex;align-items:center;justify-content:center;padding:20px;
+}
+.terms-overlay.hidden{display:none;}
+.terms-box{
+  background:var(--bg2);border:1px solid var(--border);
+  border-radius:20px;max-width:600px;width:100%;
+  max-height:88vh;overflow-y:auto;padding:36px;
+  box-shadow:0 40px 100px rgba(0,0,0,.7);
+}
+.terms-logo-row{display:flex;align-items:center;gap:12px;margin-bottom:20px;}
+.terms-title{font-family:'Syne',sans-serif;font-size:1.5rem;font-weight:800;margin-bottom:6px;}
+.terms-subtitle{font-size:.82rem;color:var(--muted2);margin-bottom:20px;}
+.terms-toggle{
+  display:inline-flex;align-items:center;gap:6px;
+  font-size:.78rem;color:var(--accent);cursor:pointer;
+  background:rgba(124,77,255,.08);border:1px solid rgba(124,77,255,.2);
+  padding:6px 14px;border-radius:8px;margin-bottom:16px;transition:all .2s;
+}
+.terms-toggle:hover{background:rgba(124,77,255,.16);}
+.terms-body{display:none;}
+.terms-body.open{display:block;}
+.terms-section{margin-bottom:18px;}
+.terms-section h3{font-family:'Syne',sans-serif;font-size:.92rem;font-weight:700;margin-bottom:8px;color:var(--text);}
+.terms-section p,.terms-section li{font-size:.8rem;color:var(--muted2);line-height:1.7;}
+.terms-section ul{padding-left:18px;}
+.terms-section a{color:var(--accent);}
+.terms-highlight{background:color-mix(in srgb,var(--accent) 8%,transparent);border:1px solid rgba(124,77,255,.15);border-radius:10px;padding:14px;margin-bottom:16px;font-size:.8rem;color:var(--muted2);line-height:1.6;}
+.terms-check-row{display:flex;align-items:flex-start;gap:10px;margin:20px 0;}
+.terms-check-row input{width:16px;height:16px;accent-color:var(--accent);flex-shrink:0;margin-top:2px;cursor:pointer;}
+.terms-check-row label{font-size:.8rem;color:var(--muted2);cursor:pointer;}
+.terms-btns{display:flex;gap:10px;}
+.terms-accept{
+  flex:1;padding:12px;border-radius:10px;border:none;
+  background:var(--accent);color:#fff;
+  font-family:'Syne',sans-serif;font-size:.88rem;font-weight:700;
+  cursor:pointer;transition:all .2s;opacity:.4;
+}
+.terms-accept:not(:disabled){opacity:1;}
+.terms-accept:hover:not(:disabled){opacity:.88;}
+.terms-decline{
+  padding:12px 20px;border-radius:10px;border:1px solid var(--border);
+  background:transparent;color:var(--muted2);
+  font-family:'Inter',sans-serif;font-size:.82rem;cursor:pointer;transition:all .2s;
+}
+.terms-decline:hover{border-color:var(--accent);color:var(--text);}
+
+/* BLOCKED */
+.blocked{
+  position:fixed;inset:0;z-index:8500;
+  background:var(--bg);display:none;
+  flex-direction:column;align-items:center;justify-content:center;text-align:center;gap:16px;
+}
+.blocked.show{display:flex;}
+.blocked h2{font-family:'Syne',sans-serif;font-size:1.6rem;font-weight:800;}
+.blocked p{color:var(--muted2);font-size:.88rem;}
+.blocked-btn{padding:12px 28px;border-radius:100px;border:1px solid var(--border2);background:transparent;color:var(--muted2);font-family:'Syne',sans-serif;font-size:.85rem;cursor:pointer;transition:all .2s;}
+.blocked-btn:hover{background:var(--accent);border-color:var(--accent);color:#fff;}
+
+/* ═══════════════════════════════════════
+   FOOTER
+   ═══════════════════════════════════════ */
+.g-footer{
+  border-top:1px solid var(--border);padding:28px 32px;
+  display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px;
+}
+.footer-logo{font-family:'Syne',sans-serif;font-size:1rem;font-weight:800;color:var(--text);}
+.footer-logo span{color:var(--accent);}
+.footer-txt{font-size:.72rem;color:var(--muted2);}
+
+/* Toast */
+.toast{
+  position:fixed;bottom:28px;right:28px;z-index:9500;
+  background:var(--bg3);border:1px solid var(--border2);
+  color:var(--text);padding:12px 22px;border-radius:12px;
+  font-size:.82rem;font-weight:500;
+  transform:translateY(80px);opacity:0;pointer-events:none;
+  transition:all .3s cubic-bezier(.34,1.56,.64,1);
+}
+.toast.show{transform:none;opacity:1;}
+
+/* ═══════════════════════════════════════
+   RESPONSIVE
+   ═══════════════════════════════════════ */
+@media(max-width:900px){
+  .lb-inner{flex-direction:column;}
+  .lb-panel{width:100%;max-height:220px;}
+  .lb-prev{left:-48px;} .lb-next{right:-48px;}
+}
+@media(max-width:600px){
+  .inicio-nav{padding:0 20px;}
+  .hero-title{letter-spacing:-1px;}
+  .g-header{padding:0 16px;}
+  .g-main{padding:16px 12px 48px;}
+  .tex-hero{padding:20px;}
+  .lb-prev,.lb-next{display:none;}
+}
+</style>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4766990013673854"
+     crossorigin="anonymous"></script>
+</head>
+<body class="inicio-mode">
+
+<!-- ═══ TRANSITION OVERLAY ═══ -->
+<div class="t-overlay" id="tOverlay"></div>
+
+<!-- ═══════════════════════════════
+     PÁGINA 1: INICIO
+     ═══════════════════════════════ -->
+<div id="pg-inicio">
+  <canvas id="bgCanvas"></canvas>
+  <div class="mosaic-bg" id="heroMosaic">
+    <img data-src="https://fondoblanco.b-cdn.net/textura-pizarra-negra-fracturada-lava-naranja.jpg" alt="" loading="lazy">
+    <img data-src="https://fondoblanco.b-cdn.net/textura-marmol-negro-vetas-doradas-lujo.jpg" alt="" loading="lazy">
+    <img data-src="https://fondoblanco.b-cdn.net/textura-foil-met%C3%A1lico-plisada-magenta-dorado-intenso-verde-teal-arco%C3%ADris.jpg" alt="" loading="lazy">
+    <img data-src="https://fondoblanco.b-cdn.net/textura-granito-negro-blanco-salpicado-dorado.jpg" alt="" loading="lazy">
+    <img data-src="https://fondoblanco.b-cdn.net/textura-%C3%B3nix-negro-vetas-doradas-mineral-negro-azul-oro-brillante-ondulado-vertical.jpg" alt="" loading="lazy">
+    <img data-src="https://fondoblanco.b-cdn.net/textura-splash-l%C3%ADquido-viscoso-corona-salpicada-magenta-naranja-vibrante-morado-fondo-negro.jpg" alt="" loading="lazy">
+    <img data-src="https://fondoblanco.b-cdn.net/textura-metal-l%C3%ADquido-mercurio-olas-azul-plata-blanco-brillante-fluido-panor%C3%A1mica.jpg" alt="" loading="lazy">
+    <img data-src="https://fondoblanco.b-cdn.net/textura-esmeralda-verde-cristal-lava-vertical.jpg" alt="" loading="lazy">
+    <img data-src="https://fondoblanco.b-cdn.net/textura-cornalina-roja-brillante-cristal-facetas.jpg" alt="" loading="lazy">
+    <img data-src="https://fondoblanco.b-cdn.net/textura-hielo-negro-glaciar-fracturado-azul-oscuro-blanco-burbujas-estrella-grietas-panor%C3%A1mica.jpg" alt="" loading="lazy">
+    <img data-src="https://fondoblanco.b-cdn.net/textura-polvo-estelar-part%C3%ADculas-azul-marino-dorado-bokeh-c%C3%B3smico-olas-brillante-panor%C3%A1mica.jpg" alt="" loading="lazy">
+    <img data-src="https://fondoblanco.b-cdn.net/textura-microburbujas-gel-fluido-ola-curvada-naranja-%C3%A1mbar-verde-ne%C3%B3n-transl%C3%BAcido-luminoso.jpg" alt="" loading="lazy">
+    <img data-src="https://fondoblanco.b-cdn.net/textura-travertino-blanco-poros-dorado-horizontal.jpg" alt="" loading="lazy">
+    <img data-src="https://fondoblanco.b-cdn.net/textura-pluma-pavo-real-ocelo-azul-verde-dorado-marr%C3%B3n-iridiscente-radial-macro.jpg" alt="" loading="lazy">
+    <img data-src="https://fondoblanco.b-cdn.net/textura-rodocrosita-capas-conc%C3%A9ntricas-rosa-fucsia-blanco-cristal-mineral-ondulado-panor%C3%A1mica.jpg" alt="" loading="lazy">
+  </div>
+
+  <nav class="inicio-nav">
+    <a class="logo" href="#">
+      <svg class="logo-mark" viewBox="0 0 540 540" xmlns="http://www.w3.org/2000/svg" style="color:var(--accent)">
+        <rect width="540" height="540" rx="90" fill="currentColor" opacity=".15"/>
+        <path fill="var(--accent)" fill-rule="evenodd" d="M440,215v-81H382v-58H302v58H261v-58H181v58H123v81h58v40h-58v81h58v57h80v-57h41v57h80v-57h58v-81H382V215H440ZM301,255H261V215h40V255Z"/>
+      </svg>
+      <div class="logo-type">fondo<span>blanco</span></div>
+    </a>
+    <div class="nav-right">
+      <div class="palette-bar" title="Cambiar tema">
+        <div class="pal-dot pal-nocturno active" onclick="setTheme('nocturno',this)" title="Nocturno"></div>
+        <div class="pal-dot pal-aurora"   onclick="setTheme('aurora',this)"   title="Aurora"></div>
+        <div class="pal-dot pal-sol"      onclick="setTheme('sol',this)"      title="Sol"></div>
+        <div class="pal-dot pal-obsidiana" onclick="setTheme('obsidiana',this)" title="Obsidiana"></div>
+        <div class="pal-dot pal-crimson"  onclick="setTheme('crimson',this)"  title="Crimson"></div>
+      </div>
+    </div>
+  </nav>
+
+  <section class="hero">
+    <div class="hero-badge"><div class="hero-badge-dot"></div>100% Gratis · Sin registro</div>
+    <h1 class="hero-title">El banco de<br><em>imágenes gratis</em></h1>
+    <p class="hero-sub">Texturas únicas, frutas, naturaleza y más. Alta resolución. Descarga sin límites.</p>
+    <div class="hero-actions">
+      <button class="btn-primary" onclick="goToGallery()">
+        <svg width="17" height="17" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg>
+        Explorar galería
+      </button>
+    </div></section>
+</div>
+
+<!-- ═══════════════════════════════
+     PÁGINA 2: GALERÍA
+     ═══════════════════════════════ -->
+<div id="pg-galeria">
+
+  <!-- Header sticky -->
+  <header class="g-header">
+    <div class="g-header-top">
+      <a class="logo" href="#" onclick="backToHome();return false;" style="text-decoration:none;">
+        <svg style="width:28px;height:28px;color:var(--accent)" viewBox="0 0 540 540" xmlns="http://www.w3.org/2000/svg">
+          <rect width="540" height="540" rx="90" fill="currentColor" opacity=".15"/>
+          <path fill="var(--accent)" fill-rule="evenodd" d="M440,215v-81H382v-58H302v58H261v-58H181v58H123v81h58v40h-58v81h58v57h80v-57h41v57h80v-57h58v-81H382V215H440ZM301,255H261V215h40V255Z"/>
+        </svg>
+        <div class="g-logo-txt">fondo<span>blanco</span></div>
+      </a>
+      <div class="g-header-actions">
+        <div class="g-palette-mini">
+          <div class="pal-dot pal-nocturno active" style="width:14px;height:14px;" onclick="setTheme('nocturno',this)"></div>
+          <div class="pal-dot pal-aurora"    style="width:14px;height:14px;" onclick="setTheme('aurora',this)"></div>
+          <div class="pal-dot pal-sol"       style="width:14px;height:14px;" onclick="setTheme('sol',this)"></div>
+          <div class="pal-dot pal-obsidiana" style="width:14px;height:14px;" onclick="setTheme('obsidiana',this)"></div>
+          <div class="pal-dot pal-crimson"   style="width:14px;height:14px;" onclick="setTheme('crimson',this)"></div>
+        </div>
+      </div>
+    </div>
+    <div class="g-filters">
+      <div class="search-wrap">
+        <input class="search-input" type="search" id="searchInput" placeholder="Buscar: mármol, azul, rojo, fruta..." oninput="doSearch()">
+        <button class="search-ico" onclick="doSearch()">&#128269;</button>
+      </div>
+      <div class="cat-pills">
+        <button class="cat-pill active" onclick="setFilter('Todas',this)">Todas</button>
+        <button class="cat-pill" onclick="setFilter('Texturas',this)">&#10022; Texturas</button>
+      </div>
+      <select class="g-sort" onchange="setSort(this.value)">
+        <option value="default">Orden del día</option>
+        <option value="az">A → Z</option>
+        <option value="za">Z → A</option>
+        <option value="liked">Más gustados</option>
+      </select>
+    </div>
+  </header>
+
+  <!-- Banner texturas (solo cuando filtro=Texturas) -->
+  <div class="tex-hero" id="texBanner" style="display:none;">
+    <div class="tex-hero-text">
+      <h2>&#10022; Colección de Texturas</h2>
+      <p>Minerales, rocas, metales, hielo, mármol y más. Alta resolución, sin registro, sin costo.</p>
+    </div>
+  </div>
+
+  <!-- Contador -->
+  <div class="g-count" id="gCount">Cargando...</div>
+
+  <!-- Grid masonry -->
+  <div class="g-main">
+    <div class="masonry" id="grid"></div>
+    <div class="load-more-wrap" id="lmWrap" style="display:none;">
+      <button class="load-more-btn" onclick="loadMore()">Cargar más imágenes</button>
+    </div>
+  </div>
+
+  <!-- Lightbox -->
+  <div class="lb" id="lb" onclick="if(event.target===this)closeLb()">
+    <button class="lb-close" onclick="closeLb()">&#10005;</button>
+    <div style="position:relative;">
+      <button class="lb-nav-btn lb-prev" onclick="navLb(-1)">&#8249;</button>
+      <button class="lb-nav-btn lb-next" onclick="navLb(1)">&#8250;</button>
+    </div>
+    <div class="lb-inner">
+      <div class="lb-img-area">
+        <div class="lb-spinner" id="lbSpin"></div>
+        <img id="lbImg" src="" alt="" style="display:none">
+      </div>
+      <div class="lb-panel">
+        <div class="lb-cat-badge" id="lbCat">—</div>
+        <div class="lb-title" id="lbTitle">—</div>
+        <div class="lb-divider"></div>
+        <div class="lb-spec"><div class="lb-spec-label">Dimensiones</div><div class="lb-spec-value" id="lbDims">—</div></div>
+        <div class="lb-spec"><div class="lb-spec-label">Formato</div><div class="lb-spec-value" id="lbFmt">—</div></div>
+        <div class="lb-divider"></div>
+        <a class="lb-dl" id="lbDl" href="#" download>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+          Descargar gratis
+        </a>
+        <div class="lb-free">&#10003; Sin registro · Sin costo · Descarga libre</div>
+        <button class="lb-like-btn" id="lbLikeBtn" onclick="toggleLikeLb()">&#9825; 0 Me gusta</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Términos -->
+  <div class="terms-overlay hidden" id="termsOverlay">
+    <div class="terms-box">
+      <div class="terms-logo-row">
+        <svg style="width:32px;height:32px;color:var(--accent)" viewBox="0 0 540 540" xmlns="http://www.w3.org/2000/svg">
+          <rect width="540" height="540" rx="90" fill="currentColor" opacity=".15"/>
+          <path fill="var(--accent)" fill-rule="evenodd" d="M440,215v-81H382v-58H302v58H261v-58H181v58H123v81h58v40h-58v81h58v57h80v-57h41v57h80v-57h58v-81H382V215H440ZM301,255H261V215h40V255Z"/>
+        </svg>
+        <span style="font-family:'Syne',sans-serif;font-size:1.1rem;font-weight:800;color:var(--text);">fondo<span style="color:var(--accent)">blanco</span></span>
+      </div>
+      <div class="terms-title">Términos de Uso</div>
+      <div class="terms-subtitle">Antes de explorar, por favor lee y acepta nuestros términos.</div>
+      <div class="terms-highlight">
+        Las imágenes de FondoBlanco fueron generadas con <strong>Adobe Firefly</strong> e <strong>IA generativa</strong>. Al usarlas aceptas los presentes términos y las directrices de las plataformas que las crearon.
+      </div>
+      <div class="terms-toggle" onclick="toggleTermsBody()">&#128196; Ver términos completos</div>
+      <div class="terms-body" id="termsBody">
+        <div class="terms-section">
+          <h3>1. &#9989; Usos Permitidos</h3>
+          <ul>
+            <li>Proyectos personales y comerciales sin límite.</li>
+            <li>Diseño gráfico, sitios web, redes sociales y publicidad.</li>
+            <li>Modificar o adaptar libremente las imágenes.</li>
+            <li>Fotografía de producto en e-commerce.</li>
+            <li>Presentaciones, material editorial e impresión.</li>
+          </ul>
+        </div>
+        <div class="terms-section">
+          <h3>2. &#128683; Usos Prohibidos</h3>
+          <ul>
+            <li>Prohibido revender o redistribuir como banco de imágenes propio.</li>
+            <li>No reclamar derechos de autor sobre las imágenes.</li>
+            <li>No usar para entrenar modelos de IA de terceros.</li>
+            <li>No generar contenido de odio, violencia o ilegal.</li>
+            <li>No suplantar identidad de personas reales.</li>
+          </ul>
+        </div>
+        <div class="terms-section">
+          <h3>3. &#129302; Generación con IA (Adobe Firefly)</h3>
+          <p>Las imágenes fueron generadas con Adobe Firefly, entrenado con contenido licenciado. Según las <a href="https://www.adobe.com/legal/licenses-terms/adobe-gen-ai-user-guidelines.html" target="_blank">directrices de Adobe</a>, el uso comercial está permitido. Adobe no garantiza exclusividad absoluta. Consulta los términos completos en adobe.com.</p>
+        </div>
+        <div class="terms-section">
+          <h3>4. &#9878;&#65039; Propiedad Intelectual</h3>
+          <p>FondoBlanco no reclama derechos sobre las imágenes generadas. El diseño y código del sitio son propiedad de FondoBlanco.</p>
+        </div>
+        <div class="terms-section">
+          <h3>5. &#128737;&#65039; Responsabilidad</h3>
+          <p>El usuario es responsable del uso final de las imágenes. FondoBlanco no se hace responsable de usos indebidos o que infrinjan leyes locales.</p>
+        </div>
+      </div>
+      <div class="terms-check-row">
+        <input type="checkbox" id="termsCheck" onchange="document.getElementById('acceptBtn').disabled=!this.checked">
+        <label for="termsCheck">He leído y acepto los Términos de Uso de FondoBlanco.</label>
+      </div>
+      <div class="terms-btns">
+        <button class="terms-decline" onclick="declineTerms()">No acepto</button>
+        <button class="terms-accept" id="acceptBtn" onclick="acceptTerms()" disabled>Acepto y exploro</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Bloqueado -->
+  <div class="blocked" id="blockedScreen">
+    <div style="font-size:3rem;">&#128683;</div>
+    <h2>Acceso restringido</h2>
+    <p>Debes aceptar los Términos de Uso para acceder.</p>
+    <button class="blocked-btn" onclick="showTermsAgain()">Ver los términos</button>
+  </div>
+
+  <footer class="g-footer">
+    <div class="footer-logo">fondo<span>blanco</span></div>
+    <div class="footer-txt">© 2025 FondoBlanco · Imágenes IA gratuitas · Sin registro · Sin copyright</div>
+  </footer>
+</div>
+
+<!-- Toast -->
+<div class="toast" id="toast"></div>
+
+<script>
+// ═══════════════════════════════════════════
+// CANVAS ANIMADO
+// ═══════════════════════════════════════════
+var cvs=document.getElementById('bgCanvas'),ctx2=cvs.getContext('2d');
+var CW,CH,pts=[],orbs2=[];
+function rsz(){CW=cvs.width=window.innerWidth;CH=cvs.height=window.innerHeight;}
+rsz(); window.addEventListener('resize',rsz);
+for(var i=0;i<55;i++)pts.push({x:Math.random()*CW,y:Math.random()*CH,r:Math.random()*1.5+.2,vx:(Math.random()-.5)*.3,vy:(Math.random()-.5)*.3,a:Math.random()*.45+.08,c:['176,96,255','100,150,255','255,100,150','0,220,180'][Math.floor(Math.random()*4)]});
+orbs2=[{x:.3,y:.3,r:.5,vx:.0003,vy:.0002,c:'100,30,200'},{x:.7,y:.6,r:.4,vx:-.0002,vy:.0003,c:'50,100,200'},{x:.5,y:.8,r:.35,vx:.0002,vy:-.0003,c:'180,50,220'}];
+var _canvasOn=true;
+function drawCanvas(){
+  if(!_canvasOn)return;
+  ctx2.clearRect(0,0,CW,CH);
+  ctx2.fillStyle='rgba(10,10,15,.55)';ctx2.fillRect(0,0,CW,CH);
+  orbs2.forEach(function(o){
+    o.x+=o.vx;o.y+=o.vy;
+    if(o.x<0||o.x>1)o.vx*=-1;if(o.y<0||o.y>1)o.vy*=-1;
+    var g=ctx2.createRadialGradient(o.x*CW,o.y*CH,0,o.x*CW,o.y*CH,o.r*Math.min(CW,CH));
+    g.addColorStop(0,'rgba('+o.c+',.12)');g.addColorStop(1,'rgba('+o.c+',0)');
+    ctx2.fillStyle=g;ctx2.beginPath();ctx2.arc(o.x*CW,o.y*CH,o.r*Math.min(CW,CH),0,Math.PI*2);ctx2.fill();
+  });
+  pts.forEach(function(p){
+    p.x+=p.vx;p.y+=p.vy;
+    if(p.x<0)p.x=CW;if(p.x>CW)p.x=0;if(p.y<0)p.y=CH;if(p.y>CH)p.y=0;
+    ctx2.fillStyle='rgba('+p.c+','+p.a+')';ctx2.beginPath();ctx2.arc(p.x,p.y,p.r,0,Math.PI*2);ctx2.fill();
+  });
+  requestAnimationFrame(drawCanvas);
+}
+drawCanvas();
+
+// ═══════════════════════════════════════════
+// HERO MOSAIC
+// ═══════════════════════════════════════════
+(function(){
+  var mi=document.querySelectorAll('#heroMosaic img[data-src]');
+  mi.forEach(function(img,i){setTimeout(function(){
+    img.onload=function(){img.classList.add('vis');};
+    img.onerror=function(){img.style.display='none';};
+    img.src=img.getAttribute('data-src');img.removeAttribute('data-src');
+  },i*110);});
+})();
+
+// ═══════════════════════════════════════════
+// TEMAS DE COLOR
+// ═══════════════════════════════════════════
+function setTheme(name,dotEl){
+  var root=document.documentElement;
+  root.removeAttribute('data-theme');
+  if(name!=='nocturno') root.setAttribute('data-theme',name);
+  document.querySelectorAll('.pal-dot').forEach(function(d){d.classList.remove('active');});
+  if(dotEl){
+    var theme=dotEl.dataset.theme||name;
+    document.querySelectorAll('.pal-dot.pal-'+name).forEach(function(d){d.classList.add('active');});
+  }
+  try{localStorage.setItem('fb_theme',name);}catch(e){}
+}
+// Restaurar tema guardado
+(function(){try{var t=localStorage.getItem('fb_theme');if(t&&t!=='nocturno')setTheme(t,null);}catch(e){}})();
+
+// ═══════════════════════════════════════════
+// CDN & DATOS
+// ═══════════════════════════════════════════
+var THUMB='https://fondoblanco.b-cdn.net/';
+var FULL='https://fondoblanco.b-cdn.net/';
+var imgs=[
+  {id:1,pid:'aguacates-cortados-luz-natural-hojas-gotas-aceite-macro.jpg',name:'Aguacates cortados luz natural hojas gotas aceite macro',cat:'Comida'},
+  {id:2,pid:'aguacates-frescos-campo-luz-dorada-hojas-macro-vertical.jpg',name:'Aguacates frescos campo luz dorada hojas macro vertical',cat:'Comida'},
+  {id:3,pid:'aguacates-gotas-agua-luz-solar-hojas-verdes-vibrante.jpg',name:'Aguacates gotas agua luz solar hojas verdes vibrante',cat:'Comida'},
+  {id:4,pid:'aguacates-tazon-madera-oscuro-partido-semilla-vertical.jpg',name:'Aguacates tazon madera oscuro partido semilla vertical',cat:'Comida'},
+  {id:5,pid:'Firefly_%20banana%20y%20tajada%20de%20bananas%20hermosa%20completas%20sin%20cortes%20sin%20rama%20%20fondo%20blanco%20bueno%20689575.png',name:'Banana y tajada de bananas hermosa completas sin cor...',cat:'Comida'},
+  {id:6,pid:'Firefly_%20bananas%20hermosa%20completas%20sin%20cortes%20sin%20rama%20%20fondo%20blanco%20buenos%20detalles%20muy%20prof%20689575.png',name:'Bananas hermosa completas sin cortes sin rama  fondo...',cat:'Comida'},
+  {id:7,pid:'Firefly_-Soft%20watercolor%20gradient%20background%20blending%20mint%20green%2C%20peach%2C%20and%20lavender%2C%20ethere%20897299.jpg',name:'Soft watercolor gradient background blending mint gr...',cat:'Texturas'},
+  {id:8,pid:'Firefly_1%20fresacompleta%20y%20media%20fresa%20cortada%20por%20la%20mitad%20realista%20hermosa%20fondo%20blanco%20buen%20799944.png',name:'1 fresacompleta y media fresa cortada por la mitad r...',cat:'Comida'},
+  {id:9,pid:'Firefly_1%20mango%20realista%20y%20medio%20mango%20como%20sifuera%20cortado%20en%20la%20mitad%20hermosa%20fondo%20blanco%20%20799944.png',name:'1 mango realista y medio mango como sifuera cortado ...',cat:'Comida'},
+  {id:10,pid:'Firefly_2%20banana%20hermosa%20completas%20sin%20cortes%20rin%20rama%20%20fondo%20blanco%20buenos%20detalles%20muy%20prof%20689575.png',name:'2 banana hermosa completas sin cortes rin rama  fond...',cat:'Comida'},
+  {id:11,pid:'Firefly_2%20fresa%20realista%20hermosa%20fondo%20blanco%20buenos%20tetalles%20%20799944.png',name:'2 fresa realista hermosa fondo blanco buenos tetalles',cat:'Comida'},
+  {id:12,pid:'Firefly_2%20limon%20amarillo%20relistas%20hermosos%20fondo%20blanco%20%20buenos%20tetalles%20%20338216.png',name:'2 limon amarillo relistas hermosos fondo blanco  bue...',cat:'Comida'},
+  {id:13,pid:'Firefly_2%20limon%20amarillo%20relistas%20hermosos%20fondo%20blanco%20%20buenos%20tetalles%20%20912645.png',name:'2 limon amarillo relistas hermosos fondo blanco  bue...',cat:'Comida'},
+  {id:14,pid:'Firefly_2%20limon%20verde%20relistas%20hermosos%20fondo%20blanco%20%20buenos%20tetalles%20%20422228.png',name:'2 limon verde relistas hermosos fondo blanco  buenos...',cat:'Comida'},
+  {id:15,pid:'Firefly_2%20limon%20verde%20relistas%20hermosos%20fondo%20blanco%20%20buenos%20tetalles%20%20684090.png',name:'2 limon verde relistas hermosos fondo blanco  buenos...',cat:'Comida'},
+  {id:16,pid:'Firefly_2%20limon%20verde%20relistas%20hermosos%20fondo%20blanco%20%20buenos%20tetalles%20%20735604.png',name:'2 limon verde relistas hermosos fondo blanco  buenos...',cat:'Comida'},
+  {id:17,pid:'Firefly_2%20naranjas%20cortadas%20relistas%20hermosa%20fondo%20blanco%20buenos%20tetalles%20%20352334.png',name:'2 naranjas cortadas relistas hermosa fondo blanco bu...',cat:'Comida'},
+  {id:18,pid:'Firefly_2%20naranjas%20relistas%20hermosa%20fondo%20blanco%20buenos%20tetalles%20%20509763.png',name:'2 naranjas relistas hermosa fondo blanco buenos teta...',cat:'Comida'},
+  {id:19,pid:'Firefly_crea%20una%20manzana%20roja%20en%20fondo%20blanco%20de%20calidad%20buena%20mordida%20sin%20hojas%20detalles%20exe%20119971.png',name:'Crea una manzana roja en fondo blanco de calidad bue...',cat:'Comida'},
+  {id:20,pid:'Firefly_delisiosa%20pera%20%20imagen%20de%20alta%20calida%20foto%20profesional%20real%20%20393673.jpg',name:'Delisiosa pera  imagen de alta calida foto profesion...',cat:'Comida'},
+  {id:21,pid:'Firefly_Extreme%20close-up%20of%20ancient%20limestone%20colonized%20by%20fossilized%20mycelium%20network%2C%20pale%20%20804699.jpg',name:'Extreme close up of ancient limestone colonized by f...',cat:'Texturas'},
+  {id:22,pid:'Firefly_fresa%20realista%20hermosa%20fondo%20blanco%20buenos%20tetalles%20%20799944.png',name:'Fresa realista hermosa fondo blanco buenos tetalles',cat:'Comida'},
+  {id:23,pid:'Firefly_fresa%20realistas%20hermosa%20fondo%20blanco%20buenos%20tetalles%20%20799944.png',name:'Fresa realistas hermosa fondo blanco buenos tetalles',cat:'Comida'},
+  {id:24,pid:'Firefly_fresas%20realistas%20hermosa%20fondo%20blanco%20buenos%20tetalles%20%2044485.png',name:'Fresas realistas hermosa fondo blanco buenos tetalles',cat:'Comida'},
+  {id:25,pid:'Firefly_fresas%20realistas%20hermosa%20fondo%20blanco%20buenos%20tetalles%20%20799944.png',name:'Fresas realistas hermosa fondo blanco buenos tetalles',cat:'Comida'},
+  {id:26,pid:'Firefly_Gemini%20Flash_%20banana%20hermosa%20completas%20sin%20cortes%20sin%20rama%20%20fondo%20blanco%20buenos%20detalles%20muy%20profe%20689575%20(1).png',name:'Banana hermosa completas sin cortes sin rama  fondo ...',cat:'Comida'},
+  {id:27,pid:'Firefly_Gemini%20Flash_%20bananas%20hermosa%20completas%20sin%20cortes%20rin%20rama%20%20fondo%20blanco%20buenos%20detalles%20muy%20prof%20689575.png',name:'Bananas hermosa completas sin cortes rin rama  fondo...',cat:'Comida'},
+  {id:28,pid:'Firefly_Gemini%20Flash_2%20fresas%20realista%20hermosa%20en%20diferente%20direccion%20%20fondo%20blanco%20buenos%20tetalles%20799944.png',name:'2 fresas realista hermosa en diferente direccion  fo...',cat:'Comida'},
+  {id:29,pid:'Firefly_Gemini%20Flash_2%20limon%20amarillo%20relistas%20hermosos%20fondo%20blanco%20%20buenos%20tetalles%20%20193001.png',name:'2 limon amarillo relistas hermosos fondo blanco  bue...',cat:'Comida'},
+  {id:30,pid:'Firefly_Gemini%20Flash_crea%20una%20manzana%20roja%20en%20fondo%20blanco%20en%20diferentes%20posiciones%20de%20lata%20calidad%20buenos%20720607.png',name:'Crea una manzana roja en fondo blanco en diferentes ...',cat:'Comida'},
+  {id:31,pid:'Firefly_Gemini%20Flash_crea%20una%20manzana%20verde%20en%20fondo%20blanco%20de%20calidad%20buena%20mordida%20sin%20hojas%20detalles%20ex%20728755.png',name:'Crea una manzana verde en fondo blanco de calidad bu...',cat:'Comida'},
+  {id:32,pid:'Firefly_Gemini%20Flash_fresas%20realistas%20hermosa%20fondo%20blanco%20buenos%20tetalles%20%20803186.png',name:'Fresas realistas hermosa fondo blanco buenos tetalles',cat:'Comida'},
+  {id:33,pid:'Firefly_Gemini%20Flash_hermosa%20pi%C3%B1a%20cortada%20en%20fondo%20blanco%20buenos%20detalles%20y%20calidad%20de%20imagen%20realista%20%20202236.png',name:'Hermosa piña cortada en fondo blanco buenos detalles...',cat:'Varios'},
+  {id:34,pid:'Firefly_Gemini%20Flash_hermosa%20pi%C3%B1a%20cortada%20en%20fondo%20blanco%20buenos%20detalles%20y%20calidad%20de%20imagen%20realista%20%20966117.png',name:'Hermosa piña cortada en fondo blanco buenos detalles...',cat:'Varios'},
+  {id:35,pid:'Firefly_Gemini%20Flash_hermosa%20sandia%20cortada%20en%20fondo%20blanco%20buenos%20detalles%20y%20calidad%20de%20imagen%20realista%20%2049134.png',name:'Hermosa sandia cortada en fondo blanco buenos detall...',cat:'Comida'},
+  {id:36,pid:'Firefly_Gemini%20Flash_hermosa%20sandia%20cortada%20en%20fondo%20blanco%20buenos%20detalles%20y%20calidad%20de%20imagen%20realista%20%20689575.png',name:'Hermosa sandia cortada en fondo blanco buenos detall...',cat:'Comida'},
+  {id:37,pid:'Firefly_Gemini%20Flash_herosa%20sandia%20cortada%20en%20fondo%20blanco%20buenos%20detalles%20y%20calidad%20de%20imagen%20ferlista%20%20689575.png',name:'Herosa sandia cortada en fondo blanco buenos detalle...',cat:'Comida'},
+  {id:38,pid:'Firefly_Gemini%20Flash_herosa%20sandia%20cortada%20en%20fondo%20blanco%20buenos%20detalles%20y%20calidad%20de%20imagen%20realista%20%20689575.png',name:'Herosa sandia cortada en fondo blanco buenos detalle...',cat:'Comida'},
+  {id:39,pid:'Firefly_Gemini%20Flash_limones%20amarillos%20relistas%20hermosos%20fondo%20blanco%20%20buenos%20tetalles%20%20193001.png',name:'Limones amarillos relistas hermosos fondo blanco  bu...',cat:'Comida'},
+  {id:40,pid:'Firefly_Gemini%20Flash_limones%20amarillos%20relistas%20hermosos%20fondo%20blanco%20%20buenos%20tetalles%20%20644456.png',name:'Limones amarillos relistas hermosos fondo blanco  bu...',cat:'Comida'},
+  {id:41,pid:'Firefly_Gemini%20Flash_mango%20s%20realista%20hermosa%20en%20diferente%20direccion%20%20fondo%20blanco%20buenos%20tetalles%20799944.png',name:'Mango s realista hermosa en diferente direccion  fon...',cat:'Comida'},
+  {id:42,pid:'Firefly_Gemini%20Flash_mangos%20realista%20hermosa%20en%20diferente%20direccion%20%20fondo%20blanco%20buenos%20tetalles%20799944.png',name:'Mangos realista hermosa en diferente direccion  fond...',cat:'Comida'},
+  {id:43,pid:'Firefly_Gemini%20Flash_naranja%20relistas%20hermosa%20fondo%20blanco%20buenos%20tetalles%20%20544293.png',name:'Naranja relistas hermosa fondo blanco buenos tetalles',cat:'Comida'},
+  {id:44,pid:'Firefly_Gemini%20Flash_naranja%20relistas%20hermosa%20fondo%20blanco%20buenos%20tetalles%20%20672272.png',name:'Naranja relistas hermosa fondo blanco buenos tetalles',cat:'Comida'},
+  {id:45,pid:'Firefly_Gemini%20Flash_naranjas%20relistas%20hermosa%20fondo%20blanco%20buenos%20tetalles%20%20544293.png',name:'Naranjas relistas hermosa fondo blanco buenos tetalles',cat:'Comida'},
+  {id:46,pid:'Firefly_Gemini%20Flash_uvas%20%20hermosa%20completas%20sin%20cortes%20rin%20rama%20%20fondo%20blanco%20buenos%20detalles%20muy%20profesi%20689575.png',name:'Uvas  hermosa completas sin cortes rin rama  fondo b...',cat:'Comida'},
+  {id:47,pid:'Firefly_Gemini%20Flash_uvas%20%20hermosa%20completas%20sin%20cortes%20rin%20rama%20%20fondo%20blanco%20buenos%20detalles%20muy%20profesi%20917512.png',name:'Uvas  hermosa completas sin cortes rin rama  fondo b...',cat:'Comida'},
+  {id:48,pid:'Firefly_Gray%20granite%20texture%2C%20black%20and%20white%20speckled%20pattern%2C%20polished%20but%20not%20glossy%2C%20hard%20789107.jpg',name:'Gray granite texture, black and white speckled patte...',cat:'Varios'},
+  {id:49,pid:'Firefly_hermosa%20mujer%20rubia%20con%20labios%20pintados%20de%20rojo%20%20foto%20retrato%20%20103700.jpg',name:'Hermosa mujer rubia con labios pintados de rojo  fot...',cat:'Belleza'},
+  {id:50,pid:'Firefly_hermosa%20mujer%20rubia%20con%20labios%20pintados%20de%20rojo%20%20foto%20retrato%20%20254169%20(1).jpg',name:'Hermosa mujer rubia con labios pintados de rojo  fot...',cat:'Belleza'},
+  {id:51,pid:'Firefly_hermosa%20mujer%20rubia%20con%20labios%20pintados%20de%20rojo%20%20foto%20retrato%20%20254169.jpg',name:'Hermosa mujer rubia con labios pintados de rojo  fot...',cat:'Belleza'},
+  {id:52,pid:'Firefly_hermosa%20mujer%20rubia%20con%20labios%20pintados%20de%20rojo%20%20foto%20retrato%20%20351304.jpg',name:'Hermosa mujer rubia con labios pintados de rojo  fot...',cat:'Belleza'},
+  {id:53,pid:'Firefly_hermosa%20mujer%20rubia%20con%20labios%20pintados%20de%20rojo%20%20foto%20retrato%20%20665911.jpg',name:'Hermosa mujer rubia con labios pintados de rojo  fot...',cat:'Belleza'},
+  {id:54,pid:'Firefly_hermosa%20pi%C3%B1a%20cortada%20en%20fondo%20blanco%20buenos%20detalles%20y%20calidad%20de%20imagen%20realista%20%20231965.png',name:'Hermosa piña cortada en fondo blanco buenos detalles...',cat:'Varios'},
+  {id:55,pid:'Firefly_hermosa%20pi%C3%B1a%20cortada%20en%20fondo%20blanco%20buenos%20detalles%20y%20calidad%20de%20imagen%20realista%20%20233927.png',name:'Hermosa piña cortada en fondo blanco buenos detalles...',cat:'Varios'},
+  {id:56,pid:'Firefly_hermosa%20pi%C3%B1a%20cortada%20en%20fondo%20blanco%20buenos%20detalles%20y%20calidad%20de%20imagen%20realista%20%20540816.png',name:'Hermosa piña cortada en fondo blanco buenos detalles...',cat:'Varios'},
+  {id:57,pid:'Firefly_hermosa%20pi%C3%B1a%20cortada%20en%20fondo%20blanco%20buenos%20detalles%20y%20calidad%20de%20imagen%20realista%20%20663991.png',name:'Hermosa piña cortada en fondo blanco buenos detalles...',cat:'Varios'},
+  {id:58,pid:'Firefly_hermosa%20sandia%20cortada%20en%20fondo%20blanco%20buenos%20detalles%20y%20calidad%20de%20imagen%20realista%20%20202236.png',name:'Hermosa sandia cortada en fondo blanco buenos detall...',cat:'Comida'},
+  {id:59,pid:'Firefly_limones%20amarillos%20relistas%20hermosos%20fondo%20blanco%20%20buenos%20tetalles%20%20170265.png',name:'Limones amarillos relistas hermosos fondo blanco  bu...',cat:'Comida'},
+  {id:60,pid:'Firefly_limones%20amarillos%20relistas%20hermosos%20fondo%20blanco%20%20buenos%20tetalles%20%20645538.png',name:'Limones amarillos relistas hermosos fondo blanco  bu...',cat:'Comida'},
+  {id:61,pid:'Firefly_limones%20amarillos%20relistas%20hermosos%20fondo%20blanco%20%20buenos%20tetalles%20%2066647.png',name:'Limones amarillos relistas hermosos fondo blanco  bu...',cat:'Comida'},
+  {id:62,pid:'Firefly_limones%20amarillos%20relistas%20hermosos%20formato%20png%20%20buenos%20tetalles%20%2066647.png',name:'Limones amarillos relistas hermosos formato png  bue...',cat:'Comida'},
+  {id:63,pid:'Firefly_limones%20delisiosa%20foto%20genial%20como%20si%20la%20fuera%20tomado%20un%20profesiona%20%2097715.jpg',name:'Limones delisiosa foto genial como si la fuera tomad...',cat:'Comida'},
+  {id:64,pid:'Firefly_mango%20realista%20hermosa%20en%20diferente%20direccion%20%20fondo%20blanco%20buenos%20detalles%20799944.png',name:'Mango realista hermosa en diferente direccion  fondo...',cat:'Comida'},
+  {id:65,pid:'Firefly_mango%20realista%20hermosa%20fondo%20blanco%20buenos%20detalles%20799944.png',name:'Mango realista hermosa fondo blanco buenos detalles',cat:'Comida'},
+  {id:66,pid:'Firefly_naranja%20relistas%20hermosa%20fondo%20blanco%20buenos%20tetalles%20%20684090.png',name:'Naranja relistas hermosa fondo blanco buenos tetalles',cat:'Comida'},
+  {id:67,pid:'Firefly_naranjas%20relistas%20hermosa%20fondo%20blanco%20buenos%20tetalles%20%20509763.png',name:'Naranjas relistas hermosa fondo blanco buenos tetalles',cat:'Comida'},
+  {id:68,pid:'Firefly_Photorealistic%20still%20life%20of%20a%20ceramic%20bowl%20containing%20a%20green%20apple%2C%20two%20plums%2C%20and%20%2022011.jpg',name:'Photorealistic still life of a ceramic bowl containi...',cat:'Comida'},
+  {id:69,pid:'Firefly_Realistic%20photograph%20of%20a%20single%20yellow%20pear%20with%20small%20brown%20speckles%20and%20a%20slight%20b%20303696.jpg',name:'Realistic photograph of a single yellow pear with sm...',cat:'Varios'},
+  {id:70,pid:'Firefly_Reddish%20sandstone%20texture%2C%20granular%20sandy%20surface%2C%20warm%20terracotta%20tones%2C%20soft%20eroded%20804699.jpg',name:'Reddish sandstone texture, granular sandy surface, w...',cat:'Texturas'},
+  {id:71,pid:'Firefly_textura%20de%20madera%20de%20wengu%C3%A9%20africano%2C%20vetas%20paralelas%20de%20color%20caf%C3%A9%20oscuro%20casi%20negro%20161087.jpg',name:'Textura de madera de wengué africano, vetas paralela...',cat:'Texturas'},
+  {id:72,pid:'Firefly_textura%20de%20madera%20de%20wengu%C3%A9%20africano%2C%20vetas%20paralelas%20de%20color%20caf%C3%A9%20oscuro%20casi%20negro%20249290.jpg',name:'Textura de madera de wengué africano, vetas paralela...',cat:'Texturas'},
+  {id:73,pid:'Firefly_textura%20de%20madera%20de%20wengu%C3%A9%20africano%2C%20vetas%20paralelas%20de%20color%20caf%C3%A9%20oscuro%20casi%20negro%20398712.jpg',name:'Textura de madera de wengué africano, vetas paralela...',cat:'Texturas'},
+  {id:74,pid:'Firefly_textura%20de%20madera%20de%20wengu%C3%A9%20africano%2C%20vetas%20paralelas%20de%20color%20caf%C3%A9%20oscuro%20casi%20negro%20941277.jpg',name:'Textura de madera de wengué africano, vetas paralela...',cat:'Texturas'},
+  {id:75,pid:'Firefly_textura%20macro%20de%20madera%20de%20roble%20envejecida%2C%20vetas%20pronunciadas%20y%20onduladas%2C%20nudos%20os%20249290.jpg',name:'Textura macro de madera de roble envejecida, vetas p...',cat:'Texturas'},
+  {id:76,pid:'Firefly_textura%20macro%20de%20madera%20de%20roble%20envejecida%2C%20vetas%20pronunciadas%20y%20onduladas%2C%20nudos%20os%20941277.jpg',name:'Textura macro de madera de roble envejecida, vetas p...',cat:'Texturas'},
+  {id:77,pid:'Firefly_textura%20macro%20extrema%20de%20piel%20de%20cocodrilo%20envejecida%2C%20escamas%20hexagonales%20irregulare%20406214.jpg',name:'Textura macro extrema de piel de cocodrilo envejecid...',cat:'Texturas'},
+  {id:78,pid:'Firefly_textura%20ultra%20n%C3%ADtida%20de%20hielo%20negro%20de%20glaciar%20milenario%2C%20burbujas%20de%20aire%20atrapadas%20%20398712.jpg',name:'Textura ultra nítida de hielo negro de glaciar milen...',cat:'Texturas'},
+  {id:79,pid:'Firefly_texturas%20verdes%20de%20alta%20calidad%20y%20detalles%20%20120195%20(2).jpg',name:'Texturas verdes de alta calidad y detalles',cat:'Texturas'},
+  {id:80,pid:'Firefly_texturas%20verdes%20de%20alta%20calidad%20y%20detalles%20%20629628.jpg',name:'Texturas verdes de alta calidad y detalles',cat:'Texturas'},
+  {id:81,pid:'Firefly_texturas%20verdes%20de%20alta%20calidad%20y%20detalles%20%2077216%20(2).jpg',name:'Texturas verdes de alta calidad y detalles',cat:'Texturas'},
+  {id:82,pid:'Firefly_texturas%20verdes%20de%20alta%20calidad%20y%20detalles%20%2087383%20(1).jpg',name:'Texturas verdes de alta calidad y detalles',cat:'Texturas'},
+  {id:83,pid:'Firefly_uvas%20%20hermosa%20completas%20sin%20cortes%20rin%20rama%20%20fondo%20blanco%20buenos%20detalles%20muy%20profesi%20444236.png',name:'Uvas  hermosa completas sin cortes rin rama  fondo b...',cat:'Comida'},
+  {id:84,pid:'Firefly_uvas%20%20hermosa%20completas%20sin%20cortes%20rin%20rama%20%20fondo%20blanco%20buenos%20detalles%20muy%20profesi%20799944.png',name:'Uvas  hermosa completas sin cortes rin rama  fondo b...',cat:'Comida'},
+  {id:85,pid:'Firefly_Weathered%20copper%20sheet%20with%20turquoise-green%20patina%2C%20textured%20uneven%20surface%20with%20bubb%20345429%20(2).jpg',name:'Weathered copper sheet with turquoise green patina, ...',cat:'Texturas'},
+  {id:86,pid:'Firefly_Weathered%20copper%20sheet%20with%20turquoise-green%20patina%2C%20textured%20uneven%20surface%20with%20bubb%20742588%20(2).jpg',name:'Weathered copper sheet with turquoise green patina, ...',cat:'Texturas'},
+  {id:87,pid:'Firefly_White%20marble%20texture%20with%20fine%20gray%20veins%2C%20high%20resolution%2C%20smooth%20surface%2C%20subtle%20na%20742588%20(1).jpg',name:'White marble texture with fine gray veins, high reso...',cat:'Texturas'},
+  {id:88,pid:'Firefly_White%20marble%20texture%20with%20fine%20gray%20veins%2C%20high%20resolution%2C%20smooth%20surface%2C%20subtle%20na%20742588.jpg',name:'White marble texture with fine gray veins, high reso...',cat:'Texturas'},
+  {id:89,pid:'jirafa-retrato-frontal-atardecer-naranja-savana-arboles.jpg',name:'Jirafa retrato frontal atardecer naranja savana arboles',cat:'Comida'},
+  {id:90,pid:'jirafa-retrato-frontal-cuello-cielo-azul-nubes-safari.jpg',name:'Jirafa retrato frontal cuello cielo azul nubes safari',cat:'Belleza'},
+  {id:91,pid:'jirafa-retrato-lateral-bokeh-dorado-atardecer-calido-safari.jpg',name:'Jirafa retrato lateral bokeh dorado atardecer calido...',cat:'Belleza'},
+  {id:92,pid:'limones-arbol-atardecer-paisaje-campo-cielo-vertical.jpg',name:'Limones arbol atardecer paisaje campo cielo vertical',cat:'Comida'},
+  {id:93,pid:'limones-frescos-ventana-rustica-montanas-nublado-vertical.jpg',name:'Limones frescos ventana rustica montanas nublado ver...',cat:'Texturas'},
+  {id:94,pid:'mani-cascara-abierto-semilla-roja-macro-bokeh-fondo-oscuro.jpg',name:'Mani cascara abierto semilla roja macro bokeh fondo ...',cat:'Naturaleza'},
+  {id:95,pid:'mano-regando-planta-brote-tierra-atardecer-dorado-gotas.jpg',name:'Mano regando planta brote tierra atardecer dorado gotas',cat:'Naturaleza'},
+  {id:96,pid:'manzana-roja-gotas-agua-fondo-negro-panoramica-fresca.jpg',name:'Manzana roja gotas agua fondo negro panoramica fresca',cat:'Texturas'},
+  {id:97,pid:'manzana-roja-gotas-agua-fondo-negro-reflejo-minimalista.jpg',name:'Manzana roja gotas agua fondo negro reflejo minimalista',cat:'Comida'},
+  {id:98,pid:'manzana-roja-gotas-agua-hoja-verde-tabla-madera-fondo-oscuro.jpg',name:'Manzana roja gotas agua hoja verde tabla madera fond...',cat:'Comida'},
+  {id:99,pid:'manzana-roja-gotas-rocio-tabla-madera-bokeh-atardecer-dorado.jpg',name:'Manzana roja gotas rocio tabla madera bokeh atardece...',cat:'Comida'},
+  {id:100,pid:'marmol-verde-bloques-rectangulares-vetas-blancas-panoramica.jpg',name:'Marmol verde bloques rectangulares vetas blancas pan...',cat:'Texturas'},
+  {id:101,pid:'marmol-verde-oscuro-fracturado-capas-dorado-vertical.jpg',name:'Marmol verde oscuro fracturado capas dorado vertical',cat:'Texturas'},
+  {id:102,pid:'marmol-verde-vetas-diagonales-onduladas-jade-esmeralda.jpg',name:'Marmol verde vetas diagonales onduladas jade esmeralda',cat:'Texturas'},
+  {id:103,pid:'melocotones-cosecha-cajas-plastico-luz-dorada-bokeh-huerto.jpg',name:'Melocotones cosecha cajas plastico luz dorada bokeh ...',cat:'Texturas'},
+  {id:104,pid:'melocotones-frescos-tabla-madera-cortado-hueso-hojas-verdes.jpg',name:'Melocotones frescos tabla madera cortado hueso hojas...',cat:'Comida'},
+  {id:105,pid:'melocotones-rojos-amarillos-cortado-taz%C3%B3n-madera-fondo-negro.jpg',name:'Melocotones rojos amarillos cortado tazón madera fon...',cat:'Comida'},
+  {id:106,pid:'melocotones-tabla-madera-menta-cortados-hueso-fondo-oscuro.jpg',name:'Melocotones tabla madera menta cortados hueso fondo ...',cat:'Comida'},
+  {id:107,pid:'melocotones-tajadas-hojas-tabla-madera-fondo-negro-oscuro.jpg',name:'Melocotones tajadas hojas tabla madera fondo negro o...',cat:'Comida'},
+  {id:108,pid:'modelo-rubia-cabello-corto-labios-rojos-ojos-azules-gris.jpg',name:'Modelo rubia cabello corto labios rojos ojos azules ...',cat:'Belleza'},
+  {id:109,pid:'modelo-rubia-cabello-ondulado-labios-rojos-luces-bokeh.jpg',name:'Modelo rubia cabello ondulado labios rojos luces bokeh',cat:'Belleza'},
+  {id:110,pid:'modelo-rubia-labios-rojos-aretes-dorados-ojos-verdes.jpg',name:'Modelo rubia labios rojos aretes dorados ojos verdes',cat:'Belleza'},
+  {id:111,pid:'modelo-rubia-labios-rojos-cabello-ondulado-fondo-gris.jpg',name:'Modelo rubia labios rojos cabello ondulado fondo gris',cat:'Belleza'},
+  {id:112,pid:'modelo-rubia-labios-rojos-ojos-verdes-vestido-lentejuelas.jpg',name:'Modelo rubia labios rojos ojos verdes vestido lentej...',cat:'Belleza'},
+  {id:113,pid:'modelo-rubia-maquillaje-smokey-labios-rojos-aretes-luces.jpg',name:'Modelo rubia maquillaje smokey labios rojos aretes l...',cat:'Belleza'},
+  {id:114,pid:'modelo-rubia-recogido-labios-rojos-aretes-dorados-beige.jpg',name:'Modelo rubia recogido labios rojos aretes dorados beige',cat:'Belleza'},
+  {id:115,pid:'peras-amarillas-cortadas-tabla-madera-fondo-oscuro-bokeh.jpg',name:'Peras amarillas cortadas tabla madera fondo oscuro b...',cat:'Comida'},
+  {id:116,pid:'pina-tropical-fondo-blanco.png',name:'Pina tropical fondo blanco',cat:'Comida'},
+  {id:117,pid:'pizza-cuatro-quesos-napolitana-tomates-romero-vertical.jpg',name:'Pizza cuatro quesos napolitana tomates romero vertical',cat:'Comida'},
+  {id:118,pid:'pizza-mixta-caja-blanca-aceitunas-pimientos-fondo-blanco.jpg',name:'Pizza mixta caja blanca aceitunas pimientos fondo bl...',cat:'Comida'},
+  {id:119,pid:'pizza-pepperoni-aceitunas-caja-carton-queso-derretido.jpg',name:'Pizza pepperoni aceitunas caja carton queso derretido',cat:'Comida'},
+  {id:120,pid:'pizza-queso-mozzarella-derretido-albahaca-fondo-oscuro.jpg',name:'Pizza queso mozzarella derretido albahaca fondo oscuro',cat:'Comida'},
+  {id:121,pid:'planta-espiral-hojas-verdes-macro-bokeh-venas-dentadas-radial.jpg',name:'Planta espiral hojas verdes macro bokeh venas dentad...',cat:'Texturas'},
+  {id:122,pid:'plantula-maiz-tierra-suelta-atardecer-cielo-azul-nubes-vertical.jpg',name:'Plantula maiz tierra suelta atardecer cielo azul nub...',cat:'Naturaleza'},
+  {id:123,pid:'playa-arena-blanca-agua-cristalina-palmeras-isla-verde-panoramica.jpg',name:'Playa arena blanca agua cristalina palmeras isla ver...',cat:'Texturas'},
+  {id:124,pid:'playa-arena-blanca-agua-turquesa-acantilado-verde-cielo-azul-aerea.jpg',name:'Playa arena blanca agua turquesa acantilado verde ci...',cat:'Naturaleza'},
+  {id:125,pid:'playa-arena-dorada-rocas-olas-islas-distancia-cielo-azul-vertical.jpg',name:'Playa arena dorada rocas olas islas distancia cielo ...',cat:'Texturas'},
+  {id:126,pid:'playa-arena-estrella-mar-palmera-agua-turquesa-islas-cielo.jpg',name:'Playa arena estrella mar palmera agua turquesa islas...',cat:'Naturaleza'},
+  {id:127,pid:'playa-arena-olas-amanecer-rocas-huellas-cielo-azul-dorado.jpg',name:'Playa arena olas amanecer rocas huellas cielo azul d...',cat:'Texturas'},
+  {id:128,pid:'playa-arena-palmeras-agua-turquesa-cielo-azul-nubes-panoramica.jpg',name:'Playa arena palmeras agua turquesa cielo azul nubes ...',cat:'Texturas'},
+  {id:129,pid:'playa-tropical-palmeras-arena-blanca-agua-turquesa-rocas-cielo.jpg',name:'Playa tropical palmeras arena blanca agua turquesa r...',cat:'Texturas'},
+  {id:130,pid:'playa-tropical-rocas-palmeras-olas-cielo-nubes-panoramica.jpg',name:'Playa tropical rocas palmeras olas cielo nubes panor...',cat:'Texturas'},
+  {id:131,pid:'retrato-dos-mujeres-asiaticas-cabello-recogido-fondo-gris-belleza.jpg',name:'Retrato dos mujeres asiaticas cabello recogido fondo...',cat:'Belleza'},
+  {id:132,pid:'retrato-dos-mujeres-diversas-sonriendo-fondo-beige-moda.jpg',name:'Retrato dos mujeres diversas sonriendo fondo beige moda',cat:'Belleza'},
+  {id:133,pid:'retrato-dos-mujeres-diversas-sonriendo-fondo-blanco-belleza.jpg',name:'Retrato dos mujeres diversas sonriendo fondo blanco ...',cat:'Belleza'},
+  {id:134,pid:'retrato-ia-mujer-cabello-ondulado-top-blanco-encaje-bokeh.jpg',name:'Retrato ia mujer cabello ondulado top blanco encaje ...',cat:'Belleza'},
+  {id:135,pid:'retrato-ia-mujer-camiseta-beige-cabello-ondulado-ojos-verdes-estanteria.jpg',name:'Retrato ia mujer camiseta beige cabello ondulado ojo...',cat:'Belleza'},
+  {id:136,pid:'retrato-ia-mujer-chaqueta-mostaza-cabello-ondulado-bombillas-vintage.jpg',name:'Retrato ia mujer chaqueta mostaza cabello ondulado b...',cat:'Belleza'},
+  {id:137,pid:'retrato-ia-mujer-maquillaje-ahumado-labios-rosa-sueter-blanco-gris.jpg',name:'Retrato ia mujer maquillaje ahumado labios rosa suet...',cat:'Belleza'},
+  {id:138,pid:'retrato-ia-mujer-sueter-beige-cabello-ondulado-brazos-cruzados.jpg',name:'Retrato ia mujer sueter beige cabello ondulado brazo...',cat:'Belleza'},
+  {id:139,pid:'retrato-ia-mujer-sueter-blanco-hombros-descubiertos-jeans-interior.jpg',name:'Retrato ia mujer sueter blanco hombros descubiertos ...',cat:'Belleza'},
+  {id:140,pid:'retrato-ia-mujer-sueter-floral-blanco-cabello-suelto-interior-claro.jpg',name:'Retrato ia mujer sueter floral blanco cabello suelto...',cat:'Belleza'},
+  {id:141,pid:'retrato-ia-mujer-sueter-mostaza-lamparas-blancas-cocina-calida.jpg',name:'Retrato ia mujer sueter mostaza lamparas blancas coc...',cat:'Belleza'},
+  {id:142,pid:'retrato-ia-mujer-vestido-saten-dorado-ojos-cerrados-bokeh-calido.jpg',name:'Retrato ia mujer vestido saten dorado ojos cerrados ...',cat:'Belleza'},
+  {id:143,pid:'retrato-ia-perfil-cabello-liso-largo-castano-elegante-gris.jpg',name:'Retrato ia perfil cabello liso largo castano elegant...',cat:'Belleza'},
+  {id:144,pid:'retrato-ia-perfil-coleta-alta-mirada-lateral-belleza-gris.jpg',name:'Retrato ia perfil coleta alta mirada lateral belleza...',cat:'Belleza'},
+  {id:145,pid:'retrato-ia-perfil-coleta-baja-ojos-cerrados-serenidad-gris.jpg',name:'Retrato ia perfil coleta baja ojos cerrados serenida...',cat:'Belleza'},
+  {id:146,pid:'retrato-ia-plastico-blanco-negro-fondo-negro-contraste-dramatico.jpg',name:'Retrato ia plastico blanco negro fondo negro contras...',cat:'Texturas'},
+  {id:147,pid:'retrato-ia-plastico-transparente-blanco-celofan-surreal-perfil.jpg',name:'Retrato ia plastico transparente blanco celofan surr...',cat:'Texturas'},
+  {id:148,pid:'retrato-modelo-rubia-labios-rojos-collar-perlas-bokeh.jpg',name:'Retrato modelo rubia labios rojos collar perlas bokeh',cat:'Belleza'},
+  {id:149,pid:'retrato-modelo-rubia-labios-rojos-ojos-azules-fondo-gris.jpg',name:'Retrato modelo rubia labios rojos ojos azules fondo ...',cat:'Belleza'},
+  {id:150,pid:'retrato-mujer-afro-cabello-ondulado-sonrisa-fondo-beige-belleza.jpg',name:'Retrato mujer afro cabello ondulado sonrisa fondo be...',cat:'Belleza'},
+  {id:151,pid:'retrato-mujer-asiatica-vestido-lentejuelas-teatro-rojo-luces.jpg',name:'Retrato mujer asiatica vestido lentejuelas teatro ro...',cat:'Belleza'},
+  {id:152,pid:'retrato-mujer-cabello-negro-liso-largo-sosteniendo-fondo-gris.jpg',name:'Retrato mujer cabello negro liso largo sosteniendo f...',cat:'Belleza'},
+  {id:153,pid:'retrato-mujer-cabello-negro-ondulado-mano-menton-fondo-gris.jpg',name:'Retrato mujer cabello negro ondulado mano menton fon...',cat:'Belleza'},
+  {id:154,pid:'retrato-mujer-cabello-negro-ondulado-top-blanco-fondo-gris.jpg',name:'Retrato mujer cabello negro ondulado top blanco fond...',cat:'Belleza'},
+  {id:155,pid:'retrato-mujer-cabello-recogido-ojos-marrones-fondo-gris-limpio.jpg',name:'Retrato mujer cabello recogido ojos marrones fondo g...',cat:'Belleza'},
+  {id:156,pid:'retrato-mujer-cabello-rizado-recogido-top-negro-sonrisa-bokeh.jpg',name:'Retrato mujer cabello rizado recogido top negro sonr...',cat:'Belleza'},
+  {id:157,pid:'retrato-mujer-cabello-rojo-rizado-top-negro-fondo-gris-dram%C3%A1tico.jpg',name:'Retrato mujer cabello rojo rizado top negro fondo gr...',cat:'Belleza'},
+  {id:158,pid:'retrato-mujer-india-sari-naranja-bindi-aretes-dorados-sonrisa.jpg',name:'Retrato mujer india sari naranja bindi aretes dorado...',cat:'Comida'},
+  {id:159,pid:'retrato-mujer-morena-cabello-negro-largo-fondo-beige-belleza.jpg',name:'Retrato mujer morena cabello negro largo fondo beige...',cat:'Belleza'},
+  {id:160,pid:'retrato-mujer-recogido-ojos-verdes-labios-rosa-fondo-gris-sonrisa.jpg',name:'Retrato mujer recogido ojos verdes labios rosa fondo...',cat:'Belleza'},
+  {id:161,pid:'retrato-mujer-rubia-ventana-auto-luz-dorada-atardecer-bokeh.jpg',name:'Retrato mujer rubia ventana auto luz dorada atardece...',cat:'Belleza'},
+  {id:162,pid:'sala-minimalista-sofa-gris-cojines-azules-madera-clara.jpg',name:'Sala minimalista sofa gris cojines azules madera clara',cat:'Varios'},
+  {id:163,pid:'semilla-brotando-tierra-amanecer-cielo-azul-dorado-panoramica.jpg',name:'Semilla brotando tierra amanecer cielo azul dorado p...',cat:'Texturas'},
+  {id:164,pid:'semilla-germinando-tierra-bokeh-dorado-luz-suave-vertical.jpg',name:'Semilla germinando tierra bokeh dorado luz suave ver...',cat:'Naturaleza'},
+  {id:165,pid:'taz%C3%B3n-madera-pasas-negras-albaricoques-naranja-nueces-r%C3%BAstico.jpg',name:'Tazón madera pasas negras albaricoques naranja nuece...',cat:'Comida'},
+  {id:166,pid:'tela-blanca-sedosa-pliegues-ondulada-fluida-elegante.jpg',name:'Tela blanca sedosa pliegues ondulada fluida elegante',cat:'Varios'},
+  {id:167,pid:'textura%20con%20burbujas%204k.jpg',name:'Textura con burbujas 4k',cat:'Texturas'},
+  {id:168,pid:'textura%20de%20hielo%20negro.jpg',name:'Textura de hielo negro',cat:'Texturas'},
+  {id:169,pid:'textura%20de%20madera%204k.jpg',name:'Textura de madera 4k',cat:'Texturas'},
+  {id:170,pid:'textura%20de%20madera%20negra%204k.jpg',name:'Textura de madera negra 4k',cat:'Texturas'},
+  {id:171,pid:'textura%20de%20madera.jpg',name:'Textura de madera',cat:'Texturas'},
+  {id:172,pid:'textura%20negra%20rustica.jpg',name:'Textura negra rustica',cat:'Texturas'},
+  {id:173,pid:'textura%20verde%204k%20(2).jpg',name:'Textura verde 4k (2)',cat:'Texturas'},
+  {id:174,pid:'textura%20verde%204k.jpg',name:'Textura verde 4k',cat:'Texturas'},
+  {id:175,pid:'textura-adoquin-gris-dorado-oxido-suelo.jpg',name:'Textura adoquin gris dorado oxido suelo',cat:'Texturas'},
+  {id:176,pid:'textura-arena-magn%C3%A9tica-chispa-part%C3%ADculas-negro-dorado-azul-humo-explosi%C3%B3n-vertical.jpg',name:'Textura arena magnética chispa partículas negro dora...',cat:'Texturas'},
+  {id:177,pid:'textura-arena-magn%C3%A9tica-dorada-part%C3%ADculas-marr%C3%B3n-negro-dorado-bokeh-olas-brillante-panor%C3%A1mica.jpg',name:'Textura arena magnética dorada partículas marrón neg...',cat:'Texturas'},
+  {id:178,pid:'textura-arenisca-beige-incrustaciones-azul-cyan.jpg',name:'Textura arenisca beige incrustaciones azul cyan',cat:'Texturas'},
+  {id:179,pid:'textura-arenisca-capas-azul-dorado-mineral.jpg',name:'Textura arenisca capas azul dorado mineral',cat:'Texturas'},
+  {id:180,pid:'textura-arenisca-roja-capas-terracota-horizontal.jpg',name:'Textura arenisca roja capas terracota horizontal',cat:'Texturas'},
+  {id:181,pid:'textura-arenisca-roja-erosionada-terracota-vertical.jpg',name:'Textura arenisca roja erosionada terracota vertical',cat:'Texturas'},
+  {id:182,pid:'textura-arrugada-l%C3%A1mina-fina-c%C3%ADrculos-planos-dorado-transl%C3%BAcido-luz-c%C3%A1lida-brillante.jpg',name:'Textura arrugada lámina fina círculos planos dorado ...',cat:'Texturas'},
+  {id:183,pid:'textura-basalto-negro-rugoso-oxido-cenital.jpg',name:'Textura basalto negro rugoso oxido cenital',cat:'Texturas'},
+  {id:184,pid:'textura-basalto-volcanico-gris-fuego-magma.jpg',name:'Textura basalto volcanico gris fuego magma',cat:'Texturas'},
+  {id:185,pid:'textura-basalto-volcanico-negro-poroso-oxido.jpg',name:'Textura basalto volcanico negro poroso oxido',cat:'Texturas'},
+  {id:186,pid:'textura-botella-pl%C3%A1stico-desgastado-rojo-negro-gris-%C3%B3xido-fondo-metal-pelado-urbano.jpg',name:'Textura botella plástico desgastado rojo negro gris ...',cat:'Texturas'},
+  {id:187,pid:'textura-burbujas-celof%C3%A1n-cristalina-amarillo-lim%C3%B3n-transparente-luz-difusa-brillante.jpg',name:'Textura burbujas celofán cristalina amarillo limón t...',cat:'Texturas'},
+  {id:188,pid:'textura-burbujas-dispersas-resina-fluida-olas-sinuosas-naranja-luminoso-verde-oscuro-transl%C3%BAcido.jpg',name:'Textura burbujas dispersas resina fluida olas sinuos...',cat:'Texturas'},
+  {id:189,pid:'textura-burbujas-gruesas-lava-l%C3%ADquida-espiral-vertical-naranja-rojo-verde-lima-fondo-oscuro.jpg',name:'Textura burbujas gruesas lava líquida espiral vertic...',cat:'Texturas'},
+  {id:190,pid:'textura-caliza-beige-porosa-fosil-tierra.jpg',name:'Textura caliza beige porosa fosil tierra',cat:'Texturas'},
+  {id:191,pid:'textura-caliza-blanca-cuencos-porosa-escultorica.jpg',name:'Textura caliza blanca cuencos porosa escultorica',cat:'Texturas'},
+  {id:192,pid:'textura-caliza-crema-hoyos-profundos-sombra.jpg',name:'Textura caliza crema hoyos profundos sombra',cat:'Texturas'},
+  {id:193,pid:'textura-caliza-fosilifero-caracoles-espiral-blanca.jpg',name:'Textura caliza fosilifero caracoles espiral blanca',cat:'Texturas'},
+  {id:194,pid:'textura-caliza-fosilizada-micelio-turquesa-organica.jpg',name:'Textura caliza fosilizada micelio turquesa organica',cat:'Texturas'},
+  {id:195,pid:'textura-caliza-rugosa-poros-musgo-horizontal.jpg',name:'Textura caliza rugosa poros musgo horizontal',cat:'Texturas'},
+  {id:196,pid:'textura-caliza-rugosa-porosa-musgo-cenital.jpg',name:'Textura caliza rugosa porosa musgo cenital',cat:'Texturas'},
+  {id:197,pid:'textura-caliza-rugosa-porosa-musgo-verde.jpg',name:'Textura caliza rugosa porosa musgo verde',cat:'Texturas'},
+  {id:198,pid:'textura-caparaz%C3%B3n-tortuga-escamas-poligonales-marr%C3%B3n-naranja-negro-org%C3%A1nico-geom%C3%A9trico-macro.jpg',name:'Textura caparazón tortuga escamas poligonales marrón...',cat:'Texturas'},
+  {id:199,pid:'textura-cilindro-metal-pintura-pelada-rojo-negro-amarillo-gris-remaches-agrietado-urbano.jpg',name:'Textura cilindro metal pintura pelada rojo negro ama...',cat:'Texturas'},
+  {id:200,pid:'textura-cobre-martillado-hoyuelos-bronce-marr%C3%B3n-verde-p%C3%A1tina-met%C3%A1lico-org%C3%A1nico-macro.jpg',name:'Textura cobre martillado hoyuelos bronce marrón verd...',cat:'Texturas'},
+  {id:201,pid:'textura-concreto-pulido-gris-cuadros-cuadrado.jpg',name:'Textura concreto pulido gris cuadros cuadrado',cat:'Texturas'},
+  {id:202,pid:'textura-concreto-pulido-gris-paneles-vertical.jpg',name:'Textura concreto pulido gris paneles vertical',cat:'Texturas'},
+  {id:203,pid:'textura-concreto-pulido-gris-pebbles-horizontal.jpg',name:'Textura concreto pulido gris pebbles horizontal',cat:'Texturas'},
+  {id:204,pid:'textura-coral-cerebro-surcos-canales-beige-crema-naranja-suave-org%C3%A1nico-ondulado-macro.jpg',name:'Textura coral cerebro surcos canales beige crema nar...',cat:'Texturas'},
+  {id:205,pid:'textura-cornalina-roja-brillante-cristal-facetas.jpg',name:'Textura cornalina roja brillante cristal facetas',cat:'Texturas'},
+  {id:206,pid:'textura-cornalina-roja-cristales-angulares-3d.jpg',name:'Textura cornalina roja cristales angulares 3d',cat:'Texturas'},
+  {id:207,pid:'textura-cornalina-roja-oscura-fracturada-profunda.jpg',name:'Textura cornalina roja oscura fracturada profunda',cat:'Texturas'},
+  {id:208,pid:'textura-cristal-ambar-dorado-mineral-luminoso.jpg',name:'Textura cristal ambar dorado mineral luminoso',cat:'Texturas'},
+  {id:209,pid:'textura-cuarzo-blanco-cristalino-ondulante-horizontal.jpg',name:'Textura cuarzo blanco cristalino ondulante horizontal',cat:'Texturas'},
+  {id:210,pid:'textura-cuarzo-blanco-cristalino-plata-vertical.jpg',name:'Textura cuarzo blanco cristalino plata vertical',cat:'Texturas'},
+  {id:211,pid:'textura-descascarada-metal-quemado-capas-flotantes-negro-intenso-brasa-naranja-carbonizado.jpg',name:'Textura descascarada metal quemado capas flotantes n...',cat:'Texturas'},
+  {id:212,pid:'textura-desgastada-pl%C3%A1stico-mando-joystick-amarillo-turquesa-oxidado-erosionado.jpg',name:'Textura desgastada plástico mando joystick amarillo ...',cat:'Texturas'},
+  {id:213,pid:'textura-dolomita-cristales-blancos-dorado-horizontal.jpg',name:'Textura dolomita cristales blancos dorado horizontal',cat:'Texturas'},
+  {id:214,pid:'textura-dolomita-geoda-cristales-cuarzo-circular.jpg',name:'Textura dolomita geoda cristales cuarzo circular',cat:'Texturas'},
+  {id:215,pid:'textura-erosionada-roca-placas-escalonadas-negro-pizarra-naranja-lava-agrietado.jpg',name:'Textura erosionada roca placas escalonadas negro piz...',cat:'Texturas'},
+  {id:216,pid:'textura-escoria-metal-fundido-remaches-planchas-negro-mate-rojo-naranja-incandescente.jpg',name:'Textura escoria metal fundido remaches planchas negr...',cat:'Texturas'},
+  {id:217,pid:'textura-escoria-volcanica-naranja-cavidades-cenital.jpg',name:'Textura escoria volcanica naranja cavidades cenital',cat:'Texturas'},
+  {id:218,pid:'textura-escoria-volcanica-naranja-gris-horizontal.jpg',name:'Textura escoria volcanica naranja gris horizontal',cat:'Texturas'},
+  {id:219,pid:'textura-escoria-volcanica-roja-porosa-vertical.jpg',name:'Textura escoria volcanica roja porosa vertical',cat:'Texturas'},
+  {id:220,pid:'textura-esf%C3%A9rica-gel-silicona-burbujas-redondas-dorado-c%C3%A1lido-cristalino-luz-refractada.jpg',name:'Textura esférica gel silicona burbujas redondas dora...',cat:'Texturas'},
+  {id:221,pid:'textura-esmeralda-negro-ondulante-dorado-vertical.jpg',name:'Textura esmeralda negro ondulante dorado vertical',cat:'Texturas'},
+  {id:222,pid:'textura-esmeralda-verde-cristal-lava-vertical.jpg',name:'Textura esmeralda verde cristal lava vertical',cat:'Texturas'},
+  {id:223,pid:'textura-esmeralda-verde-oscuro-dorado-cuadrado.jpg',name:'Textura esmeralda verde oscuro dorado cuadrado',cat:'Texturas'},
+  {id:224,pid:'textura-foil-met%C3%A1lico-plisada-magenta-dorado-intenso-verde-teal-arco%C3%ADris.jpg',name:'Textura foil metálico plisada magenta dorado intenso...',cat:'Texturas'},
+  {id:225,pid:'textura-fracturada-hielo-placas-irregulares-cian-helado-blanco-nieve-glacial.jpg',name:'Textura fracturada hielo placas irregulares cian hel...',cat:'Texturas'},
+  {id:226,pid:'textura-glaciar-hielo-cyan-blanco-vertical.jpg',name:'Textura glaciar hielo cyan blanco vertical',cat:'Texturas'},
+  {id:227,pid:'textura-glaciar-hielo-turquesa-dorado-panoramico.jpg',name:'Textura glaciar hielo turquesa dorado panoramico',cat:'Texturas'},
+  {id:228,pid:'textura-gneis-bandeado-espiral-vertical-geologico.jpg',name:'Textura gneis bandeado espiral vertical geologico',cat:'Texturas'},
+  {id:229,pid:'textura-gneis-bandeado-ondulante-gris-dorado.jpg',name:'Textura gneis bandeado ondulante gris dorado',cat:'Texturas'},
+  {id:230,pid:'textura-gotas-agua-grandes-rosa-cian-blanco-bokeh-pastel-refractado-luminoso-et%C3%A9reo.jpg',name:'Textura gotas agua grandes rosa cian blanco bokeh pa...',cat:'Texturas'},
+  {id:231,pid:'textura-gotas-agua-macro-rosa-cian-blanco-bokeh-pastel-brillante-transl%C3%BAcido-suave.jpg',name:'Textura gotas agua macro rosa cian blanco bokeh past...',cat:'Texturas'},
+  {id:232,pid:'textura-gotas-agua-superficie-rosa-turquesa-blanco-bokeh-pastel-panor%C3%A1mica-delicada.jpg',name:'Textura gotas agua superficie rosa turquesa blanco b...',cat:'Texturas'},
+  {id:233,pid:'textura-granito-gris-blanco-negro-venas-doradas.jpg',name:'Textura granito gris blanco negro venas doradas',cat:'Texturas'},
+  {id:234,pid:'textura-granito-gris-ondulante-negro-vertical.jpg',name:'Textura granito gris ondulante negro vertical',cat:'Texturas'},
+  {id:235,pid:'textura-granito-negro-blanco-salpicado-dorado.jpg',name:'Textura granito negro blanco salpicado dorado',cat:'Texturas'},
+  {id:236,pid:'textura-granito-sal-pimienta-blanco-negro-dorado.jpg',name:'Textura granito sal pimienta blanco negro dorado',cat:'Texturas'},
+  {id:237,pid:'textura-granito-sal-pimienta-negro-blanco-vertical.jpg',name:'Textura granito sal pimienta negro blanco vertical',cat:'Texturas'},
+  {id:238,pid:'textura-grietas-hielo-bloques-rotos-turquesa-blanco-polvo-nevado.jpg',name:'Textura grietas hielo bloques rotos turquesa blanco ...',cat:'Texturas'},
+  {id:239,pid:'textura-guijarros-rio-gris-dorado-horizontal.jpg',name:'Textura guijarros rio gris dorado horizontal',cat:'Texturas'},
+  {id:240,pid:'textura-guijarros-rio-redondeados-gris-vertical.jpg',name:'Textura guijarros rio redondeados gris vertical',cat:'Texturas'},
+  {id:241,pid:'textura-hielo-negro-glaciar-fracturado-azul-oscuro-blanco-burbujas-cristalino-panor%C3%A1mica.jpg',name:'Textura hielo negro glaciar fracturado azul oscuro b...',cat:'Texturas'},
+  {id:242,pid:'textura-hielo-negro-glaciar-fracturado-azul-oscuro-blanco-burbujas-estrella-grietas-panor%C3%A1mica.jpg',name:'Textura hielo negro glaciar fracturado azul oscuro b...',cat:'Texturas'},
+  {id:243,pid:'textura-hornfels-rojo-naranja-negro-capas.jpg',name:'Textura hornfels rojo naranja negro capas',cat:'Texturas'},
+  {id:244,pid:'textura-hornfels-terracota-rojo-antracita-fractura.jpg',name:'Textura hornfels terracota rojo antracita fractura',cat:'Texturas'},
+  {id:245,pid:'textura-ladrillo-terracota-artesanal-rojo-mortero.jpg',name:'Textura ladrillo terracota artesanal rojo mortero',cat:'Texturas'},
+  {id:246,pid:'textura-ladrillo-terracota-perspectiva-rustico-calido.jpg',name:'Textura ladrillo terracota perspectiva rustico calido',cat:'Texturas'},
+  {id:247,pid:'textura-lamina-morada-pgamica-colores-plastico-horizontal.jpg',name:'Textura lamina morada pgamica colores plastico horiz...',cat:'Texturas'},
+  {id:248,pid:'textura-lamina-morada-pgamica-colores-plastico.jpg',name:'Textura lamina morada pgamica colores plastico',cat:'Texturas'},
+  {id:249,pid:'textura-marmol-blanco-venas-grises-horizontal.jpg',name:'Textura marmol blanco venas grises horizontal',cat:'Texturas'},
+  {id:250,pid:'textura-marmol-negro-venas-doradas-lujo.jpg',name:'Textura marmol negro venas doradas lujo',cat:'Texturas'},
+  {id:251,pid:'textura-marmol-rosa-crimson-dorado-panoramico.jpg',name:'Textura marmol rosa crimson dorado panoramico',cat:'Texturas'},
+  {id:252,pid:'textura-marmol-rosa-ondulante-blanco-horizontal.jpg',name:'Textura marmol rosa ondulante blanco horizontal',cat:'Texturas'},
+  {id:253,pid:'textura-marmol-rosa-venas-crimson-vertical.jpg',name:'Textura marmol rosa venas crimson vertical',cat:'Texturas'},
+  {id:254,pid:'textura-metal-l%C3%ADquido-mercurio-olas-azul-plata-blanco-brillante-fluido-panor%C3%A1mica.jpg',name:'Textura metal líquido mercurio olas azul plata blanc...',cat:'Texturas'},
+  {id:255,pid:'textura-metal-l%C3%ADquido-mercurio-olas-azul-plata-blanco-brillante-fluido-vertical.jpg',name:'Textura metal líquido mercurio olas azul plata blanc...',cat:'Texturas'},
+  {id:256,pid:'textura-metal-oxidado-rostro-retrato-pintura-pelada-rojo-negro-amarillo-gris-urbano-desgastado.jpg',name:'Textura metal oxidado rostro retrato pintura pelada ...',cat:'Texturas'},
+  {id:257,pid:'textura-mica-esquisto-dorado-brillante-vertical.jpg',name:'Textura mica esquisto dorado brillante vertical',cat:'Texturas'},
+  {id:258,pid:'textura-mica-esquisto-plata-dorado-capas.jpg',name:'Textura mica esquisto plata dorado capas',cat:'Texturas'},
+  {id:259,pid:'textura-microburbujas-gel-fluido-ola-curvada-naranja-%C3%A1mbar-verde-ne%C3%B3n-transl%C3%BAcido-luminoso.jpg',name:'Textura microburbujas gel fluido ola curvada naranja...',cat:'Texturas'},
+  {id:260,pid:'textura-montana-gris-liquen-naranja-horizontal.jpg',name:'Textura montana gris liquen naranja horizontal',cat:'Texturas'},
+  {id:261,pid:'textura-montana-gris-musgo-grietas-cenital.jpg',name:'Textura montana gris musgo grietas cenital',cat:'Texturas'},
+  {id:262,pid:'textura-montana-gris-musgo-verde-vertical.jpg',name:'Textura montana gris musgo verde vertical',cat:'Texturas'},
+  {id:263,pid:'textura-muro-caliza-beige-cincel-rustico.jpg',name:'Textura muro caliza beige cincel rustico',cat:'Texturas'},
+  {id:264,pid:'textura-muro-caliza-tallada-bloques-clasico.jpg',name:'Textura muro caliza tallada bloques clasico',cat:'Texturas'},
+  {id:265,pid:'textura-muro-piedra-seca-musgo-rustico.jpg',name:'Textura muro piedra seca musgo rustico',cat:'Texturas'},
+  {id:266,pid:'textura-nodulos-manganeso-marino-metalico-esferas.jpg',name:'Textura nodulos manganeso marino metalico esferas',cat:'Texturas'},
+  {id:267,pid:'textura-obsidiana-negra-humo-blanco-dorado.jpg',name:'Textura obsidiana negra humo blanco dorado',cat:'Texturas'},
+  {id:268,pid:'textura-obsidiana-negra-volutas-humo-vertical.jpg',name:'Textura obsidiana negra volutas humo vertical',cat:'Texturas'},
+  {id:269,pid:'textura-onix-negro-anillos-concentricos-circular.jpg',name:'Textura onix negro anillos concentricos circular',cat:'Texturas'},
+  {id:270,pid:'textura-%C3%B3nix-negro-vetas-doradas-mineral-negro-azul-oro-brillante-ondulado-vertical.jpg',name:'Textura ónix negro vetas doradas mineral negro azul ...',cat:'Texturas'},
+  {id:271,pid:'textura-%C3%B3nix-negro-vetas-doradas-mineral-negro-gris-oro-brillante-ondulado-panor%C3%A1mica.jpg',name:'Textura ónix negro vetas doradas mineral negro gris ...',cat:'Texturas'},
+  {id:272,pid:'textura-onix-verde-negro-anillos-concentricos.jpg',name:'Textura onix verde negro anillos concentricos',cat:'Texturas'},
+  {id:273,pid:'textura-oxidada-acero-paneles-remachados-gris-carb%C3%B3n-naranja-intenso-corro%C3%ADdo.jpg',name:'Textura oxidada acero paneles remachados gris carbón...',cat:'Texturas'},
+  {id:274,pid:'textura-pedernal-gris-iridicente-fractura-concoidal.jpg',name:'Textura pedernal gris iridicente fractura concoidal',cat:'Texturas'},
+  {id:275,pid:'textura-piedra-agua-gris-dorado-erosionada.jpg',name:'Textura piedra agua gris dorado erosionada',cat:'Texturas'},
+  {id:276,pid:'textura-piedra-azul-marino-dorado-anillos-vertical.jpg',name:'Textura piedra azul marino dorado anillos vertical',cat:'Texturas'},
+  {id:277,pid:'textura-piedra-azul-marino-venas-doradas-horizontal.jpg',name:'Textura piedra azul marino venas doradas horizontal',cat:'Texturas'},
+  {id:278,pid:'textura-piedra-irregular-gris-ocre-oxido.jpg',name:'Textura piedra irregular gris ocre oxido',cat:'Texturas'},
+  {id:279,pid:'textura-piedra-jabon-verde-dorado-horizontal.jpg',name:'Textura piedra jabon verde dorado horizontal',cat:'Texturas'},
+  {id:280,pid:'textura-piedra-jabon-verde-oscuro-ondulante.jpg',name:'Textura piedra jabon verde oscuro ondulante',cat:'Texturas'},
+  {id:281,pid:'textura-piedra-negra-celdas-tubulares-panoramica.jpg',name:'Textura piedra negra celdas tubulares panoramica',cat:'Texturas'},
+  {id:282,pid:'textura-piedra-negra-porosa-cavidades-vertical.jpg',name:'Textura piedra negra porosa cavidades vertical',cat:'Texturas'},
+  {id:283,pid:'textura-piedra-negra-porosa-tubular-horizontal.jpg',name:'Textura piedra negra porosa tubular horizontal',cat:'Texturas'},
+  {id:284,pid:'textura-piedra-oxido-naranja-gris-rugosa.jpg',name:'Textura piedra oxido naranja gris rugosa',cat:'Texturas'},
+  {id:285,pid:'textura-pintura-pelada-hierro-chapa-cuadr%C3%ADcula-paneles-gris-oscuro-naranja-%C3%B3xido-deteriorado.jpg',name:'Textura pintura pelada hierro chapa cuadrícula panel...',cat:'Texturas'},
+  {id:286,pid:'textura-pintura-pelada-metal-chapa-paneles-rojo-gris-naranja-%C3%B3xido-deteriorado-descascarado.jpg',name:'Textura pintura pelada metal chapa paneles rojo gris...',cat:'Texturas'},
+  {id:287,pid:'textura-pizarra-azul-venas-cuarzo-blanco.jpg',name:'Textura pizarra azul venas cuarzo blanco',cat:'Texturas'},
+  {id:288,pid:'textura-pizarra-negra-capas-horizontales-venas.jpg',name:'Textura pizarra negra capas horizontales venas',cat:'Texturas'},
+  {id:289,pid:'textura-pizarra-negra-fracturada-lava-naranja.jpg',name:'Textura pizarra negra fracturada lava naranja',cat:'Texturas'},
+  {id:290,pid:'textura-pizarra-negra-grietas-diagonales-oscura.jpg',name:'Textura pizarra negra grietas diagonales oscura',cat:'Texturas'},
+  {id:291,pid:'textura-pizarra-negra-panoramica-ondulante-mineral.jpg',name:'Textura pizarra negra panoramica ondulante mineral',cat:'Texturas'},
+  {id:292,pid:'textura-plastico-blanco-arrugado-espiral-celofan-plegado-brillante.jpg',name:'Textura plastico blanco arrugado espiral celofan ple...',cat:'Texturas'},
+  {id:293,pid:'textura-pluma-pavo-real-ocelo-azul-verde-dorado-marr%C3%B3n-iridiscente-radial-macro.jpg',name:'Textura pluma pavo real ocelo azul verde dorado marr...',cat:'Texturas'},
+  {id:294,pid:'textura-polvo-estelar-part%C3%ADculas-azul-marino-dorado-bokeh-c%C3%B3smico-olas-brillante-panor%C3%A1mica.jpg',name:'Textura polvo estelar partículas azul marino dorado ...',cat:'Texturas'},
+  {id:295,pid:'textura-poros-fluido-org%C3%A1nico-ondas-multicapa-naranja-c%C3%A1lido-verde-esmeralda-gelatinoso.jpg',name:'Textura poros fluido orgánico ondas multicapa naranj...',cat:'Texturas'},
+  {id:296,pid:'textura-roca-naranja-gris-capas-onduladas-magma-volcanica-dorado.jpg',name:'Textura roca naranja gris capas onduladas magma volc...',cat:'Texturas'},
+  {id:297,pid:'textura-rodocrosita-capas-conc%C3%A9ntricas-rosa-fucsia-blanco-cristal-mineral-ondulado-panor%C3%A1mica.jpg',name:'Textura rodocrosita capas concéntricas rosa fucsia b...',cat:'Texturas'},
+  {id:298,pid:'textura-rodocrosita-capas-conc%C3%A9ntricas-rosa-fucsia-blanco-mineral-ondulado-cristalino-vertical.jpg',name:'Textura rodocrosita capas concéntricas rosa fucsia b...',cat:'Texturas'},
+  {id:299,pid:'textura-splash-l%C3%ADquido-viscoso-corona-salpicada-magenta-naranja-vibrante-morado-fondo-negro.jpg',name:'Textura splash líquido viscoso corona salpicada mage...',cat:'Texturas'},
+  {id:300,pid:'textura-travertino-beige-crema-poroso-vertical.jpg',name:'Textura travertino beige crema poroso vertical',cat:'Texturas'},
+  {id:301,pid:'textura-travertino-blanco-poros-dorado-horizontal.jpg',name:'Textura travertino blanco poros dorado horizontal',cat:'Texturas'},
+  {id:302,pid:'textura-turquesa-piedra-vetas-azul-teal-negro-dorado-mineral-agrietado-panor%C3%A1mica.jpg',name:'Textura turquesa piedra vetas azul teal negro dorado...',cat:'Texturas'},
+  {id:303,pid:'textura-turquesa-piedra-vetas-azul-verdoso-negro-dorado-mineral-agrietado-vertical.jpg',name:'Textura turquesa piedra vetas azul verdoso negro dor...',cat:'Texturas'},
+  {id:304,pid:'tomates-frescos-gotas-agua-albahaca-tabla-madera.jpg',name:'Tomates frescos gotas agua albahaca tabla madera',cat:'Comida'},
+  {id:305,pid:'tomates-rojos-cuenco-barro-cherry-fondo-oscuro.jpg',name:'Tomates rojos cuenco barro cherry fondo oscuro',cat:'Comida'},
+  {id:306,pid:'tomates-rojos-macro-gotas-agua-fondo-negro-cerrado.jpg',name:'Tomates rojos macro gotas agua fondo negro cerrado',cat:'Comida'},
+  {id:307,pid:'vaca-holstein-blanco-negro-retrato-frontal-campo-verde-cielo-azul.jpg',name:'Vaca holstein blanco negro retrato frontal campo ver...',cat:'Belleza'},
+  {id:308,pid:'verduras-frescas-hoja-verde-tomate-pepino-ajo-pimiento.jpg',name:'Verduras frescas hoja verde tomate pepino ajo pimiento',cat:'Comida'},
+  {id:309,pid:'verduras-pimientos-brocoli-tabla-madera-campo-atardecer.jpg',name:'Verduras pimientos brocoli tabla madera campo atardecer',cat:'Comida'},
+  {id:310,pid:'verduras-zanahoria-pepino-pimiento-tomate-tabla-oscuro.jpg',name:'Verduras zanahoria pepino pimiento tomate tabla oscuro',cat:'Comida'},
+  {id:311,pid:'volcan-chocolate-crema-chantilly-canela-salsa-oscuro.jpg',name:'Volcan chocolate crema chantilly canela salsa oscuro',cat:'Varios'},
+  {id:312,pid:'zanahoria-fondo-balnco.png',name:'Zanahoria fondo balnco',cat:'Comida'},
+  {id:313,pid:'zanahorias-apiladas-muchas-fondo-blanco-.png',name:'Zanahorias apiladas muchas fondo blanco',cat:'Comida'},
+  {id:314,pid:'zanahorias-frescas-caja-madera-campo-atardecer-bokeh.jpg',name:'Zanahorias frescas caja madera campo atardecer bokeh',cat:'Comida'},
+  {id:315,pid:'zanahorias-manojo-tabla-madera-rayos-luz-fondo-oscuro.jpg',name:'Zanahorias manojo tabla madera rayos luz fondo oscuro',cat:'Comida'},
+  {id:316,pid:'zanahorias-naranja-tabla-rustica-luz-dorada-horizontal.jpg',name:'Zanahorias naranja tabla rustica luz dorada horizontal',cat:'Comida'}
+];
+
+// ═══════════════════════════════════════════
+// ESTADO
+// ═══════════════════════════════════════════
+var curFilter='Todas', curSearch='', curSort='default';
+var filteredImgs=[], lbIdx=0;
+var PAGE_SIZE=40, curPage=0;
+
+// ═══════════════════════════════════════════
+// LIKES
+// ═══════════════════════════════════════════
+function getLikes(id){return parseInt(localStorage.getItem('lc_'+id)||'0');}
+function getIsLiked(id){return localStorage.getItem('lk_'+id)==='1';}
+function toggleLike(id,btn,badge){
+  var liked=getIsLiked(id),count=getLikes(id);
+  if(liked){count=Math.max(0,count-1);localStorage.setItem('lk_'+id,'0');btn.classList.remove('liked');btn.innerHTML='&#9825;';}
+  else{count++;localStorage.setItem('lk_'+id,'1');btn.classList.add('liked');btn.innerHTML='&#9829;';}
+  localStorage.setItem('lc_'+id,count);
+  if(badge){badge.textContent=count>0?('&#9829; '+count):'';badge.style.display=count>0?'flex':'none';}
+  if(document.getElementById('lb').classList.contains('open')&&filteredImgs[lbIdx]&&filteredImgs[lbIdx].id===id)updateLbLike(id);
+}
+function updateLbLike(id){
+  var liked=getIsLiked(id),count=getLikes(id);
+  var btn=document.getElementById('lbLikeBtn');if(!btn)return;
+  btn.classList.toggle('liked',liked);
+  btn.innerHTML=(liked?'&#9829;':'&#9825;')+' '+count+' Me gusta';
+}
+function toggleLikeLb(){
+  var img=filteredImgs[lbIdx];if(!img)return;
+  var liked=getIsLiked(img.id),count=getLikes(img.id);
+  if(liked){count=Math.max(0,count-1);localStorage.setItem('lk_'+img.id,'0');}
+  else{count++;localStorage.setItem('lk_'+img.id,'1');}
+  localStorage.setItem('lc_'+img.id,count);
+  updateLbLike(img.id);
+  document.querySelectorAll('.card[data-id="'+img.id+'"]').forEach(function(card){
+    var b=card.querySelector('.card-like'),bg=card.querySelector('.card-like-count');
+    if(b){b.classList.toggle('liked',!liked);b.innerHTML=(!liked)?'&#9829;':'&#9825;';}
+    if(bg){bg.textContent=count>0?'&#9829; '+count:'';bg.style.display=count>0?'flex':'none';}
+  });
+}
+
+// ═══════════════════════════════════════════
+// SHUFFLE DIARIO
+// ═══════════════════════════════════════════
+function getDailySeed(){var d=new Date();return d.getFullYear()*10000+(d.getMonth()+1)*100+d.getDate();}
+function seedShuffle(arr,seed){
+  var a=arr.slice();
+  for(var i=a.length-1;i>0;i--){seed=(seed*1664525+1013904223)&0xffffffff;var j=Math.abs(seed)%(i+1);var t=a[i];a[i]=a[j];a[j]=t;}
+  return a;
+}
+
+// ═══════════════════════════════════════════
+// FILTRADO
+// ═══════════════════════════════════════════
+function getFiltered(){
+  var SYN={'rojo':['naranja','lava','magenta','crimson','coral','rosa'],'azul':['cyan','turquesa','marino','celeste','hielo','glaciar'],'verde':['esmeralda','jade','teal','menta'],'negro':['oscuro','carbon','antracita','noche'],'blanco':['claro','luminoso','nieve'],'dorado':['oro','bronce','ambar'],'piedra':['mineral','roca','caliza','granito','marmol'],'agua':['liquido','fluido','gotas'],'metal':['acero','hierro','cobre','oxidado']};
+  var terms=[];
+  if(curSearch){
+    var words=curSearch.toLowerCase().split(' ').filter(function(w){return w.length>0;});
+    var set={};
+    words.forEach(function(w){set[w]=1;});
+    words.forEach(function(w){Object.keys(SYN).forEach(function(k){if(k===w||SYN[k].indexOf(w)>=0){set[k]=1;SYN[k].forEach(function(s){set[s]=1;});}});});
+    terms=Object.keys(set);
+  }
+  var base=imgs.filter(function(i){
+    var mc=(curFilter==='Todas'||i.cat===curFilter);
+    var ms=!curSearch||terms.some(function(t){return(i.name+' '+i.cat).toLowerCase().indexOf(t)>=0;});
+    return mc&&ms;
+  });
+  if(curSort==='az')return base.sort(function(a,b){return a.name.localeCompare(b.name);});
+  if(curSort==='za')return base.sort(function(a,b){return b.name.localeCompare(a.name);});
+  if(curSort==='liked')return base.sort(function(a,b){return getLikes(b.id)-getLikes(a.id);});
+  var seed=getDailySeed();
+  var groups={};
+  base.forEach(function(i){if(!groups[i.cat])groups[i.cat]=[];groups[i.cat].push(i);});
+  var cats=seedShuffle(Object.keys(groups),seed+999);
+  cats.forEach(function(c){groups[c]=seedShuffle(groups[c],seed+c.charCodeAt(0));});
+  var out=[],mx=0;
+  cats.forEach(function(c){if(groups[c].length>mx)mx=groups[c].length;});
+  for(var i=0;i<mx;i++)cats.forEach(function(c){if(groups[c][i])out.push(groups[c][i]);});
+  return out;
+}
+function doSearch(){curSearch=document.getElementById('searchInput').value;curPage=0;render();}
+function setFilter(cat,btn){
+  curFilter=cat;
+  document.querySelectorAll('.cat-pill').forEach(function(b){b.classList.remove('active');});
+  if(btn)btn.classList.add('active');
+  document.getElementById('searchInput').value='';curSearch='';curPage=0;render();
+  document.getElementById('texBanner').style.display=(cat==='Texturas')?'flex':'none';
+}
+function setSort(v){curSort=v;curPage=0;render();}
+
+// ═══════════════════════════════════════════
+// MASONRY
+// ═══════════════════════════════════════════
+var GAP=8,_mt2=null;
+function getCols(){var w=window.innerWidth;if(w<=480)return 2;if(w<=768)return 3;if(w<=1100)return 4;return 5;}
+function layoutMasonry(){
+  var grid=document.getElementById('grid');if(!grid)return;
+  var cards=Array.from(grid.querySelectorAll('.card')).filter(function(c){return c.style.display!=='none';});
+  if(!cards.length){grid.style.height='0';return;}
+  var cols=getCols(),tw=grid.offsetWidth;
+  var cw=Math.floor((tw-(cols-1)*GAP)/cols);
+  var ch=[];for(var c=0;c<cols;c++)ch.push(0);
+  cards.forEach(function(card){
+    card.style.width=cw+'px';
+    var min=ch[0],col=0;for(var x=1;x<cols;x++){if(ch[x]<min){min=ch[x];col=x;}}
+    card.style.left=col*(cw+GAP)+'px';card.style.top=min+'px';
+    ch[col]+=card.offsetHeight+GAP;
+  });
+  var mx=ch[0];for(var x=1;x<cols;x++){if(ch[x]>mx)mx=ch[x];}
+  grid.style.height=(mx-GAP)+'px';
+}
+function sched(){clearTimeout(_mt2);_mt2=setTimeout(layoutMasonry,45);}
+window.addEventListener('resize',sched);
+
+// ═══════════════════════════════════════════
+// INTERSECTION OBSERVER (lazy load)
+// ═══════════════════════════════════════════
+var _obs=('IntersectionObserver' in window)?new IntersectionObserver(function(entries){
+  entries.forEach(function(e){
+    if(!e.isIntersecting)return;
+    var img=e.target.querySelector('img[data-src]');
+    if(img){img.src=img.getAttribute('data-src');img.removeAttribute('data-src');}
+    _obs.unobserve(e.target);
+  });
+},{rootMargin:'250px 0px',threshold:.01}):null;
+
+// ═══════════════════════════════════════════
+// RENDER
+// ═══════════════════════════════════════════
+function render(){
+  filteredImgs=getFiltered();
+  var grid=document.getElementById('grid');
+  var total=filteredImgs.length;
+  document.getElementById('gCount').innerHTML=
+    'Mostrando <span>'+Math.min((curPage+1)*PAGE_SIZE,total)+'</span> de <span>'+total+'</span> imágenes';
+  if(curPage===0){
+    if(_obs)try{_obs.disconnect();}catch(e){}
+    grid.innerHTML='';grid.style.height='0';
+  }
+  if(!total){
+    grid.innerHTML='<div class="no-results"><div class="no-results-ico">&#128269;</div><h3>Sin resultados</h3><p>Prueba otra búsqueda</p></div>';
+    grid.style.height='auto';
+    document.getElementById('lmWrap').style.display='none';return;
+  }
+  var frag=document.createDocumentFragment();
+  var start=curPage*PAGE_SIZE, end=Math.min(start+PAGE_SIZE,total);
+  for(var idx=start;idx<end;idx++){
+    (function(img,idx){
+      var card=document.createElement('div');
+      card.className='card';card.setAttribute('data-id',img.id);
+      var isFruta=(img.cat==='Comida');
+      card.style.setProperty('--card-bg',isFruta?'#ffffff':'var(--bg2)');
+      card.onclick=function(){openLb(idx);};
+
+      var im=document.createElement('img');
+      im.alt=img.name;im.className='loading';im.loading='lazy';im.decoding='async';
+      im.onload=function(){
+        this.classList.remove('loading');this.classList.add('loaded');
+        this.parentElement.classList.add('ready');sched();
+      };
+      im.onerror=function(){this.parentElement.style.display='none';sched();};
+
+      if(_obs){im.setAttribute('data-src',THUMB+img.pid);}
+      else{im.src=THUMB+img.pid;}
+
+      var lc=getLikes(img.id);
+      var badge=document.createElement('div');badge.className='card-like-count';
+      badge.style.display=lc>0?'flex':'none';badge.innerHTML=lc>0?('&#9829; '+lc):'';
+
+      var isLiked=getIsLiked(img.id);
+      var likebtn=document.createElement('button');likebtn.className='card-like'+(isLiked?' liked':'');
+      likebtn.innerHTML=isLiked?'&#9829;':'&#9825;';likebtn.title='Me gusta';
+      likebtn.onclick=function(e){e.stopPropagation();toggleLike(img.id,this,badge);};
+
+      if(img.cat==='Texturas'){
+        var tb=document.createElement('div');tb.className='card-tex-badge';tb.textContent='Textura';
+        card.appendChild(tb);
+      }
+
+      var ov=document.createElement('div');ov.className='card-ov';
+      ov.innerHTML='<div class="card-name">'+img.name+'</div><div class="card-cat">'+img.cat+'</div>';
+
+      card.appendChild(im);card.appendChild(badge);card.appendChild(likebtn);card.appendChild(ov);
+      frag.appendChild(card);
+      if(_obs)_obs.observe(card);
+    })(filteredImgs[idx],idx);
+  }
+  grid.appendChild(frag);
+  sched();
+  document.getElementById('lmWrap').style.display=end<total?'block':'none';
+}
+function loadMore(){curPage++;render();}
+
+// ═══════════════════════════════════════════
+// LIGHTBOX
+// ═══════════════════════════════════════════
+function openLb(idx){
+  lbIdx=idx;
+  document.getElementById('lb').classList.add('open');
+  document.body.style.overflow='hidden';
+  loadLb(filteredImgs[idx]);
+}
+function loadLb(img){
+  var lbImg=document.getElementById('lbImg'),spin=document.getElementById('lbSpin');
+  lbImg.style.display='none';lbImg.src='';spin.style.display='block';
+  document.getElementById('lbTitle').textContent=img.name;
+  document.getElementById('lbCat').textContent=img.cat;
+  document.getElementById('lbDims').textContent='Cargando...';
+  document.getElementById('lbFmt').textContent=img.pid.split('.').pop().toUpperCase();
+  updateLbLike(img.id);
+  var dl=document.getElementById('lbDl');
+  dl.href=FULL+img.pid;dl.setAttribute('download',img.name.replace(/\s+/g,'_')+'.jpg');
+  var tmp=new Image();
+  tmp.onload=function(){
+    lbImg.src=tmp.src;lbImg.style.display='block';spin.style.display='none';
+    document.getElementById('lbDims').textContent=tmp.naturalWidth+' × '+tmp.naturalHeight+' px';
+  };
+  tmp.onerror=function(){lbImg.src=THUMB+img.pid;lbImg.style.display='block';spin.style.display='none';};
+  tmp.src=FULL+img.pid;
+}
+function closeLb(){
+  document.getElementById('lb').classList.remove('open');
+  document.body.style.overflow='auto';
+  document.getElementById('lbImg').src='';
+}
+function navLb(dir){lbIdx=(lbIdx+dir+filteredImgs.length)%filteredImgs.length;loadLb(filteredImgs[lbIdx]);}
+document.addEventListener('keydown',function(e){
+  if(!document.getElementById('lb').classList.contains('open'))return;
+  if(e.key==='Escape')closeLb();
+  if(e.key==='ArrowRight')navLb(1);
+  if(e.key==='ArrowLeft')navLb(-1);
+});
+
+// ═══════════════════════════════════════════
+// NAVEGACIÓN
+// ═══════════════════════════════════════════
+function goToGallery(filter){
+  var ov=document.getElementById('tOverlay');
+  ov.classList.add('in');
+  setTimeout(function(){
+    document.getElementById('pg-inicio').style.display='none';
+    document.getElementById('pg-galeria').style.display='block';
+    document.body.classList.remove('inicio-mode');
+    document.body.classList.add('galeria-mode');
+    window.scrollTo(0,0);
+    _canvasOn=false;
+    ov.classList.remove('in');ov.classList.add('out');
+    setTimeout(function(){ov.classList.remove('out');},500);
+    if(filter){
+      var pill=Array.from(document.querySelectorAll('.cat-pill')).find(function(p){return p.textContent.includes(filter);});
+      setFilter(filter,pill);
+    } else {
+      var accepted=false;try{accepted=sessionStorage.getItem('fb_terms')==='1';}catch(e){}
+      render();
+      if(!accepted)setTimeout(function(){document.getElementById('termsOverlay').classList.remove('hidden');},6000);
+    }
+  },480);
+}
+function backToHome(){
+  document.getElementById('pg-galeria').style.display='none';
+  document.getElementById('pg-inicio').style.display='block';
+  document.body.classList.remove('galeria-mode');
+  document.body.classList.add('inicio-mode');
+  document.body.style.overflow='';
+  _canvasOn=true;drawCanvas();
+}
+
+// ═══════════════════════════════════════════
+// TÉRMINOS
+// ═══════════════════════════════════════════
+function toggleTermsBody(){
+  var b=document.getElementById('termsBody');b.classList.toggle('open');
+}
+function acceptTerms(){
+  document.getElementById('termsOverlay').classList.add('hidden');
+  try{sessionStorage.setItem('fb_terms','1');}catch(e){}
+}
+function declineTerms(){
+  document.getElementById('termsOverlay').classList.add('hidden');
+  document.getElementById('blockedScreen').classList.add('show');
+}
+function showTermsAgain(){
+  document.getElementById('blockedScreen').classList.remove('show');
+  document.getElementById('termsOverlay').classList.remove('hidden');
+}
+
+// ═══════════════════════════════════════════
+// TOAST
+// ═══════════════════════════════════════════
+function showToast(msg){
+  var t=document.getElementById('toast');t.textContent=msg;t.classList.add('show');
+  setTimeout(function(){t.classList.remove('show');},3000);
+}
+
+document.getElementById('termsOverlay').classList.add('hidden');
+</script>
+</body>
+</html>
