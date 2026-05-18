@@ -4,10 +4,11 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1.0">
 <meta name="theme-color" content="#0a0a0f">
-<meta name="description" content="FondoBlanco — banco de imágenes gratis. Texturas, frutas, naturaleza y más. Sin registro.">
+<meta name="description" content="FondoBlanco — banco de imágenes gratis. Texturas de mármol, ágata, lava, cerámica kintsugi, cuarzo, estuco, papel dorado, pintura abstracta y más. Sin registro.">
+<meta name="keywords" content="mármol, kintsugi, cerámica, turquesa, cuarzo, cristal, rosa, lava, volcán, nieve, ondas, pintura, acrílico, abstracto, dorado, oro, papel, burbujas, gel, 3D, relieve, textura, piedra, lujo, fondo, wallpaper, gema, elegante, premium, minimalista, naturaleza, expresionismo">
 <link rel="dns-prefetch" href="https://fondoblanco.b-cdn.net">
 <link rel="preconnect" href="https://fondoblanco.b-cdn.net" crossorigin>
-<title>FondoBlanco · Banco de imágenes gratis</title>
+<title>Texturas de mármol, ágata y estuco · FondoBlanco</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="preload" href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=Inter:wght@300;400;500;600&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
@@ -89,17 +90,15 @@ body.galeria-mode{overflow:auto;}
 /* Mosaico fondo */
 .mosaic-bg{
   position:absolute;inset:0;z-index:1;
-  display:grid;
-  grid-template-columns:repeat(5,1fr);
-  grid-template-rows:repeat(3,1fr);
-  gap:2px;overflow:hidden;pointer-events:none;
+  background:url('https://fondoblanco.b-cdn.net/fondoblanco.co/fondowebp.webp') center center / cover no-repeat;
+  opacity:0;
+  animation:bgFadeIn 2.8s ease forwards;
+  overflow:hidden;pointer-events:none;
 }
-.mosaic-bg img{
-  width:100%;height:100%;object-fit:cover;
-  opacity:0;transition:opacity 1.6s ease;
-  filter:brightness(.28) saturate(1.3);
+@keyframes bgFadeIn{
+  0%{opacity:0;}
+  100%{opacity:.38;}
 }
-.mosaic-bg img.vis{opacity:1;}
 .mosaic-bg::after{
   content:'';position:absolute;inset:0;z-index:2;pointer-events:none;
   background:
@@ -551,6 +550,8 @@ body.galeria-mode{overflow:auto;}
   display:block;
 }
 .lb-title{font-family:'Syne',sans-serif;font-size:1rem;font-weight:700;color:var(--text);line-height:1.4;}
+.lb-tags{display:flex;flex-wrap:wrap;gap:5px;margin-top:6px;}
+.lb-tag{font-size:.6rem;padding:3px 9px;border-radius:100px;background:color-mix(in srgb,var(--accent) 10%,transparent);border:1px solid color-mix(in srgb,var(--accent) 25%,transparent);color:var(--accent2);font-family:'Inter',sans-serif;letter-spacing:.5px;}
 .lb-divider{height:1px;background:var(--border);}
 .lb-spec{display:flex;flex-direction:column;gap:3px;}
 .lb-spec-label{font-size:.62rem;letter-spacing:1.2px;text-transform:uppercase;color:var(--muted);}
@@ -603,56 +604,153 @@ body.galeria-mode{overflow:auto;}
 }
 
 /* ═══════════════════════════════════════
-   TÉRMINOS MODAL
+   SEO TOOLTIP FLOTANTE EN CARDS
+   ═══════════════════════════════════════ */
+.card-seo-tip{
+  position:absolute;bottom:0;left:0;right:0;
+  background:linear-gradient(to top,rgba(0,0,0,.93) 0%,rgba(0,0,0,.65) 65%,transparent 100%);
+  padding:40px 10px 10px;
+  opacity:0;pointer-events:none;
+  transition:opacity .22s;z-index:6;
+}
+.card:hover .card-seo-tip{opacity:1;}
+.card-seo-title{font-family:'Syne',sans-serif;font-size:.68rem;font-weight:700;color:#fff;line-height:1.3;margin-bottom:4px;}
+.card-seo-alt{font-size:.55rem;color:rgba(255,255,255,.55);line-height:1.4;margin-bottom:5px;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;}
+.card-seo-tags{display:flex;flex-wrap:wrap;gap:3px;}
+.card-seo-tag{font-size:.48rem;padding:2px 5px;border-radius:4px;background:color-mix(in srgb,var(--accent) 22%,transparent);color:var(--accent2);border:1px solid color-mix(in srgb,var(--accent) 30%,transparent);letter-spacing:.3px;}
+
+/* ═══════════════════════════════════════
+   TÉRMINOS — BARRA INFERIOR DESPLEGABLE
    ═══════════════════════════════════════ */
 .terms-overlay{
-  position:fixed;inset:0;z-index:8000;
-  background:rgba(0,0,0,.85);backdrop-filter:blur(8px);
-  display:flex;align-items:center;justify-content:center;padding:20px;
+  position:fixed;bottom:0;left:0;right:0;z-index:8000;
+  display:flex;flex-direction:column;
+  transform:translateY(100%);
+  transition:transform .45s cubic-bezier(.4,0,.2,1);
 }
-.terms-overlay.hidden{display:none;}
-.terms-box{
-  background:var(--bg2);border:1px solid var(--border);
-  border-radius:20px;max-width:600px;width:100%;
-  max-height:88vh;overflow-y:auto;padding:36px;
-  box-shadow:0 40px 100px rgba(0,0,0,.7);
+.terms-overlay.visible{transform:translateY(0);}
+.terms-overlay.hidden{transform:translateY(100%);}
+/* Capa que bloquea toda interacción con la galería */
+.terms-block-layer{
+  position:fixed;inset:0;bottom:0;z-index:7999;
+  background:rgba(0,0,0,.45);
+  backdrop-filter:blur(2px);
+  pointer-events:all;
+  display:none;
+  cursor:not-allowed;
 }
-.terms-logo-row{display:flex;align-items:center;gap:12px;margin-bottom:20px;}
-.terms-title{font-family:'Syne',sans-serif;font-size:1.5rem;font-weight:800;margin-bottom:6px;}
-.terms-subtitle{font-size:.82rem;color:var(--muted2);margin-bottom:20px;}
-.terms-toggle{
-  display:inline-flex;align-items:center;gap:6px;
-  font-size:.78rem;color:var(--accent);cursor:pointer;
-  background:rgba(124,77,255,.08);border:1px solid rgba(124,77,255,.2);
-  padding:6px 14px;border-radius:8px;margin-bottom:16px;transition:all .2s;
+.terms-block-layer.active{display:block;}
+.terms-bar{
+  background:var(--bg2);border-top:2px solid var(--accent);
+  display:flex;align-items:center;justify-content:space-between;
+  padding:10px 20px;gap:12px;flex-wrap:wrap;
+  box-shadow:0 -6px 30px rgba(0,0,0,.55);
 }
-.terms-toggle:hover{background:rgba(124,77,255,.16);}
-.terms-body{display:none;}
-.terms-body.open{display:block;}
-.terms-section{margin-bottom:18px;}
-.terms-section h3{font-family:'Syne',sans-serif;font-size:.92rem;font-weight:700;margin-bottom:8px;color:var(--text);}
-.terms-section p,.terms-section li{font-size:.8rem;color:var(--muted2);line-height:1.7;}
-.terms-section ul{padding-left:18px;}
+.terms-bar-left{display:flex;align-items:center;gap:10px;flex:1;min-width:0;}
+.terms-bar-icon{width:26px;height:26px;flex-shrink:0;color:var(--accent);}
+.terms-bar-text{font-size:.76rem;color:var(--muted2);line-height:1.4;}
+.terms-bar-text strong{color:var(--text);font-family:'Syne',sans-serif;}
+.terms-bar-actions{display:flex;align-items:center;gap:8px;flex-shrink:0;flex-wrap:wrap;}
+.terms-bar-check-wrap{
+  display:flex;align-items:center;gap:6px;cursor:pointer;
+  padding:5px 10px;border-radius:8px;
+  border:1px solid color-mix(in srgb,var(--accent) 30%,transparent);
+  background:color-mix(in srgb,var(--accent) 6%,transparent);
+  transition:background .18s;white-space:nowrap;
+}
+.terms-bar-check-wrap:hover{background:color-mix(in srgb,var(--accent) 14%,transparent);}
+.terms-bar-check-wrap input[type="checkbox"]{
+  width:16px;height:16px;accent-color:var(--accent);cursor:pointer;flex-shrink:0;
+}
+.terms-bar-check-label{font-size:.72rem;color:var(--accent2);font-weight:500;font-family:'Inter',sans-serif;}
+.terms-expand-btn{
+  display:inline-flex;align-items:center;gap:5px;
+  font-size:.72rem;color:var(--accent);cursor:pointer;
+  background:color-mix(in srgb,var(--accent) 8%,transparent);
+  border:1px solid color-mix(in srgb,var(--accent) 25%,transparent);
+  padding:5px 12px;border-radius:8px;transition:all .2s;font-family:'Inter',sans-serif;font-weight:500;
+  white-space:nowrap;
+}
+.terms-expand-btn:hover{background:color-mix(in srgb,var(--accent) 16%,transparent);}
+.terms-expand-btn .arrow{transition:transform .3s;display:inline-block;}
+.terms-expand-btn.open .arrow{transform:rotate(180deg);}
+.terms-body-wrap{
+  background:var(--bg2);border-top:1px solid var(--border);
+  max-height:0;overflow:hidden;
+  transition:max-height .4s cubic-bezier(.4,0,.2,1);
+}
+.terms-body-wrap.open{max-height:55vh;}
+.terms-body-inner{padding:18px 24px;overflow-y:auto;max-height:55vh;}
+.terms-logo-row{display:flex;align-items:center;gap:10px;margin-bottom:12px;}
+.terms-title{font-family:'Syne',sans-serif;font-size:1rem;font-weight:800;margin-bottom:4px;}
+.terms-subtitle{font-size:.76rem;color:var(--muted2);margin-bottom:12px;}
+.terms-highlight{background:color-mix(in srgb,var(--accent) 8%,transparent);border:1px solid rgba(124,77,255,.15);border-radius:10px;padding:12px;margin-bottom:12px;font-size:.76rem;color:var(--muted2);line-height:1.6;}
+.terms-section{margin-bottom:12px;}
+.terms-section h3{font-family:'Syne',sans-serif;font-size:.84rem;font-weight:700;margin-bottom:6px;color:var(--text);}
+.terms-section p,.terms-section li{font-size:.75rem;color:var(--muted2);line-height:1.7;}
+.terms-section ul{padding-left:16px;}
 .terms-section a{color:var(--accent);}
-.terms-highlight{background:color-mix(in srgb,var(--accent) 8%,transparent);border:1px solid rgba(124,77,255,.15);border-radius:10px;padding:14px;margin-bottom:16px;font-size:.8rem;color:var(--muted2);line-height:1.6;}
-.terms-check-row{display:flex;align-items:flex-start;gap:10px;margin:20px 0;}
-.terms-check-row input{width:16px;height:16px;accent-color:var(--accent);flex-shrink:0;margin-top:2px;cursor:pointer;}
-.terms-check-row label{font-size:.8rem;color:var(--muted2);cursor:pointer;}
-.terms-btns{display:flex;gap:10px;}
+.terms-check-row{display:flex;align-items:flex-start;gap:10px;margin:14px 0 10px;}
+.terms-check-row input{width:15px;height:15px;accent-color:var(--accent);flex-shrink:0;margin-top:2px;cursor:pointer;}
+.terms-check-row label{font-size:.76rem;color:var(--muted2);cursor:pointer;line-height:1.5;}
+.terms-btns{display:flex;gap:8px;}
 .terms-accept{
-  flex:1;padding:12px;border-radius:10px;border:none;
+  flex:1;padding:10px;border-radius:8px;border:none;
   background:var(--accent);color:#fff;
-  font-family:'Syne',sans-serif;font-size:.88rem;font-weight:700;
+  font-family:'Syne',sans-serif;font-size:.84rem;font-weight:700;
   cursor:pointer;transition:all .2s;opacity:.4;
 }
 .terms-accept:not(:disabled){opacity:1;}
 .terms-accept:hover:not(:disabled){opacity:.88;}
 .terms-decline{
-  padding:12px 20px;border-radius:10px;border:1px solid var(--border);
+  padding:10px 16px;border-radius:8px;border:1px solid var(--border);
   background:transparent;color:var(--muted2);
-  font-family:'Inter',sans-serif;font-size:.82rem;cursor:pointer;transition:all .2s;
+  font-family:'Inter',sans-serif;font-size:.78rem;cursor:pointer;transition:all .2s;
 }
 .terms-decline:hover{border-color:var(--accent);color:var(--text);}
+
+/* ═══════════════════════════════════════
+   QUIÉNES SOMOS
+   ═══════════════════════════════════════ */
+.about-section{
+  margin:0 24px 32px;
+  border:1px solid var(--border);border-radius:16px;
+  overflow:hidden;
+  background:linear-gradient(135deg,var(--bg2) 0%,var(--bg3) 100%);
+}
+.about-header{
+  display:flex;align-items:center;justify-content:space-between;
+  padding:16px 22px;cursor:pointer;user-select:none;gap:12px;
+}
+.about-header:hover{background:rgba(255,255,255,.02);}
+.about-header-left{display:flex;align-items:center;gap:12px;}
+.about-header-icon{
+  width:36px;height:36px;border-radius:10px;
+  background:color-mix(in srgb,var(--accent) 12%,transparent);
+  border:1px solid color-mix(in srgb,var(--accent) 22%,transparent);
+  display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:1rem;
+}
+.about-header-title{font-family:'Syne',sans-serif;font-size:.92rem;font-weight:700;color:var(--text);}
+.about-header-sub{font-size:.7rem;color:var(--muted2);margin-top:2px;}
+.about-toggle-arrow{color:var(--muted2);font-size:.75rem;transition:transform .3s;flex-shrink:0;}
+.about-toggle-arrow.open{transform:rotate(180deg);}
+.about-body{max-height:0;overflow:hidden;transition:max-height .45s cubic-bezier(.4,0,.2,1);}
+.about-body.open{max-height:900px;}
+.about-intro{padding:0 22px 16px;border-bottom:1px solid var(--border);margin-bottom:16px;}
+.about-intro p{font-size:.8rem;color:var(--muted2);line-height:1.8;margin-bottom:8px;}
+.about-intro p:last-child{margin-bottom:0;}
+.about-stats-row{display:flex;gap:0;border-bottom:1px solid var(--border);margin-bottom:16px;}
+.about-stat{flex:1;text-align:center;padding:12px 8px;border-right:1px solid var(--border);}
+.about-stat:last-child{border-right:none;}
+.about-stat-n{font-family:'Syne',sans-serif;font-size:1.3rem;font-weight:800;color:var(--accent);}
+.about-stat-l{font-size:.58rem;letter-spacing:1px;text-transform:uppercase;color:var(--muted2);margin-top:2px;}
+.about-cards{display:grid;grid-template-columns:1fr 1fr;gap:14px;padding:0 22px 22px;}
+@media(max-width:640px){.about-cards{grid-template-columns:1fr;}}
+.about-card{background:var(--bg);border:1px solid var(--border);border-radius:12px;padding:16px;transition:border-color .2s;}
+.about-card:hover{border-color:var(--border2);}
+.about-card-icon{font-size:1.3rem;margin-bottom:8px;}
+.about-card-title{font-family:'Syne',sans-serif;font-size:.84rem;font-weight:700;color:var(--text);margin-bottom:5px;}
+.about-card-text{font-size:.74rem;color:var(--muted2);line-height:1.7;}
 
 /* BLOCKED */
 .blocked{
@@ -703,6 +801,9 @@ body.galeria-mode{overflow:auto;}
   .g-main{padding:16px 12px 48px;}
   .tex-hero{padding:20px;}
   .lb-prev,.lb-next{display:none;}
+  .terms-bar{flex-direction:column;align-items:flex-start;gap:8px;padding:10px 14px;}
+  .terms-bar-actions{width:100%;justify-content:flex-end;}
+  .terms-bar-left{flex-wrap:wrap;}
 }
 </style>
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4766990013673854"
@@ -718,23 +819,7 @@ body.galeria-mode{overflow:auto;}
      ═══════════════════════════════ -->
 <div id="pg-inicio">
   <canvas id="bgCanvas"></canvas>
-  <div class="mosaic-bg" id="heroMosaic">
-    <img data-src="https://fondoblanco.b-cdn.net/textura-pizarra-negra-fracturada-lava-naranja.jpg" alt="" fetchpriority="high">
-    <img data-src="https://fondoblanco.b-cdn.net/textura-marmol-negro-vetas-doradas-lujo.jpg" alt="" fetchpriority="high">
-    <img data-src="https://fondoblanco.b-cdn.net/textura-foil-met%C3%A1lico-plisada-magenta-dorado-intenso-verde-teal-arco%C3%ADris.jpg" alt="" fetchpriority="high">
-    <img data-src="https://fondoblanco.b-cdn.net/textura-granito-negro-blanco-salpicado-dorado.jpg" alt="" loading="lazy">
-    <img data-src="https://fondoblanco.b-cdn.net/textura-%C3%B3nix-negro-vetas-doradas-mineral-negro-azul-oro-brillante-ondulado-vertical.jpg" alt="" loading="lazy">
-    <img data-src="https://fondoblanco.b-cdn.net/textura-splash-l%C3%ADquido-viscoso-corona-salpicada-magenta-naranja-vibrante-morado-fondo-negro.jpg" alt="" loading="lazy">
-    <img data-src="https://fondoblanco.b-cdn.net/textura-metal-l%C3%ADquido-mercurio-olas-azul-plata-blanco-brillante-fluido-panor%C3%A1mica.jpg" alt="" loading="lazy">
-    <img data-src="https://fondoblanco.b-cdn.net/textura-esmeralda-verde-cristal-lava-vertical.jpg" alt="" loading="lazy">
-    <img data-src="https://fondoblanco.b-cdn.net/textura-cornalina-roja-brillante-cristal-facetas.jpg" alt="" loading="lazy">
-    <img data-src="https://fondoblanco.b-cdn.net/textura-hielo-negro-glaciar-fracturado-azul-oscuro-blanco-burbujas-estrella-grietas-panor%C3%A1mica.jpg" alt="" loading="lazy">
-    <img data-src="https://fondoblanco.b-cdn.net/textura-polvo-estelar-part%C3%ADculas-azul-marino-dorado-bokeh-c%C3%B3smico-olas-brillante-panor%C3%A1mica.jpg" alt="" loading="lazy">
-    <img data-src="https://fondoblanco.b-cdn.net/textura-microburbujas-gel-fluido-ola-curvada-naranja-%C3%A1mbar-verde-ne%C3%B3n-transl%C3%BAcido-luminoso.jpg" alt="" loading="lazy">
-    <img data-src="https://fondoblanco.b-cdn.net/textura-travertino-blanco-poros-dorado-horizontal.jpg" alt="" loading="lazy">
-    <img data-src="https://fondoblanco.b-cdn.net/textura-pluma-pavo-real-ocelo-azul-verde-dorado-marr%C3%B3n-iridiscente-radial-macro.jpg" alt="" loading="lazy">
-    <img data-src="https://fondoblanco.b-cdn.net/textura-rodocrosita-capas-conc%C3%A9ntricas-rosa-fucsia-blanco-cristal-mineral-ondulado-panor%C3%A1mica.jpg" alt="" loading="lazy">
-  </div>
+  <div class="mosaic-bg" id="heroMosaic"></div>
 
   <nav class="inicio-nav">
     <a class="logo" href="#">
@@ -908,14 +993,15 @@ body.galeria-mode{overflow:auto;}
       <div class="lb-panel">
         <div class="lb-cat-badge" id="lbCat">—</div>
         <div class="lb-title" id="lbTitle">—</div>
+        <div class="lb-tags" id="lbTags"></div>
         <div class="lb-divider"></div>
         <div class="lb-spec"><div class="lb-spec-label">Dimensiones</div><div class="lb-spec-value" id="lbDims">—</div></div>
         <div class="lb-spec"><div class="lb-spec-label">Formato</div><div class="lb-spec-value" id="lbFmt">—</div></div>
         <div class="lb-divider"></div>
-        <a class="lb-dl" id="lbDl" href="#" download>
+        <button class="lb-dl" id="lbDl" onclick="triggerDownload()">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
           Descargar gratis
-        </a>
+        </button>
         <div class="lb-free">&#10003; Sin registro · Sin costo · Descarga libre</div>
         <button class="lb-like-btn" id="lbLikeBtn" onclick="toggleLikeLb()">&#9825; 0 Me gusta</button>
 
@@ -937,23 +1023,89 @@ body.galeria-mode{overflow:auto;}
     </div>
   </div>
 
-  <!-- Términos -->
+  <!-- ═══ QUIÉNES SOMOS ═══ -->
+  <div class="about-section" id="aboutSection">
+    <div class="about-header" onclick="toggleAbout()">
+      <div class="about-header-left">
+        <div class="about-header-icon">&#9733;</div>
+        <div>
+          <div class="about-header-title">¿Quiénes somos?</div>
+          <div class="about-header-sub">Conoce el proyecto detrás de FondoBlanco</div>
+        </div>
+      </div>
+      <div class="about-toggle-arrow" id="aboutArrow">&#9660;</div>
+    </div>
+    <div class="about-body" id="aboutBody">
+      <div class="about-intro">
+        <p><strong style="color:var(--text);font-family:'Syne',sans-serif;">FondoBlanco</strong> es un banco de imágenes gratuito nacido con una misión simple: democratizar el acceso a recursos visuales de alta calidad. Creemos que el arte y el diseño no deberían tener barreras económicas.</p>
+        <p>Todas nuestras imágenes son generadas con inteligencia artificial de última generación — <strong style="color:var(--text);">Adobe Firefly</strong> — entrenada con contenido licenciado, lo que garantiza que puedas usarlas en proyectos personales y comerciales sin preocupaciones de derechos de autor.</p>
+      </div>
+      <div class="about-stats-row">
+        <div class="about-stat"><div class="about-stat-n">+500</div><div class="about-stat-l">Imágenes</div></div>
+        <div class="about-stat"><div class="about-stat-n">100%</div><div class="about-stat-l">Gratis</div></div>
+        <div class="about-stat"><div class="about-stat-n">0</div><div class="about-stat-l">Registro</div></div>
+        <div class="about-stat"><div class="about-stat-n">IA</div><div class="about-stat-l">Adobe Firefly</div></div>
+      </div>
+      <div class="about-cards">
+        <div class="about-card">
+          <div class="about-card-icon">&#127775;</div>
+          <div class="about-card-title">Calidad premium, costo cero</div>
+          <div class="about-card-text">Cada imagen pasa por curaduría manual para garantizar resolución, composición y colores de nivel profesional. Ideal para diseño gráfico, web, impresión y redes sociales.</div>
+        </div>
+        <div class="about-card">
+          <div class="about-card-icon">&#129302;</div>
+          <div class="about-card-title">Generadas con IA responsable</div>
+          <div class="about-card-text">Usamos Adobe Firefly, IA entrenada exclusivamente con imágenes licenciadas. El uso comercial de nuestras imágenes es legal y ético desde su origen.</div>
+        </div>
+        <div class="about-card">
+          <div class="about-card-icon">&#9889;</div>
+          <div class="about-card-title">Sin registro, sin límites</div>
+          <div class="about-card-text">No pedimos correo, no cobramos suscripciones y no ponemos marcas de agua. Descarga directa, alta resolución, listo para usar. Así de simple.</div>
+        </div>
+        <div class="about-card">
+          <div class="about-card-icon">&#127760;</div>
+          <div class="about-card-title">Para toda la comunidad creativa</div>
+          <div class="about-card-text">Diseñadores, fotógrafos, marketers, emprendedores y estudiantes. FondoBlanco está pensado para cualquier persona que necesite recursos visuales de calidad en el mundo.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Capa que bloquea la galería mientras se muestran los términos -->
+  <div class="terms-block-layer" id="termsBlockLayer"></div>
+
+  <!-- ═══ TÉRMINOS — BARRA INFERIOR ═══ -->
   <div class="terms-overlay hidden" id="termsOverlay">
-    <div class="terms-box">
-      <div class="terms-logo-row">
-        <svg style="width:32px;height:32px;color:var(--accent)" viewBox="0 0 540 540" xmlns="http://www.w3.org/2000/svg">
+    <div class="terms-bar">
+      <div class="terms-bar-left">
+        <svg class="terms-bar-icon" viewBox="0 0 540 540" xmlns="http://www.w3.org/2000/svg">
           <rect width="540" height="540" rx="90" fill="currentColor" opacity=".15"/>
-          <path fill="var(--accent)" fill-rule="evenodd" d="M440,215v-81H382v-58H302v58H261v-58H181v58H123v81h58v40h-58v81h58v57h80v-57h41v57h80v-57h58v-81H382V215H440ZM301,255H261V215h40V255Z"/>
+          <path fill="currentColor" fill-rule="evenodd" d="M440,215v-81H382v-58H302v58H261v-58H181v58H123v81h58v40h-58v81h58v57h80v-57h41v57h80v-57h58v-81H382V215H440ZM301,255H261V215h40V255Z"/>
         </svg>
-        <span style="font-family:'Syne',sans-serif;font-size:1.1rem;font-weight:800;color:var(--text);">fondo<span style="color:var(--accent)">blanco</span></span>
+        <div class="terms-bar-text"><strong>FondoBlanco — Términos de Uso</strong><br>Imágenes con IA Adobe Firefly. Uso personal y comercial libre. Sin registro requerido.</div>
       </div>
-      <div class="terms-title">Términos de Uso</div>
-      <div class="terms-subtitle">Antes de explorar, por favor lee y acepta nuestros términos.</div>
-      <div class="terms-highlight">
-        Las imágenes de FondoBlanco fueron generadas con <strong>Adobe Firefly</strong> e <strong>IA generativa</strong>. Al usarlas aceptas los presentes términos y las directrices de las plataformas que las crearon.
+      <div class="terms-bar-actions">
+        <label class="terms-bar-check-wrap" for="termsCheckBar" title="Marcar para aceptar">
+          <input type="checkbox" id="termsCheckBar" onchange="
+            var v=this.checked;
+            document.getElementById('acceptBtn').disabled=!v;
+            document.getElementById('acceptBtn2').disabled=!v;
+            var cb2=document.getElementById('termsCheck');if(cb2)cb2.checked=v;
+          ">
+          <span class="terms-bar-check-label">Acepto los términos</span>
+        </label>
+        <button class="terms-expand-btn" id="termsExpandBtn" onclick="toggleTermsBody()">&#128196; Ver términos <span class="arrow">&#9650;</span></button>
+        <button class="terms-decline" onclick="declineTerms()" style="padding:6px 14px;font-size:.72rem;border-radius:8px;">No acepto</button>
+        <button class="terms-accept" id="acceptBtn" onclick="acceptTerms()" disabled style="flex:unset;padding:6px 18px;font-size:.8rem;border-radius:8px;">Acepto ✓</button>
       </div>
-      <div class="terms-toggle" onclick="toggleTermsBody()">&#128196; Ver términos completos</div>
-      <div class="terms-body" id="termsBody">
+    </div>
+    <div class="terms-body-wrap" id="termsBodyWrap">
+      <div class="terms-body-inner">
+        <div class="terms-check-row" style="margin-top:0">
+          <input type="checkbox" id="termsCheck" onchange="document.getElementById('acceptBtn').disabled=!this.checked">
+          <label for="termsCheck">He leído y acepto los Términos de Uso de FondoBlanco.</label>
+        </div>
+        <div class="terms-highlight">Las imágenes de FondoBlanco fueron generadas con <strong>Adobe Firefly</strong> e <strong>IA generativa</strong>. Al usarlas aceptas los presentes términos y las directrices de las plataformas que las crearon.</div>
         <div class="terms-section">
           <h3>1. &#9989; Usos Permitidos</h3>
           <ul>
@@ -976,7 +1128,7 @@ body.galeria-mode{overflow:auto;}
         </div>
         <div class="terms-section">
           <h3>3. &#129302; Generación con IA (Adobe Firefly)</h3>
-          <p>Las imágenes fueron generadas con Adobe Firefly, entrenado con contenido licenciado. Según las <a href="https://www.adobe.com/legal/licenses-terms/adobe-gen-ai-user-guidelines.html" target="_blank">directrices de Adobe</a>, el uso comercial está permitido. Adobe no garantiza exclusividad absoluta. Consulta los términos completos en adobe.com.</p>
+          <p>Las imágenes fueron generadas con Adobe Firefly, entrenado con contenido licenciado. Según las <a href="https://www.adobe.com/legal/licenses-terms/adobe-gen-ai-user-guidelines.html" target="_blank">directrices de Adobe</a>, el uso comercial está permitido. Adobe no garantiza exclusividad absoluta.</p>
         </div>
         <div class="terms-section">
           <h3>4. &#9878;&#65039; Propiedad Intelectual</h3>
@@ -986,14 +1138,10 @@ body.galeria-mode{overflow:auto;}
           <h3>5. &#128737;&#65039; Responsabilidad</h3>
           <p>El usuario es responsable del uso final de las imágenes. FondoBlanco no se hace responsable de usos indebidos o que infrinjan leyes locales.</p>
         </div>
-      </div>
-      <div class="terms-check-row">
-        <input type="checkbox" id="termsCheck" onchange="document.getElementById('acceptBtn').disabled=!this.checked">
-        <label for="termsCheck">He leído y acepto los Términos de Uso de FondoBlanco.</label>
-      </div>
-      <div class="terms-btns">
-        <button class="terms-decline" onclick="declineTerms()">No acepto</button>
-        <button class="terms-accept" id="acceptBtn" onclick="acceptTerms()" disabled>Acepto y exploro</button>
+        <div class="terms-btns" style="margin-top:14px;">
+          <button class="terms-decline" onclick="declineTerms()">No acepto</button>
+          <button class="terms-accept" id="acceptBtn2" onclick="acceptTerms()" disabled>Acepto y exploro</button>
+        </div>
       </div>
     </div>
   </div>
@@ -1057,22 +1205,6 @@ document.addEventListener('visibilitychange',function(){
 });
 
 // ═══════════════════════════════════════════
-// HERO MOSAIC
-// ═══════════════════════════════════════════
-(function(){
-  var mi=document.querySelectorAll('#heroMosaic img[data-src]');
-  mi.forEach(function(img,i){
-    var delay=i<3?0:((i-3)*65+60);
-    setTimeout(function(){
-      img.onload=function(){img.classList.add('vis');};
-      img.onerror=function(){img.style.display='none';};
-      img.src=img.getAttribute('data-src');
-      img.removeAttribute('data-src');
-    },delay);
-  });
-})();
-
-// ═══════════════════════════════════════════
 // TEMAS DE COLOR
 // ═══════════════════════════════════════════
 function setTheme(name,dotEl){
@@ -1094,8 +1226,63 @@ function setTheme(name,dotEl){
 // ═══════════════════════════════════════════
 var THUMB='https://fondoblanco.b-cdn.net/';
 var FULL='https://fondoblanco.b-cdn.net/';
+var FULL_BASE='https://fondoblanco.b-cdn.net/fondoblanco.co/';
 var imgs=[
-  {id:1,pid:'aguacates-cortados-luz-natural-hojas-gotas-aceite-macro.jpg',name:'Aguacates cortados luz natural hojas gotas aceite macro',cat:'Comida'},
+  {id:370,pid:'fondoblanco.co/marmol-morado-negro-cristales-plata.webp',dlpid:'fondoblanco.co/marmol-morado-negro-cristales-plata.jpg',name:'Mármol Morado y Negro con Cristales de Plata',alt:'Textura de mármol abstracto en morado intenso y negro con vetas de cristales plateados brillantes, destellos rosas y partículas de plata dispersas, fondo de lujo dramático y elegante',tags:'mármol morado negro plata cristal abstracto textura lujo wallpaper púrpura brillante fondo premium elegante gema',cat:'Texturas'},
+  {id:369,pid:'fondoblanco.co/metal-dorado-antiguo-textura-rayada.webp',dlpid:'fondoblanco.co/metal-dorado-antiguo-textura-rayada.jpg',name:'Metal Dorado Antiguo con Textura Rayada y Erosionada',alt:'Superficie metálica dorada envejecida con arañazos verticales y manchas de erosión, textura industrial antigua de oro oxidado con relieves y quemaduras centrales dramáticas',tags:'metal dorado antiguo textura rayada erosión oro industrial fondo wallpaper envejecido grunge oxidado abstracto',cat:'Texturas'},
+  {id:368,pid:'fondoblanco.co/escamas-blancas-relieve-minimalista.webp',dlpid:'fondoblanco.co/escamas-blancas-relieve-minimalista.jpg',name:'Escamas Blancas en Relieve Minimalista 3D',alt:'Patrón repetitivo de escamas o pétalos blancos en relieve tridimensional sobre fondo blanco, textura minimalista con sombras suaves que crean profundidad y volumen elegante',tags:'escamas blancas relieve 3D minimalista textura patrón fondo blanco wallpaper elegante suave moderno arquitectura',cat:'Texturas'},
+  {id:367,pid:'fondoblanco.co/corteza-palmera-naranja-textura-natural.webp',dlpid:'fondoblanco.co/corteza-palmera-naranja-textura-natural.jpg',name:'Corteza de Palmera Naranja Textura Natural Macro',alt:'Primer plano de corteza de palmera con capas superpuestas en tonos naranja, marrón y negro, textura orgánica natural con fibras, grietas y relieves de madera tropical',tags:'corteza palmera naranja madera natural textura macro tropical naturaleza fondo wallpaper orgánico marrón fibra',cat:'Texturas'},
+  {id:366,pid:'fondoblanco.co/placas-metalicas-negras-grietas-doradas.webp',dlpid:'fondoblanco.co/placas-metalicas-negras-grietas-doradas.jpg',name:'Placas Metálicas Negras con Grietas y Destellos Dorados',alt:'Superficie de placas metálicas negras superpuestas con grietas y fracturas que revelan destellos dorados y naranjas en el interior, textura futurista oscura con detalle metálico',tags:'placas metálicas negras grietas doradas futurista textura oscura fondo wallpaper abstracto industrial fractura metal',cat:'Texturas'},
+  {id:365,pid:'fondoblanco.co/circuito-electronico-negro-neon-verde.webp',dlpid:'fondoblanco.co/circuito-electronico-negro-neon-verde.jpg',name:'Circuito Electrónico Negro con Neón Verde Cyberpunk',alt:'Patrón de circuito electrónico en relieve negro con líneas de energía neón verde brillante, nodos y conectores iluminados, textura tecnológica cyberpunk de alta definición',tags:'circuito electrónico negro neón verde cyberpunk tecnología fondo wallpaper scifi digital futurista chip CPU',cat:'Texturas'},
+  {id:364,pid:'fondoblanco.co/panel-metalico-industrial-lava-naranja.webp',dlpid:'fondoblanco.co/panel-metalico-industrial-lava-naranja.jpg',name:'Panel Metálico Industrial con Lava Naranja Incandescente',alt:'Panel de metal oscuro industrial con bordes y grietas iluminadas por lava naranja y roja incandescente, textura futurista con tornillos y relieves metálicos sobre fondo negro',tags:'panel metálico industrial lava naranja incandescente futurista textura oscura wallpaper scifi tórminos energía',cat:'Texturas'},
+  {id:363,pid:'fondoblanco.co/roca-gris-agrietada-musgo-verde-natural.webp',dlpid:'fondoblanco.co/roca-gris-agrietada-musgo-verde-natural.jpg',name:'Roca Gris Agrietada con Musgo Verde Natural',alt:'Superficie de roca gris con grietas profundas cubiertas de musgo verde vivo y brillante, textura natural de piedra agrietada con vegetación en tonos grises, verdes y naranjas',tags:'roca gris agrietada musgo verde natural textura piedra naturaleza wallpaper orgánico húmedo fondo abstracto',cat:'Texturas'},
+  {id:362,pid:'fondoblanco.co/pared-ladrillos-blancos-pintura-descascarada.webp',dlpid:'fondoblanco.co/pared-ladrillos-blancos-pintura-descascarada.jpg',name:'Pared de Ladrillos Blancos con Pintura Descascarada',alt:'Muro de ladrillos pintados de blanco con pintura descascarada que revela el ladrillo rojo terracota debajo, textura urbana vintage con grietas y desprendimientos naturales',tags:'pared ladrillos blancos pintura descascarada textura urbana vintage terracota fondo wallpaper grunge industrial',cat:'Texturas'},
+  {id:361,pid:'fondoblanco.co/asfalto-mojado-reflejos-arcoiris-ciudad-noche.webp',dlpid:'fondoblanco.co/asfalto-mojado-reflejos-arcoiris-ciudad-noche.jpg',name:'Asfalto Mojado con Reflejos Arcoíris Ciudad de Noche',alt:'Superficie de asfalto mojado de noche con reflejos de arcoíris sobre vía de tráfico, gotas de lluvia y luces de ciudad bokeh en naranja, azul, rojo y verde en perspectiva',tags:'asfalto mojado arcoíris ciudad noche lluvia reflejos bokeh urbano wallpaper colorido perspectiva tráfico',cat:'Texturas'},
+  {id:360,pid:'fondoblanco.co/calle-mojada-luces-colores-bokeh-nocturno.webp',dlpid:'fondoblanco.co/calle-mojada-luces-colores-bokeh-nocturno.jpg',name:'Calle Mojada con Luces de Colores y Bokeh Nocturno',alt:'Calle urbana mojada de noche con línea amarilla central brillante y luces de colores bokeh en rosa, naranja y azul, gotas de lluvia sobre asfalto oscuro en perspectiva dramática',tags:'calle mojada lluvia luces colores bokeh nocturno urbano wallpaper amarillo rosa naranja perspectiva ciudad noche',cat:'Texturas'},
+  {id:359,pid:'fondoblanco.co/terrazzo-moderno-piedras-colores-blanco.webp',dlpid:'fondoblanco.co/terrazzo-moderno-piedras-colores-blanco.jpg',name:'Terrazzo Moderno con Piedras de Colores sobre Blanco',alt:'Suelo terrazzo moderno con fragmentos de mármol y piedra en naranja, verde, negro, blanco y rosa sobre base blanca, patrón decorativo irregular de diseño de interiores contemporáneo',tags:'terrazzo moderno piedras colores blanco naranja verde negro mármol fondo diseño interior wallpaper decoración',cat:'Texturas'},
+  {id:358,pid:'fondoblanco.co/metal-liquido-plateado-ondas-cromadas-3d.webp',dlpid:'fondoblanco.co/metal-liquido-plateado-ondas-cromadas-3d.jpg',name:'Metal Líquido Plateado con Ondas Cromadas 3D',alt:'Superficie de metal líquido plateado con ondas y pliegues cromados en tres dimensiones, reflejos especulares en plata pura y azul acero, textura de mercurio fundido abstracto',tags:'metal líquido plateado ondas cromadas 3D plata cromo textura abstracto fondo wallpaper futurista mercurio',cat:'Texturas'},
+  {id:357,pid:'fondoblanco.co/superficie-cromada-liquida-reflejos-dorados.webp',dlpid:'fondoblanco.co/superficie-cromada-liquida-reflejos-dorados.jpg',name:'Superficie Cromada Líquida con Reflejos Dorados y Plateados',alt:'Textura fluida de metal cromado con ondas orgánicas y reflejos dorados y plateados entrelazados, superficie metálica líquida con luz cálida y sombras profundas en movimiento',tags:'superficie cromada líquida reflejos dorados plateados metal textura abstracto fondo wallpaper cromo lujo fluido',cat:'Texturas'},
+  {id:356,pid:'fondoblanco.co/papel-aluminio-arrugado-iridiscente-multicolor.webp',dlpid:'fondoblanco.co/papel-aluminio-arrugado-iridiscente-multicolor.jpg',name:'Papel Aluminio Arrugado Iridiscente Multicolor',alt:'Superficie de papel aluminio arrugado con colores iridiscentes en morado, azul, dorado, naranja y rosa que cambian según la luz, textura metálica brillante y dinámica holográfica',tags:'papel aluminio arrugado iridiscente multicolor holográfico morado azul dorado textura metálica wallpaper Y2K',cat:'Texturas'},
+  {id:355,pid:'fondoblanco.co/tela-denim-azul-textura-jean-desgastado.webp',dlpid:'fondoblanco.co/tela-denim-azul-textura-jean-desgastado.jpg',name:'Tela Denim Azul Textura Jean Desgastado',alt:'Primer plano de tela denim azul índigo con pliegues y costuras rasgadas blancas, textura de jean desgastado con fibras expuestas y tejido característico del mezclilla',tags:'tela denim azul jean desgastado textura índigo fibra moda fondo wallpaper mezclilla pliegues costura',cat:'Texturas'},
+  {id:354,pid:'fondoblanco.co/pintura-acrilica-azul-marino-salpicaduras-doradas.webp',dlpid:'fondoblanco.co/pintura-acrilica-azul-marino-salpicaduras-doradas.jpg',name:'Pintura Acrílica Azul Marino con Salpicaduras Doradas',alt:'Textura de pintura acrílica con pinceladas amplias en azul marino, celeste y blanco con salpicaduras de oro y puntos dorados, arte gestual expresionista de alta textura',tags:'pintura acrílica azul marino dorado salpicaduras expresionista textura arte fondo wallpaper gestual pinceladas blanco',cat:'Texturas'},
+  {id:353,pid:'fondoblanco.co/roca-oscura-grietas-neon-rosa-magenta.webp',dlpid:'fondoblanco.co/roca-oscura-grietas-neon-rosa-magenta.jpg',name:'Roca Oscura con Grietas de Neón Rosa y Magenta',alt:'Superficie de roca oscura azul noche con grietas iluminadas de neón rosa y magenta brillante, textura volcánica futurista con destellos morados y energía resplandeciente',tags:'roca oscura grietas neón rosa magenta futurista textura volcánica fondo wallpaper cyberpunk abstracto energía',cat:'Texturas'},
+  {id:352,pid:'fondoblanco.co/tierra-seca-agrietada-hojas-secas-otono.webp',dlpid:'fondoblanco.co/tierra-seca-agrietada-hojas-secas-otono.jpg',name:'Tierra Seca Agrietada con Hojas Secas de Otoño',alt:'Vista cenital de tierra seca y agrietada en tonos terracota y naranja con hojas de otoño amarillas y marrones caídas sobre la superficie, textura natural árida de temporada',tags:'tierra seca agrietada hojas otoño terracota naranja natural textura árida fondo wallpaper temporada sequía',cat:'Texturas'},
+  {id:351,pid:'fondoblanco.co/estructura-hexagonal-cristal-pastel-holografico.webp',dlpid:'fondoblanco.co/estructura-hexagonal-cristal-pastel-holografico.jpg',name:'Estructura Hexagonal de Cristal Pastel Holográfico',alt:'Estructura tubular hexagonal de cristal translúcido sobre fondo pastel holográfico en rosa, azul y lila con destellos de luz suave, textura 3D futurista de diseño molecular',tags:'estructura hexagonal cristal pastel holográfico rosa azul lila 3D textura fondo wallpaper futurista molecular diseño',cat:'Texturas'},
+  {id:350,pid:'fondoblanco.co/sala-industrial-cyberpunk-neon-rosa-scifi.webp',dlpid:'fondoblanco.co/sala-industrial-cyberpunk-neon-rosa-scifi..jpg',name:'Sala Industrial Cyberpunk con Neón Rosa – Escenario Sci-Fi Oscuro y Futurista',alt:'Interior de sala metálica industrial deteriorada con líneas de neón rosa brillante formando un marco rectangular sobre paredes corroídas en azul oscuro, escenario cyberpunk distópico y futurista',tags:'sala cyberpunk neón rosa industrial distópico fondo scifi oscuro escenario videojuego neón futurista wallpaper',cat:'Texturas'},
+  {id:349,pid:'fondoblanco.co/lava-neon-naranja-cyan-volcanico-futurista.webp',dlpid:'fondoblanco.co/lava-neon-naranja-cyan-volcanico-futurista..jpg',name:'Lava Neón Naranja y Cyan – Textura Volcánica Futurista Sci-Fi',alt:'Superficie volcánica oscura con ríos de lava naranja brillante y líneas de energía cyan neón entrelazadas sobre roca negra, textura de ciencia ficción futurista y abstracta',tags:'lava neón naranja cyan volcánico futurista fondo acción scifi videojuego energía neón oscuro wallpaper textura abstracto',cat:'Texturas'},
+  {id:348,pid:'fondoblanco.co/textura-cyberpunk-oscura-neon-cyan-scifi.webp',dlpid:'fondoblanco.co/textura-cyberpunk-oscura-neon-cyan-scifi..jpg',name:'Textura Cyberpunk Oscura con Neón Cyan – Superficie Futurista Sci-Fi',alt:'Textura de roca negra futurista con grietas iluminadas en cyan neón y pequeñas chispas naranjas esparcidas, superficie oscura de ciencia ficción estilo cyberpunk',tags:'textura cyberpunk neón cyan oscuro fondo sci-fi futurista superficie videojuego roca digital neón wallpaper abstracto',cat:'Texturas'},
+  {id:347,pid:'fondoblanco.co/liquido-holografico-rosa-lila-abstracto-metalico.webp',dlpid:'fondoblanco.co/liquido-holografico-rosa-lila-abstracto-metalico..jpg',name:'Líquido Holográfico Rosa y Lila – Fondo Abstracto Metálico Iridiscente',alt:'Superficie líquida holográfica con ondas suaves en rosa, lila y azul con acabado metálico iridiscente, fondo fluido con estética Y2K y diseño moderno',tags:'líquido holográfico rosa lila fondo Y2K abstracto iridiscente azul metálica moda wallpaper moderno irisado premium',cat:'Texturas'},
+  {id:346,pid:'fondoblanco.co/tierra-resquebrajada-lava-dorada-volcanica.webp',dlpid:'fondoblanco.co/tierra-resquebrajada-lava-dorada-volcanica..jpg',name:'Tierra Resquebrajada con Lava Interior – Textura Volcánica de Roca y Fuego',alt:'Superficie de roca negra resquebrajada con lava incandescente dorada y naranja brillando desde el interior, textura dramática volcánica con grietas de fuego en roca basáltica',tags:'tierra resquebrajada lava roca volcánica fuego textura lava dorada fondo apocalíptico grietas naranja wallpaper abstracto',cat:'Texturas'},
+  {id:345,pid:'fondoblanco.co/musgo-bioluminiscente-bosque-magico-luz-azul.webp',dlpid:'fondoblanco.co/musgo-bioluminiscente-bosque-magico-luz-azul..jpg',name:'Musgo Bioluminiscente en Bosque Mágico – Naturaleza Fantástica con Luz Azul',alt:'Hongos cubiertos de musgo verde con puntos de luz azul bioluminiscente en un bosque oscuro mágico y fantástico, naturaleza irreal con destellos luminosos azules y verdes',tags:'musgo bioluminiscente bosque mágico hongo luz azul naturaleza fantástica fondo videojuego fantasía wallpaper verde neón',cat:'Texturas'},
+  {id:344,pid:'fondoblanco.co/tronco-antiguo-datos-digitales-verde-naturaleza.webp',dlpid:'fondoblanco.co/tronco-antiguo-datos-digitales-verde-naturaleza..jpg',name:'Tronco Antiguo con Datos Digitales – Fusión de Naturaleza y Ciberespacio',alt:'Tronco de árbol milenario con anillos ondulados y pantalla de datos digitales verdes integrada, fusión entre naturaleza orgánica y ciberespacio tecnológico estilo Matrix',tags:'tronco árbol digital naturaleza ciberespacio datos verdes madera tecnología verde concepto sci-fi fondo wallpaper',cat:'Texturas'},
+  {id:343,pid:'fondoblanco.co/madera-oscura-codigo-digital-verde-tecnologia.webp',dlpid:'fondoblanco.co/madera-oscura-codigo-digital-verde-tecnologia..jpg',name:'Textura de Madera Oscura con Código Digital Verde – Concepto Naturaleza y Tecnología',alt:'Textura de madera oscura ondulada con código binario verde brillante flotando sobre la superficie, fusión visual de naturaleza y tecnología digital tipo Matrix cyberpunk',tags:'madera oscura código digital verde naturaleza tecnología código binario fondo cyberpunk inteligencia artificial wallpaper abstracto',cat:'Texturas'},
+  {id:342,pid:'fondoblanco.co/espiral-resina-translucida-morado-naranja-3d.webp',dlpid:'fondoblanco.co/espiral-resina-translucida-morado-naranja-3d..jpg',name:'Espiral de Resina Translúcida – Forma 3D Abstracta en Morado y Naranja',alt:'Espiral tridimensional de resina translúcida en tonos morado, magenta y naranja con microburbujas internas, forma 3D abstracta y dinámica sobre fondo oscuro degradado',tags:'espiral resina 3D abstracto morado naranja forma translúcida arte fondo creativo digital diseño gráfico wallpaper',cat:'Texturas'},
+  {id:341,pid:'fondoblanco.co/ondas-luz-dorada-terciopelo-azul-abstracto.webp',dlpid:'fondoblanco.co/ondas-luz-dorada-terciopelo-azul-abstracto..jpg',name:'Ondas de Luz Dorada sobre Terciopelo Azul Oscuro – Fondo Abstracto de Lujo',alt:'Ondas suaves de terciopelo azul marino con partículas de luz dorada flotantes y efecto bokeh brillante, fondo abstracto elegante y de lujo premium',tags:'ondas azul dorado fondo lujo abstracto partículas doradas bokeh terciopelo azul marino premium elegante wallpaper',cat:'Texturas'},
+  {id:340,pid:'fondoblanco.co/metal-oxidado-iridiscente-abstracto-herrumbre.webp',dlpid:'fondoblanco.co/metal-oxidado-iridiscente-abstracto-herrumbre.jpg',name:'Metal Oxidado Iridiscente – Textura Abstracta de Herrumbre con Reflejos de Color',alt:'Superficie de metal oxidado con manchas iridiscentes en azul, verde y morado sobre fondo herrumbroso naranja, macro de textura industrial con reflejos de colores vivos',tags:'metal oxidado iridiscente textura herrumbre abstracto industrial fondo oxidado colores macro metal arte wallpaper',cat:'Texturas'},
+  {id:339,pid:'fondoblanco.co/M%C3%A1rmol%20Blanco%20con%20Venas%20Doradas%20%E2%80%93%20Textura%20de%20Piedra%20Trasl%C3%BAcida%20de%20Lujo.webp',dlpid:'fondoblanco.co/M%C3%A1rmol%20Blanco%20con%20Venas%20Doradas%20%E2%80%93%20Textura%20de%20Piedra%20Trasl%C3%BAcida%20de%20Lujo.jpg',name:'Mármol Blanco con Venas Doradas – Textura de Piedra Traslúcida de Lujo',alt:'Textura de mármol blanco translúcido con venas irregulares doradas brillantes que lo atraviesan, piedra de lujo retroiluminada con destellos cálidos en tonos champagne y oro',tags:'mármol blanco dorado textura piedra lujo fondo mármol premium ónix blanco venas arquitectura lujo wallpaper elegante',cat:'Texturas'},
+  {id:338,pid:'fondoblanco.co/Hojas%20de%20Oto%C3%B1o%20sobre%20Hielo%20Vista%20Cenital%20%E2%80%93%20Textura%20Natural%20de%20Temporada.webp',dlpid:'fondoblanco.co/Hojas%20de%20Oto%C3%B1o%20sobre%20Hielo%20Vista%20Cenital%20%E2%80%93%20Textura%20Natural%20de%20Temporada.jpg',name:'Hojas de Otoño sobre Hielo Vista Cenital – Textura Natural de Temporada',alt:'Vista cenital de hojas de otoño naranjas, amarillas y rojas sobre superficie helada con patrones de escarcha y cristales de hielo, composición horizontal de naturaleza estacional',tags:'hojas otoño vista aérea textura otoñal hielo fondo follaje naranja banner otoño naturaleza temporada wallpaper escarcha',cat:'Texturas'},
+  {id:337,pid:'fondoblanco.co/hojas-otono-congeladas-hielo-follaje-macro.webp',dlpid:'fondoblanco.co/hojas-otono-congeladas-hielo-follaje-macro..jpg',name:'Hojas de Otoño Congeladas en Hielo – Fotografía Macro de Follaje de Temporada',alt:'Coloridas hojas de otoño en rojo, naranja y amarillo congeladas en cristales de hielo transparente con patrones de escarcha sobre fondo blanco, fotografía macro de naturaleza estacional',tags:'hojas otoño hielo follaje congelado rojo naranja foto naturaleza temporal cristal hielo escarcha macro wallpaper temporada',cat:'Texturas'},
+  {id:336,pid:'fondoblanco.co/marmol-azul-kintsugi-venas-doradas-abstracto.webp',dlpid:'fondoblanco.co/marmol-azul-kintsugi-venas-doradas-abstracto..jpg',name:'Mármol Azul Kintsugi – Piedra Cobalto con Venas Doradas Fondo Abstracto',alt:'Superficie de mármol azul cobalto profundo con gruesas venas kintsugi en oro entrelazadas, fondo abstracto de piedra de lujo en azul marino con líneas doradas brillantes',tags:'mármol azul kintsugi cobalto venas doradas fondo mármol lujo arte kintsugi abstracto azul dorado wallpaper premium',cat:'Texturas'},
+  {id:335,pid:'fondoblanco.co/tela-brocado-seda-dorada-lujo-primer-plano.webp',dlpid:'fondoblanco.co/tela-brocado-seda-dorada-lujo-primer-plano..jpg',name:'Tela de Seda Brocado Dorado – Textil Bordado de Lujo en Primer Plano',alt:'Tela de seda brocada premium en oro y plata con elaborados motivos florales en relieve y pliegues suaves, textil de lujo con bordados ornamentales sobre seda brillante dorada',tags:'tela brocado dorado seda lujo textil bordado oro tela real textura fondo textil premium wallpaper moda royal',cat:'Texturas'},
+  {id:334,pid:'fondoblanco.co/escamas-dragon-esmeralda-malaquita-dorado..webp',dlpid:'fondoblanco.co/escamas-dragon-esmeralda-malaquita-dorado..jpg',name:'Escamas de Dragón Esmeralda con Malaquita y Bordes Dorados',alt:'Patrón de escamas de dragón en verde esmeralda profundo con superficie agrietada estilo malaquita y bordes metálicos dorados, textura fantástica para diseño de videojuegos y fondos de lujo',tags:'escamas dragón textura patrón verde esmeralda fondo malaquita textura fantasía juego fondo verde dorado wallpaper reptil',cat:'Texturas'},
+  {id:333,pid:'fondoblanco.co/geoda-amatista-corte-cristal-morado-dorado..webp',dlpid:'fondoblanco.co/geoda-amatista-corte-cristal-morado-dorado..jpg',name:'Geoda de Amatista Abierta – Cristales Morados con Núcleo Dorado Brillante',alt:'Corte transversal de una gran geoda de amatista mostrando cristales morados en capas concéntricas con un núcleo brillante dorado-naranja iluminado desde dentro, piedra preciosa espectacular',tags:'geoda amatista cristal morado cueva corte geoda piedra preciosa brillante mineral lujo wallpaper violeta dorado naturaleza',cat:'Texturas'},
+  {id:332,pid:'fondoblanco.co/cristales-bismuto-iridiscente-arcoiris-macro..webp',dlpid:'fondoblanco.co/cristales-bismuto-iridiscente-arcoiris-macro..jpg',name:'Cristales de Bismuto Iridiscentes con Reflejos Arcoíris en Macro',alt:'Primer plano de cristales de bismuto con formaciones cúbicas escalonadas reflejando colores arcoíris metálicos en oro, azul, rosa y morado, fotografía macro de mineral con efecto iridiscente',tags:'cristales bismuto iridiscente mineral arcoíris macro piedra metálica reflejos coloridos gema abstracto fondo ciencia wallpaper premium',cat:'Texturas'},
+  {id:331,pid:'fondoblanco.co/Superficie%20de%20cer%C3%A1mica%20-blanca%20rota-%20relleno%20-resina-%20turquesa%20estilo%20kintsugi.webp',dlpid:'fondoblanco.co/Superficie%20de%20cer%C3%A1mica%20-blanca%20rota-%20relleno%20-resina-%20turquesa%20estilo%20kintsugi.jpg',name:'Superficie de cerámica blanca rota con relleno de resina turquesa estilo kintsugi',alt:'Fragmentos de cerámica blanca brillante con grietas profundas rellenas de resina color turquesa y bordes de oro, inspirado en la técnica japonesa kintsugi, sobre fondo blanco neutro',tags:'kintsugi cerámica turquesa blanco oro grietas resina japonés roto textura abstracto azul aguamarina fondo lujo reparación',cat:'Texturas'},
+  {id:330,pid:'fondoblanco.co/Cuarzos-%20rosas%20-%20cristales%20en%20bruto.webp',dlpid:'fondoblanco.co/Cuarzos-%20rosas%20-%20cristales%20en%20bruto.jpg',name:'Cuarzos rosas y cristales blancos en bruto apilados',alt:'Montón de cristales y cuarzos en bruto de color rosa, blanco nacarado y coral dispuestos aleatoriamente, con texturas y caras naturales visibles, sobre fondo suave rosado',tags:'cuarzo cristal rosa blanco coral gema mineral bruto nacarado piedra naturaleza belleza spa fondo textura pastel',cat:'Texturas'},
+  {id:329,pid:'fondoblanco.co/Burbujas%20de%20agua%20-cristalinas%20-transparentes.webp',dlpid:'fondoblanco.co/Burbujas%20de%20agua%20-cristalinas%20-transparentes.jpg',name:'Burbujas de agua y esferas de cristal transparentes sobre fondo blanco',alt:'Primer plano de burbujas esféricas de agua o vidrio completamente transparentes con reflejos plateados sobre fondo blanco grisáceo, con pequeñas microburbujas internas visibles',tags:'burbujas agua cristal transparente plateado blanco esfera gota puro cosmética belleza minimalista abstracto fondo limpio reflejos',cat:'Texturas'},
+  {id:328,pid:'fondoblanco.co/Burbujas%20de%20gel%20-%20colores-%20pastel.webp',dlpid:'fondoblanco.co/Burbujas%20de%20gel%20-%20colores-%20pastel.jpg',name:'Burbujas de gel de colores pastel translúcidas sobre fondo blanco',alt:'Fotografía de burbujas de gel translúcido en tonos pastel verde lima, amarillo, azul cielo, rosado y naranja dispersas sobre superficie blanca, con micro burbujas internas visibles',tags:'burbujas gel translúcido pastel verde amarillo azul rosado naranja blanco cosmética abstracto fondo wallpaper colorido primaveral',cat:'Texturas'},
+  {id:327,pid:'fondoblanco.co/Superficie%203D%20blanca-%20ondas%20-%20relieve.webp',dlpid:'fondoblanco.co/Superficie%203D%20blanca-%20ondas%20-%20relieve.jpg',name:'Fondo tridimensional blanco con ondas y curvas suaves en 3D',alt:'Render o escultura blanca con formas onduladas orgánicas y tridimensionales en tonos blancos puros, con sombras suaves que revelan profundidad y volumen, estilo minimalista arquitectónico',tags:'3D blanco ondas abstracto minimalista relieve escultura volumen fondo wallpaper arquitectónico moderno suave curvas orgánico neutro',cat:'Texturas'},
+  {id:326,pid:'fondoblanco.co/Pintura-abstracta-%20rojo-%20negro%20-%20blanco.webp',dlpid:'fondoblanco.co/Pintura-abstracta-%20rojo-%20negro%20-%20blanco.jpg',name:'Pintura abstracta en rojo, negro y blanco con trazos caligráficos',alt:'Pintura acrílica abstracta con pinceladas curvas en negro y líneas diagonales en rojo vivo sobre lienzo blanco, salpicaduras de pintura y trazos gestuales de gran formato',tags:'abstracto rojo negro blanco caligrafía pincelada expresionismo textura arte gestual fondo wallpaper dinámico energético acrílico moderno',cat:'Texturas'},
+  {id:325,pid:'fondoblanco.co/Papel-blanco-%20arrugado-%20salpicaduras-%20oro.webp',dlpid:'fondoblanco.co/Papel-blanco-%20arrugado-%20salpicaduras-%20oro.jpg',name:'Hoja de papel arrugado blanco con trazos y salpicaduras de oro',alt:'Papel de algodón arrugado con manchas de pan de oro y pequeñas salpicaduras dispersas en diagonal, creando un fondo artístico de lujo en blanco y dorado ideal para diseño editorial',tags:'papel oro dorado blanco textura lujo salpicaduras pan de oro kintsugi editorial abstracto elegante fondo premium artístico wallpaper',cat:'Texturas'},
+  {id:324,pid:'fondoblanco.co/molde%20de%20imagenes.webp',dlpid:'fondoblanco.co/Pinceladas-rojas%20-%20fondo%20blanco-%20acr%C3%ADlico.jpg',name:'Pintura abstracta con pinceladas rojas sobre fondo blanco en acrílico',alt:'Textura de pintura acrílica con pinceladas amplias y gestuales en rojo vivo sobre base blanca con relieve de espátula, estilo expresionismo abstracto para uso como fondo artístico',tags:'pintura acrílico rojo blanco expresionismo abstracto textura gestual pincelada arte fondo wallpaper enérgico dinámico espátula moderno',cat:'Texturas'},
+  {id:323,pid:'fondoblanco.co/Arte-%20abstracto-%20rojo-%20vetas-%20met%C3%A1licas.webp',dlpid:'fondoblanco.co/Arte-%20abstracto-%20rojo-%20vetas-%20met%C3%A1licas.jpg',name:'Pintura abstracta en rojo y negro con vetas metálicas doradas y plateadas',alt:'Obra de arte abstracto con fondo rojo intenso y fragmentos metálicos en plata y dorado que simulan lava solidificada, con relieves y texturas oxidadas en tonos ocre y gris',tags:'abstracto rojo dorado plateado metálico textura arte óxido carmesí negro lava fondo premium lujo pintura relieve',cat:'Texturas'},
+  {id:322,pid:'fondoblanco.co/Flujo%20de%20lava-%20volc%C3%A1nica-%20roja%20-negra.webp',dlpid:'fondoblanco.co/Flujo%20de%20lava-%20volc%C3%A1nica-%20roja%20-negra.jpg',name:'Flujo de lava volcánica roja y naranja sobre roca negra basáltica',alt:'Fotografía aérea de flujo de lava activa con tonos rojo, naranja y amarillo intenso contrastando con la roca basáltica negra solidificada y textura de cuerda característica',tags:'lava volcán roca basalto rojo naranja negro fuego magma textura naturaleza abstracto geología intenso calor wallpaper',cat:'Texturas'},
+  {id:321,pid:'fondoblanco.co/Textura%20-%20nieve%20-arena-%20ondas%20suaves.webp',dlpid:'fondoblanco.co/Textura%20-%20nieve%20-arena-%20ondas%20suaves.jpg',name:'Textura de nieve blanca con ondas y sombras suaves vista desde arriba',alt:'Vista cenital de superficie de nieve con ondulaciones paralelas suaves creadas por el viento, tonos blancos y azules muy claros con sombras delicadas, textura natural minimalista',tags:'nieve blanco arena invierno textura ondas minimalista naturaleza frío abstracto fondo wallpaper aéreo patrón luz suave neutro',cat:'Texturas'},
+  {id:320,pid:'fondoblanco.co/Estuco-blanco%20en%20relieve-%20curvas%20-abstractas.webp',dlpid:'fondoblanco.co/Estuco-blanco%20en%20relieve-%20curvas%20-abstractas.jpg',name:'Estuco blanco en relieve con curvas abstractas',alt:'Detalle de superficie escultórica en yeso blanco con formas curvas onduladas en relieve, acabado artesanal y marcas de espátula, ideal para fondo de diseño minimalista y elegante',tags:'estuco yeso blanco relieve textura minimalista elegante abstracto escultórico curvas fondo wallpaper artesanal mate arquitectura neutro',cat:'Texturas'},
+  {id:319,pid:'fondoblanco.co/%C3%81gata-blanca%20-veta%20de%20fuego%20-naranja.webp',dlpid:'fondoblanco.co/%C3%81gata-blanca%20-veta%20de%20fuego%20-naranja.jpg',name:'Ágata blanca con veta de fuego naranja',alt:'Primer plano de ágata blanca retroiluminada con una veta central de color naranja y amarillo intenso que simula lava o fuego, con capas concéntricas de piedra translúcida',tags:'ágata mineral cuarzo naranja blanco fuego lava translúcido gema luz naturaleza textura wallpaper abstracto retroiluminado cristal',cat:'Texturas'},
+  {id:318,pid:'fondoblanco.co/Colecci%C3%B3n-piedras%20-minerales%20-colores.webp',dlpid:'fondoblanco.co/Colecci%C3%B3n-piedras%20-minerales%20-colores.jpg',name:'Muestras de mármol y cuarzo en tonos pastel para diseño y decoración',alt:'Selección de piedras decorativas pulidas en tonos blanco, rosa, verde menta, negro y naranja sobre superficie blanca estilo terrazzo para uso en diseño de interiores y materiales gráficos',tags:'piedras minerales cuarzo mármol terrazzo rosa blanco negro naranja menta pastel pulido textura fondo decoración material muestra',cat:'Texturas'},
+  {id:317,pid:'fondoblanco.co/Textura-m%C3%A1rmol-rojo-blanco-vetas-oro-estilo-kintsugi-Webp.webp',dlpid:'fondoblanco.co/Textura-m%C3%A1rmol-rojo-blanco-vetas-oro-estilo-kintsugi.jpg',name:'Textura de mármol rojo y blanco con vetas de oro estilo kintsugi',alt:'Textura de mármol de lujo con fragmentos de piedra roja, vetas de cuarzo blanco y líneas de oro estilo kintsugi para fondo de diseño gráfico',tags:'mármol kintsugi rojo blanco dorado oro textura piedra lujo abstracto fondo wallpaper gema elegante premium mosaico',cat:'Texturas'},
+{id:1,pid:'aguacates-cortados-luz-natural-hojas-gotas-aceite-macro.jpg',name:'Aguacates cortados luz natural hojas gotas aceite macro',cat:'Comida'},
   {id:2,pid:'aguacates-frescos-campo-luz-dorada-hojas-macro-vertical.jpg',name:'Aguacates frescos campo luz dorada hojas macro vertical',cat:'Comida'},
   {id:3,pid:'aguacates-gotas-agua-luz-solar-hojas-verdes-vibrante.jpg',name:'Aguacates gotas agua luz solar hojas verdes vibrante',cat:'Comida'},
   {id:4,pid:'aguacates-tazon-madera-oscuro-partido-semilla-vertical.jpg',name:'Aguacates tazon madera oscuro partido semilla vertical',cat:'Comida'},
@@ -1418,8 +1605,7 @@ var imgs=[
 // ══════════════════════════════════════════════════════
 var curFilter='Todas', curSearch='', curSort='default';
 var filteredImgs=[], lbIdx=0;
-var TOTAL_PAGES=5;   // siempre 5 páginas
-var PAGE_SIZE=64;    // se recalcula en render()
+var PAGE_SIZE=63;
 var curPage=0;
 var _pfCache={};     // prefetch cache: {idx:'loading'|true}
 
@@ -1480,7 +1666,7 @@ function getFiltered(){
   }
   var base=imgs.filter(function(i){
     var mc=(curFilter==='Todas'||i.cat===curFilter);
-    var ms=!curSearch||terms.some(function(t){return(i.name+' '+i.cat).toLowerCase().indexOf(t)>=0;});
+    var ms=!curSearch||terms.some(function(t){return(i.name+' '+i.cat+' '+(i.tags||'')+' '+(i.alt||'')).toLowerCase().indexOf(t)>=0;});
     return mc&&ms;
   });
   if(curSort==='az')return base.sort(function(a,b){return a.name.localeCompare(b.name);});
@@ -1525,6 +1711,11 @@ function layoutMasonry(){
   });
   var mx=Math.max.apply(null,ch);
   grid.style.height=(mx-GAP)+'px';
+  // Forzar carga de todas las imágenes con data-src tras posicionar el masonry
+  grid.querySelectorAll('img[data-src]').forEach(function(im){
+    im.src=im.getAttribute('data-src');
+    im.removeAttribute('data-src');
+  });
 }
 function sched(){clearTimeout(_mt);_mt=setTimeout(function(){requestAnimationFrame(layoutMasonry);},80);}
 window.addEventListener('resize',sched);
@@ -1537,12 +1728,13 @@ function makeObs(){
   if(!('IntersectionObserver' in window))return null;
   return new IntersectionObserver(function(entries,obs){
     entries.forEach(function(e){
-      if(!e.isIntersecting)return;
+      // Con masonry (position:absolute) isIntersecting puede ser false incluso visible
+      // Cargar si intersecta O si está dentro del viewport expandido
       var img=e.target.querySelector('img[data-src]');
       if(img){img.src=img.getAttribute('data-src');img.removeAttribute('data-src');}
       obs.unobserve(e.target);
     });
-  },{rootMargin:'220px 0px',threshold:.01});
+  },{rootMargin:'800px 0px',threshold:0});
 }
 
 // ══════════════════════════════════════════════════════
@@ -1622,8 +1814,8 @@ function render(){
   var grid=document.getElementById('grid');
   var total=filteredImgs.length;
 
-  // PAGE_SIZE dinámico → siempre 5 páginas
-  PAGE_SIZE=total?Math.ceil(total/TOTAL_PAGES):1;
+  // PAGE_SIZE fijo: máx 63 por página — nueva página solo cuando hay más de 63
+  PAGE_SIZE=63;
   var totalPages=total?Math.ceil(total/PAGE_SIZE):1;
   if(curPage>=totalPages)curPage=totalPages-1;
   if(curPage<0)curPage=0;
@@ -1661,7 +1853,9 @@ function render(){
       card.appendChild(skel);
 
       var im=document.createElement('img');
-      im.alt=img.name;im.className='loading';im.loading='lazy';im.decoding='async';
+      im.alt=img.alt||img.name;im.className='loading';im.loading='lazy';im.decoding='async';
+      im.title=img.name;
+      if(img.tags){im.setAttribute('aria-label',img.name+'. Tags: '+(img.tags||'').split(' ').slice(0,8).join(', '));}
       im.onload=function(){
         this.classList.remove('loading');this.classList.add('loaded');
         var sk=this.parentElement.querySelector('.card-skel');
@@ -1701,13 +1895,26 @@ function render(){
       }
       var ov=document.createElement('div');ov.className='card-ov';
       ov.innerHTML='<div class="card-name">'+img.name+'</div><div class="card-cat">'+img.cat+'</div>';
-      card.appendChild(im);card.appendChild(badge);card.appendChild(likebtn);card.appendChild(ov);
+      // SEO tooltip flotante
+      var seoTip=document.createElement('div');seoTip.className='card-seo-tip';
+      var topTags=(img.tags||'').split(' ').filter(Boolean).slice(0,6);
+      var tagsHtml=topTags.map(function(t){return '<span class="card-seo-tag">'+t+'</span>';}).join('');
+      seoTip.innerHTML='<div class="card-seo-title">'+img.name+'</div>'+(img.alt?'<div class="card-seo-alt">'+img.alt+'</div>':'')+'<div class="card-seo-tags">'+tagsHtml+'</div>';
+      card.appendChild(im);card.appendChild(badge);card.appendChild(likebtn);card.appendChild(ov);card.appendChild(seoTip);
       frag.appendChild(card);
       if(_obs)_obs.observe(card);
     })(filteredImgs[idx],idx);
   }
   grid.appendChild(frag);
   sched();
+
+  // Fallback: forzar carga de cualquier imagen que siga con data-src tras 1.5s
+  setTimeout(function(){
+    grid.querySelectorAll('img[data-src]').forEach(function(img){
+      img.src=img.getAttribute('data-src');
+      img.removeAttribute('data-src');
+    });
+  },1500);
 
   // Prefetch silencioso: siguiente página a 1s, anterior a 2.5s
   (function(pg,tot){
@@ -1744,23 +1951,92 @@ function loadLb(img){
   lbImg.style.display='none';lbImg.src='';spin.style.display='block';
   document.getElementById('lbTitle').textContent=img.name;
   document.getElementById('lbCat').textContent=img.cat;
+  var tagsEl=document.getElementById('lbTags');
+  tagsEl.innerHTML='';
+  if(img.tags){img.tags.split(' ').forEach(function(t){if(!t)return;var s=document.createElement('span');s.className='lb-tag';s.textContent=t;tagsEl.appendChild(s);});}
   document.getElementById('lbDims').textContent='Cargando...';
-  document.getElementById('lbFmt').textContent=img.pid.split('.').pop().toUpperCase();
+  document.getElementById('lbFmt').textContent=(img.dlpid||img.pid).split('.').pop().toUpperCase();
+  if(img.alt)lbImg.alt=img.alt;else lbImg.alt=img.name;
   updateLbLike(img.id);
   var dl=document.getElementById('lbDl');
-  dl.href=FULL+img.pid;dl.setAttribute('download',img.name.replace(/\s+/g,'_')+'.jpg');
+  var dlUrl=THUMB+(img.dlpid||img.pid);
+  // Generar nombre limpio para descarga — usar slug de la URL no el name completo
+  var _rawPid=(img.dlpid||img.pid);
+  var _ext=_rawPid.split('.').pop().toLowerCase();
+  // Usar el nombre semántico limpio de img.name para la descarga
+  var dlName=img.name
+    .replace(/[\s–—\-]+/g,'_')
+    .replace(/[^a-zA-Z0-9_áéíóúÁÉÍÓÚñÑüÜ]/g,'')
+    .replace(/_+/g,'_')
+    .replace(/^_|_$/g,'')
+    .toLowerCase()
+    .substring(0,80)
+    +'.'+_ext;
+  dl.setAttribute('data-url',dlUrl);
+  dl.setAttribute('data-name',dlName);
+  // Muestra el WebP en pantalla (más liviano)
   var tmp=new Image();
   tmp.onload=function(){
     lbImg.src=tmp.src;lbImg.style.display='block';spin.style.display='none';
-    document.getElementById('lbDims').textContent=tmp.naturalWidth+' × '+tmp.naturalHeight+' px';
+    // Si hay versión JPG de descarga, mide sus dimensiones reales (es lo que recibe el usuario)
+    if(img.dlpid){
+      var dim=new Image();
+      dim.onload=function(){document.getElementById('lbDims').textContent=dim.naturalWidth+' × '+dim.naturalHeight+' px';};
+      dim.onerror=function(){document.getElementById('lbDims').textContent=tmp.naturalWidth+' × '+tmp.naturalHeight+' px';};
+      dim.src=THUMB+img.dlpid;
+    } else {
+      document.getElementById('lbDims').textContent=tmp.naturalWidth+' × '+tmp.naturalHeight+' px';
+    }
   };
   tmp.onerror=function(){lbImg.src=THUMB+img.pid;lbImg.style.display='block';spin.style.display='none';};
-  tmp.src=FULL+img.pid;
+  tmp.src=THUMB+img.pid;
 }
 function closeLb(){
   document.getElementById('lb').classList.remove('open');
   document.body.style.overflow='auto';
   document.getElementById('lbImg').src='';
+}
+function triggerDownload(){
+  var btn=document.getElementById('lbDl');
+  var url=btn.getAttribute('data-url');
+  var name=btn.getAttribute('data-name');
+  if(!url||url==='#')return;
+  var origHtml=btn.innerHTML;
+  btn.innerHTML='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" style="width:16px;height:16px"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg> Descargando...';
+  btn.disabled=true;
+  // Método 1: fetch con cors — funciona si el CDN lo permite
+  fetch(url,{mode:'cors',cache:'force-cache'})
+    .then(function(r){
+      if(!r.ok)throw new Error('cors-fail');
+      return r.blob();
+    })
+    .then(function(blob){
+      // Asegurar que el blob tenga el tipo correcto según extensión
+      var ext=(name.split('.').pop()||'jpg').toLowerCase();
+      var mime={'jpg':'image/jpeg','jpeg':'image/jpeg','webp':'image/webp','png':'image/png'}[ext]||'image/jpeg';
+      var typedBlob=new Blob([blob],{type:mime});
+      var a=document.createElement('a');
+      a.href=URL.createObjectURL(typedBlob);
+      a.download=name;
+      document.body.appendChild(a);a.click();
+      setTimeout(function(){URL.revokeObjectURL(a.href);document.body.removeChild(a);},3000);
+    })
+    .catch(function(){
+      // Fallback: link directo — el navegador descargará con nombre correcto
+      var a=document.createElement('a');
+      a.href=url;
+      a.download=name;
+      a.target='_blank';
+      a.rel='noopener';
+      document.body.appendChild(a);a.click();
+      setTimeout(function(){document.body.removeChild(a);},1000);
+    })
+    .finally(function(){
+      setTimeout(function(){
+        btn.innerHTML='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" style="width:16px;height:16px"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg> Descargar gratis';
+        btn.disabled=false;
+      },1200);
+    });
 }
 function navLb(dir){lbIdx=(lbIdx+dir+filteredImgs.length)%filteredImgs.length;loadLb(filteredImgs[lbIdx]);}
 document.addEventListener('keydown',function(e){
@@ -1791,7 +2067,15 @@ function goToGallery(filter){
     } else {
       var accepted=false;try{accepted=sessionStorage.getItem('fb_terms')==='1';}catch(e){}
       render();
-      if(!accepted)setTimeout(function(){document.getElementById('termsOverlay').classList.remove('hidden');},6000);
+      if(!accepted)setTimeout(function(){
+        var ov=document.getElementById('termsOverlay');
+        var bl=document.getElementById('termsBlockLayer');
+        ov.classList.remove('hidden');
+        setTimeout(function(){
+          ov.classList.add('visible');
+          if(bl)bl.classList.add('active');
+        },30);
+      },7000);
     }
   },480);
 }
@@ -1805,22 +2089,58 @@ function backToHome(){
 }
 
 // ═══════════════════════════════════════════
-// TÉRMINOS
+// TÉRMINOS — BARRA INFERIOR
 // ═══════════════════════════════════════════
 function toggleTermsBody(){
-  var b=document.getElementById('termsBody');b.classList.toggle('open');
+  var wrap=document.getElementById('termsBodyWrap');
+  var btn=document.getElementById('termsExpandBtn');
+  if(!wrap)return;
+  wrap.classList.toggle('open');
+  if(btn)btn.classList.toggle('open');
 }
 function acceptTerms(){
-  document.getElementById('termsOverlay').classList.add('hidden');
+  var ov=document.getElementById('termsOverlay');
+  var bl=document.getElementById('termsBlockLayer');
+  ov.classList.remove('visible');
+  ov.classList.add('hidden');
+  if(bl)bl.classList.remove('active');
+  // Cerrar cuerpo desplegable si estaba abierto
+  var wrap=document.getElementById('termsBodyWrap');if(wrap)wrap.classList.remove('open');
+  var expBtn=document.getElementById('termsExpandBtn');if(expBtn)expBtn.classList.remove('open');
+  // Reset checkboxes y botones
+  ['termsCheck','termsCheckBar'].forEach(function(id){var el=document.getElementById(id);if(el)el.checked=false;});
+  ['acceptBtn','acceptBtn2'].forEach(function(id){var el=document.getElementById(id);if(el)el.disabled=true;});
   try{sessionStorage.setItem('fb_terms','1');}catch(e){}
+  showToast('¡Bienvenido a FondoBlanco! Descarga libre.');
 }
 function declineTerms(){
-  document.getElementById('termsOverlay').classList.add('hidden');
+  var ov=document.getElementById('termsOverlay');
+  var bl=document.getElementById('termsBlockLayer');
+  ov.classList.remove('visible');
+  ov.classList.add('hidden');
+  if(bl)bl.classList.remove('active');
   document.getElementById('blockedScreen').classList.add('show');
 }
 function showTermsAgain(){
   document.getElementById('blockedScreen').classList.remove('show');
-  document.getElementById('termsOverlay').classList.remove('hidden');
+  var ov=document.getElementById('termsOverlay');
+  var bl=document.getElementById('termsBlockLayer');
+  ov.classList.remove('hidden');
+  setTimeout(function(){
+    ov.classList.add('visible');
+    if(bl)bl.classList.add('active');
+  },20);
+}
+
+// ═══════════════════════════════════════════
+// QUIÉNES SOMOS
+// ═══════════════════════════════════════════
+function toggleAbout(){
+  var body=document.getElementById('aboutBody');
+  var arrow=document.getElementById('aboutArrow');
+  if(!body)return;
+  body.classList.toggle('open');
+  if(arrow)arrow.classList.toggle('open');
 }
 
 // ═══════════════════════════════════════════
@@ -1831,7 +2151,7 @@ function showToast(msg){
   setTimeout(function(){t.classList.remove('show');},3000);
 }
 
-document.getElementById('termsOverlay').classList.add('hidden');
+document.getElementById('termsOverlay').classList.add('hidden'); // oculto al inicio, aparece a los 7s
 </script>
 </body>
 </html>
