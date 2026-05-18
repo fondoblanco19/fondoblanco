@@ -884,8 +884,7 @@ body.galeria-mode{overflow:auto;}
   .terms-bar-left{flex-wrap:wrap;}
 }
 </style>
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4766990013673854"
-     crossorigin="anonymous"></script>
+
 <!-- Open Graph -->
 <meta property="og:title" content="FondoBlanco – Free HD Images &amp; Textures, No Copyright">
 <meta property="og:description" content="Download free high-resolution images, textures and wallpapers. Marble, lava, crystals, food, nature and more. No sign-up. Free commercial use.">
@@ -966,17 +965,7 @@ body.galeria-mode{overflow:auto;}
     <span class="ad-sky-label">Ad</span>
     <div style="position:relative">
       <button class="ad-sky-close" onclick="document.getElementById('adSkyWrap').style.display='none'" title="Close">✕</button>
-      <div class="ad-sky-inner">
-        <script>
-          atOptions = {
-            'key' : '2979ddc08560cbeea39c4629d12fab6d',
-            'format' : 'iframe',
-            'height' : 600,
-            'width' : 160,
-            'params' : {}
-          };
-        </script>
-        <script src="https://www.highperformanceformat.com/2979ddc08560cbeea39c4629d12fab6d/invoke.js"></script>
+      <div class="ad-sky-inner" id="adSkyContainer">
       </div>
     </div>
   </div>
@@ -984,16 +973,7 @@ body.galeria-mode{overflow:auto;}
   <!-- AD MOBILE STICKY 320×50 — fijo abajo, solo móvil ≤760px -->
   <div class="ad-mobile-sticky" id="adMobileSticky">
     <button class="ad-mobile-sticky-close" onclick="document.getElementById('adMobileSticky').style.display='none'" title="Close">✕</button>
-    <script>
-      atOptions = {
-        'key' : '6be047e0c4ce65c11ef08b36a8497fcf',
-        'format' : 'iframe',
-        'height' : 50,
-        'width' : 320,
-        'params' : {}
-      };
-    </script>
-    <script src="https://www.highperformanceformat.com/6be047e0c4ce65c11ef08b36a8497fcf/invoke.js"></script>
+    <div id="adMobileContainer"></div>
   </div>
 
   <!-- Header sticky -->
@@ -1057,16 +1037,7 @@ body.galeria-mode{overflow:auto;}
   <!-- AD 1: Leaderboard 728×90 — debajo de filtros, antes de la galería -->
   <p class="ad-label">Advertisement</p>
   <div class="ad-leaderboard">
-    <script>
-      atOptions = {
-        'key' : 'b9b30440f04feaa6f4621f9c2aa9b82f',
-        'format' : 'iframe',
-        'height' : 90,
-        'width' : 728,
-        'params' : {}
-      };
-    </script>
-    <script src="https://www.highperformanceformat.com/b9b30440f04feaa6f4621f9c2aa9b82f/invoke.js"></script>
+    <div id="adBanner1Container"></div>
   </div>
 
   <!-- Contador -->
@@ -1079,16 +1050,7 @@ body.galeria-mode{overflow:auto;}
     <!-- AD 2: Leaderboard 728×90 — entre galería y paginación -->
     <p class="ad-label">Advertisement</p>
     <div class="ad-leaderboard">
-      <script>
-        atOptions = {
-          'key' : 'b9b30440f04feaa6f4621f9c2aa9b82f',
-          'format' : 'iframe',
-          'height' : 90,
-          'width' : 728,
-          'params' : {}
-        };
-      </script>
-      <script src="https://www.highperformanceformat.com/b9b30440f04feaa6f4621f9c2aa9b82f/invoke.js"></script>
+      <div id="adBanner2Container"></div>
     </div>
 
     <div id="pagination" class="pagination"></div>
@@ -1124,16 +1086,7 @@ body.galeria-mode{overflow:auto;}
         <!-- Anuncio 160×300 — encaja en panel de 280px -->
         <div class="lb-ad-wrap">
           <span class="ad-label">Advertisement</span>
-          <script>
-            atOptions = {
-              'key' : '66fe6e63386169af45bc5ebe129576ec',
-              'format' : 'iframe',
-              'height' : 300,
-              'width' : 160,
-              'params' : {}
-            };
-          </script>
-          <script src="https://www.highperformanceformat.com/66fe6e63386169af45bc5ebe129576ec/invoke.js"></script>
+          <div id="adLbContainer"></div>
         </div>
       </div>
     </div>
@@ -2621,6 +2574,68 @@ function showToast(msg){
 }
 
 document.getElementById('termsOverlay').classList.add('hidden'); // oculto al inicio, aparece a los 7s
+</script>
+
+<script>
+// ═══════════════════════════════════════════════
+// LAZY LOAD ADS — solo cargan después de interacción
+// No se disparan al abrir la página
+// ═══════════════════════════════════════════════
+var _adsLoaded = {};
+
+function loadAd(containerId, key, w, h) {
+  if (_adsLoaded[containerId]) return;
+  var el = document.getElementById(containerId);
+  if (!el) return;
+  _adsLoaded[containerId] = true;
+  var s1 = document.createElement('script');
+  s1.text = "atOptions={'key':'"+key+"','format':'iframe','height':"+h+",'width':"+w+",'params':{}};";
+  var s2 = document.createElement('script');
+  s2.src = 'https://www.highperformanceformat.com/' + key + '/invoke.js';
+  el.appendChild(s1);
+  el.appendChild(s2);
+}
+
+// Sky lateral — cargar después de 4 segundos si el usuario sigue en la página
+setTimeout(function() {
+  loadAd('adSkyContainer',    '2979ddc08560cbeea39c4629d12fab6d', 160, 600);
+}, 4000);
+
+// Mobile sticky — cargar después de 3 segundos
+setTimeout(function() {
+  loadAd('adMobileContainer', '6be047e0c4ce65c11ef08b36a8497fcf', 320, 50);
+}, 3000);
+
+// Banners de galería — cargar al hacer scroll (usuario mostró intención)
+var _scrollAdsDone = false;
+window.addEventListener('scroll', function() {
+  if (_scrollAdsDone) return;
+  _scrollAdsDone = true;
+  loadAd('adBanner1Container', 'b9b30440f04feaa6f4621f9c2aa9b82f', 728, 90);
+  loadAd('adBanner2Container', 'b9b30440f04feaa6f4621f9c2aa9b82f', 728, 90);
+}, {once: false, passive: true});
+
+// Lightbox ad — cargar cuando se abre el lightbox
+var _origLoadLb = typeof loadLb === 'function' ? loadLb : null;
+document.addEventListener('click', function(e) {
+  var card = e.target.closest && e.target.closest('.card');
+  if (card) {
+    setTimeout(function() {
+      loadAd('adLbContainer', '66fe6e63386169af45bc5ebe129576ec', 160, 300);
+    }, 500);
+  }
+}, {passive: true});
+
+// AdSense — solo cargar después de scroll
+window.addEventListener('scroll', function() {
+  if (document.getElementById('adsense-lazy-loaded')) return;
+  var s = document.createElement('script');
+  s.id = 'adsense-lazy-loaded';
+  s.async = true;
+  s.src = 'https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4766990013673854';
+  s.crossOrigin = 'anonymous';
+  document.head.appendChild(s);
+}, {once: true, passive: true});
 </script>
 </body>
 </html>
