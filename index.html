@@ -12,6 +12,7 @@
 </script>
 <meta name="viewport" content="width=device-width,initial-scale=1.0">
 <link rel="canonical" href="https://fondoblanco.co/">
+
 <link rel="sitemap" type="application/xml" href="https://fondoblanco.co/sitemap.xml">
 <meta name="theme-color" content="#0a0a0f">
 <meta name="description" content="FondoBlanco — free image bank. Marble, lava, kintsugi, crystal, food, nature and more. No sign-up required.">
@@ -402,16 +403,7 @@ body.galeria-mode{overflow:auto;}
 
 /* ─── ADSTERRA ADS ─── */
 /* Leaderboard 728×90 — barra horizontal */
-.ad-leaderboard{
-  display:flex;align-items:center;justify-content:center;
-  width:100%;padding:10px 0;
-  background:var(--bg2);
-  border-top:1px solid var(--border);
-  border-bottom:1px solid var(--border);
-  overflow:hidden;
-  min-height:90px;
-}
-.ad-leaderboard iframe,.ad-leaderboard>*{max-width:100%!important;}
+
 
 /* Rectangle 300×250 — dentro del panel del lightbox */
 .ad-lb-rect{
@@ -426,75 +418,23 @@ body.galeria-mode{overflow:auto;}
 .ad-lb-rect iframe,.ad-lb-rect>*{max-width:100%!important;}
 
 /* Ad label above each ad unit */
-.ad-label{
-  text-align:center;
-  font-size:.6rem;
-  letter-spacing:.12em;
-  text-transform:uppercase;
-  color:var(--muted2);
-  opacity:.5;
-  padding:4px 0 2px;
-  font-family:'Inter',sans-serif;
-}
+
 
 /* ─── AD SKYSCRAPER 160×600 — flotante derecha en desktop ─── */
-.ad-sky-wrap{
-  position:fixed;
-  top:50%;right:0;
-  transform:translateY(-50%);
-  z-index:400;
-  display:flex;flex-direction:column;align-items:center;gap:4px;
-  /* Aparece solo si hay espacio suficiente (>1240px) */
-}
-.ad-sky-label{
-  font-size:.52rem;letter-spacing:.12em;text-transform:uppercase;
-  color:rgba(255,255,255,.25);font-family:'Inter',sans-serif;
-  writing-mode:vertical-rl;
-  margin-bottom:4px;
-}
-.ad-sky-close{
-  position:absolute;top:-8px;left:-8px;
-  width:20px;height:20px;border-radius:50%;
-  background:var(--bg2);border:1px solid var(--border);
-  color:var(--muted2);font-size:.7rem;
-  display:flex;align-items:center;justify-content:center;
-  cursor:pointer;z-index:1;transition:background .15s;
-  line-height:1;padding:0;font-family:sans-serif;
-}
-.ad-sky-close:hover{background:var(--border2);color:var(--text);}
-.ad-sky-inner{
-  overflow:hidden;
-  border-radius:4px 0 0 4px;
-  border:1px solid var(--border);
-  border-right:none;
-  background:var(--bg2);
-  width:160px;
-  min-height:600px;
-  display:flex;align-items:center;justify-content:center;
-}
+
+
+
+
+
 /* Solo visible en pantallas muy anchas donde no tapa la galería */
-@media(max-width:1400px){.ad-sky-wrap{display:none;}}
+@media(max-width:1400px){}
 
 /* ─── AD MOBILE STICKY BANNER 320×50 — fijo abajo en móvil ─── */
-.ad-mobile-sticky{
-  position:fixed;bottom:0;left:0;right:0;
-  display:none;  /* solo móvil */
-  align-items:center;justify-content:center;
-  background:var(--bg);
-  border-top:1px solid var(--border);
-  padding:4px 0 2px;
-  z-index:600;
-  box-shadow:0 -4px 20px rgba(0,0,0,.35);
-}
-.ad-mobile-sticky-close{
-  position:absolute;top:4px;right:8px;
-  background:transparent;border:none;
-  color:var(--muted2);font-size:.75rem;cursor:pointer;
-  font-family:sans-serif;line-height:1;padding:2px 4px;
-}
-.ad-mobile-sticky-close:hover{color:var(--text);}
+
+
+
 @media(max-width:760px){
-  .ad-mobile-sticky{display:flex;}
+  
   /* Empujar el contenido para que no quede tapado por el banner sticky */
   #pg-galeria{padding-bottom:60px;}
 }
@@ -552,18 +492,8 @@ body.galeria-mode{overflow:auto;}
   display:flex;flex-direction:column;gap:16px;overflow-y:auto;
 }
 /* Contenedor del anuncio dentro del lightbox — 160×300 cabe en 280px */
-.lb-ad-wrap{
-  width:100%;
-  display:flex;
-  flex-direction:column;
-  align-items:center;
-  gap:4px;
-  margin-top:4px;
-}
-.lb-ad-wrap .ad-label{
-  font-size:.55rem;letter-spacing:.14em;text-transform:uppercase;
-  color:var(--muted);opacity:.5;font-family:'Inter',sans-serif;
-}
+
+.lb-ad-wrap 
 .lb-ad-wrap iframe{
   max-width:100%!important;
   border:none;
@@ -865,6 +795,34 @@ body.galeria-mode{overflow:auto;}
 .captcha-close:hover{border-color:var(--accent);color:var(--accent);}
 
 /* ═══════════════════════════════════════
+   ADSTERRA — 3 ubicaciones fijas
+   ═══════════════════════════════════════ */
+.ad-wrap{
+  width:100%;display:flex;flex-direction:column;
+  align-items:center;justify-content:center;
+  padding:8px 0;background:var(--bg2);
+  border-top:1px solid var(--border);
+  border-bottom:1px solid var(--border);
+}
+.ad-label{
+  font-size:.58rem;letter-spacing:1.5px;text-transform:uppercase;
+  color:var(--muted2);margin-bottom:4px;
+}
+.ad-sky-wrap{
+  position:fixed;right:8px;top:50%;transform:translateY(-50%);
+  z-index:400;display:flex;flex-direction:column;align-items:flex-end;gap:4px;
+}
+.ad-sky-label{font-size:.55rem;letter-spacing:1px;text-transform:uppercase;color:var(--muted2);}
+.ad-sky-close{
+  background:var(--bg2);border:1px solid var(--border);color:var(--muted2);
+  border-radius:4px;padding:2px 6px;font-size:.65rem;cursor:pointer;
+}
+.ad-sky-inner{width:160px;overflow:hidden;border-radius:8px;border:1px solid var(--border);}
+@media(max-width:1400px){.ad-sky-wrap{display:none;}}
+.lb-ad-wrap{margin-top:14px;width:100%;display:flex;flex-direction:column;align-items:center;gap:4px;}
+.lb-ad-wrap .ad-label{font-size:.55rem;}
+
+/* ═══════════════════════════════════════
    RESPONSIVE
    ═══════════════════════════════════════ */
 @media(max-width:900px){
@@ -904,6 +862,16 @@ body.galeria-mode{overflow:auto;}
 
 <!-- ═══ TRANSITION OVERLAY ═══ -->
 <div class="t-overlay" id="tOverlay"></div>
+
+<!-- ADSTERRA 1: Sky lateral 160x600 — solo desktop -->
+<div class="ad-sky-wrap" id="adSkyWrap">
+  <span class="ad-sky-label">Ad</span>
+  <button class="ad-sky-close" onclick="document.getElementById('adSkyWrap').style.display='none'" title="Close">✕</button>
+  <div class="ad-sky-inner">
+    <script>atOptions={'key':'2979ddc08560cbeea39c4629d12fab6d','format':'iframe','height':600,'width':160,'params':{}}</script>
+    <script src="https://www.highperformanceformat.com/2979ddc08560cbeea39c4629d12fab6d/invoke.js"></script>
+  </div>
+</div>
 
 <!-- ═══════════════════════════════
      PÁGINA 1: INICIO
@@ -961,22 +929,19 @@ body.galeria-mode{overflow:auto;}
 <div id="pg-galeria">
 
   <!-- AD SKYSCRAPER 160×600 — flotante lateral derecho, solo desktop >1400px -->
-  <div class="ad-sky-wrap" id="adSkyWrap">
-    <span class="ad-sky-label">Ad</span>
-    <div style="position:relative">
-      <button class="ad-sky-close" onclick="document.getElementById('adSkyWrap').style.display='none'" title="Close">✕</button>
-      <div class="ad-sky-inner" id="adSkyContainer">
-      </div>
-    </div>
-  </div>
+  
 
   <!-- AD MOBILE STICKY 320×50 — fijo abajo, solo móvil ≤760px -->
-  <div class="ad-mobile-sticky" id="adMobileSticky">
-    <button class="ad-mobile-sticky-close" onclick="document.getElementById('adMobileSticky').style.display='none'" title="Close">✕</button>
-    <div id="adMobileContainer"></div>
-  </div>
+  
 
-  <!-- Header sticky -->
+  <!-- ADSTERRA 2: Banner 728x90 — arriba galería -->
+<div class="ad-wrap">
+  <p class="ad-label">Advertisement</p>
+  <script>atOptions={'key':'b9b30440f04feaa6f4621f9c2aa9b82f','format':'iframe','height':90,'width':728,'params':{}}</script>
+  <script src="https://www.highperformanceformat.com/b9b30440f04feaa6f4621f9c2aa9b82f/invoke.js"></script>
+</div>
+
+<!-- Header sticky -->
   <header class="g-header">
     <div class="g-header-top">
       <a class="logo" href="#" onclick="backToHome();return false;" style="text-decoration:none;">
@@ -1035,10 +1000,7 @@ body.galeria-mode{overflow:auto;}
   </div>
 
   <!-- AD 1: Leaderboard 728×90 — debajo de filtros, antes de la galería -->
-  <p class="ad-label">Advertisement</p>
-  <div class="ad-leaderboard">
-    <div id="adBanner1Container"></div>
-  </div>
+  
 
   <!-- Contador -->
   <div class="g-count" id="gCount">Loading...</div>
@@ -1048,10 +1010,7 @@ body.galeria-mode{overflow:auto;}
     <div class="masonry" id="grid"></div>
 
     <!-- AD 2: Leaderboard 728×90 — entre galería y paginación -->
-    <p class="ad-label">Advertisement</p>
-    <div class="ad-leaderboard">
-      <div id="adBanner2Container"></div>
-    </div>
+    
 
     <div id="pagination" class="pagination"></div>
   </div>
@@ -1081,13 +1040,16 @@ body.galeria-mode{overflow:auto;}
           Free download
         </button>
         <div class="lb-free" data-i18n="lb_free">✓ No sign-up · Free · Open download</div>
+        <!-- ADSTERRA 3: Banner 160x300 en lightbox -->
+        <div class="lb-ad-wrap">
+          <span class="ad-label">Advertisement</span>
+          <script>atOptions={'key':'66fe6e63386169af45bc5ebe129576ec','format':'iframe','height':300,'width':160,'params':{}}</script>
+          <script src="https://www.highperformanceformat.com/66fe6e63386169af45bc5ebe129576ec/invoke.js"></script>
+        </div>
         <button class="lb-like-btn" id="lbLikeBtn" onclick="toggleLikeLb()">&#9825; 0 <span data-i18n="like_txt">Likes</span></button>
 
         <!-- Anuncio 160×300 — encaja en panel de 280px -->
-        <div class="lb-ad-wrap">
-          <span class="ad-label">Advertisement</span>
-          <div id="adLbContainer"></div>
-        </div>
+        
       </div>
     </div>
   </div>
@@ -2140,7 +2102,6 @@ function doActualDownload(url,name){
     btn.innerHTML='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" style="width:16px;height:16px"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg> '+T('downloading');
     btn.disabled=true;
   }
-  maybeShowAd();
   fetch(url,{mode:'cors',cache:'force-cache'})
     .then(function(r){if(!r.ok)throw new Error('fail');return r.blob();})
     .then(function(blob){
@@ -2544,26 +2505,6 @@ function closeCaptcha(){
   _captchaPending=null;
 }
 
-// 30% ad popup — abrir popunder de Adsterra en 3 de cada 10 descargas
-var _dlCount=0;
-function maybeShowAd(){
-  _dlCount++;
-  // Cada 3 descargas (posición 3, 6, 9...) mostrar el ad
-  if(_dlCount%3===0){
-    try{
-      // Adsterra popunder/interstitial — abre pestaña con el ad
-      var adWin=window.open('https://www.highperformanceformat.com/2979ddc08560cbeea39c4629d12fab6d/invoke.js','_blank','noopener');
-      // Si el popup fue bloqueado, intentar con link
-      if(!adWin||adWin.closed||typeof adWin.closed=='undefined'){
-        var a=document.createElement('a');
-        a.href='https://www.highperformanceformat.com/2979ddc08560cbeea39c4629d12fab6d/invoke.js';
-        a.target='_blank';a.rel='noopener';
-        document.body.appendChild(a);a.click();
-        setTimeout(function(){document.body.removeChild(a);},500);
-      }
-    }catch(e){}
-  }
-}
 
 // ══════════════════════════════════════════════════════
 // TOAST
@@ -2576,66 +2517,42 @@ function showToast(msg){
 document.getElementById('termsOverlay').classList.add('hidden'); // oculto al inicio, aparece a los 7s
 </script>
 
+
 <script>
 // ═══════════════════════════════════════════════
-// LAZY LOAD ADS — solo cargan después de interacción
-// No se disparan al abrir la página
+// POPUP ADSTERRA — 1 de cada 10 visitantes
+// Solo UNA vez por sesión, nunca se repite
 // ═══════════════════════════════════════════════
-var _adsLoaded = {};
+(function(){
+  // Si ya vio el popup esta sesión → no hacer nada nunca más
+  try { if(sessionStorage.getItem('fb_popup_shown')==='1') return; } catch(e){}
 
-function loadAd(containerId, key, w, h) {
-  if (_adsLoaded[containerId]) return;
-  var el = document.getElementById(containerId);
-  if (!el) return;
-  _adsLoaded[containerId] = true;
-  var s1 = document.createElement('script');
-  s1.text = "atOptions={'key':'"+key+"','format':'iframe','height':"+h+",'width':"+w+",'params':{}};";
-  var s2 = document.createElement('script');
-  s2.src = 'https://www.highperformanceformat.com/' + key + '/invoke.js';
-  el.appendChild(s1);
-  el.appendChild(s2);
-}
+  // Decidir al azar si este visitante es "el elegido" (10% de probabilidad)
+  var shouldShow = Math.random() < 0.10; // 10% = 1 de cada 10
+  if(!shouldShow) return;
 
-// Sky lateral — cargar después de 4 segundos si el usuario sigue en la página
-setTimeout(function() {
-  loadAd('adSkyContainer',    '2979ddc08560cbeea39c4629d12fab6d', 160, 600);
-}, 4000);
+  // Marcar que ya se mostró para esta sesión
+  try { sessionStorage.setItem('fb_popup_shown','1'); } catch(e){}
 
-// Mobile sticky — cargar después de 3 segundos
-setTimeout(function() {
-  loadAd('adMobileContainer', '6be047e0c4ce65c11ef08b36a8497fcf', 320, 50);
-}, 3000);
-
-// Banners de galería — cargar al hacer scroll (usuario mostró intención)
-var _scrollAdsDone = false;
-window.addEventListener('scroll', function() {
-  if (_scrollAdsDone) return;
-  _scrollAdsDone = true;
-  loadAd('adBanner1Container', 'b9b30440f04feaa6f4621f9c2aa9b82f', 728, 90);
-  loadAd('adBanner2Container', 'b9b30440f04feaa6f4621f9c2aa9b82f', 728, 90);
-}, {once: false, passive: true});
-
-// Lightbox ad — cargar cuando se abre el lightbox
-var _origLoadLb = typeof loadLb === 'function' ? loadLb : null;
-document.addEventListener('click', function(e) {
-  var card = e.target.closest && e.target.closest('.card');
-  if (card) {
-    setTimeout(function() {
-      loadAd('adLbContainer', '66fe6e63386169af45bc5ebe129576ec', 160, 300);
-    }, 500);
+  // Solo mostrar cuando el usuario descargue por primera vez
+  var _popupTriggered = false;
+  function triggerPopupOnce(){
+    if(_popupTriggered) return;
+    _popupTriggered = true;
+    try {
+      window.open(
+        'https://www.highperformanceformat.com/2979ddc08560cbeea39c4629d12fab6d/invoke.js',
+        '_blank',
+        'noopener,noreferrer'
+      );
+    } catch(e){}
   }
-}, {passive: true});
 
-// AdSense — solo cargar después de scroll
-window.addEventListener('scroll', function() {
-  if (document.getElementById('adsense-lazy-loaded')) return;
-  var s = document.createElement('script');
-  s.id = 'adsense-lazy-loaded';
-  s.async = true;
-  s.src = 'https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4766990013673854';
-  s.crossOrigin = 'anonymous';
-  document.head.appendChild(s);
-}, {once: true, passive: true});
+  // Escuchar el clic en el botón de descarga
+  document.addEventListener('click', function(e){
+    var btn = e.target.closest && e.target.closest('#lbDl');
+    if(btn) triggerPopupOnce();
+  }, { passive: true });
+})();
 </script>
 </body>
-</html>
