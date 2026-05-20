@@ -1,4 +1,68 @@
+# ═══════════════════════════════════════════════════════════════
+# robots.txt — FondoBlanco.co
+# Actualizado: 2026-05-20
+# ═══════════════════════════════════════════════════════════════
+
+# ── Todos los bots: acceso completo al contenido público ────────
 User-agent: *
 Allow: /
+Allow: /textura/
+Allow: /texturas/
 
+# ── Bloquear URLs con parámetros que generan duplicados ─────────
+Disallow: /*?sort=
+Disallow: /*?filter=
+Disallow: /*?page=
+Disallow: /*?q=
+Disallow: /*?preview=
+Disallow: /*?utm_
+
+# ── Bloquear rutas administrativas o privadas ───────────────────
+Disallow: /admin/
+Disallow: /private/
+Disallow: /api/
+Disallow: /wp-admin/
+Disallow: /wp-login.php
+
+# ── No bloquear imágenes — CRÍTICO para Google Imágenes ─────────
+# Las imágenes están en fondoblanco.b-cdn.net (dominio externo).
+# NUNCA añadir: Disallow: /*.webp o Disallow: /*.jpg
+
+# ── Googlebot específico ────────────────────────────────────────
+User-agent: Googlebot
+Allow: /
+Crawl-delay: 1
+
+# ── Googlebot Images — acceso completo ──────────────────────────
+User-agent: Googlebot-Image
+Allow: /
+Allow: /*.webp
+Allow: /*.jpg
+Allow: /*.png
+
+# ── Bots de redes sociales — necesitan ver OG:image ─────────────
+User-agent: facebookexternalhit
+Allow: /
+
+User-agent: Twitterbot
+Allow: /
+
+User-agent: LinkedInBot
+Allow: /
+
+User-agent: Pinterest
+Allow: /
+
+# ── Bots de SEO — permitir para monitoreo ───────────────────────
+User-agent: AhrefsBot
+Crawl-delay: 5
+
+User-agent: SemrushBot
+Crawl-delay: 5
+
+User-agent: MJ12bot
+Disallow: /
+
+# ── Sitemaps ─────────────────────────────────────────────────────
 Sitemap: https://fondoblanco.co/sitemap.xml
+Sitemap: https://fondoblanco.co/sitemap-images.xml
