@@ -12463,7 +12463,7 @@ function render(){
       var card=document.createElement('div');
       card.className='card';card.setAttribute('data-id',img.id);
       card.style.setProperty('--card-bg',(img.cat==='Comida'||img.cat==='Food')?'#ffffff':'var(--bg2)');
-      card.onclick=function(e){if(e.target.closest('.card-like-btn')||e.target.closest('.btn-dl')){return;}openLb(absIdx);};
+      // click manejado por aWrap href
 
       var skel=document.createElement('div');skel.className='card-skel';
       card.appendChild(skel);
@@ -12525,6 +12525,7 @@ function render(){
       aWrap.href='/textura/'+(img.slug||'')+'/';
       aWrap.className='card-wrap';
       aWrap.setAttribute('aria-label',img.name);
+      aWrap.style.display='block';
       aWrap.appendChild(card);
       frag.appendChild(aWrap);
       if(_obs)_obs.observe(aWrap);
