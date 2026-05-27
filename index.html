@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-<meta name="p:domain_verify" content="7431c3c142fd16bdad2ef8b70fcb1f10"/>
 <meta charset="UTF-8">
 <!-- Google Search Console — reemplazar [TU_CODIGO_GSC] con el código real de GSC -->
 <meta name="google-site-verification" content="[TU_CODIGO_GSC]">
@@ -968,7 +967,7 @@ body.galeria-mode{overflow:auto;}
 .texture-figure img{
   display:block;
   width:100%;
-  aspect-ratio:9/16;
+  aspect-ratio:3/4;
   object-fit:cover;
   transition:transform .35s ease;
 }
@@ -7931,7 +7930,7 @@ function makeObs(){
       }
       _obs&&_obs.unobserve(e.target);
     });
-  },{rootMargin:'200px 0px',threshold:0});
+  },{rootMargin:'800px 0px',threshold:0});
 }
 
 // ══════════════════════════════════════════════════════
@@ -8055,8 +8054,7 @@ function render(){
       var _ci=idx-start;
       im.alt=img.alt||img.name;
       im.decoding='async';
-      im.loading=(_ci<6)?'eager':'lazy';
-      im.fetchPriority=(_ci===0)?'high':(_ci<4)?'auto':'low';
+      // loading y fetchPriority se asignan abajo con la URL
       im.title=img.name;
       if(img.tags){im.setAttribute('aria-label',img.name+'. Tags: '+(img.tags||'').split(' ').slice(0,8).join(', '));}
       im.onload=function(){
@@ -8078,18 +8076,21 @@ function render(){
         }
       };
 
-      var url=THUMB+img.pid;
-      // Lazy: los primeros 4 cargan eager, el resto con IntersectionObserver
-      if(_ci<4){
+      var url=THUMB+img.pid+'?width=360&quality=82';  // Thumbnail optimizado
+      // Primeras 20: carga inmediata eager (sin esperar observer)
+      // Resto: IntersectionObserver con 800px de anticipación
+      if(_ci<20){
         im.src=url;
         im.loading='eager';
+        im.fetchPriority=(_ci<4)?'high':'auto';
       } else {
         im.setAttribute('data-src',url);
-        im.src='';            // sin src → sin petición
+        im.src='';
         im.loading='lazy';
+        im.fetchPriority='low';
       }
-      im.width  = img.w || 1440;
-      im.height = img.h || 2560;
+      im.width  = 360;
+      im.height = 480;  // Tamaño del thumbnail (360x480px)
 
       var lc=getLikes(img.id);
       var badge=document.createElement('div');badge.className='card-like-count';
