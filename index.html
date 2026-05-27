@@ -7918,6 +7918,20 @@ var CAT_COLORS={
 };
 function skelColor(cat){return CAT_COLORS[cat]||'#131318';}
 
+// ── Precarga progresiva ──────────────────────────────
+var _loadedCount=0;
+var _pendingImgs=[];  // cola de imgs con data-src aún no disparados
+function flushPending(){
+  // Toma las próximas 20 de la cola y les asigna src inmediatamente
+  var batch=_pendingImgs.splice(0,20);
+  batch.forEach(function(img){
+    if(img.hasAttribute('data-src')){
+      img.src=img.getAttribute('data-src');
+      img.removeAttribute('data-src');
+    }
+  });
+}
+
 function makeObs(){
   if(!window.IntersectionObserver)return null;
   return new IntersectionObserver(function(entries){
@@ -7930,7 +7944,7 @@ function makeObs(){
       }
       _obs&&_obs.unobserve(e.target);
     });
-  },{rootMargin:'800px 0px',threshold:0});
+  },{rootMargin:'2000px 0px',threshold:0});
 }
 
 // ══════════════════════════════════════════════════════
@@ -8006,6 +8020,7 @@ function buildPagination(totalPages){
 // RENDER
 // ══════════════════════════════════════════════════════
 function render(){
+  _loadedCount=0;_pendingImgs=[];
   filteredImgs=getFiltered();
   var grid=document.getElementById('grid');
   var total=filteredImgs.length;
@@ -8062,6 +8077,9 @@ function render(){
         if(sk)sk.remove();
         this.parentElement&&this.parentElement.classList.add('ready');
         sched();
+        // Cuando cada imagen carga, dispara las pendientes más cercanas
+        _loadedCount=((_loadedCount||0)+1);
+        if(_loadedCount%10===0) flushPending();
       };
       im._retry=false;
       im.onerror=function(){
@@ -8088,6 +8106,7 @@ function render(){
         im.src='';
         im.loading='lazy';
         im.fetchPriority='low';
+        _pendingImgs.push(im);  // añadir a la cola de precarga
       }
       im.width  = 360;
       im.height = 480;  // Tamaño del thumbnail (360x480px)
@@ -8124,6 +8143,9 @@ function render(){
   }
   grid.appendChild(frag);
   sched();
+  // Disparar precarga del segundo bloque (imgs 21-30) con 300ms de delay
+  // para no competir con las primeras 20 que ya están cargando
+  setTimeout(flushPending, 300);
 
   // Fallback: si IntersectionObserver no está disponible, cargar todo tras 800ms
   if(!window.IntersectionObserver){
