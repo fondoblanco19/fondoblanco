@@ -421,102 +421,11 @@ body.galeria-mode{overflow:auto;}
 
 /* ─── ADSTERRA ADS ─── */
 /* Leaderboard 728×90 — barra horizontal */
-.ad-leaderboard{
-  display:flex;align-items:center;justify-content:center;
-  width:100%;padding:10px 0;
-  background:var(--bg2);
-  border-top:1px solid var(--border);
-  border-bottom:1px solid var(--border);
-  overflow:hidden;
-  min-height:90px;
-}
-.ad-leaderboard iframe,.ad-leaderboard>*{max-width:100%!important;}
 
-/* Rectangle 300×250 — dentro del panel del lightbox */
-.ad-lb-rect{
-  margin-top:16px;
-  display:flex;align-items:center;justify-content:center;
-  width:100%;
-  overflow:hidden;
-  border-radius:8px;
-  min-height:250px;
-  background:var(--bg2);
-}
-.ad-lb-rect iframe,.ad-lb-rect>*{max-width:100%!important;}
 
-/* Ad label above each ad unit */
-.ad-label{
-  text-align:center;
-  font-size:.6rem;
-  letter-spacing:.12em;
-  text-transform:uppercase;
-  color:var(--muted2);
-  opacity:.5;
-  padding:4px 0 2px;
-  font-family:'Inter',sans-serif;
-}
-
-/* ─── AD SKYSCRAPER 160×600 — flotante derecha en desktop ─── */
-.ad-sky-wrap{
-  position:fixed;
-  top:50%;right:0;
-  transform:translateY(-50%);
-  z-index:400;
-  display:flex;flex-direction:column;align-items:center;gap:4px;
-  /* Aparece solo si hay espacio suficiente (>1240px) */
-}
-.ad-sky-label{
-  font-size:.52rem;letter-spacing:.12em;text-transform:uppercase;
-  color:rgba(255,255,255,.25);font-family:'Inter',sans-serif;
-  writing-mode:vertical-rl;
-  margin-bottom:4px;
-}
-.ad-sky-close{
-  position:absolute;top:-8px;left:-8px;
-  width:20px;height:20px;border-radius:50%;
-  background:var(--bg2);border:1px solid var(--border);
-  color:var(--muted2);font-size:.7rem;
-  display:flex;align-items:center;justify-content:center;
-  cursor:pointer;z-index:1;transition:background .15s;
-  line-height:1;padding:0;font-family:sans-serif;
-}
-.ad-sky-close:hover{background:var(--border2);color:var(--text);}
-.ad-sky-inner{
-  overflow:hidden;
-  border-radius:4px 0 0 4px;
-  border:1px solid var(--border);
-  border-right:none;
-  background:var(--bg2);
-  width:160px;
-  min-height:600px;
-  display:flex;align-items:center;justify-content:center;
-}
 /* Solo visible en pantallas muy anchas donde no tapa la galería */
-@media(max-width:1400px){.ad-sky-wrap{display:none;}}
 
-/* ─── AD MOBILE STICKY BANNER 320×50 — fijo abajo en móvil ─── */
-.ad-mobile-sticky{
-  position:fixed;bottom:0;left:0;right:0;
-  display:none;  /* solo móvil */
-  align-items:center;justify-content:center;
-  background:var(--bg);
-  border-top:1px solid var(--border);
-  padding:4px 0 2px;
-  z-index:600;
-  box-shadow:0 -4px 20px rgba(0,0,0,.35);
-}
-.ad-mobile-sticky-close{
-  position:absolute;top:4px;right:8px;
-  background:transparent;border:none;
-  color:var(--muted2);font-size:.75rem;cursor:pointer;
-  font-family:sans-serif;line-height:1;padding:2px 4px;
-}
-.ad-mobile-sticky-close:hover{color:var(--text);}
-@media(max-width:760px){
-  .ad-mobile-sticky{display:flex;}
-  /* Empujar el contenido para que no quede tapado por el banner sticky */
-  #pg-galeria{padding-bottom:60px;}
-}
+
 
 /* ═══════════════════════════════════════
    SECCIÓN TEXTURAS ESPECIAL
@@ -571,24 +480,6 @@ body.galeria-mode{overflow:auto;}
   display:flex;flex-direction:column;gap:16px;overflow-y:auto;
 }
 /* Contenedor del anuncio dentro del lightbox — 160×300 cabe en 280px */
-.lb-ad-wrap{
-  width:100%;
-  display:flex;
-  flex-direction:column;
-  align-items:center;
-  gap:4px;
-  margin-top:4px;
-}
-.lb-ad-wrap .ad-label{
-  font-size:.55rem;letter-spacing:.14em;text-transform:uppercase;
-  color:var(--muted);opacity:.5;font-family:'Inter',sans-serif;
-}
-.lb-ad-wrap iframe{
-  max-width:100%!important;
-  border:none;
-  border-radius:6px;
-  display:block;
-}
 .lb-title{font-family:'Syne',sans-serif;font-size:1rem;font-weight:700;color:var(--text);line-height:1.4;}
 .lb-tags{display:flex;flex-wrap:wrap;gap:5px;margin-top:6px;}
 .lb-tag{font-size:.6rem;padding:3px 9px;border-radius:100px;background:color-mix(in srgb,var(--accent) 10%,transparent);border:1px solid color-mix(in srgb,var(--accent) 25%,transparent);color:var(--accent2);font-family:'Inter',sans-serif;letter-spacing:.5px;}
@@ -1001,8 +892,6 @@ body.galeria-mode{overflow:auto;}
 /* ── FIN GALLERY GRID ── */
 </style>
 
-
-
 <!-- ═══ SEO AGRESIVO GOOGLE ═══ -->
 <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
 <meta name="googlebot" content="index, follow, max-image-preview:large">
@@ -1093,8 +982,6 @@ body.galeria-mode{overflow:auto;}
 }
 </style>
 
-
-
 <section id="seo-image-index"
          itemscope itemtype="https://schema.org/ImageGallery"
          aria-label="FondoBlanco image catalog"
@@ -1164,7 +1051,7 @@ body.galeria-mode{overflow:auto;}
       </figure>
       <div class="card-info">
         <span class="card-name">Arte Fluido Naranja y Verde</span>
-        <span class="card-cat">Liquidos</span>
+        <span class="card-cat">Otros</span>
       </div>
     </a>
     <meta itemprop="name" content="Arte Fluido Naranja y Verde">
@@ -1279,7 +1166,7 @@ body.galeria-mode{overflow:auto;}
       </figure>
       <div class="card-info">
         <span class="card-name">Pintura Roja Gestual al Óleo</span>
-        <span class="card-cat">Liquidos</span>
+        <span class="card-cat">Otros</span>
       </div>
     </a>
     <meta itemprop="name" content="Pintura Roja Gestual al Óleo">
@@ -1394,7 +1281,7 @@ body.galeria-mode{overflow:auto;}
       </figure>
       <div class="card-info">
         <span class="card-name">Arte Fluido Tornasolado Azul</span>
-        <span class="card-cat">Liquidos</span>
+        <span class="card-cat">Otros</span>
       </div>
     </a>
     <meta itemprop="name" content="Arte Fluido Tornasolado Azul">
@@ -1509,7 +1396,7 @@ body.galeria-mode{overflow:auto;}
       </figure>
       <div class="card-info">
         <span class="card-name">Fondo Pastel — Gotas Rosa y Turquesa</span>
-        <span class="card-cat">Liquidos</span>
+        <span class="card-cat">Otros</span>
       </div>
     </a>
     <meta itemprop="name" content="Fondo Pastel — Gotas Rosa y Turquesa">
@@ -1624,7 +1511,7 @@ body.galeria-mode{overflow:auto;}
       </figure>
       <div class="card-info">
         <span class="card-name">Burbujas Negras en Primer Plano</span>
-        <span class="card-cat">Liquidos</span>
+        <span class="card-cat">Otros</span>
       </div>
     </a>
     <meta itemprop="name" content="Burbujas Negras en Primer Plano">
@@ -1739,7 +1626,7 @@ body.galeria-mode{overflow:auto;}
       </figure>
       <div class="card-info">
         <span class="card-name">Arte Fluido Multicolor con Dorado</span>
-        <span class="card-cat">Liquidos</span>
+        <span class="card-cat">Otros</span>
       </div>
     </a>
     <meta itemprop="name" content="Arte Fluido Multicolor con Dorado">
@@ -1854,7 +1741,7 @@ body.galeria-mode{overflow:auto;}
       </figure>
       <div class="card-info">
         <span class="card-name">Arte Fluido Tornasolado Dorado</span>
-        <span class="card-cat">Liquidos</span>
+        <span class="card-cat">Otros</span>
       </div>
     </a>
     <meta itemprop="name" content="Arte Fluido Tornasolado Dorado">
@@ -1969,7 +1856,7 @@ body.galeria-mode{overflow:auto;}
       </figure>
       <div class="card-info">
         <span class="card-name">Burbujas Doradas con Efecto Bokeh</span>
-        <span class="card-cat">Liquidos</span>
+        <span class="card-cat">Otros</span>
       </div>
     </a>
     <meta itemprop="name" content="Burbujas Doradas con Efecto Bokeh">
@@ -2084,7 +1971,7 @@ body.galeria-mode{overflow:auto;}
       </figure>
       <div class="card-info">
         <span class="card-name">Pintura al Óleo con Colores Cálidos</span>
-        <span class="card-cat">Liquidos</span>
+        <span class="card-cat">Otros</span>
       </div>
     </a>
     <meta itemprop="name" content="Pintura al Óleo con Colores Cálidos">
@@ -2199,7 +2086,7 @@ body.galeria-mode{overflow:auto;}
       </figure>
       <div class="card-info">
         <span class="card-name">Arte Fluido Púrpura Negro — Espirales Neón</span>
-        <span class="card-cat">Liquidos</span>
+        <span class="card-cat">Otros</span>
       </div>
     </a>
     <meta itemprop="name" content="Arte Fluido Púrpura Negro — Espirales Neón">
@@ -2314,7 +2201,7 @@ body.galeria-mode{overflow:auto;}
       </figure>
       <div class="card-info">
         <span class="card-name">Pintura Acrílica Arcoíris</span>
-        <span class="card-cat">Liquidos</span>
+        <span class="card-cat">Otros</span>
       </div>
     </a>
     <meta itemprop="name" content="Pintura Acrílica Arcoíris">
@@ -2429,7 +2316,7 @@ body.galeria-mode{overflow:auto;}
       </figure>
       <div class="card-info">
         <span class="card-name">Derrame de Aceite — Agua Iridiscente Marrón Azul</span>
-        <span class="card-cat">Liquidos</span>
+        <span class="card-cat">Otros</span>
       </div>
     </a>
     <meta itemprop="name" content="Derrame de Aceite — Agua Iridiscente Marrón Azul">
@@ -2544,7 +2431,7 @@ body.galeria-mode{overflow:auto;}
       </figure>
       <div class="card-info">
         <span class="card-name">Vidrio Mojado con Gotas de Lluvia</span>
-        <span class="card-cat">Liquidos</span>
+        <span class="card-cat">Otros</span>
       </div>
     </a>
     <meta itemprop="name" content="Vidrio Mojado con Gotas de Lluvia">
@@ -2659,7 +2546,7 @@ body.galeria-mode{overflow:auto;}
       </figure>
       <div class="card-info">
         <span class="card-name">Pompa de Jabón Iridiscente</span>
-        <span class="card-cat">Liquidos</span>
+        <span class="card-cat">Otros</span>
       </div>
     </a>
     <meta itemprop="name" content="Pompa de Jabón Iridiscente">
@@ -2751,7 +2638,7 @@ body.galeria-mode{overflow:auto;}
       </figure>
       <div class="card-info">
         <span class="card-name">Burbujas Iridiscentes con Dorado</span>
-        <span class="card-cat">Liquidos</span>
+        <span class="card-cat">Otros</span>
       </div>
     </a>
     <meta itemprop="name" content="Burbujas Iridiscentes con Dorado">
@@ -2843,7 +2730,7 @@ body.galeria-mode{overflow:auto;}
       </figure>
       <div class="card-info">
         <span class="card-name">Ventana con Lluvia — Paisaje de Primavera</span>
-        <span class="card-cat">Liquidos</span>
+        <span class="card-cat">Otros</span>
       </div>
     </a>
     <meta itemprop="name" content="Ventana con Lluvia — Paisaje de Primavera">
@@ -2935,7 +2822,7 @@ body.galeria-mode{overflow:auto;}
       </figure>
       <div class="card-info">
         <span class="card-name">Pintura al Óleo con Colores Vivos</span>
-        <span class="card-cat">Liquidos</span>
+        <span class="card-cat">Otros</span>
       </div>
     </a>
     <meta itemprop="name" content="Pintura al Óleo con Colores Vivos">
@@ -3027,7 +2914,7 @@ body.galeria-mode{overflow:auto;}
       </figure>
       <div class="card-info">
         <span class="card-name">Pintura al Óleo Abstracta Vibrante</span>
-        <span class="card-cat">Liquidos</span>
+        <span class="card-cat">Otros</span>
       </div>
     </a>
     <meta itemprop="name" content="Pintura al Óleo Abstracta Vibrante">
@@ -7119,22 +7006,9 @@ body.galeria-mode{overflow:auto;}
      PÁGINA 2: GALERÍA
      ═══════════════════════════════ -->
 <div id="pg-galeria">
-
-  <!-- AD SKYSCRAPER 160×600 — flotante lateral derecho, solo desktop >1400px -->
-  <div class="ad-sky-wrap" id="adSkyWrap">
-    <span class="ad-sky-label">Ad</span>
-    <div style="position:relative">
-      <button class="ad-sky-close" onclick="document.getElementById('adSkyWrap').style.display='none'" title="Close">✕</button>
-      <div class="ad-sky-inner" id="adSkyContainer">
-      </div>
     </div>
   </div>
 
-  <!-- AD MOBILE STICKY 320×50 — fijo abajo, solo móvil ≤760px -->
-  <div class="ad-mobile-sticky" id="adMobileSticky">
-    <button class="ad-mobile-sticky-close" onclick="document.getElementById('adMobileSticky').style.display='none'" title="Close">✕</button>
-    <div id="adMobileContainer"></div>
-  </div>
 
   <!-- Header sticky -->
   <header class="g-header">
@@ -7176,9 +7050,8 @@ body.galeria-mode{overflow:auto;}
       <div class="cat-pills">
         <button class="cat-pill active" onclick="setFilter('Todas',this)">All</button>
         <button class="cat-pill" onclick="setFilter('Metal',this)">⚙️ Metal</button>
-        <button class="cat-pill" onclick="setFilter('Madera',this)">🌲 Madera</button>
         <button class="cat-pill" onclick="setFilter('Piedra',this)">🪨 Piedra</button>
-        <button class="cat-pill" onclick="setFilter('Liquidos',this)">💧 Líquidos</button>
+        <button class="cat-pill" onclick="setFilter('Madera',this)">🌲 Madera</button>
         <button class="cat-pill" onclick="setFilter('Otros',this)">✨ Otros</button>
       </div>
       <select class="g-sort" onchange="setSort(this.value)">
@@ -7198,13 +7071,6 @@ body.galeria-mode{overflow:auto;}
     </div>
   </div>
 
-  <!-- AD: Leaderboard 728×90 — arriba de la galería -->
-  <p class="ad-label">Advertisement</p>
-  <div class="ad-leaderboard">
-    <script>atOptions={'key':'b9b30440f04feaa6f4621f9c2aa9b82f','format':'iframe','height':90,'width':728,'params':{}}</script>
-    <script src="https://www.highperformanceformat.com/b9b30440f04feaa6f4621f9c2aa9b82f/invoke.js"></script>
-  </div>
-
   <!-- Contador -->
   <div class="g-count" id="gCount">Loading...</div>
 
@@ -7213,13 +7079,6 @@ body.galeria-mode{overflow:auto;}
     <div class="masonry" id="grid"></div>
 
     <div id="pagination" class="pagination"></div>
-
-    <!-- AD: Leaderboard 728×90 — debajo de paginación (fondo) -->
-    <p class="ad-label">Advertisement</p>
-    <div class="ad-leaderboard">
-      <script>atOptions={'key':'b9b30440f04feaa6f4621f9c2aa9b82f','format':'iframe','height':90,'width':728,'params':{}}</script>
-      <script src="https://www.highperformanceformat.com/b9b30440f04feaa6f4621f9c2aa9b82f/invoke.js"></script>
-    </div>
 
   </div>
 
@@ -7250,13 +7109,7 @@ body.galeria-mode{overflow:auto;}
         <div class="lb-free" data-i18n="lb_free">✓ No sign-up · Free · Open download</div>
         <button class="lb-like-btn" id="lbLikeBtn" onclick="toggleLikeLb()">&#9825; 0 <span data-i18n="like_txt">Likes</span></button>
 
-        <!-- Anuncio 160×300 — encaja en panel de 280px -->
-        <div class="lb-ad-wrap">
-          <span class="ad-label">Advertisement</span>
-          <script>atOptions={'key':'66fe6e63386169af45bc5ebe129576ec','format':'iframe','height':300,'width':160,'params':{}}</script>
-          <script src="https://www.highperformanceformat.com/66fe6e63386169af45bc5ebe129576ec/invoke.js"></script>
         </div>
-      </div>
     </div>
   </div>
 
@@ -7529,88 +7382,88 @@ var FULL_BASE='https://fondoblanco.b-cdn.net/fondoblanco.co/';
 var imgs=[
   {id:1,pid:'textura-muro-piedra-natural-blanca.webp',dlpid:'textura-muro-piedra-natural-blanca.jpg',name:'Muro de Piedra Natural Blanca',alt:'White natural stone wall texture, bright masonry surface photography',desc:'Muro de piedra natural en blanco luminoso. Perfecto para diseño mediterráneo, interiores luminosos y proyectos con estética de piedra blanca.',keywords:'muro piedra blanca, white stone wall, natural masonry texture, piedra natural blanca, white stone surface',cat:'Piedra',slug:'textura-muro-piedra-natural-blanca',w:1440,h:2560},
   {id:2,pid:'madera-viva-grietas-doradas-kintsugi-natural.webp',dlpid:'madera-viva-grietas-doradas-kintsugi-natural.jpg',name:'Madera Viva — Grietas Doradas Kintsugi Natural',alt:'Live wood with natural golden kintsugi cracks texture, repaired wood art macro photography',desc:'Madera viva con grietas doradas reparadas al estilo kintsugi. Ideal para diseño japonés, arte con madera y proyectos de belleza en lo imperfecto.',keywords:'madera kintsugi, live wood golden cracks, grietas doradas natural, kintsugi wood art texture',cat:'Madera',slug:'madera-viva-grietas-doradas-kintsugi-natural',w:1440,h:2560},
-  {id:3,pid:'textura-arte-fluido-naranja-verde.webp',dlpid:'textura-arte-fluido-naranja-verde.jpg',name:'Arte Fluido Naranja y Verde',alt:'Orange and green fluid art abstract texture, paint swirls colorful background photography',desc:'Arte fluido en naranja y verde con movimiento dinámico. Perfecto para diseño creativo, marketing llamativo y proyectos artísticos modernos.',keywords:'arte fluido naranja verde, orange green fluid art, abstract paint, fluid painting texture',cat:'Liquidos',slug:'textura-arte-fluido-naranja-verde',w:1440,h:2560},
+  {id:3,pid:'textura-arte-fluido-naranja-verde.webp',dlpid:'textura-arte-fluido-naranja-verde.jpg',name:'Arte Fluido Naranja y Verde',alt:'Orange and green fluid art abstract texture, paint swirls colorful background photography',desc:'Arte fluido en naranja y verde con movimiento dinámico. Perfecto para diseño creativo, marketing llamativo y proyectos artísticos modernos.',keywords:'arte fluido naranja verde, orange green fluid art, abstract paint, fluid painting texture',cat:'Otros',slug:'textura-arte-fluido-naranja-verde',w:1440,h:2560},
   {id:4,pid:'silver-metallic-hexagon-crystal-orange-lava-gaps.webp',dlpid:'silver-metallic-hexagon-crystal-orange-lava-gaps.jpg',name:'Hexágonos Metálicos Plateados — Grietas Lava Naranja',alt:'Silver metallic hexagon crystal with orange lava gaps texture, geometric volcanic background',desc:'Hexágonos metálicos plateados con grietas de lava naranja entre ellos. Perfectos para diseño geométrico, sci-fi y proyectos de alto contraste visual.',keywords:'hexágonos metálicos, silver hexagon crystal, orange lava gaps, geometric volcanic texture, metallic hex',cat:'Metal',slug:'silver-metallic-hexagon-crystal-orange-lava-gaps',w:1440,h:2560},
   {id:5,pid:'textura-ladrillos-blancos-descascarados.webp',dlpid:'textura-ladrillos-blancos-descascarados.jpg',name:'Ladrillos Blancos Descascarados — Rústico',alt:'White peeling brick wall rustic texture, aged surface macro photography',desc:'Ladrillos blancos con pintura descascarada y aspecto rústico. Ideales para diseño vintage, proyectos industriales y fondos con carácter histórico.',keywords:'ladrillos blancos descascarados, white peeling bricks, rustic brick texture, aged wall, ladrillo blanco',cat:'Otros',slug:'textura-ladrillos-blancos-descascarados',w:1440,h:2560},
   {id:6,pid:'textura-marmol-negro-vetas-doradas.webp',dlpid:'textura-marmol-negro-vetas-doradas.jpg',name:'Mármol Negro con Vetas Doradas',alt:'Black marble with golden veins luxury texture, premium stone surface photography',desc:'Mármol negro con vetas doradas de máximo lujo. Perfecto para diseño ejecutivo, espacios VIP y proyectos de branding de élite premium.',keywords:'mármol negro vetas doradas, black marble gold veins, luxury dark marble, dorado negro stone',cat:'Piedra',slug:'textura-marmol-negro-vetas-doradas',w:1440,h:2560},
   {id:7,pid:'madera-burl-swirl-dorado-oscuro-nudos-profundos.webp',dlpid:'madera-burl-swirl-dorado-oscuro-nudos-profundos.jpg',name:'Madera Burl — Espiral Dorado Oscuro Nudos Profundos',alt:'Dark burl wood swirl golden deep knots texture, exotic wood grain macro photography',desc:'Madera burl con espirales dorados oscuros y nudos profundos. Perfecta para muebles de lujo, diseño exclusivo y proyectos artesanales premium.',keywords:'madera burl, burl wood swirl, nudos profundos, dark golden wood, exotic burl texture',cat:'Madera',slug:'madera-burl-swirl-dorado-oscuro-nudos-profundos',w:1440,h:2560},
-  {id:8,pid:'textura-pintura-roja-gestual-oleo.webp',dlpid:'textura-pintura-roja-gestual-oleo.jpg',name:'Pintura Roja Gestual al Óleo',alt:'Red gestural oil paint texture, expressive abstract brush strokes photography',desc:'Pintura roja gestual al óleo con trazos expresivos. Ideal para diseño dramático, arte expresionista y proyectos con energía y pasión visual.',keywords:'pintura roja gestual, red gestural oil paint, expressive brush strokes, óleo rojo gestual, abstract red',cat:'Liquidos',slug:'textura-pintura-roja-gestual-oleo',w:1440,h:2560},
+  {id:8,pid:'textura-pintura-roja-gestual-oleo.webp',dlpid:'textura-pintura-roja-gestual-oleo.jpg',name:'Pintura Roja Gestual al Óleo',alt:'Red gestural oil paint texture, expressive abstract brush strokes photography',desc:'Pintura roja gestual al óleo con trazos expresivos. Ideal para diseño dramático, arte expresionista y proyectos con energía y pasión visual.',keywords:'pintura roja gestual, red gestural oil paint, expressive brush strokes, óleo rojo gestual, abstract red',cat:'Otros',slug:'textura-pintura-roja-gestual-oleo',w:1440,h:2560},
   {id:9,pid:'textura-baldosas-oxidadas-naranjas.webp',dlpid:'textura-baldosas-oxidadas-naranjas.jpg',name:'Baldosas Oxidadas en Naranja',alt:'Rusty orange oxidized tiles texture, aged floor surface photography',desc:'Baldosas oxidadas en tonos naranja con deterioro natural. Perfectas para diseño vintage, proyectos industriales y espacios con historia visual.',keywords:'baldosas oxidadas naranja, rusty orange tiles, oxidized floor texture, aged orange tiles',cat:'Metal',slug:'textura-baldosas-oxidadas-naranjas',w:1440,h:2560},
   {id:10,pid:'hongo-azul-gris-esferas-corteza-arbol-macro.webp',dlpid:'hongo-azul-gris-esferas-corteza-arbol-macro.jpg',name:'Hongo Azul Gris — Esferas en Corteza de Árbol',alt:'Blue grey fungus spheres on tree bark macro texture, forest mushroom close-up photography',desc:'Hongo azul grisáceo con forma de esferas sobre corteza de árbol. Ideal para diseño orgánico, proyectos de naturaleza y fotografía científica.',keywords:'hongo azul gris, blue grey fungus, esferas corteza, tree bark mushroom, forest fungus macro',cat:'Otros',slug:'hongo-azul-gris-esferas-corteza-arbol-macro',w:1440,h:2560},
   {id:11,pid:'textura-marmol-oscuro-vetas-doradas-multicolor.webp',dlpid:'textura-marmol-oscuro-vetas-doradas-multicolor.jpg',name:'Mármol Oscuro Multicolor con Vetas Doradas',alt:'Dark multicolor marble with golden veins texture, exotic stone surface photography',desc:'Mármol oscuro multicolor con vetas doradas exuberantes. Perfecto para diseño artístico de lujo y proyectos con máxima opulencia visual.',keywords:'mármol oscuro multicolor dorado, dark multicolor marble, golden veins exotic stone, luxury marble',cat:'Piedra',slug:'textura-marmol-oscuro-vetas-doradas-multicolor',w:1440,h:2560},
   {id:12,pid:'textura-piso-madera-espina-pez.webp',dlpid:'textura-piso-madera-espina-pez.jpg',name:'Piso de Madera — Espina de Pez',alt:'Herringbone wood floor texture, classic parquet pattern photography',desc:'Piso de madera en patrón espina de pez clásico. Ideal para diseño de interiores elegantes, restaurantes premium y proyectos con estética parquet clásico.',keywords:'piso madera espina pez, herringbone wood floor, parquet texture, wood floor pattern, espiga madera',cat:'Madera',slug:'textura-piso-madera-espina-pez',w:1440,h:2560},
-  {id:13,pid:'textura-arte-fluido-tornasolado-azul.webp',dlpid:'textura-arte-fluido-tornasolado-azul.jpg',name:'Arte Fluido Tornasolado Azul',alt:'Iridescent blue fluid art abstract texture, shimmering paint swirls photography',desc:'Arte fluido tornasolado en azul con reflejos iridiscentes. Ideal para diseño futurista, branding tecnológico y proyectos artísticos vibrantes.',keywords:'arte fluido azul, iridescent blue fluid, tornasolado texture, shimmering paint swirls, blue fluid art',cat:'Liquidos',slug:'textura-arte-fluido-tornasolado-azul',w:1440,h:2560},
+  {id:13,pid:'textura-arte-fluido-tornasolado-azul.webp',dlpid:'textura-arte-fluido-tornasolado-azul.jpg',name:'Arte Fluido Tornasolado Azul',alt:'Iridescent blue fluid art abstract texture, shimmering paint swirls photography',desc:'Arte fluido tornasolado en azul con reflejos iridiscentes. Ideal para diseño futurista, branding tecnológico y proyectos artísticos vibrantes.',keywords:'arte fluido azul, iridescent blue fluid, tornasolado texture, shimmering paint swirls, blue fluid art',cat:'Otros',slug:'textura-arte-fluido-tornasolado-azul',w:1440,h:2560},
   {id:14,pid:'textura-burbujas-esferas-plateadas.webp',dlpid:'textura-burbujas-esferas-plateadas.jpg',name:'Burbujas y Esferas Plateadas',alt:'Silver metallic bubbles spheres texture, metallic abstract background photography',desc:'Esferas y burbujas plateadas con acabado metálico. Ideales para diseño futurista, tecnológico y proyectos con estética cromada moderna.',keywords:'burbujas plateadas, silver spheres texture, metallic bubbles, esferas plateadas, chrome abstract',cat:'Metal',slug:'textura-burbujas-esferas-plateadas',w:1440,h:2560},
   {id:15,pid:'neon-cyan-purple-glowing-cells-organic-abstract.webp',dlpid:'neon-cyan-purple-glowing-cells-organic-abstract.jpg',name:'Células Orgánicas Neón — Cian y Púrpura Brillante',alt:'Neon cyan purple glowing organic cells abstract texture, bioluminescent pattern background photography',desc:'Células orgánicas neón en cian y púrpura con efecto bioluminiscente. Ideal para diseño futurista, ciencia ficción y proyectos tecnológicos creativos.',keywords:'células neón, neon cyan purple cells, glowing organic abstract, bioluminescent texture, neón cian',cat:'Otros',slug:'neon-cyan-purple-glowing-cells-organic-abstract',w:1440,h:2560},
   {id:16,pid:'textura-marmol-turquesa-cristales.webp',dlpid:'textura-marmol-turquesa-cristales.jpg',name:'Mármol Turquesa con Cristales',alt:'Turquoise marble with crystal texture, precious stone surface macro photography',desc:'Mármol turquesa con cristales incrustados naturales. Ideal para diseño tropical de lujo, spas premium y proyectos con estética cristalina natural.',keywords:'mármol turquesa cristales, turquoise marble crystals, precious stone texture, mármol turquesa natural',cat:'Piedra',slug:'textura-marmol-turquesa-cristales',w:1440,h:2560},
   {id:17,pid:'madera-fresno-beige-negro-vetas-paralelas-zebra.webp',dlpid:'madera-fresno-beige-negro-vetas-paralelas-zebra.jpg',name:'Fresno Zebra — Vetas Paralelas Beige y Negro',alt:'Ash zebra wood beige black parallel grain texture, exotic striped wood surface macro photography',desc:'Madera de fresno con patrón cebra en vetas paralelas beige y negro. Perfecta para diseño escandinavo, muebles y proyectos con contraste elegante.',keywords:'fresno zebra, ash zebra wood, vetas paralelas, beige negro wood, striped ash grain texture',cat:'Madera',slug:'madera-fresno-beige-negro-vetas-paralelas-zebra',w:1440,h:2560},
-  {id:18,pid:'textura-fondo-pastel-gotas-rosa-turquesa.webp',dlpid:'textura-fondo-pastel-gotas-rosa-turquesa.jpg',name:'Fondo Pastel — Gotas Rosa y Turquesa',alt:'Pastel background with pink and turquoise drops texture, soft colorful abstract photography',desc:'Fondo pastel con gotas de rosa y turquesa en armonía suave. Perfecto para diseño femenino, branding delicado y proyectos con paleta pastel.',keywords:'fondo pastel gotas, pink turquoise drops, pastel background texture, rosa turquesa, soft pastel',cat:'Liquidos',slug:'textura-fondo-pastel-gotas-rosa-turquesa',w:1440,h:2560},
+  {id:18,pid:'textura-fondo-pastel-gotas-rosa-turquesa.webp',dlpid:'textura-fondo-pastel-gotas-rosa-turquesa.jpg',name:'Fondo Pastel — Gotas Rosa y Turquesa',alt:'Pastel background with pink and turquoise drops texture, soft colorful abstract photography',desc:'Fondo pastel con gotas de rosa y turquesa en armonía suave. Perfecto para diseño femenino, branding delicado y proyectos con paleta pastel.',keywords:'fondo pastel gotas, pink turquoise drops, pastel background texture, rosa turquesa, soft pastel',cat:'Otros',slug:'textura-fondo-pastel-gotas-rosa-turquesa',w:1440,h:2560},
   {id:19,pid:'gold-foil-cracked-shiny-metallic-texture.webp',dlpid:'gold-foil-cracked-shiny-metallic-texture.jpg',name:'Lámina Dorada Agrietada — Textura Metálica',alt:'Gold foil cracked shiny metallic texture, golden surface with fractures close-up photography',desc:'Lámina de oro con grietas y acabado metálico brillante. Ideal para diseño de lujo, joyería y proyectos con estética premium.',keywords:'lámina dorada, gold foil cracked, metallic texture, shiny golden, cracked gold surface',cat:'Metal',slug:'gold-foil-cracked-shiny-metallic-texture',w:1440,h:2560},
   {id:20,pid:'textura-escamas-pez-tornasoladas.webp',dlpid:'textura-escamas-pez-tornasoladas.jpg',name:'Escamas de Pez Tornasoladas',alt:'Iridescent fish scales tornasoladas texture, aquatic surface macro photography',desc:'Escamas de pez con efecto tornasolado y reflejos iridiscentes. Ideales para diseño acuático, moda y proyectos con estética marina brillante.',keywords:'escamas pez tornasoladas, iridescent fish scales, aquatic texture, fish scale pattern, tornasolado',cat:'Otros',slug:'textura-escamas-pez-tornasoladas',w:1440,h:2560},
   {id:21,pid:'textura-cristales-esmeralda-verde.webp',dlpid:'textura-cristales-esmeralda-verde.jpg',name:'Cristales de Esmeralda Verde',alt:'Green emerald crystals mineral texture, precious gemstone macro photography',desc:'Cristales de esmeralda verde con profundidad y brillo natural. Ideales para diseño de joyería premium, branding de lujo y proyectos con estética preciosa.',keywords:'cristales esmeralda verde, green emerald crystals, precious gemstone texture, esmeralda mineral',cat:'Piedra',slug:'textura-cristales-esmeralda-verde',w:1440,h:2560},
   {id:22,pid:'madera-olivo-cortes-transversales-grietas-doradas.webp',dlpid:'madera-olivo-cortes-transversales-grietas-doradas.jpg',name:'Olivo — Cortes Transversales con Grietas Doradas',alt:'Olive wood cross sections with golden cracks kintsugi texture, natural wood macro photography',desc:'Madera de olivo con cortes transversales y grietas doradas estilo kintsugi. Ideal para diseño mediterráneo, arte con madera y proyectos premium.',keywords:'madera olivo, olive wood cross section, grietas doradas, kintsugi wood, Mediterranean wood texture',cat:'Madera',slug:'madera-olivo-cortes-transversales-grietas-doradas',w:1440,h:2560},
-  {id:23,pid:'textura-burbujas-negras-macro.webp',dlpid:'textura-burbujas-negras-macro.jpg',name:'Burbujas Negras en Primer Plano',alt:'Black bubbles macro texture, dark foam abstract close-up photography',desc:'Burbujas negras en primer plano con profundidad dramática. Ideales para diseño oscuro, proyectos artísticos y fondos de alto contraste.',keywords:'burbujas negras, black bubbles macro, dark foam texture, negro burbujas, abstract dark bubbles',cat:'Liquidos',slug:'textura-burbujas-negras-macro',w:1440,h:2560},
+  {id:23,pid:'textura-burbujas-negras-macro.webp',dlpid:'textura-burbujas-negras-macro.jpg',name:'Burbujas Negras en Primer Plano',alt:'Black bubbles macro texture, dark foam abstract close-up photography',desc:'Burbujas negras en primer plano con profundidad dramática. Ideales para diseño oscuro, proyectos artísticos y fondos de alto contraste.',keywords:'burbujas negras, black bubbles macro, dark foam texture, negro burbujas, abstract dark bubbles',cat:'Otros',slug:'textura-burbujas-negras-macro',w:1440,h:2560},
   {id:24,pid:'rusty-metal-bar-orange-brown-corrosion-texture.webp',dlpid:'rusty-metal-bar-orange-brown-corrosion-texture.jpg',name:'Barra Metálica Oxidada — Corrosión Naranja Marrón',alt:'Rusty metal bar orange brown corrosion texture, industrial oxidized steel surface macro photography',desc:'Barra metálica oxidada con corrosión en naranja y marrón. Perfecta para diseño industrial, grunge y proyectos con estética urbana deteriorada.',keywords:'metal oxidado, rusty metal bar, corrosión naranja, brown orange rust, industrial metal texture',cat:'Metal',slug:'rusty-metal-bar-orange-brown-corrosion-texture',w:1440,h:2560},
   {id:25,pid:'textura-yeso-blanco-relieve-organico.webp',dlpid:'textura-yeso-blanco-relieve-organico.jpg',name:'Yeso Blanco con Relieve Orgánico',alt:'White plaster organic relief sculptural texture, minimal architectural surface photography',desc:'Yeso blanco con relieve orgánico esculpido. Perfecto para diseño minimalista, branding arquitectónico y fondos contemporáneos serenos.',keywords:'yeso blanco relieve orgánico, white plaster organic relief, sculptural texture, minimal architecture',cat:'Otros',slug:'textura-yeso-blanco-relieve-organico',w:1440,h:2560},
   {id:26,pid:'textura-carbon-brillante-rocas.webp',dlpid:'textura-carbon-brillante-rocas.jpg',name:'Carbón Brillante — Rocas Negras Relucientes',alt:'Shiny brilliant carbon black rocks texture, coal mineral surface macro photography',desc:'Carbón brillante con rocas negras relucientes. Perfecto para diseño industrial, proyectos energéticos y fondos con estética mineral oscura.',keywords:'carbón brillante, shiny carbon rocks, coal texture, black mineral rocks, brilliant coal surface',cat:'Piedra',slug:'textura-carbon-brillante-rocas',w:1440,h:2560},
   {id:27,pid:'madera-oscura-vetas-doradas-textura-lujo-swirl.webp',dlpid:'madera-oscura-vetas-doradas-textura-lujo-swirl.jpg',name:'Madera Oscura con Vetas Doradas — Lujo Espiral',alt:'Dark wood with golden veins luxury swirl texture, premium dark wood grain macro photography',desc:'Madera oscura con vetas doradas en espiral de lujo. Ideal para diseño ejecutivo, muebles premium y proyectos de branding sofisticado.',keywords:'madera oscura vetas doradas, dark golden wood, luxury swirl grain, premium dark wood texture',cat:'Madera',slug:'madera-oscura-vetas-doradas-textura-lujo-swirl',w:1440,h:2560},
-  {id:28,pid:'textura-arte-fluido-multicolor-dorado.webp',dlpid:'textura-arte-fluido-multicolor-dorado.jpg',name:'Arte Fluido Multicolor con Dorado',alt:'Multicolor golden fluid art texture, abstract paint swirls photography',desc:'Arte fluido multicolor con toques dorados brillantes. Ideal para diseño artístico, branding creativo y proyectos de arte contemporáneo.',keywords:'arte fluido multicolor, golden fluid art, abstract paint swirls, multicolor dorado, fluid painting',cat:'Liquidos',slug:'textura-arte-fluido-multicolor-dorado',w:1440,h:2560},
+  {id:28,pid:'textura-arte-fluido-multicolor-dorado.webp',dlpid:'textura-arte-fluido-multicolor-dorado.jpg',name:'Arte Fluido Multicolor con Dorado',alt:'Multicolor golden fluid art texture, abstract paint swirls photography',desc:'Arte fluido multicolor con toques dorados brillantes. Ideal para diseño artístico, branding creativo y proyectos de arte contemporáneo.',keywords:'arte fluido multicolor, golden fluid art, abstract paint swirls, multicolor dorado, fluid painting',cat:'Otros',slug:'textura-arte-fluido-multicolor-dorado',w:1440,h:2560},
   {id:29,pid:'textura-cromo-liquido-azul.webp',dlpid:'textura-cromo-liquido-azul.jpg',name:'Cromo Líquido Azul — Metal Fluido',alt:'Blue liquid chrome metallic fluid texture, iridescent metal surface photography',desc:'Cromo líquido en azul con efecto metálico fluido. Ideal para diseño futurista, tecnológico y proyectos con estética cromada de alto impacto.',keywords:'cromo líquido azul, blue liquid chrome, metallic fluid texture, iridescent metal, chrome azul',cat:'Metal',slug:'textura-cromo-liquido-azul',w:1440,h:2560},
   {id:30,pid:'textura-tela-negra-sintetica.webp',dlpid:'textura-tela-negra-sintetica.jpg',name:'Tela Negra Sintética',alt:'Black synthetic fabric texture, dark textile surface macro photography',desc:'Tela negra sintética con textura uniforme y acabado oscuro. Perfecta para diseño de moda oscura, branding tecnológico y proyectos con estética minimalista.',keywords:'tela negra sintética, black synthetic fabric, dark textile texture, negro tela, synthetic fabric macro',cat:'Otros',slug:'textura-tela-negra-sintetica',w:1440,h:2560},
   {id:31,pid:'black-marble-gold-veins-luxury-kintsugi-texture.webp',dlpid:'black-marble-gold-veins-luxury-kintsugi-texture.jpg',name:'Mármol Negro con Venas Doradas — Kintsugi Lujo',alt:'Black marble with gold veins luxury kintsugi texture, premium stone background, golden cracks',desc:'Mármol negro con espectaculares venas doradas estilo kintsugi. Perfecto para branding de lujo, interiores premium y diseño editorial.',keywords:'mármol negro, venas doradas, kintsugi texture, black marble gold, luxury stone, mármol lujo',cat:'Piedra',slug:'black-marble-gold-veins-luxury-kintsugi-texture',w:1440,h:2560},
   {id:32,pid:'madera-agate-naranja-rojo-verde-espiral-mineral.webp',dlpid:'madera-agate-naranja-rojo-verde-espiral-mineral.jpg',name:'Madera Ágata — Espiral Mineral Naranja Rojo Verde',alt:'Wood agate orange red green spiral mineral texture, exotic tree cross section macro photography',desc:'Sección de madera con patrón de ágata en espiral naranja, rojo y verde. Ideal para diseño artístico, joyería natural y proyectos exclusivos.',keywords:'madera ágata, wood agate texture, espiral mineral, naranja rojo verde, exotic wood cross section',cat:'Madera',slug:'madera-agate-naranja-rojo-verde-espiral-mineral',w:1440,h:2560},
-  {id:33,pid:'textura-arte-fluido-tornasolado-dorado.webp',dlpid:'textura-arte-fluido-tornasolado-dorado.jpg',name:'Arte Fluido Tornasolado Dorado',alt:'Iridescent golden fluid art abstract texture, metallic paint swirls luxury photography',desc:'Arte fluido tornasolado dorado con reflejos metálicos de lujo. Perfecto para branding premium, diseño editorial y proyectos de alta gama.',keywords:'arte fluido dorado, golden iridescent fluid, tornasolado gold, metallic paint texture, luxury fluid art',cat:'Liquidos',slug:'textura-arte-fluido-tornasolado-dorado',w:1440,h:2560},
+  {id:33,pid:'textura-arte-fluido-tornasolado-dorado.webp',dlpid:'textura-arte-fluido-tornasolado-dorado.jpg',name:'Arte Fluido Tornasolado Dorado',alt:'Iridescent golden fluid art abstract texture, metallic paint swirls luxury photography',desc:'Arte fluido tornasolado dorado con reflejos metálicos de lujo. Perfecto para branding premium, diseño editorial y proyectos de alta gama.',keywords:'arte fluido dorado, golden iridescent fluid, tornasolado gold, metallic paint texture, luxury fluid art',cat:'Otros',slug:'textura-arte-fluido-tornasolado-dorado',w:1440,h:2560},
   {id:34,pid:'textura-chapa-metalica-antideslizante.webp',dlpid:'textura-chapa-metalica-antideslizante.jpg',name:'Chapa Metálica Antideslizante — Textura Industrial',alt:'Anti-slip metal plate industrial texture, diamond pattern steel surface photography',desc:'Chapa metálica antideslizante con patrón de diamante. Perfecta para diseño industrial, arquitectura funcional y proyectos con estética de acero.',keywords:'chapa metálica antideslizante, anti-slip metal plate, industrial steel texture, diamond pattern metal',cat:'Metal',slug:'textura-chapa-metalica-antideslizante',w:1440,h:2560},
   {id:35,pid:'textura-tejas-naranja-antiguas.webp',dlpid:'textura-tejas-naranja-antiguas.jpg',name:'Tejas Naranja Antiguas — Textura Histórica',alt:'Old orange terracotta roof tiles texture, traditional Mediterranean roofing photography',desc:'Tejas naranja antiguas de terracota con carácter histórico mediterráneo. Perfectas para diseño tradicional, arquitectura española y proyectos históricos.',keywords:'tejas naranja antiguas, old orange tiles, terracotta roofing texture, Mediterranean tiles, tejas históricas',cat:'Otros',slug:'textura-tejas-naranja-antiguas',w:1440,h:2560},
   {id:36,pid:'textura-montanas-colores-geologia.webp',dlpid:'textura-montanas-colores-geologia.jpg',name:'Montañas de Colores — Geología Natural',alt:'Colorful geological mountain layers texture, natural rock strata photography',desc:'Capas geológicas montañosas en colores naturales variados. Ideal para diseño de naturaleza, proyectos geológicos y fondos de ciencias terrestres.',keywords:'montañas colores, colorful geology mountains, natural strata texture, geological rock layers, montañas',cat:'Piedra',slug:'textura-montanas-colores-geologia',w:1440,h:2560},
   {id:37,pid:'madera-palosanto-vetas-oscuras-nudos-premium.webp',dlpid:'madera-palosanto-vetas-oscuras-nudos-premium.jpg',name:'Palo Santo — Vetas Oscuras Premium con Nudos',alt:'Rosewood palo santo dark veins premium knots texture, exotic luxury wood grain macro',desc:'Palo santo con vetas oscuras y nudos premium. Ideal para muebles de lujo, diseño exclusivo y proyectos de carpintería artesanal premium.',keywords:'palo santo, rosewood texture, vetas oscuras nudos, premium exotic wood, palisander grain',cat:'Madera',slug:'madera-palosanto-vetas-oscuras-nudos-premium',w:1440,h:2560},
-  {id:38,pid:'textura-burbujas-doradas-bokeh.webp',dlpid:'textura-burbujas-doradas-bokeh.jpg',name:'Burbujas Doradas con Efecto Bokeh',alt:'Golden bubbles with bokeh effect texture, luxury abstract background photography',desc:'Burbujas doradas con suave efecto bokeh de lujo. Perfectas para diseño de celebración, branding premium y fondos de alta gama.',keywords:'burbujas doradas bokeh, golden bubbles, bokeh texture, luxury bubble background, gold bokeh',cat:'Liquidos',slug:'textura-burbujas-doradas-bokeh',w:1440,h:2560},
+  {id:38,pid:'textura-burbujas-doradas-bokeh.webp',dlpid:'textura-burbujas-doradas-bokeh.jpg',name:'Burbujas Doradas con Efecto Bokeh',alt:'Golden bubbles with bokeh effect texture, luxury abstract background photography',desc:'Burbujas doradas con suave efecto bokeh de lujo. Perfectas para diseño de celebración, branding premium y fondos de alta gama.',keywords:'burbujas doradas bokeh, golden bubbles, bokeh texture, luxury bubble background, gold bokeh',cat:'Otros',slug:'textura-burbujas-doradas-bokeh',w:1440,h:2560},
   {id:39,pid:'textura-metal-grunge-gris-industrial.webp',dlpid:'textura-metal-grunge-gris-industrial.jpg',name:'Metal Grunge Gris Industrial',alt:'Grey industrial grunge metal texture, rusted steel surface photography',desc:'Metal gris con estética grunge industrial. Ideal para diseño urbano, proyectos industriales y fondos con carácter de acero envejecido.',keywords:'metal grunge gris, grey industrial metal, grunge steel texture, industrial metal surface, gris grunge',cat:'Metal',slug:'textura-metal-grunge-gris-industrial',w:1440,h:2560},
   {id:40,pid:'textura-papel-negro-arrugado.webp',dlpid:'textura-papel-negro-arrugado.jpg',name:'Papel Negro Arrugado — Textura Oscura',alt:'Black crumpled paper dark texture, wrinkled dark surface macro photography',desc:'Papel negro arrugado con profundidad y textura dramática. Perfecto para diseño oscuro, proyectos editoriales y fondos de alto contraste visual.',keywords:'papel negro arrugado, black crumpled paper, dark wrinkled texture, negro papel oscuro, crumpled dark',cat:'Otros',slug:'textura-papel-negro-arrugado',w:1440,h:2560},
   {id:41,pid:'roca-madera-gris-naranja-lava-capas-geologicas.webp',dlpid:'roca-madera-gris-naranja-lava-capas-geologicas.jpg',name:'Roca Madera Gris — Capas Geológicas Lava Naranja',alt:'Grey orange lava wood rock geological layers texture, sedimentary stone macro photography',desc:'Roca con textura de madera en gris y naranja con capas geológicas de lava. Perfecta para diseño geológico, arte abstracto y proyectos naturales.',keywords:'roca madera gris, grey orange rock, capas geológicas, lava layers texture, geological wood rock',cat:'Piedra',slug:'roca-madera-gris-naranja-lava-capas-geologicas',w:1440,h:2560},
   {id:42,pid:'textura-madera-vetas-onduladas-marron.webp',dlpid:'textura-madera-vetas-onduladas-marron.jpg',name:'Madera con Vetas Onduladas Marrón',alt:'Brown wavy wood grain texture, warm natural wood surface macro photography',desc:'Madera con vetas onduladas en tono marrón cálido. Perfecta para diseño cálido, interiores acogedores y proyectos con paleta terrosa natural.',keywords:'madera vetas onduladas marrón, brown wavy wood grain, warm wood texture, marrón ondulado wood',cat:'Madera',slug:'textura-madera-vetas-onduladas-marron',w:1440,h:2560},
-  {id:43,pid:'textura-pintura-oleo-calidos.webp',dlpid:'textura-pintura-oleo-calidos.jpg',name:'Pintura al Óleo con Colores Cálidos',alt:'Warm colors oil paint texture, impressionist abstract background photography',desc:'Pintura al óleo con paleta de colores cálidos y expresivos. Ideal para diseño artístico cálido, galerías y proyectos con estética impresionista.',keywords:'pintura óleo cálidos, warm oil paint colors, impressionist texture, colores cálidos óleo, warm paint',cat:'Liquidos',slug:'textura-pintura-oleo-calidos',w:1440,h:2560},
+  {id:43,pid:'textura-pintura-oleo-calidos.webp',dlpid:'textura-pintura-oleo-calidos.jpg',name:'Pintura al Óleo con Colores Cálidos',alt:'Warm colors oil paint texture, impressionist abstract background photography',desc:'Pintura al óleo con paleta de colores cálidos y expresivos. Ideal para diseño artístico cálido, galerías y proyectos con estética impresionista.',keywords:'pintura óleo cálidos, warm oil paint colors, impressionist texture, colores cálidos óleo, warm paint',cat:'Otros',slug:'textura-pintura-oleo-calidos',w:1440,h:2560},
   {id:44,pid:'textura-baldosas-cobre-oxidado-turquesa.webp',dlpid:'textura-baldosas-cobre-oxidado-turquesa.jpg',name:'Baldosas de Cobre Oxidado con Pátina Turquesa',alt:'Oxidized copper tiles with turquoise patina texture, aged metallic surface photography',desc:'Baldosas de cobre oxidado con pátina turquesa envejecida. Ideales para diseño vintage, proyectos artesanales y espacios con carácter histórico.',keywords:'baldosas cobre oxidado, copper tiles turquoise, pátina turquesa, aged copper texture, oxidized tile',cat:'Metal',slug:'textura-baldosas-cobre-oxidado-turquesa',w:1440,h:2560},
   {id:45,pid:'textura-papel-blanco-arrugado.webp',dlpid:'textura-papel-blanco-arrugado.jpg',name:'Papel Blanco Arrugado — Textura Limpia',alt:'White crumpled paper clean texture, wrinkled surface macro photography',desc:'Papel blanco arrugado con textura limpia y natural. Perfecta para diseño minimalista, fondos creativos y proyectos con estética paper art.',keywords:'papel blanco arrugado, white crumpled paper, wrinkled texture, clean paper surface, papel blanco natural',cat:'Otros',slug:'textura-papel-blanco-arrugado',w:1440,h:2560},
   {id:46,pid:'textura-marmol-oscuro-fluido-dorado.webp',dlpid:'textura-marmol-oscuro-fluido-dorado.jpg',name:'Mármol Oscuro Fluido con Dorado',alt:'Dark fluid marble with gold texture, luxury flowing stone background photography',desc:'Mármol oscuro fluido con reflejos dorados de lujo. Ideal para diseño premium oscuro, branding exclusivo y proyectos de alto standing visual.',keywords:'mármol oscuro fluido dorado, dark fluid gold marble, luxury marble texture, fluido oscuro dorado',cat:'Piedra',slug:'textura-marmol-oscuro-fluido-dorado',w:1440,h:2560},
   {id:47,pid:'textura-madera-burl-nudos-dorados.webp',dlpid:'textura-madera-burl-nudos-dorados.jpg',name:'Madera Burl con Nudos Dorados',alt:'Burl wood with golden knots texture, exotic luxury wood grain macro photography',desc:'Madera burl con nudos dorados de lujo. Ideal para muebles exclusivos, diseño de interiores premium y proyectos artesanales de alta calidad.',keywords:'madera burl nudos dorados, burl wood golden knots, luxury wood texture, exotic burl, golden wood nudos',cat:'Madera',slug:'textura-madera-burl-nudos-dorados',w:1440,h:2560},
-  {id:48,pid:'purple-black-fluid-abstract-neon-paint-swirls.webp',dlpid:'purple-black-fluid-abstract-neon-paint-swirls.jpg',name:'Arte Fluido Púrpura Negro — Espirales Neón',alt:'Purple black fluid abstract neon paint swirls texture, dark fluid art background photography',desc:'Arte fluido en púrpura y negro con espirales neón dramáticos. Ideal para diseño artístico oscuro, branding creativo y proyectos de impacto visual.',keywords:'arte fluido púrpura, purple black fluid art, neon paint swirls, dark abstract fluid, espirales neón',cat:'Liquidos',slug:'purple-black-fluid-abstract-neon-paint-swirls',w:1440,h:2560},
+  {id:48,pid:'purple-black-fluid-abstract-neon-paint-swirls.webp',dlpid:'purple-black-fluid-abstract-neon-paint-swirls.jpg',name:'Arte Fluido Púrpura Negro — Espirales Neón',alt:'Purple black fluid abstract neon paint swirls texture, dark fluid art background photography',desc:'Arte fluido en púrpura y negro con espirales neón dramáticos. Ideal para diseño artístico oscuro, branding creativo y proyectos de impacto visual.',keywords:'arte fluido púrpura, purple black fluid art, neon paint swirls, dark abstract fluid, espirales neón',cat:'Otros',slug:'purple-black-fluid-abstract-neon-paint-swirls',w:1440,h:2560},
   {id:49,pid:'textura-cobre-oxidado-patina-verde.webp',dlpid:'textura-cobre-oxidado-patina-verde.jpg',name:'Cobre Oxidado con Pátina Verde',alt:'Oxidized copper with green patina texture, aged verdigris surface macro photography',desc:'Cobre oxidado con pátina verde natural envejecida. Ideal para diseño vintage, arquitectura histórica y proyectos con estética artesanal antigua.',keywords:'cobre oxidado, oxidized copper, pátina verde, verdigris copper texture, aged copper green',cat:'Metal',slug:'textura-cobre-oxidado-patina-verde',w:1440,h:2560},
   {id:50,pid:'textura-plastico-gris-arrugado.webp',dlpid:'textura-plastico-gris-arrugado.jpg',name:'Plástico Gris Arrugado',alt:'Grey crumpled plastic texture, wrinkled industrial material photography',desc:'Plástico gris arrugado con textura industrial. Ideal para diseño minimalista, proyectos de reciclaje y fondos con estética industrial neutra.',keywords:'plástico gris arrugado, grey crumpled plastic, industrial material texture, wrinkled grey plastic',cat:'Otros',slug:'textura-plastico-gris-arrugado',w:1440,h:2560},
   {id:51,pid:'textura-agata-gris-ondulada.webp',dlpid:'textura-agata-gris-ondulada.jpg',name:'Ágata Gris Ondulada',alt:'Grey wavy agate mineral texture with concentric bands, natural stone macro photography',desc:'Ágata gris con bandas onduladas concéntricas. Perfecta para diseño minimalista, branding moderno y proyectos con estética mineral elegante.',keywords:'ágata gris, grey wavy agate, ondulada mineral, concentric agate, natural stone texture',cat:'Piedra',slug:'textura-agata-gris-ondulada',w:1440,h:2560},
   {id:52,pid:'madera-exotic-naranja-ondas-3d-curvas-fluidas.webp',dlpid:'madera-exotic-naranja-ondas-3d-curvas-fluidas.jpg',name:'Madera Exótica — Ondas 3D Naranja Curvas Fluidas',alt:'Exotic orange wood with 3D fluid curves and waves texture, sculptural wood grain macro photography',desc:'Madera exótica naranja con ondas 3D y curvas fluidas impresionantes. Ideal para escultura digital, diseño de producto y proyectos artísticos.',keywords:'madera exótica, exotic orange wood, ondas 3D, fluid curves wood, sculptural grain texture',cat:'Madera',slug:'madera-exotic-naranja-ondas-3d-curvas-fluidas',w:1440,h:2560},
-  {id:53,pid:'textura-pintura-arcoiris-acrilica.webp',dlpid:'textura-pintura-arcoiris-acrilica.jpg',name:'Pintura Acrílica Arcoíris',alt:'Rainbow acrylic paint texture, colorful abstract painting photography',desc:'Pintura acrílica en todos los colores del arcoíris. Perfecta para diseño artístico, proyectos creativos y fondos de alta energía visual colorida.',keywords:'pintura acrílica arcoíris, rainbow acrylic paint, colorful paint texture, arcoíris pintura, abstract color',cat:'Liquidos',slug:'textura-pintura-arcoiris-acrilica',w:1440,h:2560},
+  {id:53,pid:'textura-pintura-arcoiris-acrilica.webp',dlpid:'textura-pintura-arcoiris-acrilica.jpg',name:'Pintura Acrílica Arcoíris',alt:'Rainbow acrylic paint texture, colorful abstract painting photography',desc:'Pintura acrílica en todos los colores del arcoíris. Perfecta para diseño artístico, proyectos creativos y fondos de alta energía visual colorida.',keywords:'pintura acrílica arcoíris, rainbow acrylic paint, colorful paint texture, arcoíris pintura, abstract color',cat:'Otros',slug:'textura-pintura-arcoiris-acrilica',w:1440,h:2560},
   {id:54,pid:'textura-panal-celdas-naranja-cobre.webp',dlpid:'textura-panal-celdas-naranja-cobre.jpg',name:'Panal de Celdas Naranja Cobre',alt:'Orange copper honeycomb cells pattern texture, geometric hexagonal surface photography',desc:'Patrón de panal en naranja y cobre con celdas hexagonales. Perfecta para diseño geométrico, proyectos de arquitectura biomimética y branding tecnológico.',keywords:'panal celdas naranja cobre, orange copper honeycomb, hexagonal cells texture, panal hexagonal, celdas panal',cat:'Metal',slug:'textura-panal-celdas-naranja-cobre',w:1440,h:2560},
   {id:55,pid:'cracked-ice-blue-white-frozen-water-texture.webp',dlpid:'cracked-ice-blue-white-frozen-water-texture.jpg',name:'Hielo Agrietado — Agua Helada Azul y Blanca',alt:'Cracked ice blue and white frozen water texture, winter frost surface macro photography',desc:'Hielo agrietado en tonos azul y blanco con patrones de agua helada. Perfecto para diseño invernal, branding fresco y proyectos naturales.',keywords:'hielo agrietado, cracked ice, frozen water texture, blue white ice, winter frost, ice macro',cat:'Otros',slug:'cracked-ice-blue-white-frozen-water-texture',w:1440,h:2560},
   {id:56,pid:'dark-teal-spiral-gravel-minerals-scattered-abstract.webp',dlpid:'dark-teal-spiral-gravel-minerals-scattered-abstract.jpg',name:'Espiral Teal Oscuro — Minerales y Grava Dispersos',alt:'Dark teal spiral gravel and minerals scattered abstract texture, moody dark stone background',desc:'Textura abstracta con espiral en teal oscuro, grava y minerales dispersos. Perfecta para diseño editorial dramático y proyectos artísticos.',keywords:'espiral teal, dark teal spiral, gravel minerals, scattered abstract, moody stone texture',cat:'Piedra',slug:'dark-teal-spiral-gravel-minerals-scattered-abstract',w:1440,h:2560},
   {id:57,pid:'bambu-negro-lacado-patron-vertical-textura-oscura.webp',dlpid:'bambu-negro-lacado-patron-vertical-textura-oscura.jpg',name:'Bambú Negro Lacado — Patrón Vertical Oscuro',alt:'Black lacquered bamboo vertical pattern dark texture, asian natural material close-up',desc:'Bambú negro lacado con patrón vertical elegante. Perfecto para diseño asiático, interiores premium y branding sofisticado.',keywords:'bambú negro, bamboo lacado, black bamboo texture, patrón vertical, japanese texture, dark bamboo',cat:'Madera',slug:'bambu-negro-lacado-patron-vertical-textura-oscura',w:1440,h:2560},
-  {id:58,pid:'oil-spill-iridescent-water-brown-blue-abstract.webp',dlpid:'oil-spill-iridescent-water-brown-blue-abstract.jpg',name:'Derrame de Aceite — Agua Iridiscente Marrón Azul',alt:'Oil spill iridescent water surface brown blue abstract texture, rainbow petroleum film photography',desc:'Superficie de agua con derrame de aceite iridiscente en marrón y azul. Perfecta para arte abstracto, fotografía experimental y proyectos creativos únicos.',keywords:'derrame aceite, oil spill iridescent, agua iridiscente, brown blue abstract, petroleum film texture',cat:'Liquidos',slug:'oil-spill-iridescent-water-brown-blue-abstract',w:1440,h:2560},
+  {id:58,pid:'oil-spill-iridescent-water-brown-blue-abstract.webp',dlpid:'oil-spill-iridescent-water-brown-blue-abstract.jpg',name:'Derrame de Aceite — Agua Iridiscente Marrón Azul',alt:'Oil spill iridescent water surface brown blue abstract texture, rainbow petroleum film photography',desc:'Superficie de agua con derrame de aceite iridiscente en marrón y azul. Perfecta para arte abstracto, fotografía experimental y proyectos creativos únicos.',keywords:'derrame aceite, oil spill iridescent, agua iridiscente, brown blue abstract, petroleum film texture',cat:'Otros',slug:'oil-spill-iridescent-water-brown-blue-abstract',w:1440,h:2560},
   {id:59,pid:'textura-metal-cromado-iridiscente.webp',dlpid:'textura-metal-cromado-iridiscente.jpg',name:'Metal Cromado Iridiscente',alt:'Iridescent chrome metal surface texture, rainbow metallic background photography',desc:'Metal cromado con acabado iridiscente y reflejos arcoíris. Perfecto para diseño futurista, tecnológico y proyectos con estética cromada innovadora.',keywords:'metal cromado iridiscente, iridescent chrome metal, rainbow metallic texture, cromo arcoíris surface',cat:'Metal',slug:'textura-metal-cromado-iridiscente',w:1440,h:2560},
   {id:60,pid:'textura-celulas-vegetales-verdes.webp',dlpid:'textura-celulas-vegetales-verdes.jpg',name:'Células Vegetales Verdes — Micro Textura',alt:'Green plant cells microscopic texture, botanical micro photography close-up',desc:'Células vegetales verdes en vista microscópica detallada. Perfectas para diseño científico, biología visual y proyectos de naturaleza y salud.',keywords:'células vegetales, green plant cells, micro texture botánica, microscopic plant, celulas verdes',cat:'Otros',slug:'textura-celulas-vegetales-verdes',w:1440,h:2560},
   {id:61,pid:'textura-marmol-blanco-vetas-verticales.webp',dlpid:'textura-marmol-blanco-vetas-verticales.jpg',name:'Mármol Blanco con Vetas Verticales',alt:'White marble with vertical veins texture, architectural stone surface photography',desc:'Mármol blanco con vetas verticales en patrón arquitectónico. Ideal para diseño de espacios altos, elementos verticales y proyectos de gran escala.',keywords:'mármol blanco vetas verticales, white marble vertical veins, architectural marble, vertical stone texture',cat:'Piedra',slug:'textura-marmol-blanco-vetas-verticales',w:1440,h:2560},
   {id:62,pid:'textura-bambu-verde-tallos.webp',dlpid:'textura-bambu-verde-tallos.jpg',name:'Bambú Verde — Tallos Naturales',alt:'Green bamboo stalks vertical natural texture, Asian plant background photography',desc:'Tallos de bambú verde natural en disposición vertical. Perfectos para diseño asiático, proyectos de bienestar y ambientes naturales serenos.',keywords:'bambú verde, green bamboo stalks, bamboo texture, natural bamboo, Asian plant texture',cat:'Madera',slug:'textura-bambu-verde-tallos',w:1440,h:2560},
-  {id:63,pid:'textura-vidrio-mojado-gotas-lluvia.webp',dlpid:'textura-vidrio-mojado-gotas-lluvia.jpg',name:'Vidrio Mojado con Gotas de Lluvia',alt:'Wet glass rain drops texture, water droplets transparent surface photography',desc:'Vidrio mojado con gotas de lluvia en primer plano. Ideal para diseño melancólico, proyectos fotográficos y fondos con estética pluviosa romántica.',keywords:'vidrio mojado gotas lluvia, wet glass rain drops, water droplets texture, rain on glass, mojado vidrio',cat:'Liquidos',slug:'textura-vidrio-mojado-gotas-lluvia',w:1440,h:2560},
+  {id:63,pid:'textura-vidrio-mojado-gotas-lluvia.webp',dlpid:'textura-vidrio-mojado-gotas-lluvia.jpg',name:'Vidrio Mojado con Gotas de Lluvia',alt:'Wet glass rain drops texture, water droplets transparent surface photography',desc:'Vidrio mojado con gotas de lluvia en primer plano. Ideal para diseño melancólico, proyectos fotográficos y fondos con estética pluviosa romántica.',keywords:'vidrio mojado gotas lluvia, wet glass rain drops, water droplets texture, rain on glass, mojado vidrio',cat:'Otros',slug:'textura-vidrio-mojado-gotas-lluvia',w:1440,h:2560},
   {id:64,pid:'textura-metal-oxidado-rojo-descascarado.webp',dlpid:'textura-metal-oxidado-rojo-descascarado.jpg',name:'Metal Oxidado Rojo Descascarado',alt:'Rusty red peeling metal texture, corroded industrial surface photography',desc:'Metal oxidado rojo con pintura descascarada. Perfecto para diseño industrial extremo, arte grunge y proyectos con estética de deterioro urbano.',keywords:'metal oxidado rojo, rusty red metal, peeling corroded surface, descascarado metal texture, rojo oxidado',cat:'Metal',slug:'textura-metal-oxidado-rojo-descascarado',w:1440,h:2560},
   {id:65,pid:'textura-coral-cerebro-carnoso.webp',dlpid:'textura-coral-cerebro-carnoso.jpg',name:'Coral Cerebro — Textura Marina Carnosa',alt:'Brain coral fleshy texture, natural marine reef surface macro photography',desc:'Coral cerebro con textura carnosa y patrones ondulados únicos. Perfecto para diseño marino, proyectos de oceanografía y arte natural.',keywords:'coral cerebro, brain coral texture, marine reef, fleshy coral, ocean texture macro',cat:'Otros',slug:'textura-coral-cerebro-carnoso',w:1440,h:2560},
   {id:66,pid:'textura-piedra-agrietada-cristales-iridiscentes.webp',dlpid:'textura-piedra-agrietada-cristales-iridiscentes.jpg',name:'Piedra Agrietada con Cristales Iridiscentes',alt:'Cracked stone with iridescent crystals texture, mineral fracture macro photography',desc:'Piedra agrietada con cristales iridiscentes en las fracturas. Perfecta para diseño mineral de lujo, joyería y proyectos con estética de gemas naturales.',keywords:'piedra agrietada cristales, cracked iridescent crystals, mineral fracture texture, iridescent stone',cat:'Piedra',slug:'textura-piedra-agrietada-cristales-iridiscentes',w:1440,h:2560},
   {id:67,pid:'textura-madera-blanca-nudos-grandes.webp',dlpid:'textura-madera-blanca-nudos-grandes.jpg',name:'Madera Blanca con Nudos Grandes',alt:'White wood with large knots texture, light natural wood grain macro photography',desc:'Madera blanca con nudos grandes y vetas naturales. Perfecta para diseño escandinavo, interiores luminosos y proyectos con estética nórdica.',keywords:'madera blanca nudos, white wood knots, large knots texture, light natural wood, madera blanca nórdica',cat:'Madera',slug:'textura-madera-blanca-nudos-grandes',w:1440,h:2560},
-  {id:68,pid:'textura-pompa-jabon-iridiscente.webp',dlpid:'textura-pompa-jabon-iridiscente.jpg',name:'Pompa de Jabón Iridiscente',alt:'Iridescent soap bubble surface texture, rainbow film macro photography',desc:'Superficie de pompa de jabón iridiscente con colores arcoíris. Perfecta para diseño fantástico, proyectos infantiles y fondos de alta creatividad.',keywords:'pompa jabón iridiscente, iridescent soap bubble, rainbow film texture, burbuja jabón, soap film macro',cat:'Liquidos',slug:'textura-pompa-jabon-iridiscente',w:1440,h:2560},
+  {id:68,pid:'textura-pompa-jabon-iridiscente.webp',dlpid:'textura-pompa-jabon-iridiscente.jpg',name:'Pompa de Jabón Iridiscente',alt:'Iridescent soap bubble surface texture, rainbow film macro photography',desc:'Superficie de pompa de jabón iridiscente con colores arcoíris. Perfecta para diseño fantástico, proyectos infantiles y fondos de alta creatividad.',keywords:'pompa jabón iridiscente, iridescent soap bubble, rainbow film texture, burbuja jabón, soap film macro',cat:'Otros',slug:'textura-pompa-jabon-iridiscente',w:1440,h:2560},
   {id:69,pid:'textura-tela-yute-arpillera.webp',dlpid:'textura-tela-yute-arpillera.jpg',name:'Tela de Yute y Arpillera — Textura Rústica',alt:'Jute burlap fabric rustic texture, natural woven material macro photography',desc:'Tela de yute y arpillera con textura rústica natural. Ideal para diseño artesanal, branding ecológico y proyectos con estética natural y sostenible.',keywords:'tela yute arpillera, jute burlap texture, natural woven fabric, rústica yute, rustic fabric macro',cat:'Otros',slug:'textura-tela-yute-arpillera',w:1440,h:2560},
   {id:70,pid:'textura-marmol-blanco-vetas-negras.webp',dlpid:'textura-marmol-blanco-vetas-negras.jpg',name:'Mármol Blanco con Vetas Negras',alt:'White marble with black veins texture, classic stone background photography',desc:'Mármol blanco con vetas negras en contraste clásico. Perfecto para diseño de interiores, arquitectura de lujo y proyectos atemporales premium.',keywords:'mármol blanco vetas negras, white black marble, classic marble texture, black veins stone',cat:'Piedra',slug:'textura-marmol-blanco-vetas-negras',w:1440,h:2560},
   {id:71,pid:'textura-madera-turquesa-descascarada.webp',dlpid:'textura-madera-turquesa-descascarada.jpg',name:'Madera Turquesa Descascarada — Vintage',alt:'Turquoise peeling wood vintage texture, weathered painted wood surface photography',desc:'Madera con pintura turquesa descascarada y aspecto vintage. Ideal para diseño retro, fotografía artística y proyectos con estética desgastada.',keywords:'madera turquesa descascarada, turquoise peeling wood, vintage painted wood, weathered wood texture',cat:'Madera',slug:'textura-madera-turquesa-descascarada',w:1440,h:2560},
-  {id:72,pid:'textura-burbujas-iridiscentes-dorado.webp',dlpid:'textura-burbujas-iridiscentes-dorado.jpg',name:'Burbujas Iridiscentes con Dorado',alt:'Iridescent golden bubbles texture, rainbow metallic abstract photography',desc:'Burbujas iridiscentes con reflejos dorados y arcoíris. Perfectas para diseño fantástico, arte digital y proyectos de alta creatividad visual.',keywords:'burbujas iridiscentes, iridescent golden bubbles, rainbow metallic, burbujas arcoíris dorado',cat:'Liquidos',slug:'textura-burbujas-iridiscentes-dorado',w:1440,h:2560},
+  {id:72,pid:'textura-burbujas-iridiscentes-dorado.webp',dlpid:'textura-burbujas-iridiscentes-dorado.jpg',name:'Burbujas Iridiscentes con Dorado',alt:'Iridescent golden bubbles texture, rainbow metallic abstract photography',desc:'Burbujas iridiscentes con reflejos dorados y arcoíris. Perfectas para diseño fantástico, arte digital y proyectos de alta creatividad visual.',keywords:'burbujas iridiscentes, iridescent golden bubbles, rainbow metallic, burbujas arcoíris dorado',cat:'Otros',slug:'textura-burbujas-iridiscentes-dorado',w:1440,h:2560},
   {id:73,pid:'neon-purple-cyan-plasma-abstract-glowing-organic.webp',dlpid:'neon-purple-cyan-plasma-abstract-glowing-organic.jpg',name:'Plasma Neón Púrpura Cian — Orgánico Brillante',alt:'Neon purple cyan plasma abstract glowing organic texture, futuristic bioluminescent background',desc:'Plasma abstracto en neón púrpura y cian con brillo orgánico. Ideal para diseño futurista, videojuegos y proyectos con estética sci-fi.',keywords:'plasma neón, neon purple cyan, glowing organic plasma, futuristic abstract, bioluminescent texture',cat:'Otros',slug:'neon-purple-cyan-plasma-abstract-glowing-organic',w:1440,h:2560},
   {id:74,pid:'textura-roca-volcanica-magenta.webp',dlpid:'textura-roca-volcanica-magenta.jpg',name:'Roca Volcánica Magenta — Color Intenso',alt:'Magenta volcanic rock intense color texture, exotic stone surface photography',desc:'Roca volcánica en magenta intenso con color único. Perfecta para diseño artístico, proyectos creativos y fondos con estética volcánica colorida.',keywords:'roca volcánica magenta, magenta volcanic rock, intense color stone, exotic volcanic texture, magenta piedra',cat:'Piedra',slug:'textura-roca-volcanica-magenta',w:1440,h:2560},
   {id:75,pid:'textura-tablones-madera-horizontal-natural.webp',dlpid:'textura-tablones-madera-horizontal-natural.jpg',name:'Tablones de Madera Horizontal Natural',alt:'Horizontal natural wood planks texture, wooden wall surface photography',desc:'Tablones de madera horizontal en disposición natural. Perfectos para diseño de interiores, revestimientos de pared y proyectos con estética madera horizontal.',keywords:'tablones madera horizontal, horizontal wood planks, natural wood wall, madera horizontal natural',cat:'Madera',slug:'textura-tablones-madera-horizontal-natural',w:1440,h:2560},
-  {id:76,pid:'textura-ventana-lluvia-paisaje-primavera.webp',dlpid:'textura-ventana-lluvia-paisaje-primavera.jpg',name:'Ventana con Lluvia — Paisaje de Primavera',alt:'Rain window spring landscape texture, water drops glass photography',desc:'Ventana con gotas de lluvia y paisaje de primavera al fondo. Perfecta para diseño de bienestar, proyectos fotográficos y fondos con estética pluviosa romántica.',keywords:'ventana lluvia primavera, rain window texture, spring landscape glass, water drops window, lluvia ventana',cat:'Liquidos',slug:'textura-ventana-lluvia-paisaje-primavera',w:1440,h:2560},
+  {id:76,pid:'textura-ventana-lluvia-paisaje-primavera.webp',dlpid:'textura-ventana-lluvia-paisaje-primavera.jpg',name:'Ventana con Lluvia — Paisaje de Primavera',alt:'Rain window spring landscape texture, water drops glass photography',desc:'Ventana con gotas de lluvia y paisaje de primavera al fondo. Perfecta para diseño de bienestar, proyectos fotográficos y fondos con estética pluviosa romántica.',keywords:'ventana lluvia primavera, rain window texture, spring landscape glass, water drops window, lluvia ventana',cat:'Otros',slug:'textura-ventana-lluvia-paisaje-primavera',w:1440,h:2560},
   {id:77,pid:'textura-muro-pintura-naranja-grunge.webp',dlpid:'textura-muro-pintura-naranja-grunge.jpg',name:'Muro con Pintura Naranja Grunge',alt:'Orange grunge painted wall texture, urban street art surface photography',desc:'Muro con pintura naranja en estética grunge urbana. Perfecto para diseño callejero, proyectos de arte urbano y fondos con carácter de ciudad.',keywords:'muro pintura naranja grunge, orange grunge wall, urban painted surface, grunge naranja texture',cat:'Otros',slug:'textura-muro-pintura-naranja-grunge',w:1440,h:2560},
   {id:78,pid:'textura-marmol-bandas-oscuras-doradas.webp',dlpid:'textura-marmol-bandas-oscuras-doradas.jpg',name:'Mármol con Bandas Oscuras y Doradas',alt:'Marble with dark golden bands texture, luxury stone surface macro photography',desc:'Mármol con bandas oscuras y doradas de alta distinción. Perfecto para diseño de lujo extremo, espacios VIP y proyectos de alto standing.',keywords:'mármol bandas oscuras doradas, dark golden marble bands, luxury marble texture, gold dark marble',cat:'Piedra',slug:'textura-marmol-bandas-oscuras-doradas',w:1440,h:2560},
   {id:79,pid:'madera-nudos-multicolor-verde-naranja-grano-swirl.webp',dlpid:'madera-nudos-multicolor-verde-naranja-grano-swirl.jpg',name:'Madera Nudos Multicolor — Verde Naranja Espiral',alt:'Multicolor wood knots green orange swirl grain texture, exotic colorful wood macro photography',desc:'Madera con nudos multicolor en verde y naranja con espiral dramático. Perfecta para arte con madera, diseño artístico y proyectos coloridos únicos.',keywords:'madera nudos multicolor, colorful wood knots, verde naranja swirl, exotic multicolor grain',cat:'Madera',slug:'madera-nudos-multicolor-verde-naranja-grano-swirl',w:1440,h:2560},
-  {id:80,pid:'textura-pintura-oleo-colores-vivos.webp',dlpid:'textura-pintura-oleo-colores-vivos.jpg',name:'Pintura al Óleo con Colores Vivos',alt:'Vivid colors oil paint texture, bold artistic background photography',desc:'Pintura al óleo con colores vivos y saturados de alto impacto. Perfecta para diseño artístico explosivo, arte contemporáneo y proyectos de máximo color.',keywords:'pintura óleo colores vivos, vivid oil paint, bold artistic texture, colores vivos óleo, saturated paint',cat:'Liquidos',slug:'textura-pintura-oleo-colores-vivos',w:1440,h:2560},
+  {id:80,pid:'textura-pintura-oleo-colores-vivos.webp',dlpid:'textura-pintura-oleo-colores-vivos.jpg',name:'Pintura al Óleo con Colores Vivos',alt:'Vivid colors oil paint texture, bold artistic background photography',desc:'Pintura al óleo con colores vivos y saturados de alto impacto. Perfecta para diseño artístico explosivo, arte contemporáneo y proyectos de máximo color.',keywords:'pintura óleo colores vivos, vivid oil paint, bold artistic texture, colores vivos óleo, saturated paint',cat:'Otros',slug:'textura-pintura-oleo-colores-vivos',w:1440,h:2560},
   {id:81,pid:'textura-brocoli-macro-verde.webp',dlpid:'textura-brocoli-macro-verde.jpg',name:'Brócoli Verde Macro — Textura Orgánica',alt:'Green broccoli macro texture, organic vegetable surface close-up photography',desc:'Brócoli verde en primer plano con textura orgánica detallada. Ideal para fotografía culinaria, diseño saludable y proyectos de alimentación natural.',keywords:'brócoli macro, green broccoli texture, organic vegetable, food texture macro, vegetable close-up',cat:'Otros',slug:'textura-brocoli-macro-verde',w:1440,h:2560},
   {id:82,pid:'textura-lava-grietas-roca-fuego.webp',dlpid:'textura-lava-grietas-roca-fuego.jpg',name:'Lava — Grietas de Roca en Fuego',alt:'Volcanic rock fire cracks lava texture, glowing red orange geology photography',desc:'Roca volcánica con grietas de fuego y lava incandescente. Ideal para diseño de videojuegos, cine y proyectos visuales con temática de fuego.',keywords:'lava grietas fuego, volcanic fire cracks, rock lava texture, glowing red geology, grietas fuego lava',cat:'Piedra',slug:'textura-lava-grietas-roca-fuego',w:1440,h:2560},
   {id:83,pid:'madera-hongo-naranja-concentrico-anillos-tronco.webp',dlpid:'madera-hongo-naranja-concentrico-anillos-tronco.jpg',name:'Tronco con Hongo Naranja — Anillos Concéntricos',alt:'Tree trunk with orange concentrical rings fungus texture, natural wood cross section macro photography',desc:'Tronco con hongo naranja y anillos concéntricos visibles. Ideal para proyectos de naturaleza, diseño orgánico y fotografía científica botánica.',keywords:'hongo naranja concentrico, orange fungus rings, wood cross section, tronco anillos, tree trunk macro',cat:'Madera',slug:'madera-hongo-naranja-concentrico-anillos-tronco',w:1440,h:2560},
-  {id:84,pid:'textura-pintura-oleo-abstracta-vibrante.webp',dlpid:'textura-pintura-oleo-abstracta-vibrante.jpg',name:'Pintura al Óleo Abstracta Vibrante',alt:'Vibrant abstract oil paint texture, colorful artistic background photography',desc:'Pintura al óleo abstracta con colores vibrantes y expresivos. Perfecta para diseño artístico, galerías y proyectos con estética expresionista moderna.',keywords:'pintura óleo abstracta vibrante, vibrant oil paint, abstract painting texture, óleo colorido vibrante',cat:'Liquidos',slug:'textura-pintura-oleo-abstracta-vibrante',w:1440,h:2560},
+  {id:84,pid:'textura-pintura-oleo-abstracta-vibrante.webp',dlpid:'textura-pintura-oleo-abstracta-vibrante.jpg',name:'Pintura al Óleo Abstracta Vibrante',alt:'Vibrant abstract oil paint texture, colorful artistic background photography',desc:'Pintura al óleo abstracta con colores vibrantes y expresivos. Perfecta para diseño artístico, galerías y proyectos con estética expresionista moderna.',keywords:'pintura óleo abstracta vibrante, vibrant oil paint, abstract painting texture, óleo colorido vibrante',cat:'Otros',slug:'textura-pintura-oleo-abstracta-vibrante',w:1440,h:2560},
   {id:85,pid:'textura-tejas-escamadas-naranja-liquen.webp',dlpid:'textura-tejas-escamadas-naranja-liquen.jpg',name:'Tejas Naranja Escamadas con Líquen',alt:'Orange scaly roof tiles with lichen texture, aged roofing surface photography',desc:'Tejas naranjas escamadas con líquen natural envejecido. Ideales para diseño mediterráneo, arquitectura histórica y proyectos con carácter rústico natural.',keywords:'tejas naranja escamadas liquen, orange scaly tiles, lichen roofing texture, tejas envejecidas naranja',cat:'Otros',slug:'textura-tejas-escamadas-naranja-liquen',w:1440,h:2560},
   {id:86,pid:'textura-piedra-blanca-vetas-naranja.webp',dlpid:'textura-piedra-blanca-vetas-naranja.jpg',name:'Piedra Blanca con Vetas Naranjas',alt:'White stone with orange veins texture, mineral surface macro photography',desc:'Piedra blanca con vetas naranjas cálidas. Ideal para diseño cálido, interiores naturales y proyectos con contraste elegante blanco-naranja.',keywords:'piedra blanca vetas naranja, white orange veins stone, mineral texture warm, piedra naranja blanca',cat:'Piedra',slug:'textura-piedra-blanca-vetas-naranja',w:1440,h:2560},
   {id:87,pid:'tronco-antiguo-nudo-central-anillos-agujeros-macro.webp',dlpid:'tronco-antiguo-nudo-central-anillos-agujeros-macro.jpg',name:'Tronco Antiguo — Nudo Central con Anillos',alt:'Ancient tree trunk central knot with rings holes macro texture, old wood cross section photography',desc:'Tronco antiguo con nudo central, anillos de crecimiento y agujeros en primer plano. Ideal para diseño natural, arte con madera y proyectos de naturaleza.',keywords:'tronco antiguo nudo, old tree trunk knot, wood rings holes macro, anillos tronco, ancient wood section',cat:'Madera',slug:'tronco-antiguo-nudo-central-anillos-agujeros-macro',w:1440,h:2560},
@@ -7913,7 +7766,7 @@ var _obs=null;
 // ── Colores skeleton por categoría (evitan flash negro) ──
 var CAT_COLORS={
   'Piedra':'#1e1a2e','Madera':'#1e1208','Metal':'#141418',
-  'Liquidos':'#0a1520','Otros':'#1a1020','All':'#131318',
+  'Otros':'#0a1520','Otros':'#1a1020','All':'#131318',
   'Comida':'#ffffff','Food':'#ffffff'
 };
 function skelColor(cat){return CAT_COLORS[cat]||'#131318';}
@@ -8245,8 +8098,7 @@ function doActualDownload(url,name){
     btn.innerHTML='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" style="width:16px;height:16px"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg> '+T('downloading');
     btn.disabled=true;
   }
-  maybeShowAd();
-  fetch(url,{mode:'cors',cache:'force-cache'})
+fetch(url,{mode:'cors',cache:'force-cache'})
     .then(function(r){if(!r.ok)throw new Error('fail');return r.blob();})
     .then(function(blob){
       var ext=(name.split('.').pop()||'jpg').toLowerCase();
@@ -8649,27 +8501,6 @@ function closeCaptcha(){
   _captchaPending=null;
 }
 
-// 30% ad popup — abrir popunder de Adsterra en 3 de cada 10 descargas
-var _dlCount=0;
-function maybeShowAd(){
-  _dlCount++;
-  // Cada 3 descargas (posición 3, 6, 9...) mostrar el ad
-  if(_dlCount%3===0){
-    try{
-      // Adsterra popunder/interstitial — abre pestaña con el ad
-      var adWin=window.open('https://www.highperformanceformat.com/2979ddc08560cbeea39c4629d12fab6d/invoke.js','_blank','noopener');
-      // Si el popup fue bloqueado, intentar con link
-      if(!adWin||adWin.closed||typeof adWin.closed=='undefined'){
-        var a=document.createElement('a');
-        a.href='https://www.highperformanceformat.com/2979ddc08560cbeea39c4629d12fab6d/invoke.js';
-        a.target='_blank';a.rel='noopener';
-        document.body.appendChild(a);a.click();
-        setTimeout(function(){document.body.removeChild(a);},500);
-      }
-    }catch(e){}
-  }
-}
-
 // ══════════════════════════════════════════════════════
 // TOAST
 // ══════════════════════════════════════════════════════
@@ -8679,59 +8510,7 @@ function showToast(msg){
 }
 
 document.getElementById('termsOverlay').classList.add('hidden'); // oculto al inicio, aparece a los 7s
-var _adsLoaded = {};
 
-function loadAd(containerId, key, w, h) {
-  if (_adsLoaded[containerId]) return;
-  var el = document.getElementById(containerId);
-  if (!el) return;
-  _adsLoaded[containerId] = true;
-  var s1 = document.createElement('script');
-  s1.text = "atOptions={'key':'"+key+"','format':'iframe','height':"+h+",'width':"+w+",'params':{}};";
-  var s2 = document.createElement('script');
-  s2.src = 'https://www.highperformanceformat.com/' + key + '/invoke.js';
-  el.appendChild(s1);
-  el.appendChild(s2);
-}
-
-
-
-// Mobile sticky — cargar después de 3 segundos
-setTimeout(function() {
-  loadAd('adMobileContainer', '6be047e0c4ce65c11ef08b36a8497fcf', 320, 50);
-}, 3000);
-
-// Banners de galería — cargar al hacer scroll (usuario mostró intención)
-var _scrollAdsDone = false;
-window.addEventListener('scroll', function() {
-  if (_scrollAdsDone) return;
-  _scrollAdsDone = true;
-  // Banner fondo — ya está en HTML como script directo
-  // loadAd('adBanner1Container', 'b9b30440f04feaa6f4621f9c2aa9b82f', 728, 90);
-  loadAd('adBanner2Container', 'b9b30440f04feaa6f4621f9c2aa9b82f', 728, 90);
-}, {once: false, passive: true});
-
-// Lightbox ad — cargar cuando se abre el lightbox
-var _origLoadLb = typeof loadLb === 'function' ? loadLb : null;
-document.addEventListener('click', function(e) {
-  var card = e.target.closest && e.target.closest('.card');
-  if (card) {
-    setTimeout(function() {
-      loadAd('adLbContainer', '66fe6e63386169af45bc5ebe129576ec', 160, 300);
-    }, 500);
-  }
-}, {passive: true});
-
-// AdSense — solo cargar después de scroll
-window.addEventListener('scroll', function() {
-  if (document.getElementById('adsense-lazy-loaded')) return;
-  var s = document.createElement('script');
-  s.id = 'adsense-lazy-loaded';
-  s.async = true;
-  s.src = 'https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4766990013673854';
-  s.crossOrigin = 'anonymous';
-  document.head.appendChild(s);
-}, {once: true, passive: true});
 </script>
 </body>
 </html>
