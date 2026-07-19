@@ -29,7 +29,6 @@
   }
   a{color:inherit;}
 
-  /* ---------- Masthead ---------- */
   header.masthead{
     padding:64px 6vw 40px;
     border-bottom:1px solid var(--line);
@@ -76,7 +75,6 @@
     line-height:1.8;
   }
 
-  /* ---------- Intro strip ---------- */
   .strip{
     display:flex;
     justify-content:space-between;
@@ -91,7 +89,6 @@
     gap:10px;
   }
 
-  /* ---------- Gallery ---------- */
   main{
     padding:56px 6vw 90px;
   }
@@ -128,16 +125,33 @@
   .img-wrap{
     position:relative;
     width:100%;
-    aspect-ratio:2536/4544;
+    aspect-ratio:9/16;
     overflow:hidden;
-    background:#eee;
+    background:#ece9e2;
   }
   .img-wrap img{
     width:100%;
     height:100%;
     object-fit:cover;
     display:block;
-    transition:transform .7s cubic-bezier(.2,.7,.2,1);
+    transition:transform .7s cubic-bezier(.2,.7,.2,1), opacity .4s ease;
+    opacity:0;
+  }
+  .img-wrap img.loaded{opacity:1;}
+  .img-wrap .fallback{
+    position:absolute;
+    inset:0;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    flex-direction:column;
+    gap:8px;
+    padding:20px;
+    text-align:center;
+    font-family:'IBM Plex Mono',monospace;
+    font-size:11px;
+    color:var(--ink-soft);
+    background:#ece9e2;
   }
   figure.plate:hover .img-wrap img{
     transform:scale(1.045);
@@ -162,7 +176,13 @@
     letter-spacing:.04em;
     text-transform:uppercase;
     color:var(--ink-soft);
-    margin:0 0 10px;
+    margin:0 0 8px;
+  }
+  .plate-desc{
+    font-size:13px;
+    line-height:1.5;
+    color:var(--ink-soft);
+    margin:0 0 12px;
   }
   .keywords{
     display:flex;
@@ -205,19 +225,13 @@
     border-color:var(--terracotta);
     transform:translateY(-1px);
   }
-  .download-btn:hover svg{
-    transform:translateY(2px);
-  }
-  .download-btn:active{
-    transform:translateY(0);
-  }
+  .download-btn:active{transform:translateY(0);}
 
-  /* accent per card */
-  figure.plate:nth-child(1) .plate-meta{color:var(--terracotta);}
-  figure.plate:nth-child(2) .plate-meta{color:#8a5a2b;}
-  figure.plate:nth-child(3) .plate-meta{color:var(--olive);}
-  figure.plate:nth-child(4) .plate-meta{color:var(--mustard);}
-  figure.plate:nth-child(5) .plate-meta{color:var(--olive);}
+  figure.plate:nth-child(5n+1) .plate-meta{color:var(--terracotta);}
+  figure.plate:nth-child(5n+2) .plate-meta{color:#8a5a2b;}
+  figure.plate:nth-child(5n+3) .plate-meta{color:var(--olive);}
+  figure.plate:nth-child(5n+4) .plate-meta{color:var(--mustard);}
+  figure.plate:nth-child(5n+5) .plate-meta{color:#7a4f6b;}
 
   footer{
     padding:38px 6vw 50px;
@@ -244,143 +258,96 @@
 <body>
 
 <header class="masthead">
-  <p class="eyebrow">Banco de imágenes · edición 01</p>
+  <p class="eyebrow">Banco de imágenes · edición 02</p>
   <h1 class="brand">Fondo<br><em>Blanco</em></h1>
   <div class="masthead-row">
-    <p class="masthead-desc">Texturas y fondos de pantalla en alta resolución, presentados como láminas de galería. Cada pieza está lista para usar como wallpaper de tu teléfono: toca descargar y listo.</p>
+    <p class="masthead-desc">Fondos de pantalla en alta resolución, presentados como láminas de galería. La vista previa se sirve liviana en WebP; al descargar recibes el archivo completo en JPG.</p>
     <p class="masthead-meta">
-      5 láminas disponibles<br>
-      formato 2536 × 4544 px<br>
-      uso: fondo de pantalla / wallpaper
+      10 láminas disponibles<br>
+      previsualización: WebP (Google Drive)<br>
+      descarga: JPG · alta resolución
     </p>
   </div>
 </header>
 
 <div class="strip">
-  <span>Colección — Texturas 2026</span>
+  <span>Colección — Fondos 2026</span>
   <span>Descarga directa · sin registro</span>
 </div>
 
 <main>
-  <div class="gallery">
-
-    <!-- 01 -->
-    <figure class="plate">
-      <div class="frame">
-        <span class="num">01</span>
-        <div class="img-wrap">
-          <img src="img/01-papeles-color.jpeg" alt="Papeles de colores arrugados: azul, naranja, verde, mostaza, gris y blanco" loading="lazy" width="2536" height="4544">
-        </div>
-        <div class="mat-bottom"></div>
-      </div>
-      <figcaption>
-        <h2 class="plate-title">Papeles de Colores</h2>
-        <p class="plate-meta">Textura · Papel arrugado</p>
-        <ul class="keywords">
-          <li>papel</li><li>textura</li><li>colores</li><li>arrugado</li><li>collage</li>
-        </ul>
-        <a class="download-btn" href="https://shrinkme.click/lyWr8JxQ" target="_blank" rel="noopener">
-          Descargar
-          <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v13"/><path d="m6 12 6 6 6-6"/><path d="M5 21h14"/></svg>
-        </a>
-      </figcaption>
-    </figure>
-
-    <!-- 02 -->
-    <figure class="plate">
-      <div class="frame">
-        <span class="num">02</span>
-        <div class="img-wrap">
-          <img src="img/02-piel-leopardo.jpeg" alt="Textura de piel animal con estampado de leopardo" loading="lazy" width="2536" height="4544">
-        </div>
-        <div class="mat-bottom"></div>
-      </div>
-      <figcaption>
-        <h2 class="plate-title">Piel Leopardo</h2>
-        <p class="plate-meta">Textura · Animal print</p>
-        <ul class="keywords">
-          <li>piel</li><li>leopardo</li><li>animal print</li><li>pelo</li><li>manchas</li>
-        </ul>
-        <a class="download-btn" href="https://shrinkme.click/MRmEIURR" target="_blank" rel="noopener">
-          Descargar
-          <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v13"/><path d="m6 12 6 6 6-6"/><path d="M5 21h14"/></svg>
-        </a>
-      </figcaption>
-    </figure>
-
-    <!-- 03 -->
-    <figure class="plate">
-      <div class="frame">
-        <span class="num">03</span>
-        <div class="img-wrap">
-          <img src="img/03-vidrio-lluvia.jpeg" alt="Vidrio corrugado con gotas de lluvia y reflejo de árboles" loading="lazy" width="2536" height="4544">
-        </div>
-        <div class="mat-bottom"></div>
-      </div>
-      <figcaption>
-        <h2 class="plate-title">Vidrio con Lluvia</h2>
-        <p class="plate-meta">Textura · Vidrio corrugado</p>
-        <ul class="keywords">
-          <li>vidrio</li><li>lluvia</li><li>reflejo</li><li>ventana</li><li>naturaleza</li>
-        </ul>
-        <a class="download-btn" href="https://shrinkme.click/8ace" target="_blank" rel="noopener">
-          Descargar
-          <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v13"/><path d="m6 12 6 6 6-6"/><path d="M5 21h14"/></svg>
-        </a>
-      </figcaption>
-    </figure>
-
-    <!-- 04 -->
-    <figure class="plate">
-      <div class="frame">
-        <span class="num">04</span>
-        <div class="img-wrap">
-          <img src="img/04-papel-amarillo.jpeg" alt="Papel amarillo mostaza arrugado" loading="lazy" width="2536" height="4544">
-        </div>
-        <div class="mat-bottom"></div>
-      </div>
-      <figcaption>
-        <h2 class="plate-title">Papel Amarillo</h2>
-        <p class="plate-meta">Textura · Papel arrugado</p>
-        <ul class="keywords">
-          <li>papel</li><li>amarillo</li><li>mostaza</li><li>textura</li><li>arrugado</li>
-        </ul>
-        <a class="download-btn" href="https://shrinkme.click/BxxOI" target="_blank" rel="noopener">
-          Descargar
-          <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v13"/><path d="m6 12 6 6 6-6"/><path d="M5 21h14"/></svg>
-        </a>
-      </figcaption>
-    </figure>
-
-    <!-- 05 -->
-    <figure class="plate">
-      <div class="frame">
-        <span class="num">05</span>
-        <div class="img-wrap">
-          <img src="img/05-vidrio-verde.jpeg" alt="Vidrio texturizado abstracto en tonos verdes y dorados" loading="lazy" width="2536" height="4544">
-        </div>
-        <div class="mat-bottom"></div>
-      </div>
-      <figcaption>
-        <h2 class="plate-title">Vidrio Abstracto</h2>
-        <p class="plate-meta">Textura · Vidrio texturizado</p>
-        <ul class="keywords">
-          <li>vidrio</li><li>abstracto</li><li>verde</li><li>textura</li><li>reflejo</li>
-        </ul>
-        <a class="download-btn" href="https://shrinkme.click/X50YEc" target="_blank" rel="noopener">
-          Descargar
-          <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v13"/><path d="m6 12 6 6 6-6"/><path d="M5 21h14"/></svg>
-        </a>
-      </figcaption>
-    </figure>
-
-  </div>
+  <div class="gallery" id="gallery"></div>
 </main>
 
 <footer>
   <span>Fondo Blanco — banco de imágenes</span>
   <span>Todas las descargas abren en una pestaña nueva</span>
 </footer>
+
+<script>
+  // Cada imagen: id de Drive (previsualización WebP) + enlace de descarga (JPG)
+  const items = [
+    { n:"01", driveId:"1jdck5LigvKPpYBJit4-2Fj7Bi7nCSpdy", download:"https://shrinkme.click/mQUH",     title:"Fondo 01", tag:"Wallpaper", desc:"Fondo de pantalla en alta resolución, formato vertical.", kw:["fondo de pantalla","wallpaper","textura","hd"] },
+    { n:"02", driveId:"1ITKlbUssj16F-RoSotrxFgcikcaUWgG_", download:"https://shrinkme.click/ElrNjl8I", title:"Fondo 02", tag:"Wallpaper", desc:"Fondo de pantalla en alta resolución, formato vertical.", kw:["fondo de pantalla","wallpaper","textura","hd"] },
+    { n:"03", driveId:"1dCIi2N_GCe0cuyz3XuAfBivw2h5mV-E3", download:"https://shrinkme.click/96Sa",     title:"Fondo 03", tag:"Wallpaper", desc:"Fondo de pantalla en alta resolución, formato vertical.", kw:["fondo de pantalla","wallpaper","textura","hd"] },
+    { n:"04", driveId:"1pRNXwtJ1vx7qg3AliMatlUNWIJ3ZBNJd", download:"https://shrinkme.click/CeK9Mmq",  title:"Fondo 04", tag:"Wallpaper", desc:"Fondo de pantalla en alta resolución, formato vertical.", kw:["fondo de pantalla","wallpaper","textura","hd"] },
+    { n:"05", driveId:"1JlME9WesR7VZPWu6BxFIhg_htNn84kd3", download:"https://shrinkme.click/i7NjK",    title:"Fondo 05", tag:"Wallpaper", desc:"Fondo de pantalla en alta resolución, formato vertical.", kw:["fondo de pantalla","wallpaper","textura","hd"] },
+    { n:"06", driveId:"1xOU7xLmKdH4nevcRThPpLM6eUFI8gO6j", download:"https://shrinkme.click/TFrb7yGI", title:"Fondo 06", tag:"Wallpaper", desc:"Fondo de pantalla en alta resolución, formato vertical.", kw:["fondo de pantalla","wallpaper","textura","hd"] },
+    { n:"07", driveId:"1z30SxG7BeT3WgM4K_fpwd3XHWSt8wZoU", download:"https://shrinkme.click/9ao75",    title:"Fondo 07", tag:"Wallpaper", desc:"Fondo de pantalla en alta resolución, formato vertical.", kw:["fondo de pantalla","wallpaper","textura","hd"] },
+    { n:"08", driveId:"16F9Z8UDOKKMcP75bXbXWrx005IA00S4V", download:"https://shrinkme.click/q6sfv1Tl", title:"Fondo 08", tag:"Wallpaper", desc:"Fondo de pantalla en alta resolución, formato vertical.", kw:["fondo de pantalla","wallpaper","textura","hd"] },
+    { n:"09", driveId:"18aLmsZAmHd-12oYYB1tzvVqbOuLknYi6", download:"https://shrinkme.click/FrUy4n",   title:"Fondo 09", tag:"Wallpaper", desc:"Fondo de pantalla en alta resolución, formato vertical.", kw:["fondo de pantalla","wallpaper","textura","hd"] },
+    { n:"10", driveId:"1MIF6ICCeruyoKfTkvAHktT26fHKglKZy", download:"https://shrinkme.click/9KzP",     title:"Fondo 10", tag:"Wallpaper", desc:"Fondo de pantalla en alta resolución, formato vertical.", kw:["fondo de pantalla","wallpaper","textura","hd"] },
+  ];
+
+  const gallery = document.getElementById('gallery');
+
+  items.forEach(item => {
+    const fig = document.createElement('figure');
+    fig.className = 'plate';
+
+    const kwHtml = item.kw.map(k => `<li>${k}</li>`).join('');
+    const previewUrl = `https://drive.google.com/thumbnail?id=${item.driveId}&sz=w1000`;
+    const previewFallback = `https://lh3.googleusercontent.com/d/${item.driveId}=w1000`;
+
+    fig.innerHTML = `
+      <div class="frame">
+        <span class="num">${item.n}</span>
+        <div class="img-wrap">
+          <img alt="${item.title} — fondo de pantalla" loading="lazy" src="${previewUrl}">
+          <div class="fallback" style="display:none;">
+            Vista previa no disponible<br>desde este navegador.<br>
+            <a href="https://drive.google.com/file/d/${item.driveId}/view" target="_blank" rel="noopener" style="text-decoration:underline;">Ver en Drive</a>
+          </div>
+        </div>
+        <div class="mat-bottom"></div>
+      </div>
+      <figcaption>
+        <h2 class="plate-title">${item.title}</h2>
+        <p class="plate-meta">${item.tag} · Lámina N.º ${item.n}</p>
+        <p class="plate-desc">${item.desc}</p>
+        <ul class="keywords">${kwHtml}</ul>
+        <a class="download-btn" href="${item.download}" target="_blank" rel="noopener">
+          Descargar
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v13"/><path d="m6 12 6 6 6-6"/><path d="M5 21h14"/></svg>
+        </a>
+      </figcaption>
+    `;
+
+    const img = fig.querySelector('img');
+    const fallbackEl = fig.querySelector('.fallback');
+    img.addEventListener('load', () => img.classList.add('loaded'));
+    img.addEventListener('error', () => {
+      if (img.src !== previewFallback) {
+        img.src = previewFallback;
+      } else {
+        img.style.display = 'none';
+        fallbackEl.style.display = 'flex';
+      }
+    });
+
+    gallery.appendChild(fig);
+  });
+</script>
 
 </body>
 </html>
