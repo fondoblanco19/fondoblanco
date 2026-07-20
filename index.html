@@ -17,6 +17,7 @@
     --mustard:#c99a2b;
     --olive:#556246;
     --card-bg:#ffffff;
+    --danger:#a83232;
   }
   *{box-sizing:border-box;}
   html{scroll-behavior:smooth;}
@@ -28,7 +29,9 @@
     -webkit-font-smoothing:antialiased;
   }
   a{color:inherit;}
+  button{font-family:inherit;cursor:pointer;}
 
+  /* ---------- Masthead ---------- */
   header.masthead{
     padding:64px 6vw 40px;
     border-bottom:1px solid var(--line);
@@ -49,36 +52,17 @@
     margin:0 0 22px;
     letter-spacing:-0.01em;
   }
-  h1.brand em{
-    font-style:italic;
-    font-weight:500;
-    color:var(--terracotta);
-  }
-  .masthead-row{
-    display:flex;
-    justify-content:space-between;
-    align-items:flex-end;
-    gap:32px;
-    flex-wrap:wrap;
-  }
-  .masthead-desc{
-    max-width:460px;
-    font-size:16px;
-    line-height:1.55;
-    color:var(--ink-soft);
-  }
-  .masthead-meta{
-    font-family:'IBM Plex Mono',monospace;
-    font-size:12px;
-    color:var(--ink-soft);
-    text-align:right;
-    line-height:1.8;
-  }
+  h1.brand em{font-style:italic;font-weight:500;color:var(--terracotta);}
+  .masthead-row{display:flex;justify-content:space-between;align-items:flex-end;gap:32px;flex-wrap:wrap;}
+  .masthead-desc{max-width:460px;font-size:16px;line-height:1.55;color:var(--ink-soft);}
+  .masthead-meta{font-family:'IBM Plex Mono',monospace;font-size:12px;color:var(--ink-soft);text-align:right;line-height:1.8;}
 
+  /* ---------- Toolbar / admin strip ---------- */
   .strip{
     display:flex;
     justify-content:space-between;
-    padding:18px 6vw;
+    align-items:center;
+    padding:16px 6vw;
     font-family:'IBM Plex Mono',monospace;
     font-size:11px;
     letter-spacing:.06em;
@@ -88,191 +72,215 @@
     flex-wrap:wrap;
     gap:10px;
   }
+  .strip .right{display:flex;align-items:center;gap:10px;}
+  .pill-btn{
+    font-family:'Inter',sans-serif;
+    font-size:12.5px;
+    font-weight:600;
+    letter-spacing:0;
+    text-transform:none;
+    padding:8px 14px;
+    border-radius:20px;
+    border:1px solid var(--ink);
+    background:transparent;
+    color:var(--ink);
+    transition:.2s;
+  }
+  .pill-btn:hover{background:var(--ink);color:var(--paper);}
+  .pill-btn.solid{background:var(--ink);color:var(--paper);}
+  .pill-btn.solid:hover{background:var(--terracotta);border-color:var(--terracotta);}
+  .pill-btn.accent{border-color:var(--terracotta);color:var(--terracotta);}
+  .pill-btn.accent:hover{background:var(--terracotta);color:#fff;}
+  .admin-badge{
+    font-family:'IBM Plex Mono',monospace;
+    font-size:11px;
+    color:var(--olive);
+    display:flex;align-items:center;gap:6px;
+  }
+  .admin-badge .dot{width:7px;height:7px;border-radius:50%;background:var(--olive);display:inline-block;}
 
-  main{
-    padding:56px 6vw 90px;
-  }
+  /* ---------- Masonry gallery ---------- */
+  main{padding:56px 6vw 90px;}
   .gallery{
-    display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
-    gap:46px 32px;
+    columns:4 260px;
+    column-gap:32px;
   }
+  @media (max-width:1100px){.gallery{columns:3 220px;}}
+  @media (max-width:720px){.gallery{columns:2 180px;}}
+  @media (max-width:480px){.gallery{columns:1;}}
+
   figure.plate{
-    margin:0;
-    display:flex;
-    flex-direction:column;
+    margin:0 0 32px;
+    break-inside:avoid;
+    display:inline-block;
+    width:100%;
   }
   .frame{
     background:var(--card-bg);
-    padding:14px 14px 0;
+    padding:10px 10px 0;
     border:1px solid var(--line);
     box-shadow:0 1px 0 var(--line);
     position:relative;
     overflow:hidden;
+    cursor:pointer;
   }
   .frame .num{
-    position:absolute;
-    top:14px;
-    left:14px;
-    font-family:'IBM Plex Mono',monospace;
-    font-size:11px;
-    color:#fff;
-    background:rgba(28,26,23,.55);
-    padding:3px 8px;
-    letter-spacing:.05em;
-    z-index:2;
+    position:absolute;top:10px;left:10px;
+    font-family:'IBM Plex Mono',monospace;font-size:11px;color:#fff;
+    background:rgba(28,26,23,.55);padding:3px 8px;letter-spacing:.05em;z-index:2;
   }
-  .img-wrap{
-    position:relative;
-    width:100%;
-    aspect-ratio:9/16;
-    overflow:hidden;
-    background:#ece9e2;
+  .edit-pin{
+    position:absolute;top:10px;right:10px;z-index:3;
+    width:28px;height:28px;border-radius:50%;
+    background:rgba(255,255,255,.92);border:1px solid var(--line);
+    display:flex;align-items:center;justify-content:center;
+    font-size:13px;
   }
-  .img-wrap img{
-    width:100%;
-    height:100%;
-    object-fit:cover;
-    display:block;
-    transition:transform .7s cubic-bezier(.2,.7,.2,1), opacity .4s ease;
-    opacity:0;
-  }
+  .edit-pin:hover{background:var(--terracotta);color:#fff;}
+  .img-wrap{position:relative;width:100%;overflow:hidden;background:#ece9e2;min-height:80px;}
+  .img-wrap img{width:100%;height:auto;display:block;transition:transform .6s cubic-bezier(.2,.7,.2,1),opacity .4s ease;opacity:0;}
   .img-wrap img.loaded{opacity:1;}
+  .frame:hover .img-wrap img{transform:scale(1.04);}
   .img-wrap .fallback{
-    position:absolute;
-    inset:0;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    flex-direction:column;
-    gap:8px;
-    padding:20px;
-    text-align:center;
-    font-family:'IBM Plex Mono',monospace;
-    font-size:11px;
-    color:var(--ink-soft);
-    background:#ece9e2;
+    padding:34px 16px;text-align:center;font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--ink-soft);
   }
-  figure.plate:hover .img-wrap img{
-    transform:scale(1.045);
-  }
-  .mat-bottom{
-    height:14px;
-  }
-
-  figcaption{
-    padding-top:16px;
-  }
-  .plate-title{
-    font-family:'Fraunces',serif;
-    font-weight:560;
-    font-size:21px;
-    margin:0 0 6px;
-    letter-spacing:-.01em;
-  }
-  .plate-meta{
-    font-family:'IBM Plex Mono',monospace;
-    font-size:10.5px;
-    letter-spacing:.04em;
-    text-transform:uppercase;
-    color:var(--ink-soft);
-    margin:0 0 8px;
-  }
-  .plate-desc{
-    font-size:13px;
-    line-height:1.5;
-    color:var(--ink-soft);
-    margin:0 0 12px;
-  }
-  .keywords{
-    display:flex;
-    flex-wrap:wrap;
-    gap:6px;
-    margin:0 0 16px;
-    padding:0;
-    list-style:none;
-  }
-  .keywords li{
-    font-size:11px;
-    padding:3px 9px;
-    border:1px solid var(--line);
-    border-radius:20px;
-    color:var(--ink-soft);
-    background:#fff;
-  }
-  .download-btn{
-    display:inline-flex;
-    align-items:center;
-    gap:8px;
-    font-family:'Inter',sans-serif;
-    font-weight:600;
-    font-size:13px;
-    text-decoration:none;
-    color:var(--paper);
-    background:var(--ink);
-    padding:11px 18px;
-    border:1px solid var(--ink);
-    letter-spacing:.01em;
-    transition:background .25s ease, color .25s ease, transform .15s ease;
-  }
-  .download-btn svg{
-    width:14px;height:14px;
-    stroke:currentColor;
-    transition:transform .25s ease;
-  }
-  .download-btn:hover{
-    background:var(--terracotta);
-    border-color:var(--terracotta);
-    transform:translateY(-1px);
-  }
-  .download-btn:active{transform:translateY(0);}
-
-  figure.plate:nth-child(5n+1) .plate-meta{color:var(--terracotta);}
-  figure.plate:nth-child(5n+2) .plate-meta{color:#8a5a2b;}
-  figure.plate:nth-child(5n+3) .plate-meta{color:var(--olive);}
-  figure.plate:nth-child(5n+4) .plate-meta{color:var(--mustard);}
-  figure.plate:nth-child(5n+5) .plate-meta{color:#7a4f6b;}
+  .mat-bottom{height:10px;}
+  figcaption{padding:14px 2px 0;}
+  .plate-title{font-family:'Fraunces',serif;font-weight:560;font-size:19px;margin:0 0 4px;letter-spacing:-.01em;}
+  .plate-meta{font-family:'IBM Plex Mono',monospace;font-size:10.5px;letter-spacing:.04em;text-transform:uppercase;color:var(--terracotta);margin:0 0 20px;}
 
   footer{
-    padding:38px 6vw 50px;
-    border-top:1px solid var(--line);
-    display:flex;
-    justify-content:space-between;
-    flex-wrap:wrap;
-    gap:14px;
-    font-family:'IBM Plex Mono',monospace;
-    font-size:11px;
-    color:var(--ink-soft);
-    letter-spacing:.04em;
+    padding:38px 6vw 50px;border-top:1px solid var(--line);
+    display:flex;justify-content:space-between;flex-wrap:wrap;gap:14px;
+    font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--ink-soft);letter-spacing:.04em;
   }
+
+  /* ---------- Overlays / modals ---------- */
+  .overlay{
+    position:fixed;inset:0;background:rgba(28,26,23,.72);
+    display:none;align-items:flex-start;justify-content:center;
+    padding:5vh 20px;overflow-y:auto;z-index:50;
+  }
+  .overlay.open{display:flex;}
+  .modal{
+    background:var(--paper);max-width:960px;width:100%;
+    border:1px solid var(--line);position:relative;
+    animation:pop .18s ease;
+  }
+  @keyframes pop{from{transform:translateY(8px);opacity:0;}to{transform:translateY(0);opacity:1;}}
+  .modal-close{
+    position:absolute;top:14px;right:14px;width:32px;height:32px;border-radius:50%;
+    background:var(--ink);color:var(--paper);border:none;font-size:16px;z-index:5;
+  }
+  .modal-close:hover{background:var(--terracotta);}
+
+  /* detail view */
+  .detail-grid{display:grid;grid-template-columns:1.1fr 1fr;gap:0;}
+  @media (max-width:720px){.detail-grid{grid-template-columns:1fr;}}
+  .detail-img{background:#ece9e2;display:flex;align-items:center;justify-content:center;min-height:280px;}
+  .detail-img img{width:100%;height:auto;display:block;}
+  .detail-info{padding:44px 40px;}
+  .detail-eyebrow{font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--terracotta);margin:0 0 14px;}
+  .detail-title{font-family:'Fraunces',serif;font-weight:650;font-size:34px;margin:0 0 14px;line-height:1.05;}
+  .detail-desc{font-size:14.5px;line-height:1.6;color:var(--ink-soft);margin:0 0 20px;}
+  .detail-kw{display:flex;flex-wrap:wrap;gap:6px;margin:0 0 26px;padding:0;list-style:none;}
+  .detail-kw li{font-size:11.5px;padding:4px 11px;border:1px solid var(--line);border-radius:20px;color:var(--ink-soft);background:#fff;}
+  .detail-actions{display:flex;gap:10px;flex-wrap:wrap;}
+  .btn{
+    display:inline-flex;align-items:center;gap:8px;font-weight:600;font-size:13px;
+    text-decoration:none;padding:12px 20px;border:1px solid var(--ink);letter-spacing:.01em;
+    transition:.2s;background:transparent;color:var(--ink);
+  }
+  .btn.solid{background:var(--ink);color:var(--paper);}
+  .btn.solid:hover{background:var(--terracotta);border-color:var(--terracotta);}
+  .btn:not(.solid):hover{background:var(--ink);color:var(--paper);}
+  .btn svg{width:14px;height:14px;stroke:currentColor;}
+  .url-line{
+    margin-top:26px;padding-top:16px;border-top:1px solid var(--line);
+    font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--ink-soft);
+    word-break:break-all;
+  }
+  .url-line button{
+    display:block;margin-top:8px;background:none;border:1px solid var(--line);
+    padding:6px 10px;font-size:11px;color:var(--ink);border-radius:16px;
+  }
+  .url-line button:hover{border-color:var(--ink);}
+
+  /* forms (login / add-edit) */
+  .form-pad{padding:44px 40px;}
+  .form-title{font-family:'Fraunces',serif;font-weight:650;font-size:26px;margin:0 0 6px;}
+  .form-sub{font-size:13px;color:var(--ink-soft);margin:0 0 28px;}
+  .field{margin-bottom:18px;}
+  .field label{
+    display:block;font-family:'IBM Plex Mono',monospace;font-size:10.5px;
+    text-transform:uppercase;letter-spacing:.06em;color:var(--ink-soft);margin-bottom:7px;
+  }
+  .field input[type=text],
+  .field input[type=password],
+  .field input[type=url],
+  .field textarea{
+    width:100%;padding:12px 14px;border:1px solid var(--line);background:#fff;
+    font-family:'Inter',sans-serif;font-size:14px;color:var(--ink);border-radius:4px;
+  }
+  .field textarea{min-height:80px;resize:vertical;}
+  .field input:focus,.field textarea:focus{outline:none;border-color:var(--terracotta);}
+  .error-msg{color:var(--danger);font-size:12.5px;margin:-6px 0 16px;display:none;}
+  .error-msg.show{display:block;}
+  .success-msg{color:var(--olive);font-size:12.5px;margin:-6px 0 16px;display:none;}
+  .success-msg.show{display:block;}
+
+  .dropzone{
+    border:2px dashed var(--line);background:#f2f0ea;
+    padding:34px 16px;text-align:center;border-radius:6px;cursor:pointer;
+    transition:.2s;position:relative;
+  }
+  .dropzone.drag{border-color:var(--terracotta);background:#f7ece3;}
+  .dropzone .up-icon{width:34px;height:34px;border-radius:50%;border:1.5px solid var(--ink);
+    display:flex;align-items:center;justify-content:center;margin:0 auto 12px;}
+  .dropzone p{margin:0;font-size:13.5px;}
+  .dropzone .hint{font-size:11.5px;color:var(--ink-soft);margin-top:8px;}
+  .dropzone input[type=file]{position:absolute;inset:0;opacity:0;cursor:pointer;}
+  .dz-preview{max-width:100%;max-height:160px;border-radius:4px;margin:0 auto 10px;display:block;}
+  .or-sep{text-align:center;font-family:'IBM Plex Mono',monospace;font-size:10.5px;color:var(--ink-soft);margin:14px 0;letter-spacing:.05em;text-transform:uppercase;}
+
+  .form-actions{display:flex;justify-content:space-between;align-items:center;margin-top:28px;flex-wrap:wrap;gap:10px;}
+  .form-actions .left-actions{display:flex;gap:10px;}
+  .link-danger{background:none;border:none;color:var(--danger);font-size:12.5px;text-decoration:underline;}
+
+  .toast{
+    position:fixed;bottom:26px;left:50%;transform:translateX(-50%) translateY(20px);
+    background:var(--ink);color:var(--paper);padding:12px 22px;border-radius:24px;
+    font-size:13px;opacity:0;pointer-events:none;transition:.3s;z-index:100;
+  }
+  .toast.show{opacity:1;transform:translateX(-50%) translateY(0);}
 
   @media (max-width:560px){
     header.masthead{padding:44px 6vw 30px;}
     .masthead-row{flex-direction:column;align-items:flex-start;}
     .masthead-meta{text-align:left;}
     main{padding:40px 6vw 70px;}
-    .gallery{gap:38px;}
+    .form-pad, .detail-info{padding:30px 22px;}
   }
 </style>
 </head>
 <body>
 
 <header class="masthead">
-  <p class="eyebrow">Banco de imágenes · edición 02</p>
+  <p class="eyebrow">Banco de imágenes · edición 03</p>
   <h1 class="brand">Fondo<br><em>Blanco</em></h1>
   <div class="masthead-row">
-    <p class="masthead-desc">Fondos de pantalla en alta resolución, presentados como láminas de galería. La vista previa se sirve liviana en WebP; al descargar recibes el archivo completo en JPG.</p>
+    <p class="masthead-desc">Fondos de pantalla en alta resolución. Toca cualquier lámina para ver su ficha completa, con nombre, descripción, palabras clave y enlace propio de descarga.</p>
     <p class="masthead-meta">
-      10 láminas disponibles<br>
-      previsualización: WebP (Google Drive)<br>
-      descarga: JPG · alta resolución
+      previsualización: WebP<br>
+      descarga: archivo original<br>
+      galería estilo masonry
     </p>
   </div>
 </header>
 
 <div class="strip">
   <span>Colección — Fondos 2026</span>
-  <span>Descarga directa · sin registro</span>
+  <div class="right" id="toolbarRight"></div>
 </div>
 
 <main>
@@ -284,69 +292,499 @@
   <span>Todas las descargas abren en una pestaña nueva</span>
 </footer>
 
+<!-- ============ DETALLE DE IMAGEN ============ -->
+<div class="overlay" id="detailOverlay">
+  <div class="modal" id="detailModal">
+    <button class="modal-close" id="detailClose" type="button">✕</button>
+    <div class="detail-grid" id="detailBody"></div>
+  </div>
+</div>
+
+<!-- ============ LOGIN ADMIN ============ -->
+<div class="overlay" id="loginOverlay">
+  <div class="modal" style="max-width:420px;">
+    <button class="modal-close" id="loginClose" type="button">✕</button>
+    <div class="form-pad">
+      <h2 class="form-title">Acceso administrador</h2>
+      <p class="form-sub">Solo para gestión interna del sitio.</p>
+      <div class="field">
+        <label for="loginUser">Usuario</label>
+        <input type="text" id="loginUser" autocomplete="username">
+      </div>
+      <div class="field">
+        <label for="loginPass">Contraseña</label>
+        <input type="password" id="loginPass" autocomplete="current-password">
+      </div>
+      <p class="error-msg" id="loginError">Usuario o contraseña incorrectos.</p>
+      <button class="btn solid" id="loginSubmit" type="button" style="width:100%;justify-content:center;">Ingresar</button>
+    </div>
+  </div>
+</div>
+
+<!-- ============ AGREGAR / EDITAR IMAGEN ============ -->
+<div class="overlay" id="editOverlay">
+  <div class="modal" style="max-width:600px;">
+    <button class="modal-close" id="editClose" type="button">✕</button>
+    <div class="form-pad">
+      <h2 class="form-title" id="editFormTitle">Agregar imagen</h2>
+      <p class="form-sub">Solo se aceptan archivos <strong>.webp</strong> para la vista previa.</p>
+
+      <div class="field">
+        <label>Vista previa (WebP)</label>
+        <div class="dropzone" id="dropzone">
+          <img id="dzPreviewImg" class="dz-preview" style="display:none;">
+          <div class="up-icon" id="dzIcon">↑</div>
+          <p id="dzText">Elige un archivo .webp o arrástralo y suéltalo aquí</p>
+          <p class="hint">Solo formato WebP · usado para la vista previa en el sitio</p>
+          <input type="file" id="fileInput" accept=".webp,image/webp">
+        </div>
+        <p class="error-msg" id="fileError">Ese archivo no es .webp. Elige un archivo con extensión .webp.</p>
+      </div>
+
+      <div class="or-sep">o pega una URL de imagen</div>
+      <div class="field">
+        <input type="text" id="previewUrlInput" placeholder="https://drive.google.com/... (opcional si ya subiste un .webp)">
+      </div>
+
+      <div class="field">
+        <label for="fieldTitle">Título</label>
+        <input type="text" id="fieldTitle" placeholder="Explica en qué consiste tu fondo">
+      </div>
+      <div class="field">
+        <label for="fieldDesc">Descripción</label>
+        <textarea id="fieldDesc" placeholder="Describe la imagen"></textarea>
+      </div>
+      <div class="field">
+        <label for="fieldLink">Enlace de descarga</label>
+        <input type="text" id="fieldLink" placeholder="Añade el enlace que se abrirá al presionar Descargar">
+      </div>
+      <div class="field">
+        <label for="fieldKw">Palabras clave</label>
+        <input type="text" id="fieldKw" placeholder="separadas por coma, ej: papel, textura, azul">
+      </div>
+
+      <p class="error-msg" id="editError">Falta el título o el enlace de descarga.</p>
+      <p class="success-msg" id="editSuccess">Guardado correctamente.</p>
+
+      <div class="form-actions">
+        <div class="left-actions">
+          <button class="btn solid" id="editSaveBtn" type="button">Guardar</button>
+          <button class="btn" id="editCancelBtn" type="button">Cancelar</button>
+        </div>
+        <button class="link-danger" id="editDeleteBtn" type="button" style="display:none;">Eliminar esta imagen</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="toast" id="toast"></div>
+
 <script>
-  // Cada imagen: id de Drive (previsualización WebP) + enlace de descarga (JPG)
-  const items = [
-    { n:"01", driveId:"1jdck5LigvKPpYBJit4-2Fj7Bi7nCSpdy", download:"https://shrinkme.click/mQUH",     title:"Fondo 01", tag:"Wallpaper", desc:"Fondo de pantalla en alta resolución, formato vertical.", kw:["fondo de pantalla","wallpaper","textura","hd"] },
-    { n:"02", driveId:"1ITKlbUssj16F-RoSotrxFgcikcaUWgG_", download:"https://shrinkme.click/ElrNjl8I", title:"Fondo 02", tag:"Wallpaper", desc:"Fondo de pantalla en alta resolución, formato vertical.", kw:["fondo de pantalla","wallpaper","textura","hd"] },
-    { n:"03", driveId:"1dCIi2N_GCe0cuyz3XuAfBivw2h5mV-E3", download:"https://shrinkme.click/96Sa",     title:"Fondo 03", tag:"Wallpaper", desc:"Fondo de pantalla en alta resolución, formato vertical.", kw:["fondo de pantalla","wallpaper","textura","hd"] },
-    { n:"04", driveId:"1pRNXwtJ1vx7qg3AliMatlUNWIJ3ZBNJd", download:"https://shrinkme.click/CeK9Mmq",  title:"Fondo 04", tag:"Wallpaper", desc:"Fondo de pantalla en alta resolución, formato vertical.", kw:["fondo de pantalla","wallpaper","textura","hd"] },
-    { n:"05", driveId:"1JlME9WesR7VZPWu6BxFIhg_htNn84kd3", download:"https://shrinkme.click/i7NjK",    title:"Fondo 05", tag:"Wallpaper", desc:"Fondo de pantalla en alta resolución, formato vertical.", kw:["fondo de pantalla","wallpaper","textura","hd"] },
-    { n:"06", driveId:"1xOU7xLmKdH4nevcRThPpLM6eUFI8gO6j", download:"https://shrinkme.click/TFrb7yGI", title:"Fondo 06", tag:"Wallpaper", desc:"Fondo de pantalla en alta resolución, formato vertical.", kw:["fondo de pantalla","wallpaper","textura","hd"] },
-    { n:"07", driveId:"1z30SxG7BeT3WgM4K_fpwd3XHWSt8wZoU", download:"https://shrinkme.click/9ao75",    title:"Fondo 07", tag:"Wallpaper", desc:"Fondo de pantalla en alta resolución, formato vertical.", kw:["fondo de pantalla","wallpaper","textura","hd"] },
-    { n:"08", driveId:"16F9Z8UDOKKMcP75bXbXWrx005IA00S4V", download:"https://shrinkme.click/q6sfv1Tl", title:"Fondo 08", tag:"Wallpaper", desc:"Fondo de pantalla en alta resolución, formato vertical.", kw:["fondo de pantalla","wallpaper","textura","hd"] },
-    { n:"09", driveId:"18aLmsZAmHd-12oYYB1tzvVqbOuLknYi6", download:"https://shrinkme.click/FrUy4n",   title:"Fondo 09", tag:"Wallpaper", desc:"Fondo de pantalla en alta resolución, formato vertical.", kw:["fondo de pantalla","wallpaper","textura","hd"] },
-    { n:"10", driveId:"1MIF6ICCeruyoKfTkvAHktT26fHKglKZy", download:"https://shrinkme.click/9KzP",     title:"Fondo 10", tag:"Wallpaper", desc:"Fondo de pantalla en alta resolución, formato vertical.", kw:["fondo de pantalla","wallpaper","textura","hd"] },
+(function(){
+
+  const STORAGE_KEY = 'fondoblanco_catalog';
+  const ADMIN_USER = 'emor19';
+  const ADMIN_PASS = 'Fondo123';
+
+  const defaultItems = [
+    { id:"01", title:"Fondo 01", desc:"Fondo de pantalla en alta resolución, formato vertical.", keywords:["fondo de pantalla","wallpaper","textura","hd"], download:"https://shrinkme.click/mQUH",     preview:{type:"drive", driveId:"1jdck5LigvKPpYBJit4-2Fj7Bi7nCSpdy"} },
+    { id:"02", title:"Fondo 02", desc:"Fondo de pantalla en alta resolución, formato vertical.", keywords:["fondo de pantalla","wallpaper","textura","hd"], download:"https://shrinkme.click/ElrNjl8I", preview:{type:"drive", driveId:"1ITKlbUssj16F-RoSotrxFgcikcaUWgG_"} },
+    { id:"03", title:"Fondo 03", desc:"Fondo de pantalla en alta resolución, formato vertical.", keywords:["fondo de pantalla","wallpaper","textura","hd"], download:"https://shrinkme.click/96Sa",     preview:{type:"drive", driveId:"1dCIi2N_GCe0cuyz3XuAfBivw2h5mV-E3"} },
+    { id:"04", title:"Fondo 04", desc:"Fondo de pantalla en alta resolución, formato vertical.", keywords:["fondo de pantalla","wallpaper","textura","hd"], download:"https://shrinkme.click/CeK9Mmq",  preview:{type:"drive", driveId:"1pRNXwtJ1vx7qg3AliMatlUNWIJ3ZBNJd"} },
+    { id:"05", title:"Fondo 05", desc:"Fondo de pantalla en alta resolución, formato vertical.", keywords:["fondo de pantalla","wallpaper","textura","hd"], download:"https://shrinkme.click/i7NjK",    preview:{type:"drive", driveId:"1JlME9WesR7VZPWu6BxFIhg_htNn84kd3"} },
+    { id:"06", title:"Fondo 06", desc:"Fondo de pantalla en alta resolución, formato vertical.", keywords:["fondo de pantalla","wallpaper","textura","hd"], download:"https://shrinkme.click/TFrb7yGI", preview:{type:"drive", driveId:"1xOU7xLmKdH4nevcRThPpLM6eUFI8gO6j"} },
+    { id:"07", title:"Fondo 07", desc:"Fondo de pantalla en alta resolución, formato vertical.", keywords:["fondo de pantalla","wallpaper","textura","hd"], download:"https://shrinkme.click/9ao75",    preview:{type:"drive", driveId:"1z30SxG7BeT3WgM4K_fpwd3XHWSt8wZoU"} },
+    { id:"08", title:"Fondo 08", desc:"Fondo de pantalla en alta resolución, formato vertical.", keywords:["fondo de pantalla","wallpaper","textura","hd"], download:"https://shrinkme.click/q6sfv1Tl", preview:{type:"drive", driveId:"16F9Z8UDOKKMcP75bXbXWrx005IA00S4V"} },
+    { id:"09", title:"Fondo 09", desc:"Fondo de pantalla en alta resolución, formato vertical.", keywords:["fondo de pantalla","wallpaper","textura","hd"], download:"https://shrinkme.click/FrUy4n",   preview:{type:"drive", driveId:"18aLmsZAmHd-12oYYB1tzvVqbOuLknYi6"} },
+    { id:"10", title:"Fondo 10", desc:"Fondo de pantalla en alta resolución, formato vertical.", keywords:["fondo de pantalla","wallpaper","textura","hd"], download:"https://shrinkme.click/9KzP",     preview:{type:"drive", driveId:"1MIF6ICCeruyoKfTkvAHktT26fHKglKZy"} }
   ];
 
+  let items = [];
+  let isAdmin = false;
+  let editingId = null;      // id del ítem que se está editando (null = creando uno nuevo)
+  let pendingPreview = null; // {type:'base64', data:'...'} cargado en el formulario, aún no guardado
+  let storageAvailable = true;
+
+  // ---------- Persistencia ----------
+  async function loadCatalog(){
+    try{
+      const res = await window.storage.get(STORAGE_KEY, true);
+      if(res && res.value){
+        items = JSON.parse(res.value);
+        return;
+      }
+    }catch(e){
+      storageAvailable = false;
+    }
+    items = JSON.parse(JSON.stringify(defaultItems));
+    try{ await window.storage.set(STORAGE_KEY, JSON.stringify(items), true); }
+    catch(e){ storageAvailable = false; }
+  }
+
+  async function saveCatalog(){
+    try{
+      const result = await window.storage.set(STORAGE_KEY, JSON.stringify(items), true);
+      if(!result) storageAvailable = false;
+    }catch(e){
+      storageAvailable = false;
+    }
+  }
+
+  // ---------- Utilidades ----------
+  function previewSrc(item){
+    if(item.preview.type === 'base64' || item.preview.type === 'url'){
+      return item.preview.data;
+    }
+    return `https://drive.google.com/thumbnail?id=${item.preview.driveId}&sz=w1000`;
+  }
+  function previewFallback(item){
+    if(item.preview.type === 'drive'){
+      return `https://lh3.googleusercontent.com/d/${item.preview.driveId}=w1000`;
+    }
+    return null;
+  }
+  function nextId(){
+    const nums = items.map(it => parseInt(it.id,10)).filter(n=>!isNaN(n));
+    const max = nums.length ? Math.max(...nums) : 0;
+    return String(max+1).padStart(2,'0');
+  }
+  function showToast(msg){
+    const t = document.getElementById('toast');
+    t.textContent = msg;
+    t.classList.add('show');
+    clearTimeout(showToast._tm);
+    showToast._tm = setTimeout(()=>t.classList.remove('show'), 2600);
+  }
+  function escapeHtml(str){
+    return String(str).replace(/[&<>"']/g, s => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[s]));
+  }
+
+  // ---------- Render galería ----------
   const gallery = document.getElementById('gallery');
 
-  items.forEach(item => {
-    const fig = document.createElement('figure');
-    fig.className = 'plate';
+  function renderGallery(){
+    gallery.innerHTML = '';
+    items.forEach(item => {
+      const fig = document.createElement('figure');
+      fig.className = 'plate';
+      const kwHtml = item.keywords.map(k=>`<li>${escapeHtml(k)}</li>`).join('');
+      const src = previewSrc(item);
+      const fb = previewFallback(item);
 
-    const kwHtml = item.kw.map(k => `<li>${k}</li>`).join('');
-    const previewUrl = `https://drive.google.com/thumbnail?id=${item.driveId}&sz=w1000`;
-    const previewFallback = `https://lh3.googleusercontent.com/d/${item.driveId}=w1000`;
-
-    fig.innerHTML = `
-      <div class="frame">
-        <span class="num">${item.n}</span>
-        <div class="img-wrap">
-          <img alt="${item.title} — fondo de pantalla" loading="lazy" src="${previewUrl}">
-          <div class="fallback" style="display:none;">
-            Vista previa no disponible<br>desde este navegador.<br>
-            <a href="https://drive.google.com/file/d/${item.driveId}/view" target="_blank" rel="noopener" style="text-decoration:underline;">Ver en Drive</a>
+      fig.innerHTML = `
+        <div class="frame" data-id="${item.id}">
+          <span class="num">${item.id}</span>
+          ${isAdmin ? `<button class="edit-pin" data-edit="${item.id}" type="button" title="Editar">✎</button>` : ''}
+          <div class="img-wrap">
+            <img alt="${escapeHtml(item.title)}" loading="lazy" src="${src}">
           </div>
+          <div class="mat-bottom"></div>
         </div>
-        <div class="mat-bottom"></div>
+        <figcaption>
+          <h2 class="plate-title">${escapeHtml(item.title)}</h2>
+          <p class="plate-meta">Lámina N.º ${item.id}</p>
+        </figcaption>
+      `;
+
+      const img = fig.querySelector('img');
+      img.addEventListener('load', ()=>img.classList.add('loaded'));
+      img.addEventListener('error', ()=>{
+        if(fb && img.src !== fb){ img.src = fb; }
+        else{
+          const wrap = fig.querySelector('.img-wrap');
+          wrap.innerHTML = '<div class="fallback">Vista previa no disponible</div>';
+        }
+      });
+
+      fig.querySelector('.frame').addEventListener('click', (e)=>{
+        if(e.target.closest('.edit-pin')) return;
+        openDetail(item.id, true);
+      });
+
+      const editBtn = fig.querySelector('.edit-pin');
+      if(editBtn){
+        editBtn.addEventListener('click', (e)=>{
+          e.stopPropagation();
+          openEditForm(item.id);
+        });
+      }
+
+      gallery.appendChild(fig);
+    });
+  }
+
+  // ---------- Detalle con URL propia ----------
+  const detailOverlay = document.getElementById('detailOverlay');
+  const detailBody = document.getElementById('detailBody');
+
+  function openDetail(id, updateHash){
+    const item = items.find(it => it.id === id);
+    if(!item) return;
+    const src = previewSrc(item);
+    const kwHtml = item.keywords.map(k=>`<li>${escapeHtml(k)}</li>`).join('');
+
+    detailBody.innerHTML = `
+      <div class="detail-img"><img src="${src}" alt="${escapeHtml(item.title)}"></div>
+      <div class="detail-info">
+        <p class="detail-eyebrow">Lámina N.º ${item.id}</p>
+        <h2 class="detail-title">${escapeHtml(item.title)}</h2>
+        <p class="detail-desc">${escapeHtml(item.desc || '')}</p>
+        <ul class="detail-kw">${kwHtml}</ul>
+        <div class="detail-actions">
+          <a class="btn solid" href="${item.download}" target="_blank" rel="noopener">
+            Descargar
+            <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v13"/><path d="m6 12 6 6 6-6"/><path d="M5 21h14"/></svg>
+          </a>
+        </div>
+        <div class="url-line">
+          Enlace de esta ficha:<br>${window.location.origin}${window.location.pathname}#pin-${item.id}
+          <button type="button" id="copyLinkBtn">Copiar enlace</button>
+        </div>
       </div>
-      <figcaption>
-        <h2 class="plate-title">${item.title}</h2>
-        <p class="plate-meta">${item.tag} · Lámina N.º ${item.n}</p>
-        <p class="plate-desc">${item.desc}</p>
-        <ul class="keywords">${kwHtml}</ul>
-        <a class="download-btn" href="${item.download}" target="_blank" rel="noopener">
-          Descargar
-          <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v13"/><path d="m6 12 6 6 6-6"/><path d="M5 21h14"/></svg>
-        </a>
-      </figcaption>
     `;
 
-    const img = fig.querySelector('img');
-    const fallbackEl = fig.querySelector('.fallback');
-    img.addEventListener('load', () => img.classList.add('loaded'));
-    img.addEventListener('error', () => {
-      if (img.src !== previewFallback) {
-        img.src = previewFallback;
-      } else {
-        img.style.display = 'none';
-        fallbackEl.style.display = 'flex';
+    document.getElementById('copyLinkBtn').addEventListener('click', ()=>{
+      const url = `${window.location.origin}${window.location.pathname}#pin-${item.id}`;
+      if(navigator.clipboard){
+        navigator.clipboard.writeText(url).then(()=>showToast('Enlace copiado')).catch(()=>showToast(url));
+      }else{
+        showToast(url);
       }
     });
 
-    gallery.appendChild(fig);
+    document.title = `${item.title} · Fondo Blanco`;
+    detailOverlay.classList.add('open');
+    if(updateHash) window.location.hash = 'pin-' + item.id;
+  }
+
+  function closeDetail(){
+    detailOverlay.classList.remove('open');
+    document.title = 'Fondo Blanco — Banco de imágenes y fondos de pantalla';
+    history.replaceState(null, '', window.location.pathname + window.location.search);
+  }
+
+  document.getElementById('detailClose').addEventListener('click', closeDetail);
+  detailOverlay.addEventListener('click', (e)=>{ if(e.target === detailOverlay) closeDetail(); });
+
+  function handleHash(){
+    const h = window.location.hash;
+    if(h.startsWith('#pin-')){
+      const id = h.replace('#pin-','');
+      if(items.find(it=>it.id===id)) openDetail(id, false);
+    }
+  }
+  window.addEventListener('hashchange', handleHash);
+
+  // ---------- Login admin ----------
+  const loginOverlay = document.getElementById('loginOverlay');
+  const toolbarRight = document.getElementById('toolbarRight');
+
+  document.getElementById('loginClose').addEventListener('click', ()=> loginOverlay.classList.remove('open'));
+  loginOverlay.addEventListener('click', (e)=>{ if(e.target===loginOverlay) loginOverlay.classList.remove('open'); });
+
+  document.getElementById('loginSubmit').addEventListener('click', ()=>{
+    const u = document.getElementById('loginUser').value.trim();
+    const p = document.getElementById('loginPass').value;
+    if(u === ADMIN_USER && p === ADMIN_PASS){
+      isAdmin = true;
+      loginOverlay.classList.remove('open');
+      renderToolbar();
+      renderGallery();
+      showToast('Sesión iniciada como administrador');
+    }else{
+      document.getElementById('loginError').classList.add('show');
+    }
   });
+
+  function renderToolbar(){
+    if(isAdmin){
+      toolbarRight.innerHTML = `
+        <span class="admin-badge"><span class="dot"></span> emor19 · administrador</span>
+        <button class="pill-btn accent" id="addImgBtn" type="button">+ Agregar imagen</button>
+        <button class="pill-btn" id="logoutBtn" type="button">Cerrar sesión</button>
+      `;
+      document.getElementById('addImgBtn').addEventListener('click', ()=> openEditForm(null));
+      document.getElementById('logoutBtn').addEventListener('click', ()=>{
+        isAdmin = false;
+        renderToolbar();
+        renderGallery();
+        showToast('Sesión cerrada');
+      });
+    }else{
+      toolbarRight.innerHTML = `<button class="pill-btn" id="loginOpenBtn" type="button">Iniciar sesión</button>`;
+      document.getElementById('loginOpenBtn').addEventListener('click', ()=>{
+        document.getElementById('loginUser').value = '';
+        document.getElementById('loginPass').value = '';
+        document.getElementById('loginError').classList.remove('show');
+        loginOverlay.classList.add('open');
+      });
+    }
+  }
+
+  // ---------- Agregar / editar imagen ----------
+  const editOverlay = document.getElementById('editOverlay');
+  const dropzone = document.getElementById('dropzone');
+  const fileInput = document.getElementById('fileInput');
+  const dzPreviewImg = document.getElementById('dzPreviewImg');
+  const dzIcon = document.getElementById('dzIcon');
+  const dzText = document.getElementById('dzText');
+  const fileError = document.getElementById('fileError');
+
+  function resetEditForm(){
+    editingId = null;
+    pendingPreview = null;
+    document.getElementById('editFormTitle').textContent = 'Agregar imagen';
+    document.getElementById('fieldTitle').value = '';
+    document.getElementById('fieldDesc').value = '';
+    document.getElementById('fieldLink').value = '';
+    document.getElementById('fieldKw').value = '';
+    document.getElementById('previewUrlInput').value = '';
+    document.getElementById('editError').classList.remove('show');
+    document.getElementById('editSuccess').classList.remove('show');
+    document.getElementById('editDeleteBtn').style.display = 'none';
+    fileError.classList.remove('show');
+    dzPreviewImg.style.display = 'none';
+    dzIcon.style.display = 'flex';
+    dzText.textContent = 'Elige un archivo .webp o arrástralo y suéltalo aquí';
+    fileInput.value = '';
+  }
+
+  function openEditForm(id){
+    resetEditForm();
+    if(id){
+      const item = items.find(it=>it.id===id);
+      if(item){
+        editingId = id;
+        document.getElementById('editFormTitle').textContent = 'Editar imagen · N.º ' + id;
+        document.getElementById('fieldTitle').value = item.title;
+        document.getElementById('fieldDesc').value = item.desc || '';
+        document.getElementById('fieldLink').value = item.download;
+        document.getElementById('fieldKw').value = (item.keywords||[]).join(', ');
+        if(item.preview.type === 'url'){
+          document.getElementById('previewUrlInput').value = item.preview.data;
+        }
+        dzPreviewImg.src = previewSrc(item);
+        dzPreviewImg.style.display = 'block';
+        dzIcon.style.display = 'none';
+        dzText.textContent = 'Vista previa actual (sube otro .webp para reemplazarla)';
+        document.getElementById('editDeleteBtn').style.display = 'inline-block';
+      }
+    }
+    editOverlay.classList.add('open');
+  }
+
+  document.getElementById('editClose').addEventListener('click', ()=> editOverlay.classList.remove('open'));
+  document.getElementById('editCancelBtn').addEventListener('click', ()=> editOverlay.classList.remove('open'));
+  editOverlay.addEventListener('click', (e)=>{ if(e.target===editOverlay) editOverlay.classList.remove('open'); });
+
+  function isWebp(file){
+    if(!file) return false;
+    if(file.type === 'image/webp') return true;
+    return /\.webp$/i.test(file.name || '');
+  }
+
+  function handleFile(file){
+    fileError.classList.remove('show');
+    if(!isWebp(file)){
+      fileError.classList.add('show');
+      fileInput.value = '';
+      return;
+    }
+    const reader = new FileReader();
+    reader.onload = (e)=>{
+      pendingPreview = { type:'base64', data: e.target.result };
+      dzPreviewImg.src = e.target.result;
+      dzPreviewImg.style.display = 'block';
+      dzIcon.style.display = 'none';
+      dzText.textContent = file.name + ' — listo';
+      document.getElementById('previewUrlInput').value = '';
+    };
+    reader.readAsDataURL(file);
+  }
+
+  fileInput.addEventListener('change', ()=> handleFile(fileInput.files[0]));
+  dropzone.addEventListener('dragover', (e)=>{ e.preventDefault(); dropzone.classList.add('drag'); });
+  dropzone.addEventListener('dragleave', ()=> dropzone.classList.remove('drag'));
+  dropzone.addEventListener('drop', (e)=>{
+    e.preventDefault();
+    dropzone.classList.remove('drag');
+    if(e.dataTransfer.files && e.dataTransfer.files[0]) handleFile(e.dataTransfer.files[0]);
+  });
+
+  document.getElementById('editSaveBtn').addEventListener('click', async ()=>{
+    const title = document.getElementById('fieldTitle').value.trim();
+    const desc = document.getElementById('fieldDesc').value.trim();
+    const link = document.getElementById('fieldLink').value.trim();
+    const kwRaw = document.getElementById('fieldKw').value.trim();
+    const urlPreview = document.getElementById('previewUrlInput').value.trim();
+    const errorEl = document.getElementById('editError');
+    const successEl = document.getElementById('editSuccess');
+    successEl.classList.remove('show');
+
+    if(!title || !link){
+      errorEl.textContent = 'Falta el título o el enlace de descarga.';
+      errorEl.classList.add('show');
+      return;
+    }
+    errorEl.classList.remove('show');
+
+    const keywords = kwRaw ? kwRaw.split(',').map(k=>k.trim()).filter(Boolean) : [];
+
+    let preview = null;
+    if(pendingPreview){
+      preview = pendingPreview;
+    }else if(urlPreview){
+      preview = { type:'url', data:urlPreview };
+    }
+
+    if(editingId){
+      const item = items.find(it=>it.id===editingId);
+      item.title = title;
+      item.desc = desc;
+      item.download = link;
+      item.keywords = keywords;
+      if(preview) item.preview = preview;
+    }else{
+      if(!preview){
+        errorEl.textContent = 'Sube un archivo .webp o pega una URL de vista previa.';
+        errorEl.classList.add('show');
+        return;
+      }
+      items.push({
+        id: nextId(),
+        title, desc, download: link, keywords, preview
+      });
+    }
+
+    await saveCatalog();
+    renderGallery();
+    successEl.classList.add('show');
+    showToast(storageAvailable ? 'Guardado y publicado' : 'Guardado en esta sesión (el almacenamiento compartido no está disponible aquí)');
+    setTimeout(()=> editOverlay.classList.remove('open'), 700);
+  });
+
+  document.getElementById('editDeleteBtn').addEventListener('click', async ()=>{
+    if(!editingId) return;
+    if(!confirm('¿Eliminar esta imagen del catálogo?')) return;
+    items = items.filter(it=>it.id!==editingId);
+    await saveCatalog();
+    renderGallery();
+    editOverlay.classList.remove('open');
+    showToast('Imagen eliminada');
+  });
+
+  // ---------- Init ----------
+  (async function init(){
+    await loadCatalog();
+    renderToolbar();
+    renderGallery();
+    handleHash();
+    if(!storageAvailable){
+      showToast('Aviso: el almacenamiento compartido no respondió; los cambios solo durarán esta sesión.');
+    }
+  })();
+
+})();
 </script>
 
 </body>
