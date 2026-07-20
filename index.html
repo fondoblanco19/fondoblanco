@@ -31,150 +31,70 @@
   a{color:inherit;}
   button{font-family:inherit;cursor:pointer;}
 
-  /* ---------- Masthead ---------- */
-  header.masthead{
-    padding:64px 6vw 40px;
-    border-bottom:1px solid var(--line);
-  }
-  .eyebrow{
-    font-family:'IBM Plex Mono',monospace;
-    font-size:11px;
-    letter-spacing:.18em;
-    text-transform:uppercase;
-    color:var(--terracotta);
-    margin:0 0 18px;
-  }
-  h1.brand{
-    font-family:'Fraunces',serif;
-    font-weight:560;
-    font-size:clamp(48px,9vw,108px);
-    line-height:0.92;
-    margin:0 0 22px;
-    letter-spacing:-0.01em;
-  }
+  header.masthead{padding:64px 6vw 40px;border-bottom:1px solid var(--line);}
+  .eyebrow{font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--terracotta);margin:0 0 18px;}
+  h1.brand{font-family:'Fraunces',serif;font-weight:560;font-size:clamp(48px,9vw,108px);line-height:0.92;margin:0 0 22px;letter-spacing:-0.01em;}
   h1.brand em{font-style:italic;font-weight:500;color:var(--terracotta);}
   .masthead-row{display:flex;justify-content:space-between;align-items:flex-end;gap:32px;flex-wrap:wrap;}
   .masthead-desc{max-width:460px;font-size:16px;line-height:1.55;color:var(--ink-soft);}
   .masthead-meta{font-family:'IBM Plex Mono',monospace;font-size:12px;color:var(--ink-soft);text-align:right;line-height:1.8;}
 
-  /* ---------- Toolbar / admin strip ---------- */
   .strip{
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-    padding:16px 6vw;
-    font-family:'IBM Plex Mono',monospace;
-    font-size:11px;
-    letter-spacing:.06em;
-    text-transform:uppercase;
-    color:var(--ink-soft);
-    border-bottom:1px solid var(--line);
-    flex-wrap:wrap;
-    gap:10px;
+    display:flex;justify-content:space-between;align-items:center;padding:16px 6vw;
+    font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.06em;text-transform:uppercase;
+    color:var(--ink-soft);border-bottom:1px solid var(--line);flex-wrap:wrap;gap:10px;
   }
   .strip .right{display:flex;align-items:center;gap:10px;}
   .pill-btn{
-    font-family:'Inter',sans-serif;
-    font-size:12.5px;
-    font-weight:600;
-    letter-spacing:0;
-    text-transform:none;
-    padding:8px 14px;
-    border-radius:20px;
-    border:1px solid var(--ink);
-    background:transparent;
-    color:var(--ink);
-    transition:.2s;
+    font-family:'Inter',sans-serif;font-size:12.5px;font-weight:600;letter-spacing:0;text-transform:none;
+    padding:8px 14px;border-radius:20px;border:1px solid var(--ink);background:transparent;color:var(--ink);transition:.2s;
   }
   .pill-btn:hover{background:var(--ink);color:var(--paper);}
-  .pill-btn.solid{background:var(--ink);color:var(--paper);}
-  .pill-btn.solid:hover{background:var(--terracotta);border-color:var(--terracotta);}
   .pill-btn.accent{border-color:var(--terracotta);color:var(--terracotta);}
   .pill-btn.accent:hover{background:var(--terracotta);color:#fff;}
-  .admin-badge{
-    font-family:'IBM Plex Mono',monospace;
-    font-size:11px;
-    color:var(--olive);
-    display:flex;align-items:center;gap:6px;
-  }
+  .admin-badge{font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--olive);display:flex;align-items:center;gap:6px;}
   .admin-badge .dot{width:7px;height:7px;border-radius:50%;background:var(--olive);display:inline-block;}
 
-  /* ---------- Masonry gallery ---------- */
-  main{padding:56px 6vw 90px;}
-  .gallery{
-    columns:4 260px;
-    column-gap:32px;
+  .theme-switch{display:flex;align-items:center;gap:7px;}
+  .theme-dot{
+    width:18px;height:18px;border-radius:50%;border:2px solid transparent;padding:0;
+    background:var(--sw-color);box-shadow:0 0 0 1px var(--line) inset;transition:.15s;flex:none;
   }
+  .theme-dot:hover{transform:scale(1.12);}
+  .theme-dot.active{border-color:var(--ink);}
+
+  main{padding:56px 6vw 90px;}
+  .gallery{columns:4 260px;column-gap:32px;}
   @media (max-width:1100px){.gallery{columns:3 220px;}}
   @media (max-width:720px){.gallery{columns:2 180px;}}
   @media (max-width:480px){.gallery{columns:1;}}
 
-  figure.plate{
-    margin:0 0 32px;
-    break-inside:avoid;
-    display:inline-block;
-    width:100%;
-  }
-  .frame{
-    background:var(--card-bg);
-    padding:10px 10px 0;
-    border:1px solid var(--line);
-    box-shadow:0 1px 0 var(--line);
-    position:relative;
-    overflow:hidden;
-    cursor:pointer;
-  }
-  .frame .num{
-    position:absolute;top:10px;left:10px;
-    font-family:'IBM Plex Mono',monospace;font-size:11px;color:#fff;
-    background:rgba(28,26,23,.55);padding:3px 8px;letter-spacing:.05em;z-index:2;
-  }
-  .edit-pin{
-    position:absolute;top:10px;right:10px;z-index:3;
-    width:28px;height:28px;border-radius:50%;
-    background:rgba(255,255,255,.92);border:1px solid var(--line);
-    display:flex;align-items:center;justify-content:center;
-    font-size:13px;
-  }
+  figure.plate{margin:0 0 32px;break-inside:avoid;display:inline-block;width:100%;}
+  .frame{background:var(--card-bg);padding:10px 10px 0;border:1px solid var(--line);box-shadow:0 1px 0 var(--line);position:relative;overflow:hidden;cursor:pointer;}
+  .frame .num{position:absolute;top:10px;left:10px;font-family:'IBM Plex Mono',monospace;font-size:11px;color:#fff;background:rgba(28,26,23,.55);padding:3px 8px;letter-spacing:.05em;z-index:2;}
+  .edit-pin{position:absolute;top:10px;right:10px;z-index:3;width:28px;height:28px;border-radius:50%;background:rgba(255,255,255,.92);border:1px solid var(--line);display:flex;align-items:center;justify-content:center;font-size:13px;}
   .edit-pin:hover{background:var(--terracotta);color:#fff;}
   .img-wrap{position:relative;width:100%;overflow:hidden;background:#ece9e2;min-height:80px;}
   .img-wrap img{width:100%;height:auto;display:block;transition:transform .6s cubic-bezier(.2,.7,.2,1),opacity .4s ease;opacity:0;}
   .img-wrap img.loaded{opacity:1;}
   .frame:hover .img-wrap img{transform:scale(1.04);}
-  .img-wrap .fallback{
-    padding:34px 16px;text-align:center;font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--ink-soft);
-  }
+  .img-wrap .fallback{padding:34px 16px;text-align:center;font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--ink-soft);}
   .mat-bottom{height:10px;}
+  .ad-slot{display:flex;flex-direction:column;align-items:center;gap:6px;margin:12px 0 4px;overflow:hidden;}
+  .ad-slot iframe{max-width:100%;border:0;}
   figcaption{padding:14px 2px 0;}
   .plate-title{font-family:'Fraunces',serif;font-weight:560;font-size:19px;margin:0 0 4px;letter-spacing:-.01em;}
   .plate-meta{font-family:'IBM Plex Mono',monospace;font-size:10.5px;letter-spacing:.04em;text-transform:uppercase;color:var(--terracotta);margin:0 0 20px;}
 
-  footer{
-    padding:38px 6vw 50px;border-top:1px solid var(--line);
-    display:flex;justify-content:space-between;flex-wrap:wrap;gap:14px;
-    font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--ink-soft);letter-spacing:.04em;
-  }
+  footer{padding:38px 6vw 50px;border-top:1px solid var(--line);display:flex;justify-content:space-between;flex-wrap:wrap;gap:14px;font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--ink-soft);letter-spacing:.04em;}
 
-  /* ---------- Overlays / modals ---------- */
-  .overlay{
-    position:fixed;inset:0;background:rgba(28,26,23,.72);
-    display:none;align-items:flex-start;justify-content:center;
-    padding:5vh 20px;overflow-y:auto;z-index:50;
-  }
+  .overlay{position:fixed;inset:0;background:rgba(28,26,23,.72);display:none;align-items:flex-start;justify-content:center;padding:5vh 20px;overflow-y:auto;z-index:50;}
   .overlay.open{display:flex;}
-  .modal{
-    background:var(--paper);max-width:960px;width:100%;
-    border:1px solid var(--line);position:relative;
-    animation:pop .18s ease;
-  }
+  .modal{background:var(--paper);max-width:960px;width:100%;border:1px solid var(--line);position:relative;animation:pop .18s ease;}
   @keyframes pop{from{transform:translateY(8px);opacity:0;}to{transform:translateY(0);opacity:1;}}
-  .modal-close{
-    position:absolute;top:14px;right:14px;width:32px;height:32px;border-radius:50%;
-    background:var(--ink);color:var(--paper);border:none;font-size:16px;z-index:5;
-  }
+  .modal-close{position:absolute;top:14px;right:14px;width:32px;height:32px;border-radius:50%;background:var(--ink);color:var(--paper);border:none;font-size:16px;z-index:5;}
   .modal-close:hover{background:var(--terracotta);}
 
-  /* detail view */
   .detail-grid{display:grid;grid-template-columns:1.1fr 1fr;gap:0;}
   @media (max-width:720px){.detail-grid{grid-template-columns:1fr;}}
   .detail-img{background:#ece9e2;display:flex;align-items:center;justify-content:center;min-height:280px;}
@@ -186,41 +106,22 @@
   .detail-kw{display:flex;flex-wrap:wrap;gap:6px;margin:0 0 26px;padding:0;list-style:none;}
   .detail-kw li{font-size:11.5px;padding:4px 11px;border:1px solid var(--line);border-radius:20px;color:var(--ink-soft);background:#fff;}
   .detail-actions{display:flex;gap:10px;flex-wrap:wrap;}
-  .btn{
-    display:inline-flex;align-items:center;gap:8px;font-weight:600;font-size:13px;
-    text-decoration:none;padding:12px 20px;border:1px solid var(--ink);letter-spacing:.01em;
-    transition:.2s;background:transparent;color:var(--ink);
-  }
+  .btn{display:inline-flex;align-items:center;gap:8px;font-weight:600;font-size:13px;text-decoration:none;padding:12px 20px;border:1px solid var(--ink);letter-spacing:.01em;transition:.2s;background:transparent;color:var(--ink);}
   .btn.solid{background:var(--ink);color:var(--paper);}
   .btn.solid:hover{background:var(--terracotta);border-color:var(--terracotta);}
   .btn:not(.solid):hover{background:var(--ink);color:var(--paper);}
   .btn svg{width:14px;height:14px;stroke:currentColor;}
-  .url-line{
-    margin-top:26px;padding-top:16px;border-top:1px solid var(--line);
-    font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--ink-soft);
-    word-break:break-all;
-  }
-  .url-line button{
-    display:block;margin-top:8px;background:none;border:1px solid var(--line);
-    padding:6px 10px;font-size:11px;color:var(--ink);border-radius:16px;
-  }
+  .url-line{margin-top:26px;padding-top:16px;border-top:1px solid var(--line);font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--ink-soft);word-break:break-all;}
+  .url-line button{display:block;margin-top:8px;background:none;border:1px solid var(--line);padding:6px 10px;font-size:11px;color:var(--ink);border-radius:16px;}
   .url-line button:hover{border-color:var(--ink);}
 
-  /* forms (login / add-edit) */
   .form-pad{padding:44px 40px;}
   .form-title{font-family:'Fraunces',serif;font-weight:650;font-size:26px;margin:0 0 6px;}
   .form-sub{font-size:13px;color:var(--ink-soft);margin:0 0 28px;}
   .field{margin-bottom:18px;}
-  .field label{
-    display:block;font-family:'IBM Plex Mono',monospace;font-size:10.5px;
-    text-transform:uppercase;letter-spacing:.06em;color:var(--ink-soft);margin-bottom:7px;
-  }
-  .field input[type=text],
-  .field input[type=password],
-  .field input[type=url],
-  .field textarea{
-    width:100%;padding:12px 14px;border:1px solid var(--line);background:#fff;
-    font-family:'Inter',sans-serif;font-size:14px;color:var(--ink);border-radius:4px;
+  .field label{display:block;font-family:'IBM Plex Mono',monospace;font-size:10.5px;text-transform:uppercase;letter-spacing:.06em;color:var(--ink-soft);margin-bottom:7px;}
+  .field input[type=text],.field input[type=password],.field textarea{
+    width:100%;padding:12px 14px;border:1px solid var(--line);background:#fff;font-family:'Inter',sans-serif;font-size:14px;color:var(--ink);border-radius:4px;
   }
   .field textarea{min-height:80px;resize:vertical;}
   .field input:focus,.field textarea:focus{outline:none;border-color:var(--terracotta);}
@@ -229,14 +130,9 @@
   .success-msg{color:var(--olive);font-size:12.5px;margin:-6px 0 16px;display:none;}
   .success-msg.show{display:block;}
 
-  .dropzone{
-    border:2px dashed var(--line);background:#f2f0ea;
-    padding:34px 16px;text-align:center;border-radius:6px;cursor:pointer;
-    transition:.2s;position:relative;
-  }
+  .dropzone{border:2px dashed var(--line);background:#f2f0ea;padding:34px 16px;text-align:center;border-radius:6px;cursor:pointer;transition:.2s;position:relative;}
   .dropzone.drag{border-color:var(--terracotta);background:#f7ece3;}
-  .dropzone .up-icon{width:34px;height:34px;border-radius:50%;border:1.5px solid var(--ink);
-    display:flex;align-items:center;justify-content:center;margin:0 auto 12px;}
+  .dropzone .up-icon{width:34px;height:34px;border-radius:50%;border:1.5px solid var(--ink);display:flex;align-items:center;justify-content:center;margin:0 auto 12px;}
   .dropzone p{margin:0;font-size:13.5px;}
   .dropzone .hint{font-size:11.5px;color:var(--ink-soft);margin-top:8px;}
   .dropzone input[type=file]{position:absolute;inset:0;opacity:0;cursor:pointer;}
@@ -247,11 +143,7 @@
   .form-actions .left-actions{display:flex;gap:10px;}
   .link-danger{background:none;border:none;color:var(--danger);font-size:12.5px;text-decoration:underline;}
 
-  .toast{
-    position:fixed;bottom:26px;left:50%;transform:translateX(-50%) translateY(20px);
-    background:var(--ink);color:var(--paper);padding:12px 22px;border-radius:24px;
-    font-size:13px;opacity:0;pointer-events:none;transition:.3s;z-index:100;
-  }
+  .toast{position:fixed;bottom:26px;left:50%;transform:translateX(-50%) translateY(20px);background:var(--ink);color:var(--paper);padding:12px 22px;border-radius:24px;font-size:13px;opacity:0;pointer-events:none;transition:.3s;z-index:100;max-width:86vw;text-align:center;}
   .toast.show{opacity:1;transform:translateX(-50%) translateY(0);}
 
   @media (max-width:560px){
@@ -266,12 +158,12 @@
 <body>
 
 <header class="masthead">
-  <p class="eyebrow">Banco de imágenes · edición 03</p>
+  <p class="eyebrow">Banco de imágenes · edición 04</p>
   <h1 class="brand">Fondo<br><em>Blanco</em></h1>
   <div class="masthead-row">
     <p class="masthead-desc">Fondos de pantalla en alta resolución. Toca cualquier lámina para ver su ficha completa, con nombre, descripción, palabras clave y enlace propio de descarga.</p>
     <p class="masthead-meta">
-      previsualización: WebP<br>
+      previsualización: WebP liviano<br>
       descarga: archivo original<br>
       galería estilo masonry
     </p>
@@ -279,7 +171,10 @@
 </header>
 
 <div class="strip">
-  <span>Colección — Fondos 2026</span>
+  <div style="display:flex;align-items:center;gap:16px;">
+    <span>Colección — Fondos 2026</span>
+    <div class="theme-switch" id="themeSwitch" role="group" aria-label="Cambiar color del sitio"></div>
+  </div>
   <div class="right" id="toolbarRight"></div>
 </div>
 
@@ -291,6 +186,8 @@
   <span>Fondo Blanco — banco de imágenes</span>
   <span>Todas las descargas abren en una pestaña nueva</span>
 </footer>
+
+<div class="ad-slot" id="ad-site-bottom" style="padding:20px 6vw 40px;"></div>
 
 <!-- ============ DETALLE DE IMAGEN ============ -->
 <div class="overlay" id="detailOverlay">
@@ -327,7 +224,7 @@
     <button class="modal-close" id="editClose" type="button">✕</button>
     <div class="form-pad">
       <h2 class="form-title" id="editFormTitle">Agregar imagen</h2>
-      <p class="form-sub">Solo se aceptan archivos <strong>.webp</strong> para la vista previa.</p>
+      <p class="form-sub">Solo se aceptan archivos <strong>.webp</strong> para la vista previa. Se comprime automáticamente para que el sitio cargue más rápido.</p>
 
       <div class="field">
         <label>Vista previa (WebP)</label>
@@ -335,7 +232,7 @@
           <img id="dzPreviewImg" class="dz-preview" style="display:none;">
           <div class="up-icon" id="dzIcon">↑</div>
           <p id="dzText">Elige un archivo .webp o arrástralo y suéltalo aquí</p>
-          <p class="hint">Solo formato WebP · usado para la vista previa en el sitio</p>
+          <p class="hint">Solo formato WebP · se reduce automáticamente de tamaño</p>
           <input type="file" id="fileInput" accept=".webp,image/webp">
         </div>
         <p class="error-msg" id="fileError">Ese archivo no es .webp. Elige un archivo con extensión .webp.</p>
@@ -382,67 +279,194 @@
 <script>
 (function(){
 
-  const STORAGE_KEY = 'fondoblanco_catalog';
+  const META_KEY = 'fondoblanco_catalog_meta_v5';
   const ADMIN_USER = 'emor19';
   const ADMIN_PASS = 'Fondo123';
+  const GRID_SIZE = 480;   // ancho de la vista previa en la cuadrícula (más liviano)
+  const DETAIL_SIZE = 900; // ancho de la vista previa en la ficha individual
+  const MAX_UPLOAD_WIDTH = 720; // ancho máximo al comprimir imágenes subidas
+  const MAX_DATAURL_LEN = 4200000; // margen de seguridad bajo el límite de 5MB por clave
+
+  function imgKey(id){ return 'fondoblanco_img_' + id; }
+
+  // Enlace de descarga: formato de descarga directa de Drive (entrega el .jpg original).
+  // Enlace de vista previa: endpoint de miniatura de Drive, liviano y optimizado para carga rápida.
+  function driveDownload(driveId){ return `https://drive.google.com/uc?export=download&id=${driveId}`; }
 
   const defaultItems = [
-    { id:"01", title:"Fondo 01", desc:"Fondo de pantalla en alta resolución, formato vertical.", keywords:["fondo de pantalla","wallpaper","textura","hd"], download:"https://shrinkme.click/mQUH",     preview:{type:"drive", driveId:"1jdck5LigvKPpYBJit4-2Fj7Bi7nCSpdy"} },
-    { id:"02", title:"Fondo 02", desc:"Fondo de pantalla en alta resolución, formato vertical.", keywords:["fondo de pantalla","wallpaper","textura","hd"], download:"https://shrinkme.click/ElrNjl8I", preview:{type:"drive", driveId:"1ITKlbUssj16F-RoSotrxFgcikcaUWgG_"} },
-    { id:"03", title:"Fondo 03", desc:"Fondo de pantalla en alta resolución, formato vertical.", keywords:["fondo de pantalla","wallpaper","textura","hd"], download:"https://shrinkme.click/96Sa",     preview:{type:"drive", driveId:"1dCIi2N_GCe0cuyz3XuAfBivw2h5mV-E3"} },
-    { id:"04", title:"Fondo 04", desc:"Fondo de pantalla en alta resolución, formato vertical.", keywords:["fondo de pantalla","wallpaper","textura","hd"], download:"https://shrinkme.click/CeK9Mmq",  preview:{type:"drive", driveId:"1pRNXwtJ1vx7qg3AliMatlUNWIJ3ZBNJd"} },
-    { id:"05", title:"Fondo 05", desc:"Fondo de pantalla en alta resolución, formato vertical.", keywords:["fondo de pantalla","wallpaper","textura","hd"], download:"https://shrinkme.click/i7NjK",    preview:{type:"drive", driveId:"1JlME9WesR7VZPWu6BxFIhg_htNn84kd3"} },
-    { id:"06", title:"Fondo 06", desc:"Fondo de pantalla en alta resolución, formato vertical.", keywords:["fondo de pantalla","wallpaper","textura","hd"], download:"https://shrinkme.click/TFrb7yGI", preview:{type:"drive", driveId:"1xOU7xLmKdH4nevcRThPpLM6eUFI8gO6j"} },
-    { id:"07", title:"Fondo 07", desc:"Fondo de pantalla en alta resolución, formato vertical.", keywords:["fondo de pantalla","wallpaper","textura","hd"], download:"https://shrinkme.click/9ao75",    preview:{type:"drive", driveId:"1z30SxG7BeT3WgM4K_fpwd3XHWSt8wZoU"} },
-    { id:"08", title:"Fondo 08", desc:"Fondo de pantalla en alta resolución, formato vertical.", keywords:["fondo de pantalla","wallpaper","textura","hd"], download:"https://shrinkme.click/q6sfv1Tl", preview:{type:"drive", driveId:"16F9Z8UDOKKMcP75bXbXWrx005IA00S4V"} },
-    { id:"09", title:"Fondo 09", desc:"Fondo de pantalla en alta resolución, formato vertical.", keywords:["fondo de pantalla","wallpaper","textura","hd"], download:"https://shrinkme.click/FrUy4n",   preview:{type:"drive", driveId:"18aLmsZAmHd-12oYYB1tzvVqbOuLknYi6"} },
-    { id:"10", title:"Fondo 10", desc:"Fondo de pantalla en alta resolución, formato vertical.", keywords:["fondo de pantalla","wallpaper","textura","hd"], download:"https://shrinkme.click/9KzP",     preview:{type:"drive", driveId:"1MIF6ICCeruyoKfTkvAHktT26fHKglKZy"} }
+    { id:"01", title:"Fondo 01", desc:"Fondo de pantalla en alta resolución.", keywords:["fondo de pantalla","wallpaper","textura","hd"], download:driveDownload("1jSOlkoP-CGXgL4HP9spFbTlmv03HxozC"), preview:{type:"drive", driveId:"1jSOlkoP-CGXgL4HP9spFbTlmv03HxozC"} },
+    { id:"02", title:"Fondo 02", desc:"Fondo de pantalla en alta resolución.", keywords:["fondo de pantalla","wallpaper","textura","hd"], download:driveDownload("1i0LuCoRiYIGLmOQoKf1WL5hPp1egdik3"), preview:{type:"drive", driveId:"1i0LuCoRiYIGLmOQoKf1WL5hPp1egdik3"} },
+    { id:"03", title:"Fondo 03", desc:"Fondo de pantalla en alta resolución.", keywords:["fondo de pantalla","wallpaper","textura","hd"], download:driveDownload("1dCIi2N_GCe0cuyz3XuAfBivw2h5mV-E3"), preview:{type:"drive", driveId:"1dCIi2N_GCe0cuyz3XuAfBivw2h5mV-E3"} },
+    { id:"04", title:"Fondo 04", desc:"Fondo de pantalla en alta resolución.", keywords:["fondo de pantalla","wallpaper","textura","hd"], download:driveDownload("1taNtF1FiSg7LWHk4Im8nIoCx3YU8fOuY"), preview:{type:"drive", driveId:"1taNtF1FiSg7LWHk4Im8nIoCx3YU8fOuY"} },
+    { id:"05", title:"Fondo 05", desc:"Fondo de pantalla en alta resolución.", keywords:["fondo de pantalla","wallpaper","textura","hd"], download:driveDownload("1PB6a60Tcyee7syC8kehiLSfAtDP_vVJQ"), preview:{type:"drive", driveId:"1PB6a60Tcyee7syC8kehiLSfAtDP_vVJQ"} },
+    { id:"06", title:"Fondo 06", desc:"Fondo de pantalla en alta resolución.", keywords:["fondo de pantalla","wallpaper","textura","hd"], download:driveDownload("1WYxziS-2icEs8BuZbG61knNtZG6qH764"), preview:{type:"drive", driveId:"1WYxziS-2icEs8BuZbG61knNtZG6qH764"} },
+    { id:"07", title:"Fondo 07", desc:"Fondo de pantalla en alta resolución.", keywords:["fondo de pantalla","wallpaper","textura","hd"], download:driveDownload("1P0Fqqwk7I-UvecYnvPke7uQ-bHu3ICbL"), preview:{type:"drive", driveId:"1P0Fqqwk7I-UvecYnvPke7uQ-bHu3ICbL"} },
+    { id:"08", title:"Fondo 08", desc:"Fondo de pantalla en alta resolución.", keywords:["fondo de pantalla","wallpaper","textura","hd"], download:driveDownload("1XskzIA8WunLh1flFxkp9yEIO3AjaxoLJ"), preview:{type:"drive", driveId:"1XskzIA8WunLh1flFxkp9yEIO3AjaxoLJ"} },
+    { id:"09", title:"Fondo 09", desc:"Fondo de pantalla en alta resolución.", keywords:["fondo de pantalla","wallpaper","textura","hd"], download:driveDownload("1c-3BaTbWfo_VwRVqQgAgmE91H4mHrNz8"), preview:{type:"drive", driveId:"1c-3BaTbWfo_VwRVqQgAgmE91H4mHrNz8"} },
+    { id:"10", title:"Fondo 10", desc:"Fondo de pantalla en alta resolución.", keywords:["fondo de pantalla","wallpaper","textura","hd"], download:driveDownload("1ndrRo1JRyFr2d_B42TezQXG6TM2sc5xX"), preview:{type:"drive", driveId:"1ndrRo1JRyFr2d_B42TezQXG6TM2sc5xX"} },
+    { id:"11", title:"Fondo 11", desc:"Fondo de pantalla en alta resolución.", keywords:["fondo de pantalla","wallpaper","textura","hd"], download:driveDownload("1ibNunFKKQRqTiVGQlVUhDd_Ijiq37O16"), preview:{type:"drive", driveId:"1ibNunFKKQRqTiVGQlVUhDd_Ijiq37O16"} },
+    { id:"12", title:"Fondo 12", desc:"Fondo de pantalla en alta resolución.", keywords:["fondo de pantalla","wallpaper","textura","hd"], download:driveDownload("1ZXHRleuYy9FYMWXb7DEIG6qKLaUL-1BG"), preview:{type:"drive", driveId:"1ZXHRleuYy9FYMWXb7DEIG6qKLaUL-1BG"} },
+    { id:"13", title:"Fondo 13", desc:"Fondo de pantalla en alta resolución.", keywords:["fondo de pantalla","wallpaper","textura","hd"], download:driveDownload("19qNqWSciW65q_8SpNYnu_hr6WHkRTHBk"), preview:{type:"drive", driveId:"19qNqWSciW65q_8SpNYnu_hr6WHkRTHBk"} },
+    { id:"14", title:"Fondo 14", desc:"Fondo de pantalla en alta resolución.", keywords:["fondo de pantalla","wallpaper","textura","hd"], download:driveDownload("1nQAgUipypvTxcq1x49TCEZoOamRUju1v"), preview:{type:"drive", driveId:"1nQAgUipypvTxcq1x49TCEZoOamRUju1v"} },
+    { id:"15", title:"Fondo 15", desc:"Fondo de pantalla en alta resolución.", keywords:["fondo de pantalla","wallpaper","textura","hd"], download:driveDownload("1AJYt054O_23m5uV1ie92ZVj2EI7wsCk8"), preview:{type:"drive", driveId:"1AJYt054O_23m5uV1ie92ZVj2EI7wsCk8"} },
+    { id:"16", title:"Fondo 16", desc:"Fondo de pantalla en alta resolución.", keywords:["fondo de pantalla","wallpaper","textura","hd"], download:driveDownload("1k4HQ-ffURIYaBi3mrlCTpNfKjSwHG0IW"), preview:{type:"drive", driveId:"1k4HQ-ffURIYaBi3mrlCTpNfKjSwHG0IW"} },
+    { id:"17", title:"Fondo 17", desc:"Fondo de pantalla en alta resolución.", keywords:["fondo de pantalla","wallpaper","textura","hd"], download:driveDownload("1vx8pf1d-WKujI34-boeuAhpeWpilqEIN"), preview:{type:"drive", driveId:"1vx8pf1d-WKujI34-boeuAhpeWpilqEIN"} },
+    { id:"18", title:"Fondo 18", desc:"Fondo de pantalla en alta resolución.", keywords:["fondo de pantalla","wallpaper","textura","hd"], download:driveDownload("1ZAK983bek4DFJvb0xZBV_QtJWRszvZzr"), preview:{type:"drive", driveId:"1ZAK983bek4DFJvb0xZBV_QtJWRszvZzr"} },
+    { id:"19", title:"Fondo 19", desc:"Fondo de pantalla en alta resolución.", keywords:["fondo de pantalla","wallpaper","textura","hd"], download:driveDownload("1556bXrib5_sks8SlJ5tPuZHUEx50sz9H"), preview:{type:"drive", driveId:"1556bXrib5_sks8SlJ5tPuZHUEx50sz9H"} },
+    { id:"20", title:"Fondo 20", desc:"Fondo de pantalla en alta resolución.", keywords:["fondo de pantalla","wallpaper","textura","hd"], download:driveDownload("1IVkAjr6fU0VHpN_gCJAOuKQZJfjS4sVQ"), preview:{type:"drive", driveId:"1IVkAjr6fU0VHpN_gCJAOuKQZJfjS4sVQ"} },
+    { id:"21", title:"Fondo 21", desc:"Fondo de pantalla en alta resolución.", keywords:["fondo de pantalla","wallpaper","textura","hd"], download:driveDownload("1etbL3RU0ywaL-5LByKOBHGM-5f7Oifgf"), preview:{type:"drive", driveId:"1etbL3RU0ywaL-5LByKOBHGM-5f7Oifgf"} },
+    { id:"22", title:"Fondo 22", desc:"Fondo de pantalla en alta resolución.", keywords:["fondo de pantalla","wallpaper","textura","hd"], download:driveDownload("1OuMSDnJE7Sie2ZhmffDPERPNzZIoVyDE"), preview:{type:"drive", driveId:"1OuMSDnJE7Sie2ZhmffDPERPNzZIoVyDE"} },
+    { id:"23", title:"Fondo 23", desc:"Fondo de pantalla en alta resolución.", keywords:["fondo de pantalla","wallpaper","textura","hd"], download:driveDownload("1BI8GHWkkKF941Kwk6jK2qAW4P3u4DK00"), preview:{type:"drive", driveId:"1BI8GHWkkKF941Kwk6jK2qAW4P3u4DK00"} },
+    { id:"24", title:"Fondo 24", desc:"Fondo de pantalla en alta resolución.", keywords:["fondo de pantalla","wallpaper","textura","hd"], download:driveDownload("1QDPQsrbNiW8X45kaYNPX_Q-notbwYu9g"), preview:{type:"drive", driveId:"1QDPQsrbNiW8X45kaYNPX_Q-notbwYu9g"} },
+    { id:"25", title:"Fondo 25", desc:"Fondo de pantalla en alta resolución.", keywords:["fondo de pantalla","wallpaper","textura","hd"], download:driveDownload("1CJDH7JOVLSlgTqd6qnreovk03HyQnqVq"), preview:{type:"drive", driveId:"1CJDH7JOVLSlgTqd6qnreovk03HyQnqVq"} },
+    { id:"26", title:"Fondo 26", desc:"Fondo de pantalla en alta resolución.", keywords:["fondo de pantalla","wallpaper","textura","hd"], download:driveDownload("1565WuIuaW2VJU3-UoXrjldiCVGM2x4by"), preview:{type:"drive", driveId:"1565WuIuaW2VJU3-UoXrjldiCVGM2x4by"} },
+    { id:"27", title:"Fondo 27", desc:"Fondo de pantalla en alta resolución.", keywords:["fondo de pantalla","wallpaper","textura","hd"], download:driveDownload("1UCi7URJnY0Xkk1tHgHSGp7O21hLpyopf"), preview:{type:"drive", driveId:"1UCi7URJnY0Xkk1tHgHSGp7O21hLpyopf"} },
+    { id:"28", title:"Fondo 28", desc:"Fondo de pantalla en alta resolución.", keywords:["fondo de pantalla","wallpaper","textura","hd"], download:driveDownload("1ra9XOWclFwiNRL8OPf0C4QgmltyyFIlB"), preview:{type:"drive", driveId:"1ra9XOWclFwiNRL8OPf0C4QgmltyyFIlB"} },
+    { id:"29", title:"Fondo 29", desc:"Fondo de pantalla en alta resolución.", keywords:["fondo de pantalla","wallpaper","textura","hd"], download:driveDownload("1XqDUj93sluTkATKQsxCQATK3FAC5QIt4"), preview:{type:"drive", driveId:"1XqDUj93sluTkATKQsxCQATK3FAC5QIt4"} },
+    { id:"30", title:"Fondo 30", desc:"Fondo de pantalla en alta resolución.", keywords:["fondo de pantalla","wallpaper","textura","hd"], download:driveDownload("16vQlEFI6VKTjujgaDL9CgkpsGHjuaIo0"), preview:{type:"drive", driveId:"16vQlEFI6VKTjujgaDL9CgkpsGHjuaIo0"} },
+    { id:"31", title:"Fondo 31", desc:"Fondo de pantalla en alta resolución.", keywords:["fondo de pantalla","wallpaper","textura","hd"], download:driveDownload("1P4sOnwGaN3gHL0YhgGJ9EtolHaAOv27s"), preview:{type:"drive", driveId:"1P4sOnwGaN3gHL0YhgGJ9EtolHaAOv27s"} },
+    { id:"32", title:"Fondo 32", desc:"Fondo de pantalla en alta resolución.", keywords:["fondo de pantalla","wallpaper","textura","hd"], download:driveDownload("16QzRwMHpFCy-y9QqbN3O8XzpX1GRz2D1"), preview:{type:"drive", driveId:"16QzRwMHpFCy-y9QqbN3O8XzpX1GRz2D1"} },
+    { id:"33", title:"Fondo 33", desc:"Fondo de pantalla en alta resolución.", keywords:["fondo de pantalla","wallpaper","textura","hd"], download:driveDownload("1Fu5VNDyTac8UR2D9zim0Z9pAgLdU3NNF"), preview:{type:"drive", driveId:"1Fu5VNDyTac8UR2D9zim0Z9pAgLdU3NNF"} },
+    { id:"34", title:"Fondo 34", desc:"Fondo de pantalla en alta resolución.", keywords:["fondo de pantalla","wallpaper","textura","hd"], download:driveDownload("1MGWLHrduLo2FLF6h3HnnGF12LCFt-spU"), preview:{type:"drive", driveId:"1MGWLHrduLo2FLF6h3HnnGF12LCFt-spU"} },
+    { id:"35", title:"Fondo 35", desc:"Fondo de pantalla en alta resolución.", keywords:["fondo de pantalla","wallpaper","textura","hd"], download:driveDownload("1JmRS5Pj3RXcohUXlBxo0acUulp8HOSKq"), preview:{type:"drive", driveId:"1JmRS5Pj3RXcohUXlBxo0acUulp8HOSKq"} },
+    { id:"36", title:"Fondo 36", desc:"Fondo de pantalla en alta resolución.", keywords:["fondo de pantalla","wallpaper","textura","hd"], download:driveDownload("1H1tYAMnKTbzrU5vQjdNOGpumngLqQ-xV"), preview:{type:"drive", driveId:"1H1tYAMnKTbzrU5vQjdNOGpumngLqQ-xV"} },
+    { id:"37", title:"Fondo 37", desc:"Fondo de pantalla en alta resolución.", keywords:["fondo de pantalla","wallpaper","textura","hd"], download:driveDownload("1O4Ftusvixa3DYSZBbiNduJEdFKFUtOFJ"), preview:{type:"drive", driveId:"1O4Ftusvixa3DYSZBbiNduJEdFKFUtOFJ"} },
+    { id:"38", title:"Fondo 38", desc:"Fondo de pantalla en alta resolución.", keywords:["fondo de pantalla","wallpaper","textura","hd"], download:driveDownload("1eGjpOHeSX5rT2B_SHJqSdhaNebZPewYm"), preview:{type:"drive", driveId:"1eGjpOHeSX5rT2B_SHJqSdhaNebZPewYm"} },
+    { id:"39", title:"Fondo 39", desc:"Fondo de pantalla en alta resolución.", keywords:["fondo de pantalla","wallpaper","textura","hd"], download:driveDownload("1IwnB5FIXqzieRoXghqYK0t7xgKP3_uYg"), preview:{type:"drive", driveId:"1IwnB5FIXqzieRoXghqYK0t7xgKP3_uYg"} }
   ];
 
   let items = [];
+  const imageDataCache = {};   // id -> dataURL de imágenes subidas (base64), cargado desde su propia clave
   let isAdmin = false;
-  let editingId = null;      // id del ítem que se está editando (null = creando uno nuevo)
-  let pendingPreview = null; // {type:'base64', data:'...'} cargado en el formulario, aún no guardado
+  let editingId = null;
+  let pendingFile = null;      // File .webp elegido en el formulario, aún sin comprimir/guardar
+  let pendingObjectUrl = null; // URL temporal para mostrar la vista previa en el formulario
   let storageAvailable = true;
 
   // ---------- Persistencia ----------
+  // Los datos (título, enlaces, palabras clave) van en una clave "meta" liviana.
+  // Cada imagen subida se guarda en SU PROPIA clave (fondoblanco_img_<id>), así el
+  // límite de tamaño por clave no se acumula entre todas las imágenes del catálogo,
+  // y una imagen nueva no pisa ni arriesga los datos de las demás.
   async function loadCatalog(){
     try{
-      const res = await window.storage.get(STORAGE_KEY, true);
+      const res = await window.storage.get(META_KEY, true);
       if(res && res.value){
         items = JSON.parse(res.value);
-        return;
+      }else{
+        items = JSON.parse(JSON.stringify(defaultItems));
+        await saveMeta();
       }
     }catch(e){
       storageAvailable = false;
+      items = JSON.parse(JSON.stringify(defaultItems));
     }
-    items = JSON.parse(JSON.stringify(defaultItems));
-    try{ await window.storage.set(STORAGE_KEY, JSON.stringify(items), true); }
-    catch(e){ storageAvailable = false; }
+
+    await Promise.all(items.filter(it=>it.preview.type==='base64').map(async it=>{
+      try{
+        const r = await window.storage.get(imgKey(it.id), true);
+        if(r && r.value) imageDataCache[it.id] = r.value;
+      }catch(e){ /* se mostrará el marcador de "no disponible" para esa lámina */ }
+    }));
   }
 
-  async function saveCatalog(){
+  async function saveMeta(){
     try{
-      const result = await window.storage.set(STORAGE_KEY, JSON.stringify(items), true);
+      const result = await window.storage.set(META_KEY, JSON.stringify(items), true);
       if(!result) storageAvailable = false;
+      else storageAvailable = true;
+      return !!result;
     }catch(e){
       storageAvailable = false;
+      return false;
     }
+  }
+
+  // ---------- Compresión de imágenes subidas ----------
+  function compressImage(file, maxWidth, quality){
+    return new Promise((resolve, reject)=>{
+      const objUrl = URL.createObjectURL(file);
+      const img = new Image();
+      img.onload = ()=>{
+        let w = img.naturalWidth || img.width;
+        let h = img.naturalHeight || img.height;
+        if(w > maxWidth){
+          h = Math.round(h * (maxWidth / w));
+          w = maxWidth;
+        }
+        const canvas = document.createElement('canvas');
+        canvas.width = w; canvas.height = h;
+        const ctx = canvas.getContext('2d');
+        ctx.drawImage(img, 0, 0, w, h);
+        let dataUrl;
+        try{ dataUrl = canvas.toDataURL('image/webp', quality); }
+        catch(e){ dataUrl = canvas.toDataURL('image/jpeg', quality); }
+        URL.revokeObjectURL(objUrl);
+        resolve(dataUrl);
+      };
+      img.onerror = (e)=>{ URL.revokeObjectURL(objUrl); reject(e); };
+      img.src = objUrl;
+    });
+  }
+
+  // ---------- Cambio de color del sitio ----------
+  const THEME_KEY = 'fondoblanco_theme';
+  const THEMES = {
+    terracota:{ label:'Terracota', terracotta:'#bd5a2c', mustard:'#c99a2b', olive:'#556246' },
+    oceano:   { label:'Océano',    terracotta:'#2b6ebd', mustard:'#2b93c9', olive:'#2c5a6b' },
+    bosque:   { label:'Bosque',    terracotta:'#3e7d4a', mustard:'#7a9a2b', olive:'#3b5c3f' },
+    ciruela:  { label:'Ciruela',   terracotta:'#8a3b8f', mustard:'#c94f9a', olive:'#5a3d63' },
+    carbon:   { label:'Carbón',    terracotta:'#4a4a4a', mustard:'#8a8a8a', olive:'#2c2c2c' }
+  };
+
+  function applyTheme(name){
+    const t = THEMES[name] || THEMES.terracota;
+    document.documentElement.style.setProperty('--terracotta', t.terracotta);
+    document.documentElement.style.setProperty('--mustard', t.mustard);
+    document.documentElement.style.setProperty('--olive', t.olive);
+    document.querySelectorAll('.theme-dot').forEach(d=> d.classList.toggle('active', d.dataset.theme===name));
+    try{ localStorage.setItem(THEME_KEY, name); }catch(e){ /* no crítico */ }
+  }
+
+  function renderThemeSwitch(){
+    const wrap = document.getElementById('themeSwitch');
+    let saved = 'terracota';
+    try{ saved = localStorage.getItem(THEME_KEY) || 'terracota'; }catch(e){}
+    wrap.innerHTML = Object.keys(THEMES).map(key=>{
+      const t = THEMES[key];
+      return `<button type="button" class="theme-dot" data-theme="${key}" title="${t.label}" style="--sw-color:${t.terracotta};"></button>`;
+    }).join('');
+    wrap.querySelectorAll('.theme-dot').forEach(btn=>{
+      btn.addEventListener('click', ()=> applyTheme(btn.dataset.theme));
+    });
+    applyTheme(saved);
   }
 
   // ---------- Utilidades ----------
-  function previewSrc(item){
-    if(item.preview.type === 'base64' || item.preview.type === 'url'){
-      return item.preview.data;
-    }
-    return `https://drive.google.com/thumbnail?id=${item.preview.driveId}&sz=w1000`;
+  function driveThumb(driveId, size){ return `https://drive.google.com/thumbnail?id=${driveId}&sz=w${size}`; }
+  function driveFallback(driveId, size){ return `https://lh3.googleusercontent.com/d/${driveId}=w${size}`; }
+  function driveFallback2(driveId){ return `https://drive.google.com/uc?export=view&id=${driveId}`; }
+
+  function previewCandidates(item, size){
+    if(item.preview.type === 'base64') return [imageDataCache[item.id] || ''];
+    if(item.preview.type === 'url') return [item.preview.data];
+    return [driveThumb(item.preview.driveId, size), driveFallback(item.preview.driveId, size), driveFallback2(item.preview.driveId)];
   }
-  function previewFallback(item){
-    if(item.preview.type === 'drive'){
-      return `https://lh3.googleusercontent.com/d/${item.preview.driveId}=w1000`;
+
+  // Prueba cada URL candidata en orden; si todas fallan, ejecuta onAllFailed().
+  function setImageWithFallback(imgEl, candidates, onAllFailed){
+    let idx = 0;
+    function tryNext(){
+      if(idx >= candidates.length || !candidates[idx]){
+        if(onAllFailed) onAllFailed();
+        return;
+      }
+      imgEl.src = candidates[idx++];
     }
-    return null;
+    imgEl.addEventListener('error', tryNext);
+    tryNext();
   }
+
   function nextId(){
     const nums = items.map(it => parseInt(it.id,10)).filter(n=>!isNaN(n));
     const max = nums.length ? Math.max(...nums) : 0;
@@ -453,10 +477,50 @@
     t.textContent = msg;
     t.classList.add('show');
     clearTimeout(showToast._tm);
-    showToast._tm = setTimeout(()=>t.classList.remove('show'), 2600);
+    showToast._tm = setTimeout(()=>t.classList.remove('show'), 3200);
   }
   function escapeHtml(str){
     return String(str).replace(/[&<>"']/g, s => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[s]));
+  }
+
+  // ---------- Publicidad ----------
+  // Cada anuncio se monta dentro de su propio <iframe> aislado, así el script
+  // de la red publicitaria (que usa document.write) no borra el resto de la página
+  // y la variable global "atOptions" no se pisa entre un anuncio y otro.
+  const AD_UNITS = [
+    { key:'fb9921bce1a87f009b4c5495a5af6e2f', width:300, height:250 },
+    { key:'6be047e0c4ce65c11ef08b36a8497fcf', width:320, height:50  }
+  ];
+  const SITE_BOTTOM_AD_UNIT = { key:'b9b30440f04feaa6f4621f9c2aa9b82f', width:728, height:90 };
+
+  function injectAdIntoIframe(iframe, unit){
+    const doc = iframe.contentWindow.document;
+    doc.open();
+    doc.write(
+      '<!DOCTYPE html><html><head><style>html,body{margin:0;padding:0;overflow:hidden;}</style></head><body>' +
+      '<script>atOptions={"key":"' + unit.key + '","format":"iframe","height":' + unit.height + ',"width":' + unit.width + ',"params":{}};<' + '/script>' +
+      '<script src="https://www.highperformanceformat.com/' + unit.key + '/invoke.js"><' + '/script>' +
+      '</body></html>'
+    );
+    doc.close();
+  }
+
+  function renderAdSlot(slotId, units){
+    const slot = document.getElementById(slotId);
+    if(!slot) return;
+    slot.innerHTML = '';
+    (units || AD_UNITS).forEach(unit=>{
+      const iframe = document.createElement('iframe');
+      iframe.width = unit.width;
+      iframe.height = unit.height;
+      iframe.style.width = unit.width + 'px';
+      iframe.style.height = unit.height + 'px';
+      iframe.style.border = '0';
+      iframe.scrolling = 'no';
+      iframe.setAttribute('frameborder','0');
+      slot.appendChild(iframe);
+      injectAdIntoIframe(iframe, unit);
+    });
   }
 
   // ---------- Render galería ----------
@@ -467,16 +531,14 @@
     items.forEach(item => {
       const fig = document.createElement('figure');
       fig.className = 'plate';
-      const kwHtml = item.keywords.map(k=>`<li>${escapeHtml(k)}</li>`).join('');
-      const src = previewSrc(item);
-      const fb = previewFallback(item);
+      const candidates = previewCandidates(item, GRID_SIZE);
 
       fig.innerHTML = `
         <div class="frame" data-id="${item.id}">
           <span class="num">${item.id}</span>
           ${isAdmin ? `<button class="edit-pin" data-edit="${item.id}" type="button" title="Editar">✎</button>` : ''}
           <div class="img-wrap">
-            <img alt="${escapeHtml(item.title)}" loading="lazy" src="${src}">
+            <img alt="${escapeHtml(item.title)}" loading="lazy">
           </div>
           <div class="mat-bottom"></div>
         </div>
@@ -488,12 +550,9 @@
 
       const img = fig.querySelector('img');
       img.addEventListener('load', ()=>img.classList.add('loaded'));
-      img.addEventListener('error', ()=>{
-        if(fb && img.src !== fb){ img.src = fb; }
-        else{
-          const wrap = fig.querySelector('.img-wrap');
-          wrap.innerHTML = '<div class="fallback">Vista previa no disponible</div>';
-        }
+      setImageWithFallback(img, candidates, ()=>{
+        const wrap = fig.querySelector('.img-wrap');
+        wrap.innerHTML = '<div class="fallback">Vista previa no disponible</div>';
       });
 
       fig.querySelector('.frame').addEventListener('click', (e)=>{
@@ -520,11 +579,11 @@
   function openDetail(id, updateHash){
     const item = items.find(it => it.id === id);
     if(!item) return;
-    const src = previewSrc(item);
+    const candidates = previewCandidates(item, DETAIL_SIZE);
     const kwHtml = item.keywords.map(k=>`<li>${escapeHtml(k)}</li>`).join('');
 
     detailBody.innerHTML = `
-      <div class="detail-img"><img src="${src}" alt="${escapeHtml(item.title)}"></div>
+      <div class="detail-img"><img id="detailImgTag" alt="${escapeHtml(item.title)}"></div>
       <div class="detail-info">
         <p class="detail-eyebrow">Lámina N.º ${item.id}</p>
         <h2 class="detail-title">${escapeHtml(item.title)}</h2>
@@ -540,8 +599,16 @@
           Enlace de esta ficha:<br>${window.location.origin}${window.location.pathname}#pin-${item.id}
           <button type="button" id="copyLinkBtn">Copiar enlace</button>
         </div>
+        <div class="ad-slot" id="ad-detail-${item.id}"></div>
       </div>
     `;
+
+    const detailImgTag = document.getElementById('detailImgTag');
+    setImageWithFallback(detailImgTag, candidates, ()=>{
+      detailImgTag.parentElement.innerHTML = '<div class="fallback">Vista previa no disponible</div>';
+    });
+
+    renderAdSlot('ad-detail-' + item.id);
 
     document.getElementById('copyLinkBtn').addEventListener('click', ()=>{
       const url = `${window.location.origin}${window.location.pathname}#pin-${item.id}`;
@@ -582,6 +649,13 @@
   document.getElementById('loginClose').addEventListener('click', ()=> loginOverlay.classList.remove('open'));
   loginOverlay.addEventListener('click', (e)=>{ if(e.target===loginOverlay) loginOverlay.classList.remove('open'); });
 
+  function openLoginModal(){
+    document.getElementById('loginUser').value = '';
+    document.getElementById('loginPass').value = '';
+    document.getElementById('loginError').classList.remove('show');
+    loginOverlay.classList.add('open');
+  }
+
   document.getElementById('loginSubmit').addEventListener('click', ()=>{
     const u = document.getElementById('loginUser').value.trim();
     const p = document.getElementById('loginPass').value;
@@ -612,12 +686,7 @@
       });
     }else{
       toolbarRight.innerHTML = `<button class="pill-btn" id="loginOpenBtn" type="button">Iniciar sesión</button>`;
-      document.getElementById('loginOpenBtn').addEventListener('click', ()=>{
-        document.getElementById('loginUser').value = '';
-        document.getElementById('loginPass').value = '';
-        document.getElementById('loginError').classList.remove('show');
-        loginOverlay.classList.add('open');
-      });
+      document.getElementById('loginOpenBtn').addEventListener('click', openLoginModal);
     }
   }
 
@@ -632,7 +701,8 @@
 
   function resetEditForm(){
     editingId = null;
-    pendingPreview = null;
+    pendingFile = null;
+    if(pendingObjectUrl){ URL.revokeObjectURL(pendingObjectUrl); pendingObjectUrl = null; }
     document.getElementById('editFormTitle').textContent = 'Agregar imagen';
     document.getElementById('fieldTitle').value = '';
     document.getElementById('fieldDesc').value = '';
@@ -663,9 +733,12 @@
         if(item.preview.type === 'url'){
           document.getElementById('previewUrlInput').value = item.preview.data;
         }
-        dzPreviewImg.src = previewSrc(item);
-        dzPreviewImg.style.display = 'block';
-        dzIcon.style.display = 'none';
+        const src = previewCandidates(item, GRID_SIZE)[0];
+        if(src){
+          dzPreviewImg.src = src;
+          dzPreviewImg.style.display = 'block';
+          dzIcon.style.display = 'none';
+        }
         dzText.textContent = 'Vista previa actual (sube otro .webp para reemplazarla)';
         document.getElementById('editDeleteBtn').style.display = 'inline-block';
       }
@@ -690,16 +763,14 @@
       fileInput.value = '';
       return;
     }
-    const reader = new FileReader();
-    reader.onload = (e)=>{
-      pendingPreview = { type:'base64', data: e.target.result };
-      dzPreviewImg.src = e.target.result;
-      dzPreviewImg.style.display = 'block';
-      dzIcon.style.display = 'none';
-      dzText.textContent = file.name + ' — listo';
-      document.getElementById('previewUrlInput').value = '';
-    };
-    reader.readAsDataURL(file);
+    if(pendingObjectUrl){ URL.revokeObjectURL(pendingObjectUrl); }
+    pendingFile = file;
+    pendingObjectUrl = URL.createObjectURL(file);
+    dzPreviewImg.src = pendingObjectUrl;
+    dzPreviewImg.style.display = 'block';
+    dzIcon.style.display = 'none';
+    dzText.textContent = file.name + ' — listo para guardar';
+    document.getElementById('previewUrlInput').value = '';
   }
 
   fileInput.addEventListener('change', ()=> handleFile(fileInput.files[0]));
@@ -729,10 +800,33 @@
     errorEl.classList.remove('show');
 
     const keywords = kwRaw ? kwRaw.split(',').map(k=>k.trim()).filter(Boolean) : [];
-
+    const targetId = editingId || nextId();
     let preview = null;
-    if(pendingPreview){
-      preview = pendingPreview;
+
+    if(pendingFile){
+      let dataUrl;
+      try{
+        dataUrl = await compressImage(pendingFile, MAX_UPLOAD_WIDTH, 0.82);
+      }catch(e){
+        errorEl.textContent = 'No se pudo procesar esa imagen. Prueba con otro archivo .webp.';
+        errorEl.classList.add('show');
+        return;
+      }
+      if(dataUrl.length > MAX_DATAURL_LEN){
+        errorEl.textContent = 'La imagen sigue pesando demasiado incluso comprimida. Prueba con otra imagen o usa la opción de URL.';
+        errorEl.classList.add('show');
+        return;
+      }
+      let savedOk = true;
+      try{
+        const setRes = await window.storage.set(imgKey(targetId), dataUrl, true);
+        savedOk = !!setRes;
+      }catch(e){ savedOk = false; }
+      if(!savedOk){
+        storageAvailable = false;
+      }
+      imageDataCache[targetId] = dataUrl;
+      preview = { type:'base64' };
     }else if(urlPreview){
       preview = { type:'url', data:urlPreview };
     }
@@ -750,35 +844,39 @@
         errorEl.classList.add('show');
         return;
       }
-      items.push({
-        id: nextId(),
-        title, desc, download: link, keywords, preview
-      });
+      items.push({ id: targetId, title, desc, download: link, keywords, preview });
     }
 
-    await saveCatalog();
+    const metaOk = await saveMeta();
     renderGallery();
     successEl.classList.add('show');
-    showToast(storageAvailable ? 'Guardado y publicado' : 'Guardado en esta sesión (el almacenamiento compartido no está disponible aquí)');
+    showToast(metaOk ? 'Guardado de forma permanente' : 'Guardado solo en esta sesión (el almacenamiento compartido no respondió)');
     setTimeout(()=> editOverlay.classList.remove('open'), 700);
   });
 
   document.getElementById('editDeleteBtn').addEventListener('click', async ()=>{
     if(!editingId) return;
     if(!confirm('¿Eliminar esta imagen del catálogo?')) return;
+    const item = items.find(it=>it.id===editingId);
+    if(item && item.preview.type === 'base64'){
+      try{ await window.storage.delete(imgKey(editingId), true); }catch(e){ /* no crítico */ }
+      delete imageDataCache[editingId];
+    }
     items = items.filter(it=>it.id!==editingId);
-    await saveCatalog();
+    await saveMeta();
     renderGallery();
     editOverlay.classList.remove('open');
-    showToast('Imagen eliminada');
+    showToast('Imagen eliminada permanentemente');
   });
 
   // ---------- Init ----------
   (async function init(){
+    renderThemeSwitch();
     await loadCatalog();
     renderToolbar();
     renderGallery();
     handleHash();
+    renderAdSlot('ad-site-bottom', [SITE_BOTTOM_AD_UNIT]);
     if(!storageAvailable){
       showToast('Aviso: el almacenamiento compartido no respondió; los cambios solo durarán esta sesión.');
     }
