@@ -3,10 +3,46 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Fondo Blanco — Banco de imágenes y fondos de pantalla</title>
-<meta name="description" content="Fondo Blanco: banco de imágenes con texturas y fondos de pantalla en alta resolución, listos para descargar.">
+<title>Fondo Blanco — Fondos de Pantalla y Texturas HD Gratis para Descargar</title>
+<meta name="description" content="Descarga fondos de pantalla y texturas en alta resolución totalmente gratis. Más de 39 imágenes HD listas para tu escritorio, celular o proyectos de diseño.">
+<meta name="keywords" content="fondos de pantalla, wallpapers hd, texturas, banco de imágenes, fondos gratis, descargar fondos de pantalla, wallpaper 4k, texturas de alta resolución">
+<meta name="robots" content="index, follow">
+<meta name="author" content="Fondo Blanco">
+<link rel="canonical" href="https://fondoblanco.co/">
+<link rel="icon" type="image/png" href="logo_fondo_blanco.png">
+
+<!-- Open Graph / Facebook -->
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://fondoblanco.co/">
+<meta property="og:title" content="Fondo Blanco — Fondos de Pantalla y Texturas HD Gratis para Descargar">
+<meta property="og:description" content="Banco de imágenes con fondos de pantalla y texturas en alta resolución, listos para descargar gratis.">
+<meta property="og:image" content="https://fondoblanco.co/logo_fondo_blanco.png">
+<meta property="og:locale" content="es_CO">
+
+<!-- Twitter -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Fondo Blanco — Fondos de Pantalla y Texturas HD Gratis">
+<meta name="twitter:description" content="Descarga fondos de pantalla y texturas en alta resolución, totalmente gratis.">
+<meta name="twitter:image" content="https://fondoblanco.co/logo_fondo_blanco.png">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "ImageGallery",
+  "name": "Fondo Blanco — Banco de imágenes y fondos de pantalla",
+  "description": "Galería de fondos de pantalla y texturas en alta resolución para descargar de forma gratuita.",
+  "url": "https://fondoblanco.co/",
+  "inLanguage": "es",
+  "publisher": {
+    "@type": "Organization",
+    "name": "Fondo Blanco",
+    "logo": "https://fondoblanco.co/logo_fondo_blanco.png"
+  }
+}
+</script>
+
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,560;0,9..144,650;1,9..144,500&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,560;0,9..144,650;1,9..144,500&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@500&display=swap" rel="stylesheet">
 <style>
   :root{
     --paper:#faf9f5;
@@ -33,8 +69,24 @@
 
   header.masthead{padding:64px 6vw 40px;border-bottom:1px solid var(--line);}
   .eyebrow{font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--terracotta);margin:0 0 18px;}
-  h1.brand{font-family:'Fraunces',serif;font-weight:560;font-size:clamp(48px,9vw,108px);line-height:0.92;margin:0 0 22px;letter-spacing:-0.01em;}
-  h1.brand em{font-style:italic;font-weight:500;color:var(--terracotta);}
+  h1.brand-logo-wrap{margin:0 0 22px;width:100%;}
+  .wordmark{
+    display:flex;justify-content:space-between;align-items:center;width:100%;
+    font-family:'Archivo Black',sans-serif;
+    font-weight:400;
+    color:var(--ink);
+    line-height:.82;
+    font-size:clamp(30px, 11.2vw, 190px);
+    letter-spacing:-.01em;
+    text-transform:uppercase;
+    transform:scaleY(1.14);
+    transform-origin:top;
+    white-space:nowrap;
+  }
+  .wordmark span{display:inline-block;}
+  @media (max-width:640px){
+    .wordmark{flex-direction:column;align-items:flex-start;gap:2px;line-height:.88;}
+  }
   .masthead-row{display:flex;justify-content:space-between;align-items:flex-end;gap:32px;flex-wrap:wrap;}
   .masthead-desc{max-width:460px;font-size:16px;line-height:1.55;color:var(--ink-soft);}
   .masthead-meta{font-family:'IBM Plex Mono',monospace;font-size:12px;color:var(--ink-soft);text-align:right;line-height:1.8;}
@@ -158,8 +210,9 @@
 <body>
 
 <header class="masthead">
-  <p class="eyebrow">Banco de imágenes · edición 04</p>
-  <h1 class="brand">Fondo<br><em>Blanco</em></h1>
+  <h1 class="brand-logo-wrap">
+    <span class="wordmark"><span>Fondo</span><span>Blanco</span></span>
+  </h1>
   <div class="masthead-row">
     <p class="masthead-desc">Fondos de pantalla en alta resolución. Toca cualquier lámina para ver su ficha completa, con nombre, descripción, palabras clave y enlace propio de descarga.</p>
     <p class="masthead-meta">
@@ -294,45 +347,45 @@
   function driveDownload(driveId){ return `https://drive.google.com/uc?export=download&id=${driveId}`; }
 
   const defaultItems = [
-    { id:"01", title:"Fondo 01", desc:"Fondo de pantalla en alta resolución.", keywords:["fondo de pantalla","wallpaper","textura","hd"], download:driveDownload("1jSOlkoP-CGXgL4HP9spFbTlmv03HxozC"), preview:{type:"drive", driveId:"1jSOlkoP-CGXgL4HP9spFbTlmv03HxozC"} },
-    { id:"02", title:"Fondo 02", desc:"Fondo de pantalla en alta resolución.", keywords:["fondo de pantalla","wallpaper","textura","hd"], download:driveDownload("1i0LuCoRiYIGLmOQoKf1WL5hPp1egdik3"), preview:{type:"drive", driveId:"1i0LuCoRiYIGLmOQoKf1WL5hPp1egdik3"} },
-    { id:"03", title:"Fondo 03", desc:"Fondo de pantalla en alta resolución.", keywords:["fondo de pantalla","wallpaper","textura","hd"], download:driveDownload("1dCIi2N_GCe0cuyz3XuAfBivw2h5mV-E3"), preview:{type:"drive", driveId:"1dCIi2N_GCe0cuyz3XuAfBivw2h5mV-E3"} },
-    { id:"04", title:"Fondo 04", desc:"Fondo de pantalla en alta resolución.", keywords:["fondo de pantalla","wallpaper","textura","hd"], download:driveDownload("1taNtF1FiSg7LWHk4Im8nIoCx3YU8fOuY"), preview:{type:"drive", driveId:"1taNtF1FiSg7LWHk4Im8nIoCx3YU8fOuY"} },
-    { id:"05", title:"Fondo 05", desc:"Fondo de pantalla en alta resolución.", keywords:["fondo de pantalla","wallpaper","textura","hd"], download:driveDownload("1PB6a60Tcyee7syC8kehiLSfAtDP_vVJQ"), preview:{type:"drive", driveId:"1PB6a60Tcyee7syC8kehiLSfAtDP_vVJQ"} },
-    { id:"06", title:"Fondo 06", desc:"Fondo de pantalla en alta resolución.", keywords:["fondo de pantalla","wallpaper","textura","hd"], download:driveDownload("1WYxziS-2icEs8BuZbG61knNtZG6qH764"), preview:{type:"drive", driveId:"1WYxziS-2icEs8BuZbG61knNtZG6qH764"} },
-    { id:"07", title:"Fondo 07", desc:"Fondo de pantalla en alta resolución.", keywords:["fondo de pantalla","wallpaper","textura","hd"], download:driveDownload("1P0Fqqwk7I-UvecYnvPke7uQ-bHu3ICbL"), preview:{type:"drive", driveId:"1P0Fqqwk7I-UvecYnvPke7uQ-bHu3ICbL"} },
-    { id:"08", title:"Fondo 08", desc:"Fondo de pantalla en alta resolución.", keywords:["fondo de pantalla","wallpaper","textura","hd"], download:driveDownload("1XskzIA8WunLh1flFxkp9yEIO3AjaxoLJ"), preview:{type:"drive", driveId:"1XskzIA8WunLh1flFxkp9yEIO3AjaxoLJ"} },
-    { id:"09", title:"Fondo 09", desc:"Fondo de pantalla en alta resolución.", keywords:["fondo de pantalla","wallpaper","textura","hd"], download:driveDownload("1c-3BaTbWfo_VwRVqQgAgmE91H4mHrNz8"), preview:{type:"drive", driveId:"1c-3BaTbWfo_VwRVqQgAgmE91H4mHrNz8"} },
-    { id:"10", title:"Fondo 10", desc:"Fondo de pantalla en alta resolución.", keywords:["fondo de pantalla","wallpaper","textura","hd"], download:driveDownload("1ndrRo1JRyFr2d_B42TezQXG6TM2sc5xX"), preview:{type:"drive", driveId:"1ndrRo1JRyFr2d_B42TezQXG6TM2sc5xX"} },
-    { id:"11", title:"Fondo 11", desc:"Fondo de pantalla en alta resolución.", keywords:["fondo de pantalla","wallpaper","textura","hd"], download:driveDownload("1ibNunFKKQRqTiVGQlVUhDd_Ijiq37O16"), preview:{type:"drive", driveId:"1ibNunFKKQRqTiVGQlVUhDd_Ijiq37O16"} },
-    { id:"12", title:"Fondo 12", desc:"Fondo de pantalla en alta resolución.", keywords:["fondo de pantalla","wallpaper","textura","hd"], download:driveDownload("1ZXHRleuYy9FYMWXb7DEIG6qKLaUL-1BG"), preview:{type:"drive", driveId:"1ZXHRleuYy9FYMWXb7DEIG6qKLaUL-1BG"} },
-    { id:"13", title:"Fondo 13", desc:"Fondo de pantalla en alta resolución.", keywords:["fondo de pantalla","wallpaper","textura","hd"], download:driveDownload("19qNqWSciW65q_8SpNYnu_hr6WHkRTHBk"), preview:{type:"drive", driveId:"19qNqWSciW65q_8SpNYnu_hr6WHkRTHBk"} },
-    { id:"14", title:"Fondo 14", desc:"Fondo de pantalla en alta resolución.", keywords:["fondo de pantalla","wallpaper","textura","hd"], download:driveDownload("1nQAgUipypvTxcq1x49TCEZoOamRUju1v"), preview:{type:"drive", driveId:"1nQAgUipypvTxcq1x49TCEZoOamRUju1v"} },
-    { id:"15", title:"Fondo 15", desc:"Fondo de pantalla en alta resolución.", keywords:["fondo de pantalla","wallpaper","textura","hd"], download:driveDownload("1AJYt054O_23m5uV1ie92ZVj2EI7wsCk8"), preview:{type:"drive", driveId:"1AJYt054O_23m5uV1ie92ZVj2EI7wsCk8"} },
-    { id:"16", title:"Fondo 16", desc:"Fondo de pantalla en alta resolución.", keywords:["fondo de pantalla","wallpaper","textura","hd"], download:driveDownload("1k4HQ-ffURIYaBi3mrlCTpNfKjSwHG0IW"), preview:{type:"drive", driveId:"1k4HQ-ffURIYaBi3mrlCTpNfKjSwHG0IW"} },
-    { id:"17", title:"Fondo 17", desc:"Fondo de pantalla en alta resolución.", keywords:["fondo de pantalla","wallpaper","textura","hd"], download:driveDownload("1vx8pf1d-WKujI34-boeuAhpeWpilqEIN"), preview:{type:"drive", driveId:"1vx8pf1d-WKujI34-boeuAhpeWpilqEIN"} },
-    { id:"18", title:"Fondo 18", desc:"Fondo de pantalla en alta resolución.", keywords:["fondo de pantalla","wallpaper","textura","hd"], download:driveDownload("1ZAK983bek4DFJvb0xZBV_QtJWRszvZzr"), preview:{type:"drive", driveId:"1ZAK983bek4DFJvb0xZBV_QtJWRszvZzr"} },
-    { id:"19", title:"Fondo 19", desc:"Fondo de pantalla en alta resolución.", keywords:["fondo de pantalla","wallpaper","textura","hd"], download:driveDownload("1556bXrib5_sks8SlJ5tPuZHUEx50sz9H"), preview:{type:"drive", driveId:"1556bXrib5_sks8SlJ5tPuZHUEx50sz9H"} },
-    { id:"20", title:"Fondo 20", desc:"Fondo de pantalla en alta resolución.", keywords:["fondo de pantalla","wallpaper","textura","hd"], download:driveDownload("1IVkAjr6fU0VHpN_gCJAOuKQZJfjS4sVQ"), preview:{type:"drive", driveId:"1IVkAjr6fU0VHpN_gCJAOuKQZJfjS4sVQ"} },
-    { id:"21", title:"Fondo 21", desc:"Fondo de pantalla en alta resolución.", keywords:["fondo de pantalla","wallpaper","textura","hd"], download:driveDownload("1etbL3RU0ywaL-5LByKOBHGM-5f7Oifgf"), preview:{type:"drive", driveId:"1etbL3RU0ywaL-5LByKOBHGM-5f7Oifgf"} },
-    { id:"22", title:"Fondo 22", desc:"Fondo de pantalla en alta resolución.", keywords:["fondo de pantalla","wallpaper","textura","hd"], download:driveDownload("1OuMSDnJE7Sie2ZhmffDPERPNzZIoVyDE"), preview:{type:"drive", driveId:"1OuMSDnJE7Sie2ZhmffDPERPNzZIoVyDE"} },
-    { id:"23", title:"Fondo 23", desc:"Fondo de pantalla en alta resolución.", keywords:["fondo de pantalla","wallpaper","textura","hd"], download:driveDownload("1BI8GHWkkKF941Kwk6jK2qAW4P3u4DK00"), preview:{type:"drive", driveId:"1BI8GHWkkKF941Kwk6jK2qAW4P3u4DK00"} },
-    { id:"24", title:"Fondo 24", desc:"Fondo de pantalla en alta resolución.", keywords:["fondo de pantalla","wallpaper","textura","hd"], download:driveDownload("1QDPQsrbNiW8X45kaYNPX_Q-notbwYu9g"), preview:{type:"drive", driveId:"1QDPQsrbNiW8X45kaYNPX_Q-notbwYu9g"} },
-    { id:"25", title:"Fondo 25", desc:"Fondo de pantalla en alta resolución.", keywords:["fondo de pantalla","wallpaper","textura","hd"], download:driveDownload("1CJDH7JOVLSlgTqd6qnreovk03HyQnqVq"), preview:{type:"drive", driveId:"1CJDH7JOVLSlgTqd6qnreovk03HyQnqVq"} },
-    { id:"26", title:"Fondo 26", desc:"Fondo de pantalla en alta resolución.", keywords:["fondo de pantalla","wallpaper","textura","hd"], download:driveDownload("1565WuIuaW2VJU3-UoXrjldiCVGM2x4by"), preview:{type:"drive", driveId:"1565WuIuaW2VJU3-UoXrjldiCVGM2x4by"} },
-    { id:"27", title:"Fondo 27", desc:"Fondo de pantalla en alta resolución.", keywords:["fondo de pantalla","wallpaper","textura","hd"], download:driveDownload("1UCi7URJnY0Xkk1tHgHSGp7O21hLpyopf"), preview:{type:"drive", driveId:"1UCi7URJnY0Xkk1tHgHSGp7O21hLpyopf"} },
-    { id:"28", title:"Fondo 28", desc:"Fondo de pantalla en alta resolución.", keywords:["fondo de pantalla","wallpaper","textura","hd"], download:driveDownload("1ra9XOWclFwiNRL8OPf0C4QgmltyyFIlB"), preview:{type:"drive", driveId:"1ra9XOWclFwiNRL8OPf0C4QgmltyyFIlB"} },
-    { id:"29", title:"Fondo 29", desc:"Fondo de pantalla en alta resolución.", keywords:["fondo de pantalla","wallpaper","textura","hd"], download:driveDownload("1XqDUj93sluTkATKQsxCQATK3FAC5QIt4"), preview:{type:"drive", driveId:"1XqDUj93sluTkATKQsxCQATK3FAC5QIt4"} },
-    { id:"30", title:"Fondo 30", desc:"Fondo de pantalla en alta resolución.", keywords:["fondo de pantalla","wallpaper","textura","hd"], download:driveDownload("16vQlEFI6VKTjujgaDL9CgkpsGHjuaIo0"), preview:{type:"drive", driveId:"16vQlEFI6VKTjujgaDL9CgkpsGHjuaIo0"} },
-    { id:"31", title:"Fondo 31", desc:"Fondo de pantalla en alta resolución.", keywords:["fondo de pantalla","wallpaper","textura","hd"], download:driveDownload("1P4sOnwGaN3gHL0YhgGJ9EtolHaAOv27s"), preview:{type:"drive", driveId:"1P4sOnwGaN3gHL0YhgGJ9EtolHaAOv27s"} },
-    { id:"32", title:"Fondo 32", desc:"Fondo de pantalla en alta resolución.", keywords:["fondo de pantalla","wallpaper","textura","hd"], download:driveDownload("16QzRwMHpFCy-y9QqbN3O8XzpX1GRz2D1"), preview:{type:"drive", driveId:"16QzRwMHpFCy-y9QqbN3O8XzpX1GRz2D1"} },
-    { id:"33", title:"Fondo 33", desc:"Fondo de pantalla en alta resolución.", keywords:["fondo de pantalla","wallpaper","textura","hd"], download:driveDownload("1Fu5VNDyTac8UR2D9zim0Z9pAgLdU3NNF"), preview:{type:"drive", driveId:"1Fu5VNDyTac8UR2D9zim0Z9pAgLdU3NNF"} },
-    { id:"34", title:"Fondo 34", desc:"Fondo de pantalla en alta resolución.", keywords:["fondo de pantalla","wallpaper","textura","hd"], download:driveDownload("1MGWLHrduLo2FLF6h3HnnGF12LCFt-spU"), preview:{type:"drive", driveId:"1MGWLHrduLo2FLF6h3HnnGF12LCFt-spU"} },
-    { id:"35", title:"Fondo 35", desc:"Fondo de pantalla en alta resolución.", keywords:["fondo de pantalla","wallpaper","textura","hd"], download:driveDownload("1JmRS5Pj3RXcohUXlBxo0acUulp8HOSKq"), preview:{type:"drive", driveId:"1JmRS5Pj3RXcohUXlBxo0acUulp8HOSKq"} },
-    { id:"36", title:"Fondo 36", desc:"Fondo de pantalla en alta resolución.", keywords:["fondo de pantalla","wallpaper","textura","hd"], download:driveDownload("1H1tYAMnKTbzrU5vQjdNOGpumngLqQ-xV"), preview:{type:"drive", driveId:"1H1tYAMnKTbzrU5vQjdNOGpumngLqQ-xV"} },
-    { id:"37", title:"Fondo 37", desc:"Fondo de pantalla en alta resolución.", keywords:["fondo de pantalla","wallpaper","textura","hd"], download:driveDownload("1O4Ftusvixa3DYSZBbiNduJEdFKFUtOFJ"), preview:{type:"drive", driveId:"1O4Ftusvixa3DYSZBbiNduJEdFKFUtOFJ"} },
-    { id:"38", title:"Fondo 38", desc:"Fondo de pantalla en alta resolución.", keywords:["fondo de pantalla","wallpaper","textura","hd"], download:driveDownload("1eGjpOHeSX5rT2B_SHJqSdhaNebZPewYm"), preview:{type:"drive", driveId:"1eGjpOHeSX5rT2B_SHJqSdhaNebZPewYm"} },
-    { id:"39", title:"Fondo 39", desc:"Fondo de pantalla en alta resolución.", keywords:["fondo de pantalla","wallpaper","textura","hd"], download:driveDownload("1IwnB5FIXqzieRoXghqYK0t7xgKP3_uYg"), preview:{type:"drive", driveId:"1IwnB5FIXqzieRoXghqYK0t7xgKP3_uYg"} }
+    { id:"01", title:"Fondo 01 — Textura de vidrio con gotas de agua", desc:"Primer plano de una superficie de vidrio texturizado cubierta de gotas de agua, en tonos verdes y grises. Fondo de pantalla en alta resolución.", keywords:["textura de vidrio","gotas de agua","fondo de pantalla hd","vidrio texturizado","wallpaper agua"], download:driveDownload("1jSOlkoP-CGXgL4HP9spFbTlmv03HxozC"), preview:{type:"drive", driveId:"1jSOlkoP-CGXgL4HP9spFbTlmv03HxozC"} },
+    { id:"02", title:"Fondo 02 — Wallpaper HD para escritorio", desc:"Imagen en alta definición pensada para fondos de pantalla de PC y laptop, disponible para descarga gratuita.", keywords:["wallpaper","fondo de escritorio","hd","fondo gratis"], download:driveDownload("1i0LuCoRiYIGLmOQoKf1WL5hPp1egdik3"), preview:{type:"drive", driveId:"1i0LuCoRiYIGLmOQoKf1WL5hPp1egdik3"} },
+    { id:"03", title:"Fondo 03 — Fondo de pantalla para celular", desc:"Fondo de pantalla optimizado para dispositivos móviles, con buena resolución y colores nítidos.", keywords:["fondo de pantalla movil","wallpaper celular","fondo hd","textura"], download:driveDownload("1dCIi2N_GCe0cuyz3XuAfBivw2h5mV-E3"), preview:{type:"drive", driveId:"1dCIi2N_GCe0cuyz3XuAfBivw2h5mV-E3"} },
+    { id:"04", title:"Fondo 04 — Imagen de alta calidad", desc:"Imagen de alta resolución lista para usar como fondo de pantalla o en tus proyectos de diseño.", keywords:["imagen hd","fondo de pantalla","banco de imagenes","textura de fondo"], download:driveDownload("1taNtF1FiSg7LWHk4Im8nIoCx3YU8fOuY"), preview:{type:"drive", driveId:"1taNtF1FiSg7LWHk4Im8nIoCx3YU8fOuY"} },
+    { id:"05", title:"Fondo 05 — Textura para diseño gráfico", desc:"Textura de alta resolución, útil como fondo para presentaciones, redes sociales o piezas gráficas.", keywords:["textura","fondo grafico","wallpaper 4k","descarga gratis"], download:driveDownload("1PB6a60Tcyee7syC8kehiLSfAtDP_vVJQ"), preview:{type:"drive", driveId:"1PB6a60Tcyee7syC8kehiLSfAtDP_vVJQ"} },
+    { id:"06", title:"Fondo 06 — Wallpaper en calidad 4K", desc:"Fondo de pantalla en calidad 4K, con gran nivel de detalle para pantallas grandes.", keywords:["wallpaper 4k","fondo de pantalla hd","textura","fondo de escritorio"], download:driveDownload("1WYxziS-2icEs8BuZbG61knNtZG6qH764"), preview:{type:"drive", driveId:"1WYxziS-2icEs8BuZbG61knNtZG6qH764"} },
+    { id:"07", title:"Fondo 07 — Fondo minimalista en HD", desc:"Fondo de pantalla con estética limpia y colores equilibrados, en alta resolución.", keywords:["fondo minimalista","wallpaper hd","fondo de pantalla","textura"], download:driveDownload("1P0Fqqwk7I-UvecYnvPke7uQ-bHu3ICbL"), preview:{type:"drive", driveId:"1P0Fqqwk7I-UvecYnvPke7uQ-bHu3ICbL"} },
+    { id:"08", title:"Fondo 08 — Descarga gratuita en alta resolución", desc:"Fondo de pantalla listo para descargar sin costo, en formato de alta resolución.", keywords:["fondo gratis","descargar wallpaper","fondo de pantalla hd","textura"], download:driveDownload("1XskzIA8WunLh1flFxkp9yEIO3AjaxoLJ"), preview:{type:"drive", driveId:"1XskzIA8WunLh1flFxkp9yEIO3AjaxoLJ"} },
+    { id:"09", title:"Fondo 09 — Textura en alta resolución", desc:"Fondo de pantalla en alta resolución, ideal para tu escritorio o celular. Descarga rápida y calidad HD.", keywords:["fondo de pantalla","wallpaper hd","textura","fondo minimalista"], download:driveDownload("1c-3BaTbWfo_VwRVqQgAgmE91H4mHrNz8"), preview:{type:"drive", driveId:"1c-3BaTbWfo_VwRVqQgAgmE91H4mHrNz8"} },
+    { id:"10", title:"Fondo 10 — Wallpaper HD para escritorio", desc:"Imagen en alta definición pensada para fondos de pantalla de PC y laptop, disponible para descarga gratuita.", keywords:["wallpaper","fondo de escritorio","hd","fondo gratis"], download:driveDownload("1ndrRo1JRyFr2d_B42TezQXG6TM2sc5xX"), preview:{type:"drive", driveId:"1ndrRo1JRyFr2d_B42TezQXG6TM2sc5xX"} },
+    { id:"11", title:"Fondo 11 — Estampado animal print leopardo", desc:"Primer plano de un estampado tipo piel de leopardo, con manchas negras sobre fondo dorado y marrón. Fondo de pantalla en alta resolución.", keywords:["estampado leopardo","animal print","fondo de pantalla hd","piel de leopardo","wallpaper animal print"], download:driveDownload("1ibNunFKKQRqTiVGQlVUhDd_Ijiq37O16"), preview:{type:"drive", driveId:"1ibNunFKKQRqTiVGQlVUhDd_Ijiq37O16"} },
+    { id:"12", title:"Fondo 12 — Imagen de alta calidad", desc:"Imagen de alta resolución lista para usar como fondo de pantalla o en tus proyectos de diseño.", keywords:["imagen hd","fondo de pantalla","banco de imagenes","textura de fondo"], download:driveDownload("1ZXHRleuYy9FYMWXb7DEIG6qKLaUL-1BG"), preview:{type:"drive", driveId:"1ZXHRleuYy9FYMWXb7DEIG6qKLaUL-1BG"} },
+    { id:"13", title:"Fondo 13 — Textura para diseño gráfico", desc:"Textura de alta resolución, útil como fondo para presentaciones, redes sociales o piezas gráficas.", keywords:["textura","fondo grafico","wallpaper 4k","descarga gratis"], download:driveDownload("19qNqWSciW65q_8SpNYnu_hr6WHkRTHBk"), preview:{type:"drive", driveId:"19qNqWSciW65q_8SpNYnu_hr6WHkRTHBk"} },
+    { id:"14", title:"Fondo 14 — Wallpaper en calidad 4K", desc:"Fondo de pantalla en calidad 4K, con gran nivel de detalle para pantallas grandes.", keywords:["wallpaper 4k","fondo de pantalla hd","textura","fondo de escritorio"], download:driveDownload("1nQAgUipypvTxcq1x49TCEZoOamRUju1v"), preview:{type:"drive", driveId:"1nQAgUipypvTxcq1x49TCEZoOamRUju1v"} },
+    { id:"15", title:"Fondo 15 — Fondo minimalista en HD", desc:"Fondo de pantalla con estética limpia y colores equilibrados, en alta resolución.", keywords:["fondo minimalista","wallpaper hd","fondo de pantalla","textura"], download:driveDownload("1AJYt054O_23m5uV1ie92ZVj2EI7wsCk8"), preview:{type:"drive", driveId:"1AJYt054O_23m5uV1ie92ZVj2EI7wsCk8"} },
+    { id:"16", title:"Fondo 16 — Descarga gratuita en alta resolución", desc:"Fondo de pantalla listo para descargar sin costo, en formato de alta resolución.", keywords:["fondo gratis","descargar wallpaper","fondo de pantalla hd","textura"], download:driveDownload("1k4HQ-ffURIYaBi3mrlCTpNfKjSwHG0IW"), preview:{type:"drive", driveId:"1k4HQ-ffURIYaBi3mrlCTpNfKjSwHG0IW"} },
+    { id:"17", title:"Fondo 17 — Textura en alta resolución", desc:"Fondo de pantalla en alta resolución, ideal para tu escritorio o celular. Descarga rápida y calidad HD.", keywords:["fondo de pantalla","wallpaper hd","textura","fondo minimalista"], download:driveDownload("1vx8pf1d-WKujI34-boeuAhpeWpilqEIN"), preview:{type:"drive", driveId:"1vx8pf1d-WKujI34-boeuAhpeWpilqEIN"} },
+    { id:"18", title:"Fondo 18 — Wallpaper HD para escritorio", desc:"Imagen en alta definición pensada para fondos de pantalla de PC y laptop, disponible para descarga gratuita.", keywords:["wallpaper","fondo de escritorio","hd","fondo gratis"], download:driveDownload("1ZAK983bek4DFJvb0xZBV_QtJWRszvZzr"), preview:{type:"drive", driveId:"1ZAK983bek4DFJvb0xZBV_QtJWRszvZzr"} },
+    { id:"19", title:"Fondo 19 — Fondo de pantalla para celular", desc:"Fondo de pantalla optimizado para dispositivos móviles, con buena resolución y colores nítidos.", keywords:["fondo de pantalla movil","wallpaper celular","fondo hd","textura"], download:driveDownload("1556bXrib5_sks8SlJ5tPuZHUEx50sz9H"), preview:{type:"drive", driveId:"1556bXrib5_sks8SlJ5tPuZHUEx50sz9H"} },
+    { id:"20", title:"Fondo 20 — Imagen de alta calidad", desc:"Imagen de alta resolución lista para usar como fondo de pantalla o en tus proyectos de diseño.", keywords:["imagen hd","fondo de pantalla","banco de imagenes","textura de fondo"], download:driveDownload("1IVkAjr6fU0VHpN_gCJAOuKQZJfjS4sVQ"), preview:{type:"drive", driveId:"1IVkAjr6fU0VHpN_gCJAOuKQZJfjS4sVQ"} },
+    { id:"21", title:"Fondo 21 — Textura de metal oxidado", desc:"Superficie metálica oxidada con manchas de óxido cobrizo y pátina verde. Fondo de pantalla en alta resolución.", keywords:["metal oxidado","textura oxido","fondo industrial","wallpaper metal","textura grunge"], download:driveDownload("1etbL3RU0ywaL-5LByKOBHGM-5f7Oifgf"), preview:{type:"drive", driveId:"1etbL3RU0ywaL-5LByKOBHGM-5f7Oifgf"} },
+    { id:"22", title:"Fondo 22 — Wallpaper en calidad 4K", desc:"Fondo de pantalla en calidad 4K, con gran nivel de detalle para pantallas grandes.", keywords:["wallpaper 4k","fondo de pantalla hd","textura","fondo de escritorio"], download:driveDownload("1OuMSDnJE7Sie2ZhmffDPERPNzZIoVyDE"), preview:{type:"drive", driveId:"1OuMSDnJE7Sie2ZhmffDPERPNzZIoVyDE"} },
+    { id:"23", title:"Fondo 23 — Fondo minimalista en HD", desc:"Fondo de pantalla con estética limpia y colores equilibrados, en alta resolución.", keywords:["fondo minimalista","wallpaper hd","fondo de pantalla","textura"], download:driveDownload("1BI8GHWkkKF941Kwk6jK2qAW4P3u4DK00"), preview:{type:"drive", driveId:"1BI8GHWkkKF941Kwk6jK2qAW4P3u4DK00"} },
+    { id:"24", title:"Fondo 24 — Descarga gratuita en alta resolución", desc:"Fondo de pantalla listo para descargar sin costo, en formato de alta resolución.", keywords:["fondo gratis","descargar wallpaper","fondo de pantalla hd","textura"], download:driveDownload("1QDPQsrbNiW8X45kaYNPX_Q-notbwYu9g"), preview:{type:"drive", driveId:"1QDPQsrbNiW8X45kaYNPX_Q-notbwYu9g"} },
+    { id:"25", title:"Fondo 25 — Textura en alta resolución", desc:"Fondo de pantalla en alta resolución, ideal para tu escritorio o celular. Descarga rápida y calidad HD.", keywords:["fondo de pantalla","wallpaper hd","textura","fondo minimalista"], download:driveDownload("1CJDH7JOVLSlgTqd6qnreovk03HyQnqVq"), preview:{type:"drive", driveId:"1CJDH7JOVLSlgTqd6qnreovk03HyQnqVq"} },
+    { id:"26", title:"Fondo 26 — Wallpaper HD para escritorio", desc:"Imagen en alta definición pensada para fondos de pantalla de PC y laptop, disponible para descarga gratuita.", keywords:["wallpaper","fondo de escritorio","hd","fondo gratis"], download:driveDownload("1565WuIuaW2VJU3-UoXrjldiCVGM2x4by"), preview:{type:"drive", driveId:"1565WuIuaW2VJU3-UoXrjldiCVGM2x4by"} },
+    { id:"27", title:"Fondo 27 — Fondo de pantalla para celular", desc:"Fondo de pantalla optimizado para dispositivos móviles, con buena resolución y colores nítidos.", keywords:["fondo de pantalla movil","wallpaper celular","fondo hd","textura"], download:driveDownload("1UCi7URJnY0Xkk1tHgHSGp7O21hLpyopf"), preview:{type:"drive", driveId:"1UCi7URJnY0Xkk1tHgHSGp7O21hLpyopf"} },
+    { id:"28", title:"Fondo 28 — Imagen de alta calidad", desc:"Imagen de alta resolución lista para usar como fondo de pantalla o en tus proyectos de diseño.", keywords:["imagen hd","fondo de pantalla","banco de imagenes","textura de fondo"], download:driveDownload("1ra9XOWclFwiNRL8OPf0C4QgmltyyFIlB"), preview:{type:"drive", driveId:"1ra9XOWclFwiNRL8OPf0C4QgmltyyFIlB"} },
+    { id:"29", title:"Fondo 29 — Textura para diseño gráfico", desc:"Textura de alta resolución, útil como fondo para presentaciones, redes sociales o piezas gráficas.", keywords:["textura","fondo grafico","wallpaper 4k","descarga gratis"], download:driveDownload("1XqDUj93sluTkATKQsxCQATK3FAC5QIt4"), preview:{type:"drive", driveId:"1XqDUj93sluTkATKQsxCQATK3FAC5QIt4"} },
+    { id:"30", title:"Fondo 30 — Wallpaper en calidad 4K", desc:"Fondo de pantalla en calidad 4K, con gran nivel de detalle para pantallas grandes.", keywords:["wallpaper 4k","fondo de pantalla hd","textura","fondo de escritorio"], download:driveDownload("16vQlEFI6VKTjujgaDL9CgkpsGHjuaIo0"), preview:{type:"drive", driveId:"16vQlEFI6VKTjujgaDL9CgkpsGHjuaIo0"} },
+    { id:"31", title:"Fondo 31 — Textura de madera rústica", desc:"Tablones de madera oscura con vetas marcadas y tono rojizo. Fondo de pantalla en alta resolución.", keywords:["textura de madera","madera rustica","fondo de pantalla hd","wallpaper madera","textura rustica"], download:driveDownload("1P4sOnwGaN3gHL0YhgGJ9EtolHaAOv27s"), preview:{type:"drive", driveId:"1P4sOnwGaN3gHL0YhgGJ9EtolHaAOv27s"} },
+    { id:"32", title:"Fondo 32 — Descarga gratuita en alta resolución", desc:"Fondo de pantalla listo para descargar sin costo, en formato de alta resolución.", keywords:["fondo gratis","descargar wallpaper","fondo de pantalla hd","textura"], download:driveDownload("16QzRwMHpFCy-y9QqbN3O8XzpX1GRz2D1"), preview:{type:"drive", driveId:"16QzRwMHpFCy-y9QqbN3O8XzpX1GRz2D1"} },
+    { id:"33", title:"Fondo 33 — Textura en alta resolución", desc:"Fondo de pantalla en alta resolución, ideal para tu escritorio o celular. Descarga rápida y calidad HD.", keywords:["fondo de pantalla","wallpaper hd","textura","fondo minimalista"], download:driveDownload("1Fu5VNDyTac8UR2D9zim0Z9pAgLdU3NNF"), preview:{type:"drive", driveId:"1Fu5VNDyTac8UR2D9zim0Z9pAgLdU3NNF"} },
+    { id:"34", title:"Fondo 34 — Wallpaper HD para escritorio", desc:"Imagen en alta definición pensada para fondos de pantalla de PC y laptop, disponible para descarga gratuita.", keywords:["wallpaper","fondo de escritorio","hd","fondo gratis"], download:driveDownload("1MGWLHrduLo2FLF6h3HnnGF12LCFt-spU"), preview:{type:"drive", driveId:"1MGWLHrduLo2FLF6h3HnnGF12LCFt-spU"} },
+    { id:"35", title:"Fondo 35 — Fondo de pantalla para celular", desc:"Fondo de pantalla optimizado para dispositivos móviles, con buena resolución y colores nítidos.", keywords:["fondo de pantalla movil","wallpaper celular","fondo hd","textura"], download:driveDownload("1JmRS5Pj3RXcohUXlBxo0acUulp8HOSKq"), preview:{type:"drive", driveId:"1JmRS5Pj3RXcohUXlBxo0acUulp8HOSKq"} },
+    { id:"36", title:"Fondo 36 — Imagen de alta calidad", desc:"Imagen de alta resolución lista para usar como fondo de pantalla o en tus proyectos de diseño.", keywords:["imagen hd","fondo de pantalla","banco de imagenes","textura de fondo"], download:driveDownload("1H1tYAMnKTbzrU5vQjdNOGpumngLqQ-xV"), preview:{type:"drive", driveId:"1H1tYAMnKTbzrU5vQjdNOGpumngLqQ-xV"} },
+    { id:"37", title:"Fondo 37 — Textura para diseño gráfico", desc:"Textura de alta resolución, útil como fondo para presentaciones, redes sociales o piezas gráficas.", keywords:["textura","fondo grafico","wallpaper 4k","descarga gratis"], download:driveDownload("1O4Ftusvixa3DYSZBbiNduJEdFKFUtOFJ"), preview:{type:"drive", driveId:"1O4Ftusvixa3DYSZBbiNduJEdFKFUtOFJ"} },
+    { id:"38", title:"Fondo 38 — Wallpaper en calidad 4K", desc:"Fondo de pantalla en calidad 4K, con gran nivel de detalle para pantallas grandes.", keywords:["wallpaper 4k","fondo de pantalla hd","textura","fondo de escritorio"], download:driveDownload("1eGjpOHeSX5rT2B_SHJqSdhaNebZPewYm"), preview:{type:"drive", driveId:"1eGjpOHeSX5rT2B_SHJqSdhaNebZPewYm"} },
+    { id:"39", title:"Fondo 39 — Fondo minimalista en HD", desc:"Fondo de pantalla con estética limpia y colores equilibrados, en alta resolución.", keywords:["fondo minimalista","wallpaper hd","fondo de pantalla","textura"], download:driveDownload("1IwnB5FIXqzieRoXghqYK0t7xgKP3_uYg"), preview:{type:"drive", driveId:"1IwnB5FIXqzieRoXghqYK0t7xgKP3_uYg"} }
   ];
 
   let items = [];
@@ -523,53 +576,87 @@
     });
   }
 
-  // ---------- Render galería ----------
+  // ---------- Render galería (carga por lotes de 8 para más velocidad) ----------
   const gallery = document.getElementById('gallery');
+  const BATCH_SIZE = 8;
+  let renderedCount = 0;
+  let galleryObserver = null;
+
+  function buildPlate(item){
+    const fig = document.createElement('figure');
+    fig.className = 'plate';
+    const candidates = previewCandidates(item, GRID_SIZE);
+
+    fig.innerHTML = `
+      <div class="frame" data-id="${item.id}">
+        <span class="num">${item.id}</span>
+        ${isAdmin ? `<button class="edit-pin" data-edit="${item.id}" type="button" title="Editar">✎</button>` : ''}
+        <div class="img-wrap">
+          <img alt="${escapeHtml(item.title)}" title="${escapeHtml(item.title)}" loading="lazy" decoding="async">
+        </div>
+        <div class="mat-bottom"></div>
+      </div>
+      <figcaption>
+        <h2 class="plate-title">${escapeHtml(item.title)}</h2>
+        <p class="plate-meta">Lámina N.º ${item.id}</p>
+      </figcaption>
+    `;
+
+    const img = fig.querySelector('img');
+    img.addEventListener('load', ()=>img.classList.add('loaded'));
+    setImageWithFallback(img, candidates, ()=>{
+      const wrap = fig.querySelector('.img-wrap');
+      wrap.innerHTML = '<div class="fallback">Vista previa no disponible</div>';
+    });
+
+    fig.querySelector('.frame').addEventListener('click', (e)=>{
+      if(e.target.closest('.edit-pin')) return;
+      openDetail(item.id, true);
+    });
+
+    const editBtn = fig.querySelector('.edit-pin');
+    if(editBtn){
+      editBtn.addEventListener('click', (e)=>{
+        e.stopPropagation();
+        openEditForm(item.id);
+      });
+    }
+
+    return fig;
+  }
 
   function renderGallery(){
     gallery.innerHTML = '';
-    items.forEach(item => {
-      const fig = document.createElement('figure');
-      fig.className = 'plate';
-      const candidates = previewCandidates(item, GRID_SIZE);
+    renderedCount = 0;
+    if(galleryObserver){ galleryObserver.disconnect(); galleryObserver = null; }
+    renderNextBatch();
+  }
 
-      fig.innerHTML = `
-        <div class="frame" data-id="${item.id}">
-          <span class="num">${item.id}</span>
-          ${isAdmin ? `<button class="edit-pin" data-edit="${item.id}" type="button" title="Editar">✎</button>` : ''}
-          <div class="img-wrap">
-            <img alt="${escapeHtml(item.title)}" loading="lazy">
-          </div>
-          <div class="mat-bottom"></div>
-        </div>
-        <figcaption>
-          <h2 class="plate-title">${escapeHtml(item.title)}</h2>
-          <p class="plate-meta">Lámina N.º ${item.id}</p>
-        </figcaption>
-      `;
+  function renderNextBatch(){
+    const slice = items.slice(renderedCount, renderedCount + BATCH_SIZE);
+    slice.forEach(item => gallery.appendChild(buildPlate(item)));
+    renderedCount += slice.length;
+    setupSentinel();
+  }
 
-      const img = fig.querySelector('img');
-      img.addEventListener('load', ()=>img.classList.add('loaded'));
-      setImageWithFallback(img, candidates, ()=>{
-        const wrap = fig.querySelector('.img-wrap');
-        wrap.innerHTML = '<div class="fallback">Vista previa no disponible</div>';
-      });
+  function setupSentinel(){
+    const old = document.getElementById('gallerySentinel');
+    if(old) old.remove();
+    if(galleryObserver){ galleryObserver.disconnect(); galleryObserver = null; }
+    if(renderedCount >= items.length) return;
 
-      fig.querySelector('.frame').addEventListener('click', (e)=>{
-        if(e.target.closest('.edit-pin')) return;
-        openDetail(item.id, true);
-      });
+    const sentinel = document.createElement('div');
+    sentinel.id = 'gallerySentinel';
+    sentinel.style.cssText = 'height:1px;width:100%;';
+    gallery.insertAdjacentElement('afterend', sentinel);
 
-      const editBtn = fig.querySelector('.edit-pin');
-      if(editBtn){
-        editBtn.addEventListener('click', (e)=>{
-          e.stopPropagation();
-          openEditForm(item.id);
-        });
+    galleryObserver = new IntersectionObserver((entries)=>{
+      if(entries[0].isIntersecting){
+        galleryObserver.disconnect();
+        renderNextBatch();
       }
-
-      gallery.appendChild(fig);
-    });
+    }, { rootMargin: '600px 0px' });
+    galleryObserver.observe(sentinel);
   }
 
   // ---------- Detalle con URL propia ----------
