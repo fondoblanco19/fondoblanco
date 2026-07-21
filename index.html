@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Fondo Blanco — Fondos de Pantalla y Texturas HD Gratis para Descargar</title>
-<meta name="description" content="Descarga fondos de pantalla y texturas en alta resolución totalmente gratis. Más de 39 imágenes HD listas para tu escritorio, celular o proyectos de diseño.">
+<meta name="description" content="Descarga fondos de pantalla y texturas en alta resolución totalmente gratis. Más de 48 imágenes HD listas para tu escritorio, celular o proyectos de diseño.">
 <meta name="keywords" content="fondos de pantalla, wallpapers hd, texturas, banco de imágenes, fondos gratis, descargar fondos de pantalla, wallpaper 4k, texturas de alta resolución">
 <meta name="robots" content="index, follow">
 <meta name="author" content="Fondo Blanco">
@@ -115,6 +115,35 @@
   .theme-dot:hover{transform:scale(1.12);}
   .theme-dot.active{border-color:var(--ink);}
 
+  .custom-title-row{margin-top:18px;}
+  .custom-welcome{font-family:'Fraunces',serif;font-style:italic;font-size:15px;color:var(--terracotta);margin:0 0 10px;}
+
+  .search-bar{padding:0 6vw;margin-top:8px;}
+  .search-box{
+    display:flex;align-items:center;gap:10px;max-width:480px;padding:11px 16px;
+    background:var(--card-bg);border:1px solid var(--line);border-radius:24px;transition:.2s;
+  }
+  .search-box:focus-within{border-color:var(--terracotta);}
+  .search-box svg{stroke:var(--ink-soft);flex:none;}
+  .search-box input{flex:1;border:none;outline:none;background:transparent;font-family:'Inter',sans-serif;font-size:14px;color:var(--ink);min-width:0;}
+  .search-box input::placeholder{color:var(--ink-soft);}
+  .search-box button{display:none;border:none;background:none;color:var(--ink-soft);font-size:13px;padding:2px 4px;flex:none;}
+  .search-box.has-value button{display:block;}
+  .search-box button:hover{color:var(--terracotta);}
+  .search-count{font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--ink-soft);margin:10px 2px 0;}
+
+  .empty-msg{font-family:'IBM Plex Mono',monospace;font-size:13px;color:var(--ink-soft);text-align:center;padding:60px 20px;}
+
+  .pager{display:flex;justify-content:center;align-items:center;gap:8px;flex-wrap:wrap;margin-top:44px;}
+  .pager button{
+    min-width:36px;height:36px;padding:0 10px;border:1px solid var(--line);background:var(--card-bg);
+    color:var(--ink);font-family:'IBM Plex Mono',monospace;font-size:12.5px;border-radius:6px;transition:.15s;
+  }
+  .pager button:hover:not(:disabled){border-color:var(--terracotta);color:var(--terracotta);}
+  .pager button.active{background:var(--ink);border-color:var(--ink);color:var(--paper);}
+  .pager button:disabled{opacity:.35;cursor:default;}
+  .pager .dots{font-family:'IBM Plex Mono',monospace;font-size:12.5px;color:var(--ink-soft);padding:0 2px;}
+
   main{padding:56px 6vw 90px;}
   .gallery{columns:4 260px;column-gap:32px;}
   @media (max-width:1100px){.gallery{columns:3 220px;}}
@@ -214,12 +243,15 @@
     <span class="wordmark"><span>Fondo</span><span>Blanco</span></span>
   </h1>
   <div class="masthead-row">
-    <p class="masthead-desc">Fondos de pantalla en alta resolución. Toca cualquier lámina para ver su ficha completa, con nombre, descripción, palabras clave y enlace propio de descarga.</p>
+    <p class="masthead-desc" id="mastheadDesc">Fondos de pantalla en alta resolución. Toca cualquier lámina para ver su ficha completa, con nombre, descripción, palabras clave y enlace propio de descarga.</p>
     <p class="masthead-meta">
       previsualización: WebP liviano<br>
       descarga: archivo original<br>
       galería estilo masonry
     </p>
+  </div>
+  <div class="custom-title-row" id="customTitleRow">
+    <button type="button" class="pill-btn" id="customTitleBtn">✎ Personalizar bienvenida</button>
   </div>
 </header>
 
@@ -231,8 +263,19 @@
   <div class="right" id="toolbarRight"></div>
 </div>
 
+<div class="search-bar">
+  <div class="search-box">
+    <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="16" height="16"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
+    <input type="text" id="searchInput" placeholder="Buscar por nombre, palabra clave o descripción...">
+    <button type="button" id="searchClearBtn" title="Borrar búsqueda">✕</button>
+  </div>
+  <p class="search-count" id="searchCount"></p>
+</div>
+
 <main>
   <div class="gallery" id="gallery"></div>
+  <p class="empty-msg" id="emptyMsg" style="display:none;">No se encontraron imágenes con esa búsqueda.</p>
+  <div class="pager" id="pager"></div>
 </main>
 
 <footer>
@@ -332,13 +375,14 @@
 <script>
 (function(){
 
-  const META_KEY = 'fondoblanco_catalog_meta_v5';
+  const META_KEY = 'fondoblanco_catalog_meta_v6';
   const ADMIN_USER = 'emor19';
   const ADMIN_PASS = 'Fondo123';
-  const GRID_SIZE = 480;   // ancho de la vista previa en la cuadrícula (más liviano)
-  const DETAIL_SIZE = 900; // ancho de la vista previa en la ficha individual
-  const MAX_UPLOAD_WIDTH = 720; // ancho máximo al comprimir imágenes subidas
+  const GRID_SIZE = 320;   // ancho de la vista previa en la cuadrícula (reducido para cargar más rápido)
+  const DETAIL_SIZE = 760; // ancho de la vista previa en la ficha individual
+  const MAX_UPLOAD_WIDTH = 640; // ancho máximo al comprimir imágenes subidas
   const MAX_DATAURL_LEN = 4200000; // margen de seguridad bajo el límite de 5MB por clave
+  const PAGE_SIZE = 30;    // cantidad de imágenes por página
 
   function imgKey(id){ return 'fondoblanco_img_' + id; }
 
@@ -385,7 +429,16 @@
     { id:"36", title:"Fondo 36 — Imagen de alta calidad", desc:"Imagen de alta resolución lista para usar como fondo de pantalla o en tus proyectos de diseño.", keywords:["imagen hd","fondo de pantalla","banco de imagenes","textura de fondo"], download:driveDownload("1H1tYAMnKTbzrU5vQjdNOGpumngLqQ-xV"), preview:{type:"drive", driveId:"1H1tYAMnKTbzrU5vQjdNOGpumngLqQ-xV"} },
     { id:"37", title:"Fondo 37 — Textura para diseño gráfico", desc:"Textura de alta resolución, útil como fondo para presentaciones, redes sociales o piezas gráficas.", keywords:["textura","fondo grafico","wallpaper 4k","descarga gratis"], download:driveDownload("1O4Ftusvixa3DYSZBbiNduJEdFKFUtOFJ"), preview:{type:"drive", driveId:"1O4Ftusvixa3DYSZBbiNduJEdFKFUtOFJ"} },
     { id:"38", title:"Fondo 38 — Wallpaper en calidad 4K", desc:"Fondo de pantalla en calidad 4K, con gran nivel de detalle para pantallas grandes.", keywords:["wallpaper 4k","fondo de pantalla hd","textura","fondo de escritorio"], download:driveDownload("1eGjpOHeSX5rT2B_SHJqSdhaNebZPewYm"), preview:{type:"drive", driveId:"1eGjpOHeSX5rT2B_SHJqSdhaNebZPewYm"} },
-    { id:"39", title:"Fondo 39 — Fondo minimalista en HD", desc:"Fondo de pantalla con estética limpia y colores equilibrados, en alta resolución.", keywords:["fondo minimalista","wallpaper hd","fondo de pantalla","textura"], download:driveDownload("1IwnB5FIXqzieRoXghqYK0t7xgKP3_uYg"), preview:{type:"drive", driveId:"1IwnB5FIXqzieRoXghqYK0t7xgKP3_uYg"} }
+    { id:"39", title:"Fondo 39 — Fondo minimalista en HD", desc:"Fondo de pantalla con estética limpia y colores equilibrados, en alta resolución.", keywords:["fondo minimalista","wallpaper hd","fondo de pantalla","textura"], download:driveDownload("1IwnB5FIXqzieRoXghqYK0t7xgKP3_uYg"), preview:{type:"drive", driveId:"1IwnB5FIXqzieRoXghqYK0t7xgKP3_uYg"} },
+    { id:"40", title:"Fondo 40 — Piel de carbón: textura de madera carbonizada", desc:"Superficie de madera profundamente carbonizada, con textura rugosa en tonos negros y grises intensos. Fondo de pantalla en alta resolución para diseños oscuros y elegantes.", keywords:["textura de madera carbonizada","piel de carbon","fondo de pantalla hd","madera quemada","textura oscura"], download:driveDownload("16I3_B5nTYbkvyQoYGa9qm5nKG1ENaG79"), preview:{type:"drive", driveId:"16I3_B5nTYbkvyQoYGa9qm5nKG1ENaG79"} },
+    { id:"41", title:"Fondo 41 — Hielo glaciar con burbujas atrapadas", desc:"Bloque de hielo glaciar translúcido con burbujas de aire atrapadas en su interior. Fondo de pantalla en alta resolución, ideal para diseños de invierno.", keywords:["textura de hielo","hielo glaciar","fondo de pantalla hd","burbujas de aire","wallpaper frio"], download:driveDownload("1nLL1SOVCJSQgIsmRXc5jTZ2c_coNSQxf"), preview:{type:"drive", driveId:"1nLL1SOVCJSQgIsmRXc5jTZ2c_coNSQxf"} },
+    { id:"42", title:"Fondo 42 — Escamas de reptil alienígena en 2K", desc:"Textura de escamas de reptil con estética de ciencia ficción, en resolución 2K. Ideal para fondos de pantalla y proyectos de diseño futurista.", keywords:["escamas de reptil","textura alienigena","wallpaper 2k","textura sci-fi","fondo de pantalla hd"], download:driveDownload("1Tdsnq7uJUsly9bQZza83YGTZhnpZBIPK"), preview:{type:"drive", driveId:"1Tdsnq7uJUsly9bQZza83YGTZhnpZBIPK"} },
+    { id:"43", title:"Fondo 43 — Musgo radiante bajo la lluvia del bosque", desc:"Primer plano de musgo verde brillante humedecido por la lluvia, con gotas de agua sobre la superficie. Fondo de pantalla natural en alta resolución.", keywords:["textura de musgo","musgo bajo la lluvia","fondo de pantalla hd","textura natural","wallpaper bosque"], download:driveDownload("1V9Zwbx0tR0Z0_Dj-v5qBBnPcWs8EoHXV"), preview:{type:"drive", driveId:"1V9Zwbx0tR0Z0_Dj-v5qBBnPcWs8EoHXV"} },
+    { id:"44", title:"Fondo 44 — Escamas iridiscentes en bronce y fuego dorado", desc:"Textura de escamas con reflejos iridiscentes en tonos bronce y dorado, con efecto de fuego. Fondo de pantalla en alta resolución con acabado brillante.", keywords:["escamas iridiscentes","textura bronce","fondo de pantalla hd","wallpaper dorado","textura metalica"], download:driveDownload("1UWzz6rV-3KzaY5y0H860HI6dESQ-4JtI"), preview:{type:"drive", driveId:"1UWzz6rV-3KzaY5y0H860HI6dESQ-4JtI"} },
+    { id:"45", title:"Fondo 45 — Textura de carbón", desc:"Superficie de carbón con textura porosa y profunda, en tonos negros mate. Fondo de pantalla en alta resolución ideal para diseños oscuros.", keywords:["textura de carbon","fondo oscuro","fondo de pantalla hd","textura negra","wallpaper carbon"], download:driveDownload("1cEFz4PD9G92Phi9xIwWA8wrhFNXRpgL8"), preview:{type:"drive", driveId:"1cEFz4PD9G92Phi9xIwWA8wrhFNXRpgL8"} },
+    { id:"46", title:"Fondo 46 — Núcleo de hielo milenario", desc:"Corte transversal de un núcleo de hielo milenario con burbujas de aire congeladas visibles en capas. Fondo de pantalla en alta resolución.", keywords:["nucleo de hielo","hielo milenario","fondo de pantalla hd","burbujas congeladas","textura glaciar"], download:driveDownload("1mt2exhhM1C9J5OTxmBVxXtlj_CE_3nsJ"), preview:{type:"drive", driveId:"1mt2exhhM1C9J5OTxmBVxXtlj_CE_3nsJ"} },
+    { id:"47", title:"Fondo 47 — Mar de fuego y llamaradas infernales", desc:"Superficie de lava incandescente con llamaradas continuas y tonos de fuego intenso. Fondo de pantalla dramático en alta resolución.", keywords:["textura de fuego","lava","fondo de pantalla hd","llamas","wallpaper fuego"], download:driveDownload("133hri56-BZN_vLhoRHhR_bKPsuxnGG4X"), preview:{type:"drive", driveId:"133hri56-BZN_vLhoRHhR_bKPsuxnGG4X"} },
+    { id:"48", title:"Fondo 48 — Imagen de alta calidad", desc:"Imagen de alta resolución lista para usar como fondo de pantalla o en tus proyectos de diseño.", keywords:["imagen hd","fondo de pantalla","banco de imagenes","textura de fondo"], download:driveDownload("1Y2Y_YVJskryzoxuYhe2ITGOklITkeAG8"), preview:{type:"drive", driveId:"1Y2Y_YVJskryzoxuYhe2ITGOklITkeAG8"} }
   ];
 
   let items = [];
@@ -465,18 +518,26 @@
   // ---------- Cambio de color del sitio ----------
   const THEME_KEY = 'fondoblanco_theme';
   const THEMES = {
-    terracota:{ label:'Terracota', terracotta:'#bd5a2c', mustard:'#c99a2b', olive:'#556246' },
-    oceano:   { label:'Océano',    terracotta:'#2b6ebd', mustard:'#2b93c9', olive:'#2c5a6b' },
-    bosque:   { label:'Bosque',    terracotta:'#3e7d4a', mustard:'#7a9a2b', olive:'#3b5c3f' },
-    ciruela:  { label:'Ciruela',   terracotta:'#8a3b8f', mustard:'#c94f9a', olive:'#5a3d63' },
-    carbon:   { label:'Carbón',    terracotta:'#4a4a4a', mustard:'#8a8a8a', olive:'#2c2c2c' }
+    terracota:{ label:'Terracota', terracotta:'#bd5a2c', mustard:'#c99a2b', olive:'#556246', paper:'#faf9f5', ink:'#1c1a17', inkSoft:'#5b564d', line:'#e2ded4', cardBg:'#ffffff' },
+    oceano:   { label:'Océano',    terracotta:'#2b6ebd', mustard:'#2b93c9', olive:'#2c5a6b', paper:'#f4f8fb', ink:'#101c26', inkSoft:'#4c6474', line:'#d7e3ea', cardBg:'#ffffff' },
+    bosque:   { label:'Bosque',    terracotta:'#3e7d4a', mustard:'#7a9a2b', olive:'#3b5c3f', paper:'#f5f8f2', ink:'#141d13', inkSoft:'#516352', line:'#dbe6d4', cardBg:'#ffffff' },
+    ciruela:  { label:'Ciruela',   terracotta:'#8a3b8f', mustard:'#c94f9a', olive:'#5a3d63', paper:'#f8f4f8', ink:'#1e1420', inkSoft:'#634e66', line:'#e6dae7', cardBg:'#ffffff' },
+    carbon:   { label:'Carbón',    terracotta:'#4a4a4a', mustard:'#8a8a8a', olive:'#2c2c2c', paper:'#efefef', ink:'#161616', inkSoft:'#5a5a5a', line:'#dadada', cardBg:'#ffffff' }
   };
 
+  // Aplica el color de acento Y el color de fondo/texto del sitio (antes solo cambiaba
+  // el acento y el fondo se quedaba siempre igual, sin notarse el cambio).
   function applyTheme(name){
     const t = THEMES[name] || THEMES.terracota;
-    document.documentElement.style.setProperty('--terracotta', t.terracotta);
-    document.documentElement.style.setProperty('--mustard', t.mustard);
-    document.documentElement.style.setProperty('--olive', t.olive);
+    const root = document.documentElement.style;
+    root.setProperty('--terracotta', t.terracotta);
+    root.setProperty('--mustard', t.mustard);
+    root.setProperty('--olive', t.olive);
+    root.setProperty('--paper', t.paper);
+    root.setProperty('--ink', t.ink);
+    root.setProperty('--ink-soft', t.inkSoft);
+    root.setProperty('--line', t.line);
+    root.setProperty('--card-bg', t.cardBg);
     document.querySelectorAll('.theme-dot').forEach(d=> d.classList.toggle('active', d.dataset.theme===name));
     try{ localStorage.setItem(THEME_KEY, name); }catch(e){ /* no crítico */ }
   }
@@ -493,6 +554,67 @@
       btn.addEventListener('click', ()=> applyTheme(btn.dataset.theme));
     });
     applyTheme(saved);
+  }
+
+  // ---------- Bienvenida personalizada (guardada solo en este navegador) ----------
+  const CUSTOM_TITLE_KEY = 'fondoblanco_custom_welcome';
+  const SITE_TITLE_BASE = 'Fondo Blanco — Banco de imágenes y fondos de pantalla';
+  const customTitleRow = document.getElementById('customTitleRow');
+
+  function getCustomWelcome(){
+    try{ return localStorage.getItem(CUSTOM_TITLE_KEY) || ''; }catch(e){ return ''; }
+  }
+
+  function renderCustomWelcome(){
+    const saved = getCustomWelcome();
+    if(saved){
+      customTitleRow.innerHTML = `
+        <p class="custom-welcome">"${escapeHtml(saved)}"</p>
+        <div style="display:flex;gap:8px;">
+          <button type="button" class="pill-btn" id="customTitleBtn">✎ Editar bienvenida</button>
+          <button type="button" class="pill-btn" id="customTitleResetBtn">Quitar</button>
+        </div>
+      `;
+      document.title = `${saved} · Fondo Blanco`;
+      document.getElementById('customTitleResetBtn').addEventListener('click', ()=>{
+        try{ localStorage.removeItem(CUSTOM_TITLE_KEY); }catch(e){}
+        document.title = SITE_TITLE_BASE;
+        renderCustomWelcome();
+        showToast('Bienvenida personalizada eliminada');
+      });
+    }else{
+      customTitleRow.innerHTML = `<button type="button" class="pill-btn" id="customTitleBtn">✎ Personalizar bienvenida</button>`;
+      document.title = SITE_TITLE_BASE;
+    }
+    document.getElementById('customTitleBtn').addEventListener('click', openCustomTitleEditor);
+  }
+
+  function openCustomTitleEditor(){
+    const current = getCustomWelcome();
+    customTitleRow.innerHTML = `
+      <div class="field" style="max-width:420px;margin-bottom:8px;">
+        <input type="text" id="customTitleInput" maxlength="90" placeholder="Ej: Bienvenido, Emerson — tu colección de fondos" value="${escapeHtml(current)}">
+      </div>
+      <div style="display:flex;gap:8px;">
+        <button type="button" class="pill-btn accent" id="customTitleSaveBtn">Guardar</button>
+        <button type="button" class="pill-btn" id="customTitleCancelBtn">Cancelar</button>
+      </div>
+    `;
+    const input = document.getElementById('customTitleInput');
+    input.focus();
+    input.addEventListener('keydown', (e)=>{ if(e.key==='Enter') saveCustomTitle(); });
+    document.getElementById('customTitleSaveBtn').addEventListener('click', saveCustomTitle);
+    document.getElementById('customTitleCancelBtn').addEventListener('click', renderCustomWelcome);
+  }
+
+  function saveCustomTitle(){
+    const val = document.getElementById('customTitleInput').value.trim();
+    try{
+      if(val) localStorage.setItem(CUSTOM_TITLE_KEY, val);
+      else localStorage.removeItem(CUSTOM_TITLE_KEY);
+    }catch(e){ /* no crítico */ }
+    renderCustomWelcome();
+    showToast(val ? 'Bienvenida personalizada guardada' : 'Bienvenida personalizada eliminada');
   }
 
   // ---------- Utilidades ----------
@@ -576,11 +698,47 @@
     });
   }
 
-  // ---------- Render galería (carga por lotes de 8 para más velocidad) ----------
+  // ---------- Buscador ----------
+  const searchInput = document.getElementById('searchInput');
+  const searchClearBtn = document.getElementById('searchClearBtn');
+  const searchBoxEl = document.querySelector('.search-box');
+  const searchCountEl = document.getElementById('searchCount');
+  const emptyMsgEl = document.getElementById('emptyMsg');
+  let searchTerm = '';
+
+  function normalize(str){
+    return String(str||'').toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'');
+  }
+
+  function matchesSearch(item){
+    if(!searchTerm) return true;
+    const haystack = normalize(item.title + ' ' + (item.desc||'') + ' ' + (item.keywords||[]).join(' '));
+    return haystack.includes(searchTerm);
+  }
+
+  function getFilteredItems(){
+    return items.filter(matchesSearch);
+  }
+
+  searchInput.addEventListener('input', ()=>{
+    searchTerm = normalize(searchInput.value.trim());
+    searchBoxEl.classList.toggle('has-value', searchInput.value.length > 0);
+    currentPage = 1;
+    renderGallery();
+  });
+  searchClearBtn.addEventListener('click', ()=>{
+    searchInput.value = '';
+    searchTerm = '';
+    searchBoxEl.classList.remove('has-value');
+    currentPage = 1;
+    renderGallery();
+    searchInput.focus();
+  });
+
+  // ---------- Render galería (30 imágenes por página) ----------
   const gallery = document.getElementById('gallery');
-  const BATCH_SIZE = 8;
-  let renderedCount = 0;
-  let galleryObserver = null;
+  const pagerEl = document.getElementById('pager');
+  let currentPage = 1;
 
   function buildPlate(item){
     const fig = document.createElement('figure');
@@ -626,37 +784,59 @@
   }
 
   function renderGallery(){
+    const filtered = getFilteredItems();
+    const totalPages = Math.max(1, Math.ceil(filtered.length / PAGE_SIZE));
+    if(currentPage > totalPages) currentPage = totalPages;
+    if(currentPage < 1) currentPage = 1;
+
     gallery.innerHTML = '';
-    renderedCount = 0;
-    if(galleryObserver){ galleryObserver.disconnect(); galleryObserver = null; }
-    renderNextBatch();
-  }
-
-  function renderNextBatch(){
-    const slice = items.slice(renderedCount, renderedCount + BATCH_SIZE);
+    const start = (currentPage - 1) * PAGE_SIZE;
+    const slice = filtered.slice(start, start + PAGE_SIZE);
     slice.forEach(item => gallery.appendChild(buildPlate(item)));
-    renderedCount += slice.length;
-    setupSentinel();
+
+    emptyMsgEl.style.display = filtered.length ? 'none' : 'block';
+    searchCountEl.textContent = searchTerm
+      ? `${filtered.length} resultado${filtered.length===1?'':'s'} para "${searchInput.value.trim()}"`
+      : `${filtered.length} imágenes en el catálogo`;
+
+    renderPager(totalPages, filtered.length);
   }
 
-  function setupSentinel(){
-    const old = document.getElementById('gallerySentinel');
-    if(old) old.remove();
-    if(galleryObserver){ galleryObserver.disconnect(); galleryObserver = null; }
-    if(renderedCount >= items.length) return;
+  function goToPage(p){
+    currentPage = p;
+    renderGallery();
+    window.scrollTo({ top: gallery.getBoundingClientRect().top + window.scrollY - 90, behavior:'smooth' });
+  }
 
-    const sentinel = document.createElement('div');
-    sentinel.id = 'gallerySentinel';
-    sentinel.style.cssText = 'height:1px;width:100%;';
-    gallery.insertAdjacentElement('afterend', sentinel);
+  function renderPager(totalPages, totalItems){
+    pagerEl.innerHTML = '';
+    if(totalItems <= PAGE_SIZE) return;
 
-    galleryObserver = new IntersectionObserver((entries)=>{
-      if(entries[0].isIntersecting){
-        galleryObserver.disconnect();
-        renderNextBatch();
-      }
-    }, { rootMargin: '600px 0px' });
-    galleryObserver.observe(sentinel);
+    const mkBtn = (label, page, opts={})=>{
+      const b = document.createElement('button');
+      b.type = 'button';
+      b.textContent = label;
+      if(opts.active) b.classList.add('active');
+      if(opts.disabled) b.disabled = true;
+      if(!opts.disabled) b.addEventListener('click', ()=> goToPage(page));
+      return b;
+    };
+    const mkDots = ()=>{ const s = document.createElement('span'); s.className='dots'; s.textContent='···'; return s; };
+
+    pagerEl.appendChild(mkBtn('‹ Anterior', currentPage-1, { disabled: currentPage===1 }));
+
+    const pages = [];
+    for(let p=1; p<=totalPages; p++){
+      if(p===1 || p===totalPages || Math.abs(p-currentPage)<=1) pages.push(p);
+    }
+    let last = 0;
+    pages.forEach(p=>{
+      if(last && p-last>1) pagerEl.appendChild(mkDots());
+      pagerEl.appendChild(mkBtn(String(p), p, { active: p===currentPage }));
+      last = p;
+    });
+
+    pagerEl.appendChild(mkBtn('Siguiente ›', currentPage+1, { disabled: currentPage===totalPages }));
   }
 
   // ---------- Detalle con URL propia ----------
@@ -713,7 +893,8 @@
 
   function closeDetail(){
     detailOverlay.classList.remove('open');
-    document.title = 'Fondo Blanco — Banco de imágenes y fondos de pantalla';
+    const saved = getCustomWelcome();
+    document.title = saved ? `${saved} · Fondo Blanco` : SITE_TITLE_BASE;
     history.replaceState(null, '', window.location.pathname + window.location.search);
   }
 
@@ -959,6 +1140,7 @@
   // ---------- Init ----------
   (async function init(){
     renderThemeSwitch();
+    renderCustomWelcome();
     await loadCatalog();
     renderToolbar();
     renderGallery();
