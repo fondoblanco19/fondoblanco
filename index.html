@@ -45,15 +45,22 @@
 <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,560;0,9..144,650;1,9..144,500&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@500&display=swap" rel="stylesheet">
 <style>
   :root{
-    --paper:#faf9f5;
-    --ink:#1c1a17;
-    --ink-soft:#5b564d;
-    --line:#e2ded4;
+    --paper:#0a0a0a;
+    --ink:#ffffff;
+    --ink-soft:#a3a3a3;
+    --line:#2a2a2a;
     --terracotta:#bd5a2c;
     --mustard:#c99a2b;
     --olive:#556246;
-    --card-bg:#ffffff;
-    --danger:#a83232;
+    --card-bg:#131313;
+    --img-bg:#1a1a1a;
+    --input-bg:#161616;
+    --dropzone-bg:#161616;
+    --dropzone-drag-bg:#1e1a16;
+    --kw-bg:#161616;
+    --edit-pin-bg:rgba(255,255,255,.12);
+    --edit-pin-color:var(--ink);
+    --danger:#e0605a;
   }
   *{box-sizing:border-box;}
   html{scroll-behavior:smooth;}
@@ -107,14 +114,6 @@
   .admin-badge{font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--olive);display:flex;align-items:center;gap:6px;}
   .admin-badge .dot{width:7px;height:7px;border-radius:50%;background:var(--olive);display:inline-block;}
 
-  .theme-switch{display:flex;align-items:center;gap:7px;}
-  .theme-dot{
-    width:18px;height:18px;border-radius:50%;border:2px solid transparent;padding:0;
-    background:var(--sw-color);box-shadow:0 0 0 1px var(--line) inset;transition:.15s;flex:none;
-  }
-  .theme-dot:hover{transform:scale(1.12);}
-  .theme-dot.active{border-color:var(--ink);}
-
   .custom-title-row{margin-top:18px;}
   .custom-welcome{font-family:'Fraunces',serif;font-style:italic;font-size:15px;color:var(--terracotta);margin:0 0 10px;}
 
@@ -145,25 +144,25 @@
   .pager .dots{font-family:'IBM Plex Mono',monospace;font-size:12.5px;color:var(--ink-soft);padding:0 2px;}
 
   main{padding:56px 6vw 90px;}
-  .gallery{columns:4 260px;column-gap:32px;}
-  @media (max-width:1100px){.gallery{columns:3 220px;}}
-  @media (max-width:720px){.gallery{columns:2 180px;}}
-  @media (max-width:480px){.gallery{columns:1;}}
+  .gallery{display:grid;grid-template-columns:repeat(6, 1fr);gap:10px;align-items:start;}
+  @media (max-width:1100px){.gallery{grid-template-columns:repeat(4, 1fr);}}
+  @media (max-width:720px){.gallery{grid-template-columns:repeat(3, 1fr);gap:7px;}}
+  @media (max-width:480px){.gallery{grid-template-columns:repeat(2, 1fr);gap:6px;}}
 
-  figure.plate{margin:0 0 32px;break-inside:avoid;display:inline-block;width:100%;}
-  .frame{background:var(--card-bg);padding:10px 10px 0;border:1px solid var(--line);box-shadow:0 1px 0 var(--line);position:relative;overflow:hidden;cursor:pointer;}
-  .frame .num{position:absolute;top:10px;left:10px;font-family:'IBM Plex Mono',monospace;font-size:11px;color:#fff;background:rgba(28,26,23,.55);padding:3px 8px;letter-spacing:.05em;z-index:2;}
-  .edit-pin{position:absolute;top:10px;right:10px;z-index:3;width:28px;height:28px;border-radius:50%;background:rgba(255,255,255,.92);border:1px solid var(--line);display:flex;align-items:center;justify-content:center;font-size:13px;}
+  figure.plate{margin:0;width:100%;}
+  .frame{background:var(--card-bg);padding:0;border:1px solid var(--line);border-radius:14px;box-shadow:0 1px 0 var(--line);position:relative;overflow:hidden;cursor:pointer;}
+  .frame .num{position:absolute;top:6px;left:6px;font-family:'IBM Plex Mono',monospace;font-size:9.5px;color:#fff;background:rgba(28,26,23,.55);padding:2px 6px;letter-spacing:.05em;z-index:2;}
+  .edit-pin{position:absolute;top:6px;right:6px;z-index:3;width:22px;height:22px;border-radius:50%;background:var(--edit-pin-bg);color:var(--edit-pin-color);border:1px solid var(--line);display:flex;align-items:center;justify-content:center;font-size:11px;}
   .edit-pin:hover{background:var(--terracotta);color:#fff;}
-  .img-wrap{position:relative;width:100%;overflow:hidden;background:#ece9e2;min-height:80px;}
+  .img-wrap{position:relative;width:100%;overflow:hidden;background:var(--img-bg);}
   .img-wrap img{width:100%;height:auto;display:block;transition:transform .6s cubic-bezier(.2,.7,.2,1),opacity .4s ease;opacity:0;}
   .img-wrap img.loaded{opacity:1;}
   .frame:hover .img-wrap img{transform:scale(1.04);}
   .img-wrap .fallback{padding:34px 16px;text-align:center;font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--ink-soft);}
-  .mat-bottom{height:10px;}
+  .mat-bottom{display:none;}
   .ad-slot{display:flex;flex-direction:column;align-items:center;gap:6px;margin:12px 0 4px;overflow:hidden;}
   .ad-slot iframe{max-width:100%;border:0;}
-  figcaption{padding:14px 2px 0;}
+  figure.plate figcaption{display:none;}
   .plate-title{font-family:'Fraunces',serif;font-weight:560;font-size:19px;margin:0 0 4px;letter-spacing:-.01em;}
   .plate-meta{font-family:'IBM Plex Mono',monospace;font-size:10.5px;letter-spacing:.04em;text-transform:uppercase;color:var(--terracotta);margin:0 0 20px;}
 
@@ -178,14 +177,14 @@
 
   .detail-grid{display:grid;grid-template-columns:1.1fr 1fr;gap:0;}
   @media (max-width:720px){.detail-grid{grid-template-columns:1fr;}}
-  .detail-img{background:#ece9e2;display:flex;align-items:center;justify-content:center;min-height:280px;}
+  .detail-img{background:var(--img-bg);display:flex;align-items:center;justify-content:center;min-height:280px;}
   .detail-img img{width:100%;height:auto;display:block;}
   .detail-info{padding:44px 40px;}
   .detail-eyebrow{font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--terracotta);margin:0 0 14px;}
   .detail-title{font-family:'Fraunces',serif;font-weight:650;font-size:34px;margin:0 0 14px;line-height:1.05;}
   .detail-desc{font-size:14.5px;line-height:1.6;color:var(--ink-soft);margin:0 0 20px;}
   .detail-kw{display:flex;flex-wrap:wrap;gap:6px;margin:0 0 26px;padding:0;list-style:none;}
-  .detail-kw li{font-size:11.5px;padding:4px 11px;border:1px solid var(--line);border-radius:20px;color:var(--ink-soft);background:#fff;}
+  .detail-kw li{font-size:11.5px;padding:4px 11px;border:1px solid var(--line);border-radius:20px;color:var(--ink-soft);background:var(--kw-bg);}
   .detail-actions{display:flex;gap:10px;flex-wrap:wrap;}
   .btn{display:inline-flex;align-items:center;gap:8px;font-weight:600;font-size:13px;text-decoration:none;padding:12px 20px;border:1px solid var(--ink);letter-spacing:.01em;transition:.2s;background:transparent;color:var(--ink);}
   .btn.solid{background:var(--ink);color:var(--paper);}
@@ -202,7 +201,7 @@
   .field{margin-bottom:18px;}
   .field label{display:block;font-family:'IBM Plex Mono',monospace;font-size:10.5px;text-transform:uppercase;letter-spacing:.06em;color:var(--ink-soft);margin-bottom:7px;}
   .field input[type=text],.field input[type=password],.field textarea{
-    width:100%;padding:12px 14px;border:1px solid var(--line);background:#fff;font-family:'Inter',sans-serif;font-size:14px;color:var(--ink);border-radius:4px;
+    width:100%;padding:12px 14px;border:1px solid var(--line);background:var(--input-bg);font-family:'Inter',sans-serif;font-size:14px;color:var(--ink);border-radius:4px;
   }
   .field textarea{min-height:80px;resize:vertical;}
   .field input:focus,.field textarea:focus{outline:none;border-color:var(--terracotta);}
@@ -211,8 +210,8 @@
   .success-msg{color:var(--olive);font-size:12.5px;margin:-6px 0 16px;display:none;}
   .success-msg.show{display:block;}
 
-  .dropzone{border:2px dashed var(--line);background:#f2f0ea;padding:34px 16px;text-align:center;border-radius:6px;cursor:pointer;transition:.2s;position:relative;}
-  .dropzone.drag{border-color:var(--terracotta);background:#f7ece3;}
+  .dropzone{border:2px dashed var(--line);background:var(--dropzone-bg);padding:34px 16px;text-align:center;border-radius:6px;cursor:pointer;transition:.2s;position:relative;}
+  .dropzone.drag{border-color:var(--terracotta);background:var(--dropzone-drag-bg);}
   .dropzone .up-icon{width:34px;height:34px;border-radius:50%;border:1.5px solid var(--ink);display:flex;align-items:center;justify-content:center;margin:0 auto 12px;}
   .dropzone p{margin:0;font-size:13.5px;}
   .dropzone .hint{font-size:11.5px;color:var(--ink-soft);margin-top:8px;}
@@ -258,9 +257,10 @@
 <div class="strip">
   <div style="display:flex;align-items:center;gap:16px;">
     <span>Colección — Fondos 2026</span>
-    <div class="theme-switch" id="themeSwitch" role="group" aria-label="Cambiar color del sitio"></div>
+    <button type="button" class="pill-btn" id="modeToggleBtn"></button>
   </div>
-  <div class="right" id="toolbarRight"></div>
+  <div class="right" style="display:flex;align-items:center;gap:10px;">
+  </div>
 </div>
 
 <div class="search-bar">
@@ -290,27 +290,6 @@
   <div class="modal" id="detailModal">
     <button class="modal-close" id="detailClose" type="button">✕</button>
     <div class="detail-grid" id="detailBody"></div>
-  </div>
-</div>
-
-<!-- ============ LOGIN ADMIN ============ -->
-<div class="overlay" id="loginOverlay">
-  <div class="modal" style="max-width:420px;">
-    <button class="modal-close" id="loginClose" type="button">✕</button>
-    <div class="form-pad">
-      <h2 class="form-title">Acceso administrador</h2>
-      <p class="form-sub">Solo para gestión interna del sitio.</p>
-      <div class="field">
-        <label for="loginUser">Usuario</label>
-        <input type="text" id="loginUser" autocomplete="username">
-      </div>
-      <div class="field">
-        <label for="loginPass">Contraseña</label>
-        <input type="password" id="loginPass" autocomplete="current-password">
-      </div>
-      <p class="error-msg" id="loginError">Usuario o contraseña incorrectos.</p>
-      <button class="btn solid" id="loginSubmit" type="button" style="width:100%;justify-content:center;">Ingresar</button>
-    </div>
   </div>
 </div>
 
@@ -515,29 +494,24 @@
     });
   }
 
-  // ---------- Cambio de color del sitio ----------
+  // ---------- Cambio de color de acento del sitio ----------
   const THEME_KEY = 'fondoblanco_theme';
   const THEMES = {
-    terracota:{ label:'Terracota', terracotta:'#bd5a2c', mustard:'#c99a2b', olive:'#556246', paper:'#faf9f5', ink:'#1c1a17', inkSoft:'#5b564d', line:'#e2ded4', cardBg:'#ffffff' },
-    oceano:   { label:'Océano',    terracotta:'#2b6ebd', mustard:'#2b93c9', olive:'#2c5a6b', paper:'#f4f8fb', ink:'#101c26', inkSoft:'#4c6474', line:'#d7e3ea', cardBg:'#ffffff' },
-    bosque:   { label:'Bosque',    terracotta:'#3e7d4a', mustard:'#7a9a2b', olive:'#3b5c3f', paper:'#f5f8f2', ink:'#141d13', inkSoft:'#516352', line:'#dbe6d4', cardBg:'#ffffff' },
-    ciruela:  { label:'Ciruela',   terracotta:'#8a3b8f', mustard:'#c94f9a', olive:'#5a3d63', paper:'#f8f4f8', ink:'#1e1420', inkSoft:'#634e66', line:'#e6dae7', cardBg:'#ffffff' },
-    carbon:   { label:'Carbón',    terracotta:'#4a4a4a', mustard:'#8a8a8a', olive:'#2c2c2c', paper:'#efefef', ink:'#161616', inkSoft:'#5a5a5a', line:'#dadada', cardBg:'#ffffff' }
+    terracota:{ label:'Terracota', terracotta:'#bd5a2c', mustard:'#c99a2b', olive:'#556246' },
+    oceano:   { label:'Océano',    terracotta:'#2b6ebd', mustard:'#2b93c9', olive:'#2c5a6b' },
+    bosque:   { label:'Bosque',    terracotta:'#3e7d4a', mustard:'#7a9a2b', olive:'#3b5c3f' },
+    ciruela:  { label:'Ciruela',   terracotta:'#8a3b8f', mustard:'#c94f9a', olive:'#5a3d63' },
+    carbon:   { label:'Carbón',    terracotta:'#4a4a4a', mustard:'#8a8a8a', olive:'#2c2c2c' }
   };
 
-  // Aplica el color de acento Y el color de fondo/texto del sitio (antes solo cambiaba
-  // el acento y el fondo se quedaba siempre igual, sin notarse el cambio).
+  // Solo cambia el color de acento (terracota/mustard/olive). El fondo/texto del
+  // sitio lo controla el modo oscuro/claro (ver más abajo), de forma independiente.
   function applyTheme(name){
     const t = THEMES[name] || THEMES.terracota;
     const root = document.documentElement.style;
     root.setProperty('--terracotta', t.terracotta);
     root.setProperty('--mustard', t.mustard);
     root.setProperty('--olive', t.olive);
-    root.setProperty('--paper', t.paper);
-    root.setProperty('--ink', t.ink);
-    root.setProperty('--ink-soft', t.inkSoft);
-    root.setProperty('--line', t.line);
-    root.setProperty('--card-bg', t.cardBg);
     document.querySelectorAll('.theme-dot').forEach(d=> d.classList.toggle('active', d.dataset.theme===name));
     try{ localStorage.setItem(THEME_KEY, name); }catch(e){ /* no crítico */ }
   }
@@ -554,6 +528,50 @@
       btn.addEventListener('click', ()=> applyTheme(btn.dataset.theme));
     });
     applyTheme(saved);
+  }
+
+  // ---------- Modo oscuro / claro (fondo mate negro con tipografía blanca, o al revés) ----------
+  const MODE_KEY = 'fondoblanco_mode';
+  const MODES = {
+    oscuro:{ label:'Oscuro', paper:'#0a0a0a', ink:'#ffffff', inkSoft:'#a3a3a3', line:'#2a2a2a', cardBg:'#131313', imgBg:'#1a1a1a', inputBg:'#161616', dropzoneBg:'#161616', dropzoneDragBg:'#1e1a16', kwBg:'#161616', editPinBg:'rgba(255,255,255,.12)', editPinColor:'#ffffff' },
+    claro: { label:'Claro',  paper:'#faf9f5', ink:'#1c1a17', inkSoft:'#5b564d', line:'#e2ded4', cardBg:'#ffffff', imgBg:'#ece9e2', inputBg:'#ffffff', dropzoneBg:'#f2f0ea', dropzoneDragBg:'#f7ece3', kwBg:'#ffffff', editPinBg:'rgba(0,0,0,.06)', editPinColor:'#1c1a17' }
+  };
+
+  function applyMode(name){
+    const m = MODES[name] || MODES.oscuro;
+    const root = document.documentElement.style;
+    root.setProperty('--paper', m.paper);
+    root.setProperty('--ink', m.ink);
+    root.setProperty('--ink-soft', m.inkSoft);
+    root.setProperty('--line', m.line);
+    root.setProperty('--card-bg', m.cardBg);
+    root.setProperty('--img-bg', m.imgBg);
+    root.setProperty('--input-bg', m.inputBg);
+    root.setProperty('--dropzone-bg', m.dropzoneBg);
+    root.setProperty('--dropzone-drag-bg', m.dropzoneDragBg);
+    root.setProperty('--kw-bg', m.kwBg);
+    root.setProperty('--edit-pin-bg', m.editPinBg);
+    root.setProperty('--edit-pin-color', m.editPinColor);
+    currentMode = name;
+    try{ localStorage.setItem(MODE_KEY, name); }catch(e){ /* no crítico */ }
+    renderModeToggle();
+  }
+
+  let currentMode = 'oscuro';
+
+  function renderModeToggle(){
+    const btn = document.getElementById('modeToggleBtn');
+    if(!btn) return;
+    const next = currentMode === 'oscuro' ? 'claro' : 'oscuro';
+    btn.textContent = currentMode === 'oscuro' ? '☀ Modo claro' : '● Modo oscuro';
+    btn.title = `Cambiar a modo ${next}`;
+    btn.onclick = ()=> applyMode(next);
+  }
+
+  function initMode(){
+    let saved = 'oscuro';
+    try{ saved = localStorage.getItem(MODE_KEY) || 'oscuro'; }catch(e){}
+    applyMode(saved);
   }
 
   // ---------- Bienvenida personalizada (guardada solo en este navegador) ----------
@@ -725,6 +743,7 @@
     searchBoxEl.classList.toggle('has-value', searchInput.value.length > 0);
     currentPage = 1;
     renderGallery();
+    updatePageUrl(1, true);
   });
   searchClearBtn.addEventListener('click', ()=>{
     searchInput.value = '';
@@ -732,6 +751,7 @@
     searchBoxEl.classList.remove('has-value');
     currentPage = 1;
     renderGallery();
+    updatePageUrl(1, true);
     searchInput.focus();
   });
 
@@ -802,11 +822,35 @@
     renderPager(totalPages, filtered.length);
   }
 
-  function goToPage(p){
+  // Cada página tiene su propio enlace individual: /?page=2, /?page=3, etc.
+  // Así se puede compartir o guardar el enlace directo a esa página.
+  function getPageFromUrl(){
+    const params = new URLSearchParams(window.location.search);
+    const p = parseInt(params.get('page'), 10);
+    return (Number.isFinite(p) && p > 0) ? p : 1;
+  }
+
+  function updatePageUrl(p, replace){
+    const params = new URLSearchParams(window.location.search);
+    if(p > 1) params.set('page', String(p));
+    else params.delete('page');
+    const qs = params.toString();
+    const newUrl = window.location.pathname + (qs ? '?' + qs : '') + window.location.hash;
+    if(replace) history.replaceState(null, '', newUrl);
+    else history.pushState(null, '', newUrl);
+  }
+
+  function goToPage(p, skipUrlUpdate){
     currentPage = p;
     renderGallery();
+    if(!skipUrlUpdate) updatePageUrl(p, false);
     window.scrollTo({ top: gallery.getBoundingClientRect().top + window.scrollY - 90, behavior:'smooth' });
   }
+
+  window.addEventListener('popstate', ()=>{
+    currentPage = getPageFromUrl();
+    renderGallery();
+  });
 
   function renderPager(totalPages, totalItems){
     pagerEl.innerHTML = '';
@@ -910,52 +954,10 @@
   }
   window.addEventListener('hashchange', handleHash);
 
-  // ---------- Login admin ----------
-  const loginOverlay = document.getElementById('loginOverlay');
-  const toolbarRight = document.getElementById('toolbarRight');
-
-  document.getElementById('loginClose').addEventListener('click', ()=> loginOverlay.classList.remove('open'));
-  loginOverlay.addEventListener('click', (e)=>{ if(e.target===loginOverlay) loginOverlay.classList.remove('open'); });
-
-  function openLoginModal(){
-    document.getElementById('loginUser').value = '';
-    document.getElementById('loginPass').value = '';
-    document.getElementById('loginError').classList.remove('show');
-    loginOverlay.classList.add('open');
-  }
-
-  document.getElementById('loginSubmit').addEventListener('click', ()=>{
-    const u = document.getElementById('loginUser').value.trim();
-    const p = document.getElementById('loginPass').value;
-    if(u === ADMIN_USER && p === ADMIN_PASS){
-      isAdmin = true;
-      loginOverlay.classList.remove('open');
-      renderToolbar();
-      renderGallery();
-      showToast('Sesión iniciada como administrador');
-    }else{
-      document.getElementById('loginError').classList.add('show');
-    }
-  });
+  // ---------- Admin (login deshabilitado) ----------
 
   function renderToolbar(){
-    if(isAdmin){
-      toolbarRight.innerHTML = `
-        <span class="admin-badge"><span class="dot"></span> emor19 · administrador</span>
-        <button class="pill-btn accent" id="addImgBtn" type="button">+ Agregar imagen</button>
-        <button class="pill-btn" id="logoutBtn" type="button">Cerrar sesión</button>
-      `;
-      document.getElementById('addImgBtn').addEventListener('click', ()=> openEditForm(null));
-      document.getElementById('logoutBtn').addEventListener('click', ()=>{
-        isAdmin = false;
-        renderToolbar();
-        renderGallery();
-        showToast('Sesión cerrada');
-      });
-    }else{
-      toolbarRight.innerHTML = `<button class="pill-btn" id="loginOpenBtn" type="button">Iniciar sesión</button>`;
-      document.getElementById('loginOpenBtn').addEventListener('click', openLoginModal);
-    }
+    // Sin función de inicio de sesión: el panel de administrador ya no está disponible.
   }
 
   // ---------- Agregar / editar imagen ----------
@@ -1139,11 +1141,13 @@
 
   // ---------- Init ----------
   (async function init(){
-    renderThemeSwitch();
+    initMode();
     renderCustomWelcome();
     await loadCatalog();
+    currentPage = getPageFromUrl();
     renderToolbar();
     renderGallery();
+    updatePageUrl(currentPage, true);
     handleHash();
     renderAdSlot('ad-site-bottom', [SITE_BOTTOM_AD_UNIT]);
     if(!storageAvailable){
