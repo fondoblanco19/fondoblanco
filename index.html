@@ -57,6 +57,7 @@
     --ink-soft:#a3a3a3;
     --line:#2a2a2a;
     --terracotta:#bd5a2c;
+    --terracotta-text:#d97a45;
     --mustard:#c99a2b;
     --olive:#556246;
     --card-bg:#131313;
@@ -116,7 +117,7 @@
     padding:8px 14px;border-radius:20px;border:1px solid var(--ink);background:transparent;color:var(--ink);transition:.2s;
   }
   .pill-btn:hover{background:var(--ink);color:var(--paper);}
-  .pill-btn.accent{border-color:var(--terracotta);color:var(--terracotta);}
+  .pill-btn.accent{border-color:var(--terracotta-text);color:var(--terracotta-text);}
   .pill-btn.accent:hover{background:var(--terracotta);color:#fff;}
   .admin-badge{font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--olive);display:flex;align-items:center;gap:6px;}
   .admin-badge .dot{width:7px;height:7px;border-radius:50%;background:var(--olive);display:inline-block;}
@@ -824,6 +825,7 @@
       iframe.scrolling = 'no';
       iframe.loading = 'lazy';
       iframe.setAttribute('frameborder','0');
+      iframe.title = 'Publicidad';
       slot.appendChild(iframe);
       injectAdIntoIframe(iframe, unit);
     });
