@@ -2,7 +2,7 @@
 <html lang="es">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <title>Fondo Blanco — Texturas y Fondos de Pantalla HD Gratis para Descargar</title>
 <meta name="description" content="Banco de texturas y fondos de pantalla en alta resolución, 100% gratis. Más de 77 imágenes HD de texturas (piedra, madera, metal, tela, hielo, agua) listas para descargar.">
 <meta name="keywords" content="texturas, texturas hd, texturas de alta resolución, fondos de pantalla, wallpapers hd, banco de imágenes, texturas para diseño, texturas gratis, fondos gratis, descargar fondos de pantalla, wallpaper 4k">
@@ -48,7 +48,8 @@
 <link rel="preconnect" href="https://lh3.googleusercontent.com">
 <link rel="dns-prefetch" href="https://drive.google.com">
 <link rel="dns-prefetch" href="https://lh3.googleusercontent.com">
-<link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,560;0,9..144,650;1,9..144,500&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@500&display=swap" rel="stylesheet">
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,560;0,9..144,650;1,9..144,500&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@500&display=swap" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,560;0,9..144,650;1,9..144,500&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@500&display=swap"></noscript>
 <style>
   :root{
     --paper:#0a0a0a;
@@ -77,8 +78,8 @@
     font-family:'Inter',sans-serif;
     -webkit-font-smoothing:antialiased;
   }
-  a{color:inherit;}
-  button{font-family:inherit;cursor:pointer;}
+  a{color:inherit;-webkit-tap-highlight-color:transparent;}
+  button{font-family:inherit;cursor:pointer;touch-action:manipulation;-webkit-tap-highlight-color:transparent;}
 
   header.masthead{padding:64px 6vw 40px;border-bottom:1px solid var(--line);}
   .eyebrow{font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--terracotta);margin:0 0 18px;}
@@ -156,14 +157,16 @@
   @media (max-width:480px){.gallery{grid-template-columns:repeat(2, 1fr);gap:6px;}}
 
   figure.plate{margin:0;width:100%;}
-  .frame{background:var(--card-bg);padding:0;border:1px solid var(--line);border-radius:14px;box-shadow:0 1px 0 var(--line);position:relative;overflow:hidden;cursor:pointer;}
+  .frame{background:var(--card-bg);padding:0;border:1px solid var(--line);border-radius:14px;box-shadow:0 1px 0 var(--line);position:relative;overflow:hidden;cursor:pointer;touch-action:manipulation;-webkit-tap-highlight-color:transparent;}
   .frame .num{position:absolute;top:6px;left:6px;font-family:'IBM Plex Mono',monospace;font-size:9.5px;color:#fff;background:rgba(28,26,23,.55);padding:2px 6px;letter-spacing:.05em;z-index:2;}
   .edit-pin{position:absolute;top:6px;right:6px;z-index:3;width:22px;height:22px;border-radius:50%;background:var(--edit-pin-bg);color:var(--edit-pin-color);border:1px solid var(--line);display:flex;align-items:center;justify-content:center;font-size:11px;}
   .edit-pin:hover{background:var(--terracotta);color:#fff;}
   .img-wrap{position:relative;width:100%;overflow:hidden;background:var(--img-bg);}
   .img-wrap img{width:100%;height:auto;display:block;transition:transform .6s cubic-bezier(.2,.7,.2,1),opacity .4s ease;opacity:0;}
   .img-wrap img.loaded{opacity:1;}
-  .frame:hover .img-wrap img{transform:scale(1.04);}
+  @media (hover:hover) and (pointer:fine){
+    .frame:hover .img-wrap img{transform:scale(1.04);}
+  }
   .img-wrap .fallback{padding:34px 16px;text-align:center;font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--ink-soft);}
   .mat-bottom{display:none;}
   .ad-slot{display:flex;flex-direction:column;align-items:center;gap:6px;margin:12px 0 4px;overflow:hidden;}
@@ -174,7 +177,7 @@
 
   footer{padding:38px 6vw 50px;border-top:1px solid var(--line);display:flex;justify-content:space-between;flex-wrap:wrap;gap:14px;font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--ink-soft);letter-spacing:.04em;}
 
-  .overlay{position:fixed;inset:0;background:rgba(28,26,23,.72);display:none;align-items:flex-start;justify-content:center;padding:5vh 20px;overflow-y:auto;z-index:50;}
+  .overlay{position:fixed;inset:0;background:rgba(28,26,23,.72);display:none;align-items:flex-start;justify-content:center;padding:5vh 20px;overflow-y:auto;overscroll-behavior-y:contain;z-index:50;}
   .overlay.open{display:flex;}
   .modal{background:var(--paper);max-width:960px;width:100%;border:1px solid var(--line);position:relative;animation:pop .18s ease;}
   @keyframes pop{from{transform:translateY(8px);opacity:0;}to{transform:translateY(0);opacity:1;}}
@@ -229,14 +232,14 @@
   .form-actions .left-actions{display:flex;gap:10px;}
   .link-danger{background:none;border:none;color:var(--danger);font-size:12.5px;text-decoration:underline;}
 
-  .toast{position:fixed;bottom:26px;left:50%;transform:translateX(-50%) translateY(20px);background:var(--ink);color:var(--paper);padding:12px 22px;border-radius:24px;font-size:13px;opacity:0;pointer-events:none;transition:.3s;z-index:100;max-width:86vw;text-align:center;}
+  .toast{position:fixed;bottom:calc(26px + env(safe-area-inset-bottom));left:50%;transform:translateX(-50%) translateY(20px);background:var(--ink);color:var(--paper);padding:12px 22px;border-radius:24px;font-size:13px;opacity:0;pointer-events:none;transition:.3s;z-index:100;max-width:86vw;text-align:center;}
   .toast.show{opacity:1;transform:translateX(-50%) translateY(0);}
 
   /* ---------- Aviso de cookies ---------- */
   .cookie-banner{
     position:fixed;left:0;right:0;bottom:0;z-index:90;
     display:none;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:16px;
-    padding:18px 6vw;background:var(--card-bg);border-top:1px solid var(--line);
+    padding:18px 6vw calc(18px + env(safe-area-inset-bottom));background:var(--card-bg);border-top:1px solid var(--line);
     box-shadow:0 -4px 24px rgba(0,0,0,.35);
   }
   .cookie-banner.show{display:flex;}
@@ -745,11 +748,14 @@
     return [driveThumb(item.preview.driveId, size), driveFallback(item.preview.driveId, size), driveFallback2(item.preview.driveId)];
   }
 
-  // srcset 1x/2x para pantallas de alta densidad, sin forzar la descarga de la versión
-  // grande en pantallas normales: reduce el peso total transferido en la cuadrícula.
-  function previewSrcset(item, size){
+  // Candidatos con descriptor de ANCHO ("w") en vez de densidad (1x/2x): con "w" el
+  // navegador cruza el ancho real que ocupa la miniatura (atributo "sizes") con la
+  // densidad de píxeles del dispositivo y elige solo el tamaño que necesita, en vez
+  // de bajar siempre la versión 2x aunque la miniatura se vea pequeña en pantalla.
+  const SRCSET_WIDTHS = [160, 220, 280, 360, 480, 640];
+  function previewSrcset(item){
     if(item.preview.type !== 'drive') return '';
-    return `${driveThumb(item.preview.driveId, size)} 1x, ${driveThumb(item.preview.driveId, size*2)} 2x`;
+    return SRCSET_WIDTHS.map(w => `${driveThumb(item.preview.driveId, w)} ${w}w`).join(', ');
   }
 
   // Prueba cada URL candidata en orden; si todas fallan, ejecuta onAllFailed().
@@ -867,13 +873,17 @@
   const pagerEl = document.getElementById('pager');
   let currentPage = 1;
 
-  const EAGER_COUNT = 6; // imágenes visibles al cargar la página: se piden de inmediato para mejorar el LCP
+  // Imágenes visibles al cargar la página: se piden de inmediato para mejorar el LCP.
+  // En pantallas angostas (2 columnas) entran menos láminas arriba del pliegue que en
+  // escritorio (6 columnas), así que pedir de más ahí solo compite por ancho de banda
+  // con lo que sí se ve primero.
+  const EAGER_COUNT = window.innerWidth <= 480 ? 4 : 6;
 
   function buildPlate(item, indexInPage){
     const fig = document.createElement('figure');
     fig.className = 'plate';
     const candidates = previewCandidates(item, GRID_SIZE);
-    const srcset = previewSrcset(item, GRID_SIZE);
+    const srcset = previewSrcset(item);
     const isAboveFold = typeof indexInPage === 'number' && indexInPage < EAGER_COUNT;
     const loadingAttr = isAboveFold ? 'eager' : 'lazy';
     const fetchPriorityAttr = indexInPage === 0 ? ' fetchpriority="high"' : '';
@@ -1309,9 +1319,29 @@
     renderGallery();
     updatePageUrl(currentPage, true);
     handleHash();
-    const runBottomAd = ()=> renderAdSlot('ad-site-bottom', [SITE_BOTTOM_AD_UNIT]);
-    if('requestIdleCallback' in window){ requestIdleCallback(runBottomAd, {timeout:2500}); }
-    else { setTimeout(runBottomAd, 1200); }
+    const bottomAdSlot = document.getElementById('ad-site-bottom');
+    // En pantallas angostas, el banner de escritorio (728x90) llega igual pero se
+    // reescala por CSS y se ve borroso/recortado; en su lugar pedimos el formato
+    // 320x50 que ya existe para el anuncio del detalle, más liviano y hecho para móvil.
+    const MOBILE_BOTTOM_AD_UNIT = AD_UNITS[1];
+    const runBottomAd = ()=> renderAdSlot('ad-site-bottom', [window.innerWidth <= 480 ? MOBILE_BOTTOM_AD_UNIT : SITE_BOTTOM_AD_UNIT]);
+    if(bottomAdSlot && 'IntersectionObserver' in window){
+      // El slot está debajo del footer, fuera de la vista inicial: lo cargamos solo
+      // cuando el usuario se acerca, así el script del anuncio no compite por ancho
+      // de banda con los recursos que sí son críticos para el primer render.
+      const bottomAdObserver = new IntersectionObserver((entries)=>{
+        entries.forEach(entry=>{
+          if(entry.isIntersecting){
+            runBottomAd();
+            bottomAdObserver.disconnect();
+          }
+        });
+      }, { rootMargin: '600px 0px' });
+      bottomAdObserver.observe(bottomAdSlot);
+    }else{
+      if('requestIdleCallback' in window){ requestIdleCallback(runBottomAd, {timeout:2500}); }
+      else { setTimeout(runBottomAd, 1200); }
+    }
     if(!storageAvailable){
       showToast('Aviso: el almacenamiento compartido no respondió; los cambios solo durarán esta sesión.');
     }
