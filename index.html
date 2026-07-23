@@ -1325,22 +1325,28 @@
     // 320x50 que ya existe para el anuncio del detalle, más liviano y hecho para móvil.
     const MOBILE_BOTTOM_AD_UNIT = AD_UNITS[1];
     const runBottomAd = ()=> renderAdSlot('ad-site-bottom', [window.innerWidth <= 480 ? MOBILE_BOTTOM_AD_UNIT : SITE_BOTTOM_AD_UNIT]);
+
+    // Doble candado para que este anuncio nunca compita con los recursos críticos
+    // del primer render: (1) el margen del observer es chico (no 600px), porque un
+    // margen grande hace que el slot ya "intersecte" desde el primer instante en
+    // catálogos que no son mucho más altos que la pantalla; y (2) aunque intersecte,
+    // se espera a que el navegador esté libre antes de inyectar el script del anuncio.
+    const scheduleBottomAd = ()=>{
+      if('requestIdleCallback' in window){ requestIdleCallback(runBottomAd, {timeout:2000}); }
+      else { setTimeout(runBottomAd, 500); }
+    };
     if(bottomAdSlot && 'IntersectionObserver' in window){
-      // El slot está debajo del footer, fuera de la vista inicial: lo cargamos solo
-      // cuando el usuario se acerca, así el script del anuncio no compite por ancho
-      // de banda con los recursos que sí son críticos para el primer render.
       const bottomAdObserver = new IntersectionObserver((entries)=>{
         entries.forEach(entry=>{
           if(entry.isIntersecting){
-            runBottomAd();
             bottomAdObserver.disconnect();
+            scheduleBottomAd();
           }
         });
-      }, { rootMargin: '600px 0px' });
+      }, { rootMargin: '100px 0px' });
       bottomAdObserver.observe(bottomAdSlot);
     }else{
-      if('requestIdleCallback' in window){ requestIdleCallback(runBottomAd, {timeout:2500}); }
-      else { setTimeout(runBottomAd, 1200); }
+      scheduleBottomAd();
     }
     if(!storageAvailable){
       showToast('Aviso: el almacenamiento compartido no respondió; los cambios solo durarán esta sesión.');
