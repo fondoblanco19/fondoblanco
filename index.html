@@ -48,8 +48,8 @@
 <link rel="preconnect" href="https://lh3.googleusercontent.com">
 <link rel="dns-prefetch" href="https://drive.google.com">
 <link rel="dns-prefetch" href="https://lh3.googleusercontent.com">
-<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,560;0,9..144,650;1,9..144,500&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@500&display=swap" onload="this.onload=null;this.rel='stylesheet'">
-<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,560;0,9..144,650;1,9..144,500&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@500&display=swap"></noscript>
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Archivo+Black&amp;family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,560;0,9..144,650;1,9..144,500&amp;family=Inter:wght@400;500;600&amp;family=IBM+Plex+Mono:wght@500&amp;display=swap" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo+Black&amp;family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,560;0,9..144,650;1,9..144,500&amp;family=Inter:wght@400;500;600&amp;family=IBM+Plex+Mono:wght@500&amp;display=swap"></noscript>
 <style>
   :root{
     --paper:#0a0a0a;
@@ -58,17 +58,11 @@
     --line:#2a2a2a;
     --terracotta:#bd5a2c;
     --terracotta-text:#d97a45;
-    --mustard:#c99a2b;
     --olive:#556246;
     --card-bg:#131313;
     --img-bg:#1a1a1a;
     --input-bg:#161616;
-    --dropzone-bg:#161616;
-    --dropzone-drag-bg:#1e1a16;
     --kw-bg:#161616;
-    --edit-pin-bg:rgba(255,255,255,.12);
-    --edit-pin-color:var(--ink);
-    --danger:#e0605a;
   }
   *{box-sizing:border-box;}
   html{scroll-behavior:smooth;}
@@ -111,7 +105,6 @@
     font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.06em;text-transform:uppercase;
     color:var(--ink-soft);border-bottom:1px solid var(--line);flex-wrap:wrap;gap:10px;
   }
-  .strip .right{display:flex;align-items:center;gap:10px;}
   .pill-btn{
     font-family:'Inter',sans-serif;font-size:12.5px;font-weight:600;letter-spacing:0;text-transform:none;
     padding:8px 14px;border-radius:20px;border:1px solid var(--ink);background:transparent;color:var(--ink);transition:.2s;
@@ -121,9 +114,6 @@
   .pill-btn.accent:hover{background:var(--terracotta);color:#fff;}
   .pill-btn.texturas-active{background:var(--olive);border-color:var(--olive);color:#fff;}
   .pill-btn.texturas-active:hover{opacity:.9;}
-  .admin-badge{font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--olive);display:flex;align-items:center;gap:6px;}
-  .admin-badge .dot{width:7px;height:7px;border-radius:50%;background:var(--olive);display:inline-block;}
-
   .custom-title-row{margin-top:18px;}
   .custom-welcome{font-family:'Fraunces',serif;font-style:italic;font-size:15px;color:var(--terracotta);margin:0 0 10px;}
 
@@ -162,8 +152,6 @@
   figure.plate{margin:0;width:100%;}
   .frame{background:var(--card-bg);padding:0;border:1px solid var(--line);border-radius:14px;box-shadow:0 1px 0 var(--line);position:relative;overflow:hidden;cursor:pointer;touch-action:manipulation;-webkit-tap-highlight-color:transparent;}
   .frame .num{position:absolute;top:6px;left:6px;font-family:'IBM Plex Mono',monospace;font-size:9.5px;color:#fff;background:rgba(28,26,23,.55);padding:2px 6px;letter-spacing:.05em;z-index:2;}
-  .edit-pin{position:absolute;top:6px;right:6px;z-index:3;width:22px;height:22px;border-radius:50%;background:var(--edit-pin-bg);color:var(--edit-pin-color);border:1px solid var(--line);display:flex;align-items:center;justify-content:center;font-size:11px;}
-  .edit-pin:hover{background:var(--terracotta);color:#fff;}
   .img-wrap{position:relative;width:100%;overflow:hidden;background:var(--img-bg);}
   .img-wrap img{width:100%;height:auto;display:block;transition:transform .6s cubic-bezier(.2,.7,.2,1),opacity .4s ease;opacity:0;}
   .img-wrap img.loaded{opacity:1;}
@@ -207,9 +195,6 @@
   .url-line button{display:block;margin-top:8px;background:none;border:1px solid var(--line);padding:6px 10px;font-size:11px;color:var(--ink);border-radius:16px;}
   .url-line button:hover{border-color:var(--ink);}
 
-  .form-pad{padding:44px 40px;}
-  .form-title{font-family:'Fraunces',serif;font-weight:650;font-size:26px;margin:0 0 6px;}
-  .form-sub{font-size:13px;color:var(--ink-soft);margin:0 0 28px;}
   .field{margin-bottom:18px;}
   .field label{display:block;font-family:'IBM Plex Mono',monospace;font-size:10.5px;text-transform:uppercase;letter-spacing:.06em;color:var(--ink-soft);margin-bottom:7px;}
   .field input[type=text],.field input[type=password],.field textarea{
@@ -217,23 +202,6 @@
   }
   .field textarea{min-height:80px;resize:vertical;}
   .field input:focus,.field textarea:focus{outline:none;border-color:var(--terracotta);}
-  .error-msg{color:var(--danger);font-size:12.5px;margin:-6px 0 16px;display:none;}
-  .error-msg.show{display:block;}
-  .success-msg{color:var(--olive);font-size:12.5px;margin:-6px 0 16px;display:none;}
-  .success-msg.show{display:block;}
-
-  .dropzone{border:2px dashed var(--line);background:var(--dropzone-bg);padding:34px 16px;text-align:center;border-radius:6px;cursor:pointer;transition:.2s;position:relative;}
-  .dropzone.drag{border-color:var(--terracotta);background:var(--dropzone-drag-bg);}
-  .dropzone .up-icon{width:34px;height:34px;border-radius:50%;border:1.5px solid var(--ink);display:flex;align-items:center;justify-content:center;margin:0 auto 12px;}
-  .dropzone p{margin:0;font-size:13.5px;}
-  .dropzone .hint{font-size:11.5px;color:var(--ink-soft);margin-top:8px;}
-  .dropzone input[type=file]{position:absolute;inset:0;opacity:0;cursor:pointer;}
-  .dz-preview{max-width:100%;max-height:160px;border-radius:4px;margin:0 auto 10px;display:block;}
-  .or-sep{text-align:center;font-family:'IBM Plex Mono',monospace;font-size:10.5px;color:var(--ink-soft);margin:14px 0;letter-spacing:.05em;text-transform:uppercase;}
-
-  .form-actions{display:flex;justify-content:space-between;align-items:center;margin-top:28px;flex-wrap:wrap;gap:10px;}
-  .form-actions .left-actions{display:flex;gap:10px;}
-  .link-danger{background:none;border:none;color:var(--danger);font-size:12.5px;text-decoration:underline;}
 
   .toast{position:fixed;bottom:calc(26px + env(safe-area-inset-bottom));left:50%;transform:translateX(-50%) translateY(20px);background:var(--ink);color:var(--paper);padding:12px 22px;border-radius:24px;font-size:13px;opacity:0;pointer-events:none;transition:.3s;z-index:100;max-width:86vw;text-align:center;}
   .toast.show{opacity:1;transform:translateX(-50%) translateY(0);}
@@ -265,7 +233,7 @@
     .masthead-row{flex-direction:column;align-items:flex-start;}
     .masthead-meta{text-align:left;}
     main{padding:40px 6vw 70px;}
-    .form-pad, .detail-info{padding:30px 22px;}
+    .detail-info{padding:30px 22px;}
   }
 </style>
 </head>
@@ -302,8 +270,6 @@
     <button type="button" class="pill-btn" id="texturasToggleBtn">Texturas</button>
     <button type="button" class="pill-btn" id="showAllToggleBtn">Todo</button>
   </div>
-  <div class="right" style="display:flex;align-items:center;gap:10px;">
-  </div>
 </div>
 
 <div class="search-bar">
@@ -335,62 +301,6 @@
   <div class="modal" id="detailModal">
     <button class="modal-close" id="detailClose" type="button">✕</button>
     <div class="detail-grid" id="detailBody"></div>
-  </div>
-</div>
-
-<!-- ============ AGREGAR / EDITAR IMAGEN ============ -->
-<div class="overlay" id="editOverlay">
-  <div class="modal" style="max-width:600px;">
-    <button class="modal-close" id="editClose" type="button">✕</button>
-    <div class="form-pad">
-      <h2 class="form-title" id="editFormTitle">Agregar imagen</h2>
-      <p class="form-sub">Solo se aceptan archivos <strong>.webp</strong> para la vista previa. Se comprime automáticamente para que el sitio cargue más rápido.</p>
-
-      <div class="field">
-        <label>Vista previa (WebP)</label>
-        <div class="dropzone" id="dropzone">
-          <img id="dzPreviewImg" class="dz-preview" style="display:none;">
-          <div class="up-icon" id="dzIcon">↑</div>
-          <p id="dzText">Elige un archivo .webp o arrástralo y suéltalo aquí</p>
-          <p class="hint">Solo formato WebP · se reduce automáticamente de tamaño</p>
-          <input type="file" id="fileInput" accept=".webp,image/webp">
-        </div>
-        <p class="error-msg" id="fileError">Ese archivo no es .webp. Elige un archivo con extensión .webp.</p>
-      </div>
-
-      <div class="or-sep">o pega una URL de imagen</div>
-      <div class="field">
-        <input type="text" id="previewUrlInput" placeholder="https://drive.google.com/... (opcional si ya subiste un .webp)">
-      </div>
-
-      <div class="field">
-        <label for="fieldTitle">Título</label>
-        <input type="text" id="fieldTitle" placeholder="Explica en qué consiste tu fondo">
-      </div>
-      <div class="field">
-        <label for="fieldDesc">Descripción</label>
-        <textarea id="fieldDesc" placeholder="Describe la imagen"></textarea>
-      </div>
-      <div class="field">
-        <label for="fieldLink">Enlace de descarga</label>
-        <input type="text" id="fieldLink" placeholder="Añade el enlace que se abrirá al presionar Descargar">
-      </div>
-      <div class="field">
-        <label for="fieldKw">Palabras clave</label>
-        <input type="text" id="fieldKw" placeholder="separadas por coma, ej: papel, textura, azul">
-      </div>
-
-      <p class="error-msg" id="editError">Falta el título o el enlace de descarga.</p>
-      <p class="success-msg" id="editSuccess">Guardado correctamente.</p>
-
-      <div class="form-actions">
-        <div class="left-actions">
-          <button class="btn solid" id="editSaveBtn" type="button">Guardar</button>
-          <button class="btn" id="editCancelBtn" type="button">Cancelar</button>
-        </div>
-        <button class="link-danger" id="editDeleteBtn" type="button" style="display:none;">Eliminar esta imagen</button>
-      </div>
-    </div>
   </div>
 </div>
 
@@ -432,16 +342,9 @@
 <script>
 (function(){
 
-  const META_KEY = 'fondoblanco_catalog_meta_v8';
-  const ADMIN_USER = 'emor19';
-  const ADMIN_PASS = 'Fondo123';
   const GRID_SIZE = 320;   // ancho de la vista previa en la cuadrícula (reducido para cargar más rápido)
   const DETAIL_SIZE = 760; // ancho de la vista previa en la ficha individual
-  const MAX_UPLOAD_WIDTH = 640; // ancho máximo al comprimir imágenes subidas
-  const MAX_DATAURL_LEN = 4200000; // margen de seguridad bajo el límite de 5MB por clave
   const PAGE_SIZE = 30;    // cantidad de imágenes por página
-
-  function imgKey(id){ return 'fondoblanco_img_' + id; }
 
   // Enlace de descarga: formato de descarga directa de Drive (entrega el .jpg original).
   // Enlace de vista previa: endpoint de miniatura de Drive, liviano y optimizado para carga rápida.
@@ -555,125 +458,20 @@
     { id:"105", title:"Fruta 105 — Uvas y kiwi en rodajas", desc:"Racimo de uvas moradas junto a rodajas de kiwi verde, sobre fondo blanco, en calidad 4K.", keywords:["fondo blanco","fruta","uvas","kiwi","rodajas","verde","racimo","jugoso","vitamina","composicion","4k"], download:driveDownload("1xy-tCrcHaBrAdU2dgyMq1AgUc_-jwdRJ"), preview:{type:"drive", driveId:"1xy-tCrcHaBrAdU2dgyMq1AgUc_-jwdRJ"} }
   ];
 
-  let items = [];
-  const imageDataCache = {};   // id -> dataURL de imágenes subidas (base64), cargado desde su propia clave
-  let isAdmin = false;
-  let editingId = null;
-  let pendingFile = null;      // File .webp elegido en el formulario, aún sin comprimir/guardar
-  let pendingObjectUrl = null; // URL temporal para mostrar la vista previa en el formulario
-  let storageAvailable = true;
-
-  // ---------- Persistencia ----------
-  // Los datos (título, enlaces, palabras clave) van en una clave "meta" liviana.
-  // Cada imagen subida se guarda en SU PROPIA clave (fondoblanco_img_<id>), así el
-  // límite de tamaño por clave no se acumula entre todas las imágenes del catálogo,
-  // y una imagen nueva no pisa ni arriesga los datos de las demás.
-  async function loadCatalog(){
-    try{
-      const res = await window.storage.get(META_KEY, true);
-      if(res && res.value){
-        items = JSON.parse(res.value);
-      }else{
-        items = JSON.parse(JSON.stringify(defaultItems));
-        await saveMeta();
-      }
-    }catch(e){
-      storageAvailable = false;
-      items = JSON.parse(JSON.stringify(defaultItems));
-    }
-
-    await Promise.all(items.filter(it=>it.preview.type==='base64').map(async it=>{
-      try{
-        const r = await window.storage.get(imgKey(it.id), true);
-        if(r && r.value) imageDataCache[it.id] = r.value;
-      }catch(e){ /* se mostrará el marcador de "no disponible" para esa lámina */ }
-    }));
-  }
-
-  async function saveMeta(){
-    try{
-      const result = await window.storage.set(META_KEY, JSON.stringify(items), true);
-      if(!result) storageAvailable = false;
-      else storageAvailable = true;
-      return !!result;
-    }catch(e){
-      storageAvailable = false;
-      return false;
-    }
-  }
-
-  // ---------- Compresión de imágenes subidas ----------
-  function compressImage(file, maxWidth, quality){
-    return new Promise((resolve, reject)=>{
-      const objUrl = URL.createObjectURL(file);
-      const img = new Image();
-      img.onload = ()=>{
-        let w = img.naturalWidth || img.width;
-        let h = img.naturalHeight || img.height;
-        if(w > maxWidth){
-          h = Math.round(h * (maxWidth / w));
-          w = maxWidth;
-        }
-        const canvas = document.createElement('canvas');
-        canvas.width = w; canvas.height = h;
-        const ctx = canvas.getContext('2d');
-        ctx.drawImage(img, 0, 0, w, h);
-        let dataUrl;
-        try{ dataUrl = canvas.toDataURL('image/webp', quality); }
-        catch(e){ dataUrl = canvas.toDataURL('image/jpeg', quality); }
-        URL.revokeObjectURL(objUrl);
-        resolve(dataUrl);
-      };
-      img.onerror = (e)=>{ URL.revokeObjectURL(objUrl); reject(e); };
-      img.src = objUrl;
-    });
-  }
-
-  // ---------- Cambio de color de acento del sitio ----------
-  const THEME_KEY = 'fondoblanco_theme';
-  const THEMES = {
-    terracota:{ label:'Terracota', terracotta:'#bd5a2c', mustard:'#c99a2b', olive:'#556246' },
-    oceano:   { label:'Océano',    terracotta:'#2b6ebd', mustard:'#2b93c9', olive:'#2c5a6b' },
-    bosque:   { label:'Bosque',    terracotta:'#3e7d4a', mustard:'#7a9a2b', olive:'#3b5c3f' },
-    ciruela:  { label:'Ciruela',   terracotta:'#8a3b8f', mustard:'#c94f9a', olive:'#5a3d63' },
-    carbon:   { label:'Carbón',    terracotta:'#4a4a4a', mustard:'#8a8a8a', olive:'#2c2c2c' }
-  };
-
-  // Solo cambia el color de acento (terracota/mustard/olive). El fondo/texto del
-  // sitio lo controla el modo oscuro/claro (ver más abajo), de forma independiente.
-  function applyTheme(name){
-    const t = THEMES[name] || THEMES.terracota;
-    const root = document.documentElement.style;
-    root.setProperty('--terracotta', t.terracotta);
-    root.setProperty('--mustard', t.mustard);
-    root.setProperty('--olive', t.olive);
-    document.querySelectorAll('.theme-dot').forEach(d=> d.classList.toggle('active', d.dataset.theme===name));
-    try{ localStorage.setItem(THEME_KEY, name); }catch(e){ /* no crítico */ }
-  }
-
-  function renderThemeSwitch(){
-    const wrap = document.getElementById('themeSwitch');
-    let saved = 'terracota';
-    try{ saved = localStorage.getItem(THEME_KEY) || 'terracota'; }catch(e){}
-    wrap.innerHTML = Object.keys(THEMES).map(key=>{
-      const t = THEMES[key];
-      return `<button type="button" class="theme-dot" data-theme="${key}" title="${t.label}" style="--sw-color:${t.terracotta};"></button>`;
-    }).join('');
-    wrap.querySelectorAll('.theme-dot').forEach(btn=>{
-      btn.addEventListener('click', ()=> applyTheme(btn.dataset.theme));
-    });
-    applyTheme(saved);
-  }
+  // El catálogo es fijo (definido arriba en defaultItems); ya no hay edición
+  // ni almacenamiento en el navegador para las imágenes, así que se usa
+  // directamente sin llamadas asíncronas ni dependencias externas.
+  let items = JSON.parse(JSON.stringify(defaultItems));
 
   // ---------- Modo oscuro / claro (fondo mate negro con tipografía blanca, o al revés) ----------
   const MODE_KEY = 'fondoblanco_mode';
   const MODES = {
-    oscuro:{ label:'Oscuro', paper:'#0a0a0a', ink:'#ffffff', inkSoft:'#a3a3a3', line:'#2a2a2a', cardBg:'#131313', imgBg:'#1a1a1a', inputBg:'#161616', dropzoneBg:'#161616', dropzoneDragBg:'#1e1a16', kwBg:'#161616', editPinBg:'rgba(255,255,255,.12)', editPinColor:'#ffffff' },
-    claro: { label:'Claro',  paper:'#faf9f5', ink:'#1c1a17', inkSoft:'#5b564d', line:'#e2ded4', cardBg:'#ffffff', imgBg:'#ece9e2', inputBg:'#ffffff', dropzoneBg:'#f2f0ea', dropzoneDragBg:'#f7ece3', kwBg:'#ffffff', editPinBg:'rgba(0,0,0,.06)', editPinColor:'#1c1a17' },
+    oscuro:{ label:'Oscuro', paper:'#0a0a0a', ink:'#ffffff', inkSoft:'#a3a3a3', line:'#2a2a2a', cardBg:'#131313', imgBg:'#1a1a1a', inputBg:'#161616', kwBg:'#161616' },
+    claro: { label:'Claro',  paper:'#faf9f5', ink:'#1c1a17', inkSoft:'#5b564d', line:'#e2ded4', cardBg:'#ffffff', imgBg:'#ece9e2', inputBg:'#ffffff', kwBg:'#ffffff' },
     // Paleta de la vista "Texturas": verde bosque de intensidad media (ni negro
     // ni pastel), pensada para convivir bien al lado del blanco y el negro que
     // ya usa el sitio en los otros dos modos.
-    verde: { label:'Verde',  paper:'#132a1d', ink:'#ffffff', inkSoft:'#a8c2b0', line:'#2d4a37', cardBg:'#1a3526', imgBg:'#20402f', inputBg:'#1c3827', dropzoneBg:'#1c3827', dropzoneDragBg:'#24401f', kwBg:'#1c3827', editPinBg:'rgba(255,255,255,.12)', editPinColor:'#ffffff' }
+    verde: { label:'Verde',  paper:'#132a1d', ink:'#ffffff', inkSoft:'#a8c2b0', line:'#2d4a37', cardBg:'#1a3526', imgBg:'#20402f', inputBg:'#1c3827', kwBg:'#1c3827' }
   };
 
   // Aplica solo los colores (variables CSS) de una paleta, sin tocar currentMode.
@@ -688,11 +486,7 @@
     root.setProperty('--card-bg', m.cardBg);
     root.setProperty('--img-bg', m.imgBg);
     root.setProperty('--input-bg', m.inputBg);
-    root.setProperty('--dropzone-bg', m.dropzoneBg);
-    root.setProperty('--dropzone-drag-bg', m.dropzoneDragBg);
     root.setProperty('--kw-bg', m.kwBg);
-    root.setProperty('--edit-pin-bg', m.editPinBg);
-    root.setProperty('--edit-pin-color', m.editPinColor);
   }
 
   // Decide que paleta corresponde ahora mismo: verde si Texturas esta activo,
@@ -742,9 +536,7 @@
     renderShowAllToggle();
     updateBrandWordmark();
     refreshPalette();
-    // Reflitra la galeria por el nuevo modo. Si el catalogo ya esta cargado
-    // (items.length > 0) refrescamos ya; si no (arranque inicial, antes de
-    // loadCatalog), init() la va a renderizar igual apenas cargue el catalogo.
+    // Refiltra la galería por el nuevo modo, si ya hay items cargados.
     if(typeof renderGallery === 'function' && items.length){
       currentPage = 1;
       renderGallery();
@@ -835,7 +627,6 @@
   function driveFallback2(driveId){ return `https://drive.google.com/uc?export=view&id=${driveId}`; }
 
   function previewCandidates(item, size){
-    if(item.preview.type === 'base64') return [imageDataCache[item.id] || ''];
     if(item.preview.type === 'url') return [item.preview.data];
     return [driveThumb(item.preview.driveId, size), driveFallback(item.preview.driveId, size), driveFallback2(item.preview.driveId)];
   }
@@ -1054,7 +845,6 @@
     fig.innerHTML = `
       <div class="frame" data-id="${item.id}">
         <span class="num">${item.id}</span>
-        ${isAdmin ? `<button class="edit-pin" data-edit="${item.id}" type="button" title="Editar">✎</button>` : ''}
         <div class="img-wrap">
           <img alt="${escapeHtml(item.title)}" title="${escapeHtml(item.title)}" loading="${loadingAttr}" decoding="async"${fetchPriorityAttr}${srcset ? ` srcset="${srcset}" sizes="(max-width:480px) 50vw, (max-width:720px) 33vw, (max-width:1100px) 25vw, 16vw"` : ''}>
         </div>
@@ -1073,18 +863,9 @@
       wrap.innerHTML = '<div class="fallback">Vista previa no disponible</div>';
     });
 
-    fig.querySelector('.frame').addEventListener('click', (e)=>{
-      if(e.target.closest('.edit-pin')) return;
+    fig.querySelector('.frame').addEventListener('click', ()=>{
       openDetail(item.id, true);
     });
-
-    const editBtn = fig.querySelector('.edit-pin');
-    if(editBtn){
-      editBtn.addEventListener('click', (e)=>{
-        e.stopPropagation();
-        openEditForm(item.id);
-      });
-    }
 
     return fig;
   }
@@ -1240,191 +1021,6 @@
   }
   window.addEventListener('hashchange', handleHash);
 
-  // ---------- Admin (login deshabilitado) ----------
-
-  function renderToolbar(){
-    // Sin función de inicio de sesión: el panel de administrador ya no está disponible.
-  }
-
-  // ---------- Agregar / editar imagen ----------
-  const editOverlay = document.getElementById('editOverlay');
-  const dropzone = document.getElementById('dropzone');
-  const fileInput = document.getElementById('fileInput');
-  const dzPreviewImg = document.getElementById('dzPreviewImg');
-  const dzIcon = document.getElementById('dzIcon');
-  const dzText = document.getElementById('dzText');
-  const fileError = document.getElementById('fileError');
-
-  function resetEditForm(){
-    editingId = null;
-    pendingFile = null;
-    if(pendingObjectUrl){ URL.revokeObjectURL(pendingObjectUrl); pendingObjectUrl = null; }
-    document.getElementById('editFormTitle').textContent = 'Agregar imagen';
-    document.getElementById('fieldTitle').value = '';
-    document.getElementById('fieldDesc').value = '';
-    document.getElementById('fieldLink').value = '';
-    document.getElementById('fieldKw').value = '';
-    document.getElementById('previewUrlInput').value = '';
-    document.getElementById('editError').classList.remove('show');
-    document.getElementById('editSuccess').classList.remove('show');
-    document.getElementById('editDeleteBtn').style.display = 'none';
-    fileError.classList.remove('show');
-    dzPreviewImg.style.display = 'none';
-    dzIcon.style.display = 'flex';
-    dzText.textContent = 'Elige un archivo .webp o arrástralo y suéltalo aquí';
-    fileInput.value = '';
-  }
-
-  function openEditForm(id){
-    resetEditForm();
-    if(id){
-      const item = items.find(it=>it.id===id);
-      if(item){
-        editingId = id;
-        document.getElementById('editFormTitle').textContent = 'Editar imagen · N.º ' + id;
-        document.getElementById('fieldTitle').value = item.title;
-        document.getElementById('fieldDesc').value = item.desc || '';
-        document.getElementById('fieldLink').value = item.download;
-        document.getElementById('fieldKw').value = (item.keywords||[]).join(', ');
-        if(item.preview.type === 'url'){
-          document.getElementById('previewUrlInput').value = item.preview.data;
-        }
-        const src = previewCandidates(item, GRID_SIZE)[0];
-        if(src){
-          dzPreviewImg.src = src;
-          dzPreviewImg.style.display = 'block';
-          dzIcon.style.display = 'none';
-        }
-        dzText.textContent = 'Vista previa actual (sube otro .webp para reemplazarla)';
-        document.getElementById('editDeleteBtn').style.display = 'inline-block';
-      }
-    }
-    editOverlay.classList.add('open');
-  }
-
-  document.getElementById('editClose').addEventListener('click', ()=> editOverlay.classList.remove('open'));
-  document.getElementById('editCancelBtn').addEventListener('click', ()=> editOverlay.classList.remove('open'));
-  editOverlay.addEventListener('click', (e)=>{ if(e.target===editOverlay) editOverlay.classList.remove('open'); });
-
-  function isWebp(file){
-    if(!file) return false;
-    if(file.type === 'image/webp') return true;
-    return /\.webp$/i.test(file.name || '');
-  }
-
-  function handleFile(file){
-    fileError.classList.remove('show');
-    if(!isWebp(file)){
-      fileError.classList.add('show');
-      fileInput.value = '';
-      return;
-    }
-    if(pendingObjectUrl){ URL.revokeObjectURL(pendingObjectUrl); }
-    pendingFile = file;
-    pendingObjectUrl = URL.createObjectURL(file);
-    dzPreviewImg.src = pendingObjectUrl;
-    dzPreviewImg.style.display = 'block';
-    dzIcon.style.display = 'none';
-    dzText.textContent = file.name + ' — listo para guardar';
-    document.getElementById('previewUrlInput').value = '';
-  }
-
-  fileInput.addEventListener('change', ()=> handleFile(fileInput.files[0]));
-  dropzone.addEventListener('dragover', (e)=>{ e.preventDefault(); dropzone.classList.add('drag'); });
-  dropzone.addEventListener('dragleave', ()=> dropzone.classList.remove('drag'));
-  dropzone.addEventListener('drop', (e)=>{
-    e.preventDefault();
-    dropzone.classList.remove('drag');
-    if(e.dataTransfer.files && e.dataTransfer.files[0]) handleFile(e.dataTransfer.files[0]);
-  });
-
-  document.getElementById('editSaveBtn').addEventListener('click', async ()=>{
-    const title = document.getElementById('fieldTitle').value.trim();
-    const desc = document.getElementById('fieldDesc').value.trim();
-    const link = document.getElementById('fieldLink').value.trim();
-    const kwRaw = document.getElementById('fieldKw').value.trim();
-    const urlPreview = document.getElementById('previewUrlInput').value.trim();
-    const errorEl = document.getElementById('editError');
-    const successEl = document.getElementById('editSuccess');
-    successEl.classList.remove('show');
-
-    if(!title || !link){
-      errorEl.textContent = 'Falta el título o el enlace de descarga.';
-      errorEl.classList.add('show');
-      return;
-    }
-    errorEl.classList.remove('show');
-
-    const keywords = kwRaw ? kwRaw.split(',').map(k=>k.trim()).filter(Boolean) : [];
-    const targetId = editingId || nextId();
-    let preview = null;
-
-    if(pendingFile){
-      let dataUrl;
-      try{
-        dataUrl = await compressImage(pendingFile, MAX_UPLOAD_WIDTH, 0.82);
-      }catch(e){
-        errorEl.textContent = 'No se pudo procesar esa imagen. Prueba con otro archivo .webp.';
-        errorEl.classList.add('show');
-        return;
-      }
-      if(dataUrl.length > MAX_DATAURL_LEN){
-        errorEl.textContent = 'La imagen sigue pesando demasiado incluso comprimida. Prueba con otra imagen o usa la opción de URL.';
-        errorEl.classList.add('show');
-        return;
-      }
-      let savedOk = true;
-      try{
-        const setRes = await window.storage.set(imgKey(targetId), dataUrl, true);
-        savedOk = !!setRes;
-      }catch(e){ savedOk = false; }
-      if(!savedOk){
-        storageAvailable = false;
-      }
-      imageDataCache[targetId] = dataUrl;
-      preview = { type:'base64' };
-    }else if(urlPreview){
-      preview = { type:'url', data:urlPreview };
-    }
-
-    if(editingId){
-      const item = items.find(it=>it.id===editingId);
-      item.title = title;
-      item.desc = desc;
-      item.download = link;
-      item.keywords = keywords;
-      if(preview) item.preview = preview;
-    }else{
-      if(!preview){
-        errorEl.textContent = 'Sube un archivo .webp o pega una URL de vista previa.';
-        errorEl.classList.add('show');
-        return;
-      }
-      items.push({ id: targetId, title, desc, download: link, keywords, preview });
-    }
-
-    const metaOk = await saveMeta();
-    renderGallery();
-    successEl.classList.add('show');
-    showToast(metaOk ? 'Guardado de forma permanente' : 'Guardado solo en esta sesión (el almacenamiento compartido no respondió)');
-    setTimeout(()=> editOverlay.classList.remove('open'), 700);
-  });
-
-  document.getElementById('editDeleteBtn').addEventListener('click', async ()=>{
-    if(!editingId) return;
-    if(!confirm('¿Eliminar esta imagen del catálogo?')) return;
-    const item = items.find(it=>it.id===editingId);
-    if(item && item.preview.type === 'base64'){
-      try{ await window.storage.delete(imgKey(editingId), true); }catch(e){ /* no crítico */ }
-      delete imageDataCache[editingId];
-    }
-    items = items.filter(it=>it.id!==editingId);
-    await saveMeta();
-    renderGallery();
-    editOverlay.classList.remove('open');
-    showToast('Imagen eliminada permanentemente');
-  });
-
   // ---------- Cookies y política de uso ----------
   const COOKIE_CONSENT_NAME = 'fondoblanco_cookie_consent';
 
@@ -1472,13 +1068,11 @@
   }
 
   // ---------- Init ----------
-  (async function init(){
+  (function init(){
     initMode();
     initCookieConsent();
     renderCustomWelcome();
-    await loadCatalog();
     currentPage = getPageFromUrl();
-    renderToolbar();
     renderGallery();
     updatePageUrl(currentPage, true);
     handleHash();
@@ -1510,9 +1104,6 @@
       bottomAdObserver.observe(bottomAdSlot);
     }else{
       scheduleBottomAd();
-    }
-    if(!storageAvailable){
-      showToast('Aviso: el almacenamiento compartido no respondió; los cambios solo durarán esta sesión.');
     }
   })();
 
