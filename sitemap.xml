@@ -1,252 +1,1164 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
-        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
-
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
   <url>
     <loc>https://fondoblanco.co/</loc>
-    <lastmod>2026-07-21</lastmod>
+    <lastmod>2026-07-24</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
+  </url>
+  <url>
+    <loc>https://fondoblanco.co/textura/textura-de-vidrio-con-gotas-de-agua/</loc>
+    <lastmod>2026-07-24</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
     <image:image>
       <image:loc>https://drive.google.com/thumbnail?id=1jSOlkoP-CGXgL4HP9spFbTlmv03HxozC&amp;sz=w1600</image:loc>
       <image:title>Fondo 01 — Textura de vidrio con gotas de agua</image:title>
       <image:caption>Primer plano de una superficie de vidrio texturizado cubierta de gotas de agua, en tonos verdes y grises. Fondo de pantalla en alta resolución.</image:caption>
     </image:image>
+  </url>
+  <url>
+    <loc>https://fondoblanco.co/textura/wallpaper-hd-para-escritorio/</loc>
+    <lastmod>2026-07-24</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
     <image:image>
       <image:loc>https://drive.google.com/thumbnail?id=1i0LuCoRiYIGLmOQoKf1WL5hPp1egdik3&amp;sz=w1600</image:loc>
       <image:title>Fondo 02 — Wallpaper HD para escritorio</image:title>
       <image:caption>Imagen en alta definición pensada para fondos de pantalla de PC y laptop, disponible para descarga gratuita.</image:caption>
     </image:image>
+  </url>
+  <url>
+    <loc>https://fondoblanco.co/textura/fondo-de-pantalla-para-celular/</loc>
+    <lastmod>2026-07-24</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
     <image:image>
       <image:loc>https://drive.google.com/thumbnail?id=1dCIi2N_GCe0cuyz3XuAfBivw2h5mV-E3&amp;sz=w1600</image:loc>
       <image:title>Fondo 03 — Fondo de pantalla para celular</image:title>
       <image:caption>Fondo de pantalla optimizado para dispositivos móviles, con buena resolución y colores nítidos.</image:caption>
     </image:image>
+  </url>
+  <url>
+    <loc>https://fondoblanco.co/textura/imagen-de-alta-calidad/</loc>
+    <lastmod>2026-07-24</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
     <image:image>
       <image:loc>https://drive.google.com/thumbnail?id=1taNtF1FiSg7LWHk4Im8nIoCx3YU8fOuY&amp;sz=w1600</image:loc>
       <image:title>Fondo 04 — Imagen de alta calidad</image:title>
       <image:caption>Imagen de alta resolución lista para usar como fondo de pantalla o en tus proyectos de diseño.</image:caption>
     </image:image>
+  </url>
+  <url>
+    <loc>https://fondoblanco.co/textura/textura-para-diseno-grafico/</loc>
+    <lastmod>2026-07-24</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
     <image:image>
       <image:loc>https://drive.google.com/thumbnail?id=1PB6a60Tcyee7syC8kehiLSfAtDP_vVJQ&amp;sz=w1600</image:loc>
       <image:title>Fondo 05 — Textura para diseño gráfico</image:title>
       <image:caption>Textura de alta resolución, útil como fondo para presentaciones, redes sociales o piezas gráficas.</image:caption>
     </image:image>
+  </url>
+  <url>
+    <loc>https://fondoblanco.co/textura/wallpaper-en-calidad-4k/</loc>
+    <lastmod>2026-07-24</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
     <image:image>
       <image:loc>https://drive.google.com/thumbnail?id=1WYxziS-2icEs8BuZbG61knNtZG6qH764&amp;sz=w1600</image:loc>
       <image:title>Fondo 06 — Wallpaper en calidad 4K</image:title>
       <image:caption>Fondo de pantalla en calidad 4K, con gran nivel de detalle para pantallas grandes.</image:caption>
     </image:image>
+  </url>
+  <url>
+    <loc>https://fondoblanco.co/textura/fondo-minimalista-en-hd/</loc>
+    <lastmod>2026-07-24</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
     <image:image>
       <image:loc>https://drive.google.com/thumbnail?id=1P0Fqqwk7I-UvecYnvPke7uQ-bHu3ICbL&amp;sz=w1600</image:loc>
       <image:title>Fondo 07 — Fondo minimalista en HD</image:title>
       <image:caption>Fondo de pantalla con estética limpia y colores equilibrados, en alta resolución.</image:caption>
     </image:image>
+  </url>
+  <url>
+    <loc>https://fondoblanco.co/textura/descarga-gratuita-en-alta-resolucion/</loc>
+    <lastmod>2026-07-24</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
     <image:image>
       <image:loc>https://drive.google.com/thumbnail?id=1XskzIA8WunLh1flFxkp9yEIO3AjaxoLJ&amp;sz=w1600</image:loc>
       <image:title>Fondo 08 — Descarga gratuita en alta resolución</image:title>
       <image:caption>Fondo de pantalla listo para descargar sin costo, en formato de alta resolución.</image:caption>
     </image:image>
+  </url>
+  <url>
+    <loc>https://fondoblanco.co/textura/textura-en-alta-resolucion/</loc>
+    <lastmod>2026-07-24</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
     <image:image>
       <image:loc>https://drive.google.com/thumbnail?id=1c-3BaTbWfo_VwRVqQgAgmE91H4mHrNz8&amp;sz=w1600</image:loc>
       <image:title>Fondo 09 — Textura en alta resolución</image:title>
       <image:caption>Fondo de pantalla en alta resolución, ideal para tu escritorio o celular. Descarga rápida y calidad HD.</image:caption>
     </image:image>
+  </url>
+  <url>
+    <loc>https://fondoblanco.co/textura/wallpaper-hd-para-escritorio-2/</loc>
+    <lastmod>2026-07-24</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
     <image:image>
       <image:loc>https://drive.google.com/thumbnail?id=1ndrRo1JRyFr2d_B42TezQXG6TM2sc5xX&amp;sz=w1600</image:loc>
       <image:title>Fondo 10 — Wallpaper HD para escritorio</image:title>
       <image:caption>Imagen en alta definición pensada para fondos de pantalla de PC y laptop, disponible para descarga gratuita.</image:caption>
     </image:image>
+  </url>
+  <url>
+    <loc>https://fondoblanco.co/textura/estampado-animal-print-leopardo/</loc>
+    <lastmod>2026-07-24</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
     <image:image>
       <image:loc>https://drive.google.com/thumbnail?id=1ibNunFKKQRqTiVGQlVUhDd_Ijiq37O16&amp;sz=w1600</image:loc>
       <image:title>Fondo 11 — Estampado animal print leopardo</image:title>
       <image:caption>Primer plano de un estampado tipo piel de leopardo, con manchas negras sobre fondo dorado y marrón. Fondo de pantalla en alta resolución.</image:caption>
     </image:image>
+  </url>
+  <url>
+    <loc>https://fondoblanco.co/textura/imagen-de-alta-calidad-2/</loc>
+    <lastmod>2026-07-24</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
     <image:image>
       <image:loc>https://drive.google.com/thumbnail?id=1ZXHRleuYy9FYMWXb7DEIG6qKLaUL-1BG&amp;sz=w1600</image:loc>
       <image:title>Fondo 12 — Imagen de alta calidad</image:title>
       <image:caption>Imagen de alta resolución lista para usar como fondo de pantalla o en tus proyectos de diseño.</image:caption>
     </image:image>
+  </url>
+  <url>
+    <loc>https://fondoblanco.co/textura/textura-para-diseno-grafico-2/</loc>
+    <lastmod>2026-07-24</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
     <image:image>
       <image:loc>https://drive.google.com/thumbnail?id=19qNqWSciW65q_8SpNYnu_hr6WHkRTHBk&amp;sz=w1600</image:loc>
       <image:title>Fondo 13 — Textura para diseño gráfico</image:title>
       <image:caption>Textura de alta resolución, útil como fondo para presentaciones, redes sociales o piezas gráficas.</image:caption>
     </image:image>
+  </url>
+  <url>
+    <loc>https://fondoblanco.co/textura/wallpaper-en-calidad-4k-2/</loc>
+    <lastmod>2026-07-24</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
     <image:image>
       <image:loc>https://drive.google.com/thumbnail?id=1nQAgUipypvTxcq1x49TCEZoOamRUju1v&amp;sz=w1600</image:loc>
       <image:title>Fondo 14 — Wallpaper en calidad 4K</image:title>
       <image:caption>Fondo de pantalla en calidad 4K, con gran nivel de detalle para pantallas grandes.</image:caption>
     </image:image>
+  </url>
+  <url>
+    <loc>https://fondoblanco.co/textura/fondo-minimalista-en-hd-2/</loc>
+    <lastmod>2026-07-24</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
     <image:image>
       <image:loc>https://drive.google.com/thumbnail?id=1AJYt054O_23m5uV1ie92ZVj2EI7wsCk8&amp;sz=w1600</image:loc>
       <image:title>Fondo 15 — Fondo minimalista en HD</image:title>
       <image:caption>Fondo de pantalla con estética limpia y colores equilibrados, en alta resolución.</image:caption>
     </image:image>
+  </url>
+  <url>
+    <loc>https://fondoblanco.co/textura/descarga-gratuita-en-alta-resolucion-2/</loc>
+    <lastmod>2026-07-24</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
     <image:image>
       <image:loc>https://drive.google.com/thumbnail?id=1k4HQ-ffURIYaBi3mrlCTpNfKjSwHG0IW&amp;sz=w1600</image:loc>
       <image:title>Fondo 16 — Descarga gratuita en alta resolución</image:title>
       <image:caption>Fondo de pantalla listo para descargar sin costo, en formato de alta resolución.</image:caption>
     </image:image>
+  </url>
+  <url>
+    <loc>https://fondoblanco.co/textura/textura-en-alta-resolucion-2/</loc>
+    <lastmod>2026-07-24</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
     <image:image>
       <image:loc>https://drive.google.com/thumbnail?id=1vx8pf1d-WKujI34-boeuAhpeWpilqEIN&amp;sz=w1600</image:loc>
       <image:title>Fondo 17 — Textura en alta resolución</image:title>
       <image:caption>Fondo de pantalla en alta resolución, ideal para tu escritorio o celular. Descarga rápida y calidad HD.</image:caption>
     </image:image>
+  </url>
+  <url>
+    <loc>https://fondoblanco.co/textura/wallpaper-hd-para-escritorio-3/</loc>
+    <lastmod>2026-07-24</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
     <image:image>
       <image:loc>https://drive.google.com/thumbnail?id=1ZAK983bek4DFJvb0xZBV_QtJWRszvZzr&amp;sz=w1600</image:loc>
       <image:title>Fondo 18 — Wallpaper HD para escritorio</image:title>
       <image:caption>Imagen en alta definición pensada para fondos de pantalla de PC y laptop, disponible para descarga gratuita.</image:caption>
     </image:image>
+  </url>
+  <url>
+    <loc>https://fondoblanco.co/textura/fondo-de-pantalla-para-celular-2/</loc>
+    <lastmod>2026-07-24</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
     <image:image>
       <image:loc>https://drive.google.com/thumbnail?id=1556bXrib5_sks8SlJ5tPuZHUEx50sz9H&amp;sz=w1600</image:loc>
       <image:title>Fondo 19 — Fondo de pantalla para celular</image:title>
       <image:caption>Fondo de pantalla optimizado para dispositivos móviles, con buena resolución y colores nítidos.</image:caption>
     </image:image>
+  </url>
+  <url>
+    <loc>https://fondoblanco.co/textura/imagen-de-alta-calidad-3/</loc>
+    <lastmod>2026-07-24</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
     <image:image>
       <image:loc>https://drive.google.com/thumbnail?id=1IVkAjr6fU0VHpN_gCJAOuKQZJfjS4sVQ&amp;sz=w1600</image:loc>
       <image:title>Fondo 20 — Imagen de alta calidad</image:title>
       <image:caption>Imagen de alta resolución lista para usar como fondo de pantalla o en tus proyectos de diseño.</image:caption>
     </image:image>
+  </url>
+  <url>
+    <loc>https://fondoblanco.co/textura/textura-de-metal-oxidado/</loc>
+    <lastmod>2026-07-24</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
     <image:image>
       <image:loc>https://drive.google.com/thumbnail?id=1etbL3RU0ywaL-5LByKOBHGM-5f7Oifgf&amp;sz=w1600</image:loc>
       <image:title>Fondo 21 — Textura de metal oxidado</image:title>
       <image:caption>Superficie metálica oxidada con manchas de óxido cobrizo y pátina verde. Fondo de pantalla en alta resolución.</image:caption>
     </image:image>
+  </url>
+  <url>
+    <loc>https://fondoblanco.co/textura/wallpaper-en-calidad-4k-3/</loc>
+    <lastmod>2026-07-24</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
     <image:image>
       <image:loc>https://drive.google.com/thumbnail?id=1OuMSDnJE7Sie2ZhmffDPERPNzZIoVyDE&amp;sz=w1600</image:loc>
       <image:title>Fondo 22 — Wallpaper en calidad 4K</image:title>
       <image:caption>Fondo de pantalla en calidad 4K, con gran nivel de detalle para pantallas grandes.</image:caption>
     </image:image>
+  </url>
+  <url>
+    <loc>https://fondoblanco.co/textura/fondo-minimalista-en-hd-3/</loc>
+    <lastmod>2026-07-24</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
     <image:image>
       <image:loc>https://drive.google.com/thumbnail?id=1BI8GHWkkKF941Kwk6jK2qAW4P3u4DK00&amp;sz=w1600</image:loc>
       <image:title>Fondo 23 — Fondo minimalista en HD</image:title>
       <image:caption>Fondo de pantalla con estética limpia y colores equilibrados, en alta resolución.</image:caption>
     </image:image>
+  </url>
+  <url>
+    <loc>https://fondoblanco.co/textura/descarga-gratuita-en-alta-resolucion-3/</loc>
+    <lastmod>2026-07-24</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
     <image:image>
       <image:loc>https://drive.google.com/thumbnail?id=1QDPQsrbNiW8X45kaYNPX_Q-notbwYu9g&amp;sz=w1600</image:loc>
       <image:title>Fondo 24 — Descarga gratuita en alta resolución</image:title>
       <image:caption>Fondo de pantalla listo para descargar sin costo, en formato de alta resolución.</image:caption>
     </image:image>
+  </url>
+  <url>
+    <loc>https://fondoblanco.co/textura/textura-en-alta-resolucion-3/</loc>
+    <lastmod>2026-07-24</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
     <image:image>
       <image:loc>https://drive.google.com/thumbnail?id=1CJDH7JOVLSlgTqd6qnreovk03HyQnqVq&amp;sz=w1600</image:loc>
       <image:title>Fondo 25 — Textura en alta resolución</image:title>
       <image:caption>Fondo de pantalla en alta resolución, ideal para tu escritorio o celular. Descarga rápida y calidad HD.</image:caption>
     </image:image>
+  </url>
+  <url>
+    <loc>https://fondoblanco.co/textura/wallpaper-hd-para-escritorio-4/</loc>
+    <lastmod>2026-07-24</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
     <image:image>
       <image:loc>https://drive.google.com/thumbnail?id=1565WuIuaW2VJU3-UoXrjldiCVGM2x4by&amp;sz=w1600</image:loc>
       <image:title>Fondo 26 — Wallpaper HD para escritorio</image:title>
       <image:caption>Imagen en alta definición pensada para fondos de pantalla de PC y laptop, disponible para descarga gratuita.</image:caption>
     </image:image>
+  </url>
+  <url>
+    <loc>https://fondoblanco.co/textura/fondo-de-pantalla-para-celular-3/</loc>
+    <lastmod>2026-07-24</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
     <image:image>
       <image:loc>https://drive.google.com/thumbnail?id=1UCi7URJnY0Xkk1tHgHSGp7O21hLpyopf&amp;sz=w1600</image:loc>
       <image:title>Fondo 27 — Fondo de pantalla para celular</image:title>
       <image:caption>Fondo de pantalla optimizado para dispositivos móviles, con buena resolución y colores nítidos.</image:caption>
     </image:image>
+  </url>
+  <url>
+    <loc>https://fondoblanco.co/textura/imagen-de-alta-calidad-4/</loc>
+    <lastmod>2026-07-24</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
     <image:image>
       <image:loc>https://drive.google.com/thumbnail?id=1ra9XOWclFwiNRL8OPf0C4QgmltyyFIlB&amp;sz=w1600</image:loc>
       <image:title>Fondo 28 — Imagen de alta calidad</image:title>
       <image:caption>Imagen de alta resolución lista para usar como fondo de pantalla o en tus proyectos de diseño.</image:caption>
     </image:image>
+  </url>
+  <url>
+    <loc>https://fondoblanco.co/textura/textura-para-diseno-grafico-3/</loc>
+    <lastmod>2026-07-24</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
     <image:image>
       <image:loc>https://drive.google.com/thumbnail?id=1XqDUj93sluTkATKQsxCQATK3FAC5QIt4&amp;sz=w1600</image:loc>
       <image:title>Fondo 29 — Textura para diseño gráfico</image:title>
       <image:caption>Textura de alta resolución, útil como fondo para presentaciones, redes sociales o piezas gráficas.</image:caption>
     </image:image>
+  </url>
+  <url>
+    <loc>https://fondoblanco.co/textura/wallpaper-en-calidad-4k-4/</loc>
+    <lastmod>2026-07-24</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
     <image:image>
       <image:loc>https://drive.google.com/thumbnail?id=16vQlEFI6VKTjujgaDL9CgkpsGHjuaIo0&amp;sz=w1600</image:loc>
       <image:title>Fondo 30 — Wallpaper en calidad 4K</image:title>
       <image:caption>Fondo de pantalla en calidad 4K, con gran nivel de detalle para pantallas grandes.</image:caption>
     </image:image>
+  </url>
+  <url>
+    <loc>https://fondoblanco.co/textura/textura-de-madera-rustica/</loc>
+    <lastmod>2026-07-24</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
     <image:image>
       <image:loc>https://drive.google.com/thumbnail?id=1P4sOnwGaN3gHL0YhgGJ9EtolHaAOv27s&amp;sz=w1600</image:loc>
       <image:title>Fondo 31 — Textura de madera rústica</image:title>
       <image:caption>Tablones de madera oscura con vetas marcadas y tono rojizo. Fondo de pantalla en alta resolución.</image:caption>
     </image:image>
+  </url>
+  <url>
+    <loc>https://fondoblanco.co/textura/descarga-gratuita-en-alta-resolucion-4/</loc>
+    <lastmod>2026-07-24</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
     <image:image>
       <image:loc>https://drive.google.com/thumbnail?id=16QzRwMHpFCy-y9QqbN3O8XzpX1GRz2D1&amp;sz=w1600</image:loc>
       <image:title>Fondo 32 — Descarga gratuita en alta resolución</image:title>
       <image:caption>Fondo de pantalla listo para descargar sin costo, en formato de alta resolución.</image:caption>
     </image:image>
+  </url>
+  <url>
+    <loc>https://fondoblanco.co/textura/textura-en-alta-resolucion-4/</loc>
+    <lastmod>2026-07-24</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
     <image:image>
       <image:loc>https://drive.google.com/thumbnail?id=1Fu5VNDyTac8UR2D9zim0Z9pAgLdU3NNF&amp;sz=w1600</image:loc>
       <image:title>Fondo 33 — Textura en alta resolución</image:title>
       <image:caption>Fondo de pantalla en alta resolución, ideal para tu escritorio o celular. Descarga rápida y calidad HD.</image:caption>
     </image:image>
+  </url>
+  <url>
+    <loc>https://fondoblanco.co/textura/wallpaper-hd-para-escritorio-5/</loc>
+    <lastmod>2026-07-24</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
     <image:image>
       <image:loc>https://drive.google.com/thumbnail?id=1MGWLHrduLo2FLF6h3HnnGF12LCFt-spU&amp;sz=w1600</image:loc>
       <image:title>Fondo 34 — Wallpaper HD para escritorio</image:title>
       <image:caption>Imagen en alta definición pensada para fondos de pantalla de PC y laptop, disponible para descarga gratuita.</image:caption>
     </image:image>
+  </url>
+  <url>
+    <loc>https://fondoblanco.co/textura/fondo-de-pantalla-para-celular-4/</loc>
+    <lastmod>2026-07-24</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
     <image:image>
       <image:loc>https://drive.google.com/thumbnail?id=1JmRS5Pj3RXcohUXlBxo0acUulp8HOSKq&amp;sz=w1600</image:loc>
       <image:title>Fondo 35 — Fondo de pantalla para celular</image:title>
       <image:caption>Fondo de pantalla optimizado para dispositivos móviles, con buena resolución y colores nítidos.</image:caption>
     </image:image>
+  </url>
+  <url>
+    <loc>https://fondoblanco.co/textura/imagen-de-alta-calidad-5/</loc>
+    <lastmod>2026-07-24</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
     <image:image>
       <image:loc>https://drive.google.com/thumbnail?id=1H1tYAMnKTbzrU5vQjdNOGpumngLqQ-xV&amp;sz=w1600</image:loc>
       <image:title>Fondo 36 — Imagen de alta calidad</image:title>
       <image:caption>Imagen de alta resolución lista para usar como fondo de pantalla o en tus proyectos de diseño.</image:caption>
     </image:image>
+  </url>
+  <url>
+    <loc>https://fondoblanco.co/textura/textura-para-diseno-grafico-4/</loc>
+    <lastmod>2026-07-24</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
     <image:image>
       <image:loc>https://drive.google.com/thumbnail?id=1O4Ftusvixa3DYSZBbiNduJEdFKFUtOFJ&amp;sz=w1600</image:loc>
       <image:title>Fondo 37 — Textura para diseño gráfico</image:title>
       <image:caption>Textura de alta resolución, útil como fondo para presentaciones, redes sociales o piezas gráficas.</image:caption>
     </image:image>
+  </url>
+  <url>
+    <loc>https://fondoblanco.co/textura/wallpaper-en-calidad-4k-5/</loc>
+    <lastmod>2026-07-24</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
     <image:image>
       <image:loc>https://drive.google.com/thumbnail?id=1eGjpOHeSX5rT2B_SHJqSdhaNebZPewYm&amp;sz=w1600</image:loc>
       <image:title>Fondo 38 — Wallpaper en calidad 4K</image:title>
       <image:caption>Fondo de pantalla en calidad 4K, con gran nivel de detalle para pantallas grandes.</image:caption>
     </image:image>
+  </url>
+  <url>
+    <loc>https://fondoblanco.co/textura/fondo-minimalista-en-hd-4/</loc>
+    <lastmod>2026-07-24</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
     <image:image>
       <image:loc>https://drive.google.com/thumbnail?id=1IwnB5FIXqzieRoXghqYK0t7xgKP3_uYg&amp;sz=w1600</image:loc>
       <image:title>Fondo 39 — Fondo minimalista en HD</image:title>
       <image:caption>Fondo de pantalla con estética limpia y colores equilibrados, en alta resolución.</image:caption>
     </image:image>
+  </url>
+  <url>
+    <loc>https://fondoblanco.co/textura/piel-de-carbon-textura-de-madera-carbonizada/</loc>
+    <lastmod>2026-07-24</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
     <image:image>
       <image:loc>https://drive.google.com/thumbnail?id=16I3_B5nTYbkvyQoYGa9qm5nKG1ENaG79&amp;sz=w1600</image:loc>
       <image:title>Fondo 40 — Piel de carbón: textura de madera carbonizada</image:title>
       <image:caption>Superficie de madera profundamente carbonizada, con textura rugosa en tonos negros y grises intensos. Fondo de pantalla en alta resolución para diseños oscuros y elegantes.</image:caption>
     </image:image>
+  </url>
+  <url>
+    <loc>https://fondoblanco.co/textura/hielo-glaciar-con-burbujas-atrapadas/</loc>
+    <lastmod>2026-07-24</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
     <image:image>
       <image:loc>https://drive.google.com/thumbnail?id=1nLL1SOVCJSQgIsmRXc5jTZ2c_coNSQxf&amp;sz=w1600</image:loc>
       <image:title>Fondo 41 — Hielo glaciar con burbujas atrapadas</image:title>
       <image:caption>Bloque de hielo glaciar translúcido con burbujas de aire atrapadas en su interior. Fondo de pantalla en alta resolución, ideal para diseños de invierno.</image:caption>
     </image:image>
+  </url>
+  <url>
+    <loc>https://fondoblanco.co/textura/escamas-de-reptil-alienigena-en-2k/</loc>
+    <lastmod>2026-07-24</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
     <image:image>
       <image:loc>https://drive.google.com/thumbnail?id=1Tdsnq7uJUsly9bQZza83YGTZhnpZBIPK&amp;sz=w1600</image:loc>
       <image:title>Fondo 42 — Escamas de reptil alienígena en 2K</image:title>
       <image:caption>Textura de escamas de reptil con estética de ciencia ficción, en resolución 2K. Ideal para fondos de pantalla y proyectos de diseño futurista.</image:caption>
     </image:image>
+  </url>
+  <url>
+    <loc>https://fondoblanco.co/textura/musgo-radiante-bajo-la-lluvia-del-bosque/</loc>
+    <lastmod>2026-07-24</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
     <image:image>
       <image:loc>https://drive.google.com/thumbnail?id=1V9Zwbx0tR0Z0_Dj-v5qBBnPcWs8EoHXV&amp;sz=w1600</image:loc>
       <image:title>Fondo 43 — Musgo radiante bajo la lluvia del bosque</image:title>
       <image:caption>Primer plano de musgo verde brillante humedecido por la lluvia, con gotas de agua sobre la superficie. Fondo de pantalla natural en alta resolución.</image:caption>
     </image:image>
+  </url>
+  <url>
+    <loc>https://fondoblanco.co/textura/escamas-iridiscentes-en-bronce-y-fuego-dorado/</loc>
+    <lastmod>2026-07-24</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
     <image:image>
       <image:loc>https://drive.google.com/thumbnail?id=1UWzz6rV-3KzaY5y0H860HI6dESQ-4JtI&amp;sz=w1600</image:loc>
       <image:title>Fondo 44 — Escamas iridiscentes en bronce y fuego dorado</image:title>
       <image:caption>Textura de escamas con reflejos iridiscentes en tonos bronce y dorado, con efecto de fuego. Fondo de pantalla en alta resolución con acabado brillante.</image:caption>
     </image:image>
+  </url>
+  <url>
+    <loc>https://fondoblanco.co/textura/textura-de-carbon/</loc>
+    <lastmod>2026-07-24</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
     <image:image>
       <image:loc>https://drive.google.com/thumbnail?id=1cEFz4PD9G92Phi9xIwWA8wrhFNXRpgL8&amp;sz=w1600</image:loc>
       <image:title>Fondo 45 — Textura de carbón</image:title>
       <image:caption>Superficie de carbón con textura porosa y profunda, en tonos negros mate. Fondo de pantalla en alta resolución ideal para diseños oscuros.</image:caption>
     </image:image>
+  </url>
+  <url>
+    <loc>https://fondoblanco.co/textura/nucleo-de-hielo-milenario/</loc>
+    <lastmod>2026-07-24</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
     <image:image>
       <image:loc>https://drive.google.com/thumbnail?id=1mt2exhhM1C9J5OTxmBVxXtlj_CE_3nsJ&amp;sz=w1600</image:loc>
       <image:title>Fondo 46 — Núcleo de hielo milenario</image:title>
       <image:caption>Corte transversal de un núcleo de hielo milenario con burbujas de aire congeladas visibles en capas. Fondo de pantalla en alta resolución.</image:caption>
     </image:image>
+  </url>
+  <url>
+    <loc>https://fondoblanco.co/textura/mar-de-fuego-y-llamaradas-infernales/</loc>
+    <lastmod>2026-07-24</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
     <image:image>
       <image:loc>https://drive.google.com/thumbnail?id=133hri56-BZN_vLhoRHhR_bKPsuxnGG4X&amp;sz=w1600</image:loc>
       <image:title>Fondo 47 — Mar de fuego y llamaradas infernales</image:title>
       <image:caption>Superficie de lava incandescente con llamaradas continuas y tonos de fuego intenso. Fondo de pantalla dramático en alta resolución.</image:caption>
     </image:image>
+  </url>
+  <url>
+    <loc>https://fondoblanco.co/textura/imagen-de-alta-calidad-6/</loc>
+    <lastmod>2026-07-24</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
     <image:image>
       <image:loc>https://drive.google.com/thumbnail?id=1Y2Y_YVJskryzoxuYhe2ITGOklITkeAG8&amp;sz=w1600</image:loc>
       <image:title>Fondo 48 — Imagen de alta calidad</image:title>
       <image:caption>Imagen de alta resolución lista para usar como fondo de pantalla o en tus proyectos de diseño.</image:caption>
     </image:image>
   </url>
-
+  <url>
+    <loc>https://fondoblanco.co/textura/textura-de-piedra-caliza-erosionada/</loc>
+    <lastmod>2026-07-24</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://drive.google.com/thumbnail?id=1HGPc8DLnaM7FBZ5OEhZw83iEplr576CR&amp;sz=w1600</image:loc>
+      <image:title>Fondo 49 — Textura de piedra caliza erosionada</image:title>
+      <image:caption>Superficie de piedra caliza desgastada por el tiempo, con relieve irregular y tonos beige y gris. Textura de fondo en alta resolución para diseños con estética natural.</image:caption>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://fondoblanco.co/textura/arena-dorada-del-desierto/</loc>
+    <lastmod>2026-07-24</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://drive.google.com/thumbnail?id=1vfqZEcVvGY4889YoZSjbJLKpAxVTYiLb&amp;sz=w1600</image:loc>
+      <image:title>Fondo 50 — Arena dorada del desierto</image:title>
+      <image:caption>Primer plano de dunas de arena fina con ondulaciones marcadas por el viento, en tonos dorados cálidos. Fondo de pantalla en alta resolución.</image:caption>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://fondoblanco.co/textura/textura-de-cuero-envejecido/</loc>
+    <lastmod>2026-07-24</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://drive.google.com/thumbnail?id=1OpVNItSJ7zNKgXHlwsr5IedPBagrq2i_&amp;sz=w1600</image:loc>
+      <image:title>Fondo 51 — Textura de cuero envejecido</image:title>
+      <image:caption>Superficie de cuero color café con grietas finas y pátina propia del paso del tiempo. Textura de alta resolución ideal para diseños vintage.</image:caption>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://fondoblanco.co/textura/grietas-de-barro-seco/</loc>
+    <lastmod>2026-07-24</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://drive.google.com/thumbnail?id=1KzAP0SFt5wVDfefAM1WQBfcfiDjM0U1s&amp;sz=w1600</image:loc>
+      <image:title>Fondo 52 — Grietas de barro seco</image:title>
+      <image:caption>Suelo de barro agrietado por la sequía, con un patrón geométrico natural en tonos tierra. Fondo de pantalla en alta resolución.</image:caption>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://fondoblanco.co/textura/marmol-blanco-veteado/</loc>
+    <lastmod>2026-07-24</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://drive.google.com/thumbnail?id=1DCfni5X86NRgMRzenVYPYxfRzehx3hvF&amp;sz=w1600</image:loc>
+      <image:title>Fondo 53 — Mármol blanco veteado</image:title>
+      <image:caption>Superficie de mármol blanco con vetas grises finas, acabado elegante y pulido. Textura de fondo en alta resolución para diseños minimalistas.</image:caption>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://fondoblanco.co/textura/oxido-y-corrosion-metalica/</loc>
+    <lastmod>2026-07-24</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://drive.google.com/thumbnail?id=1RqdlviS8-aH8iUaVOgyPqnE91D4Drgh4&amp;sz=w1600</image:loc>
+      <image:title>Fondo 54 — Óxido y corrosión metálica</image:title>
+      <image:caption>Placa metálica corroída con manchas de óxido en tonos naranja y marrón sobre base oscura. Fondo de pantalla en alta resolución con estética industrial.</image:caption>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://fondoblanco.co/textura/hormigon-industrial-gris/</loc>
+    <lastmod>2026-07-24</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://drive.google.com/thumbnail?id=19z77Isoym5zeBqdgyVF2hAtEOvS2CjXZ&amp;sz=w1600</image:loc>
+      <image:title>Fondo 55 — Hormigón industrial gris</image:title>
+      <image:caption>Superficie de hormigón crudo con textura porosa y tono gris uniforme, ideal para fondos minimalistas. Imagen en alta resolución.</image:caption>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://fondoblanco.co/textura/papel-arrugado-estilo-vintage/</loc>
+    <lastmod>2026-07-24</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://drive.google.com/thumbnail?id=1JEMOUtEfSYyMe7lqEWXXPivqoqj6i9R0&amp;sz=w1600</image:loc>
+      <image:title>Fondo 56 — Papel arrugado estilo vintage</image:title>
+      <image:caption>Textura de papel arrugado con pliegues y sombras suaves, efecto envejecido en tono crema. Fondo de pantalla en alta resolución.</image:caption>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://fondoblanco.co/textura/nieve-fresca-de-montana/</loc>
+    <lastmod>2026-07-24</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://drive.google.com/thumbnail?id=1LTbdCWGgDBAY_bTLtIqD00P8KbH4vmXI&amp;sz=w1600</image:loc>
+      <image:title>Fondo 57 — Nieve fresca de montaña</image:title>
+      <image:caption>Manto de nieve recién caída con textura suave y brillo natural, en tonos blancos puros. Fondo de pantalla en alta resolución para diseños de invierno.</image:caption>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://fondoblanco.co/textura/corteza-de-arbol-rugosa/</loc>
+    <lastmod>2026-07-24</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://drive.google.com/thumbnail?id=1YL9J21gjYHpPJHEPBVe3w827SQeiQkfR&amp;sz=w1600</image:loc>
+      <image:title>Fondo 58 — Corteza de árbol rugosa</image:title>
+      <image:caption>Primer plano de corteza de árbol con relieve profundo y textura natural en tonos marrones. Fondo de pantalla en alta resolución.</image:caption>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://fondoblanco.co/textura/ondas-suaves-de-agua/</loc>
+    <lastmod>2026-07-24</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://drive.google.com/thumbnail?id=1cERYY6WlPQTCdhKEmSsYIHRXelD_F_0G&amp;sz=w1600</image:loc>
+      <image:title>Fondo 59 — Ondas suaves de agua</image:title>
+      <image:caption>Superficie de agua en movimiento con ondas suaves y reflejos de luz, en tonos azul profundo. Fondo de pantalla en alta resolución.</image:caption>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://fondoblanco.co/textura/piedra-volcanica-negra-porosa/</loc>
+    <lastmod>2026-07-24</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://drive.google.com/thumbnail?id=1wz0cgujyMWQc3Lje5p8hHyZjn8BrnqFn&amp;sz=w1600</image:loc>
+      <image:title>Fondo 60 — Piedra volcánica negra porosa</image:title>
+      <image:caption>Roca volcánica de superficie porosa y color negro intenso, con textura áspera característica. Fondo de pantalla en alta resolución.</image:caption>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://fondoblanco.co/textura/tela-de-lino-natural/</loc>
+    <lastmod>2026-07-24</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://drive.google.com/thumbnail?id=15byr52yekIg4SpF7m9Q1v7mElNfj0Hbn&amp;sz=w1600</image:loc>
+      <image:title>Fondo 61 — Tela de lino natural</image:title>
+      <image:caption>Textura de tela de lino con trama visible y tono beige suave, acabado orgánico y cálido. Fondo de pantalla en alta resolución.</image:caption>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://fondoblanco.co/textura/nubes-en-el-cielo-azul/</loc>
+    <lastmod>2026-07-24</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://drive.google.com/thumbnail?id=1Rl2kbYw7eVLs94WXqyzTgBh-TA-Vpzk3&amp;sz=w1600</image:loc>
+      <image:title>Fondo 62 — Nubes en el cielo azul</image:title>
+      <image:caption>Cielo despejado con nubes blancas y esponjosas sobre fondo azul intenso. Imagen de alta resolución lista para descargar.</image:caption>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://fondoblanco.co/textura/piel-de-serpiente-en-detalle/</loc>
+    <lastmod>2026-07-24</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://drive.google.com/thumbnail?id=1Ar-YpxzUrDCm5ZZNqqdL3-jzM_05GGkd&amp;sz=w1600</image:loc>
+      <image:title>Fondo 63 — Piel de serpiente en detalle</image:title>
+      <image:caption>Textura de escamas de piel de serpiente con patrón geométrico y brillo natural. Fondo de pantalla en alta resolución.</image:caption>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://fondoblanco.co/textura/cristal-fracturado-con-efecto-prisma/</loc>
+    <lastmod>2026-07-24</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://drive.google.com/thumbnail?id=1rK9s_kimgm6Z8EPsA0Upk_CcaO403lTZ&amp;sz=w1600</image:loc>
+      <image:title>Fondo 64 — Cristal fracturado con efecto prisma</image:title>
+      <image:caption>Superficie de cristal roto con múltiples reflejos de luz y efecto prisma. Fondo de pantalla en alta resolución con acabado brillante.</image:caption>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://fondoblanco.co/textura/arcilla-roja-agrietada/</loc>
+    <lastmod>2026-07-24</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://drive.google.com/thumbnail?id=1Bc4nF5o0Q4BQRv8EehMV6Ie7hYrsS0Ow&amp;sz=w1600</image:loc>
+      <image:title>Fondo 65 — Arcilla roja agrietada</image:title>
+      <image:caption>Superficie de arcilla roja con grietas profundas formadas por el secado natural. Textura de fondo en alta resolución.</image:caption>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://fondoblanco.co/textura/superficie-lunar-con-crateres/</loc>
+    <lastmod>2026-07-24</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://drive.google.com/thumbnail?id=15BHpC14hcxQlRApUUrgr24UviBPqktSV&amp;sz=w1600</image:loc>
+      <image:title>Fondo 66 — Superficie lunar con cráteres</image:title>
+      <image:caption>Detalle de la superficie lunar con cráteres y textura polvorienta en tonos grises. Fondo de pantalla en alta resolución para diseños espaciales.</image:caption>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://fondoblanco.co/textura/terciopelo-azul-profundo/</loc>
+    <lastmod>2026-07-24</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://drive.google.com/thumbnail?id=1N1HVYeqPY_pEozdGPf-RxI4mAt2xtIpX&amp;sz=w1600</image:loc>
+      <image:title>Fondo 67 — Terciopelo azul profundo</image:title>
+      <image:caption>Textura de tela de terciopelo con pliegues suaves y color azul intenso, acabado lujoso. Fondo de pantalla en alta resolución.</image:caption>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://fondoblanco.co/textura/humo-blanco-abstracto/</loc>
+    <lastmod>2026-07-24</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://drive.google.com/thumbnail?id=1Rhu5wdoLwoYC43UzUyW56twmafCAAC7F&amp;sz=w1600</image:loc>
+      <image:title>Fondo 68 — Humo blanco abstracto</image:title>
+      <image:caption>Formas abstractas de humo blanco flotando sobre fondo oscuro, con movimiento suave. Fondo de pantalla en alta resolución.</image:caption>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://fondoblanco.co/textura/granito-pulido-con-vetas/</loc>
+    <lastmod>2026-07-24</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://drive.google.com/thumbnail?id=1YuqL_S33YvERLBXhWisV6hOgd8ZfwyHm&amp;sz=w1600</image:loc>
+      <image:title>Fondo 69 — Granito pulido con vetas</image:title>
+      <image:caption>Superficie de piedra granito pulida, con vetas minerales en tonos gris y negro. Textura de fondo en alta resolución.</image:caption>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://fondoblanco.co/textura/fibra-de-carbono-geometrica/</loc>
+    <lastmod>2026-07-24</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://drive.google.com/thumbnail?id=1i3XkoFMejkJWMio9Qc8fz99QEGyMLs7e&amp;sz=w1600</image:loc>
+      <image:title>Fondo 70 — Fibra de carbono geométrica</image:title>
+      <image:caption>Textura de fibra de carbono con patrón de tejido geométrico y acabado negro brillante. Fondo de pantalla en alta resolución para diseños tecnológicos.</image:caption>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://fondoblanco.co/textura/sal-cristalizada-en-detalle/</loc>
+    <lastmod>2026-07-24</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://drive.google.com/thumbnail?id=1czLWQ2zX-r3uSXw9zRtyfj3zs7yUlpkQ&amp;sz=w1600</image:loc>
+      <image:title>Fondo 71 — Sal cristalizada en detalle</image:title>
+      <image:caption>Cristales de sal formando una superficie irregular y brillante en tonos blancos. Fondo de pantalla en alta resolución.</image:caption>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://fondoblanco.co/textura/galaxia-con-estrellas/</loc>
+    <lastmod>2026-07-24</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://drive.google.com/thumbnail?id=1KmryPYagsEkcyTjybRIXDkOiiguCYLk4&amp;sz=w1600</image:loc>
+      <image:title>Fondo 72 — Galaxia con estrellas</image:title>
+      <image:caption>Fondo de galaxia con estrellas dispersas y nebulosas de color, ideal para fondos de pantalla espaciales. Imagen en alta resolución.</image:caption>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://fondoblanco.co/textura/cemento-pulido-industrial/</loc>
+    <lastmod>2026-07-24</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://drive.google.com/thumbnail?id=1uYKw9aa7zkDDycfhbOD1ZQlHV1cJRAWM&amp;sz=w1600</image:loc>
+      <image:title>Fondo 73 — Cemento pulido industrial</image:title>
+      <image:caption>Superficie de cemento pulido con acabado uniforme y tono gris claro, estética industrial minimalista. Fondo de pantalla en alta resolución.</image:caption>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://fondoblanco.co/textura/superficie-de-coral-marino/</loc>
+    <lastmod>2026-07-24</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://drive.google.com/thumbnail?id=132jZoQPpPf7OslYw5jTEaMTJ57FgYDhH&amp;sz=w1600</image:loc>
+      <image:title>Fondo 74 — Superficie de coral marino</image:title>
+      <image:caption>Textura de coral marino con relieve orgánico y tonos coral y blanco. Fondo de pantalla en alta resolución con estética natural.</image:caption>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://fondoblanco.co/textura/plumas-suaves-en-detalle/</loc>
+    <lastmod>2026-07-24</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://drive.google.com/thumbnail?id=17NvZgEYiEMZZAmiZVz0-HS5y556Io3wJ&amp;sz=w1600</image:loc>
+      <image:title>Fondo 75 — Plumas suaves en detalle</image:title>
+      <image:caption>Primer plano de plumas suaves con textura delicada y tonos neutros. Fondo de pantalla en alta resolución.</image:caption>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://fondoblanco.co/textura/aurora-boreal-en-el-cielo-nocturno/</loc>
+    <lastmod>2026-07-24</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://drive.google.com/thumbnail?id=1J1dcy4KTgwmPAv3W8I2tRQm4pRWyjBvc&amp;sz=w1600</image:loc>
+      <image:title>Fondo 76 — Aurora boreal en el cielo nocturno</image:title>
+      <image:caption>Cielo nocturno iluminado por una aurora boreal en tonos verdes y morados. Fondo de pantalla en alta resolución para diseños espectaculares.</image:caption>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://fondoblanco.co/textura/pizarra-oscura-con-vetas-finas/</loc>
+    <lastmod>2026-07-24</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://drive.google.com/thumbnail?id=1pdRXcDl6vCFri7VEJUxN5GZDEEpf_bp-&amp;sz=w1600</image:loc>
+      <image:title>Fondo 77 — Pizarra oscura con vetas finas</image:title>
+      <image:caption>Superficie de piedra pizarra en tono oscuro casi negro, con vetas finas y acabado mate. Textura de fondo en alta resolución.</image:caption>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://fondoblanco.co/textura/achachairu-boliviano/</loc>
+    <lastmod>2026-07-24</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://drive.google.com/thumbnail?id=1TrAuTEdwNtLm4tuTYTY_CGeVWktErC04&amp;sz=w1600</image:loc>
+      <image:title>Fruta 78 — Achachairú boliviano</image:title>
+      <image:caption>Par de achachairús exóticos, de piel anaranjada y pulpa blanca agridulce, sobre fondo blanco, en calidad 4K.</image:caption>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://fondoblanco.co/textura/aguacate-cortado-por-la-mitad/</loc>
+    <lastmod>2026-07-24</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://drive.google.com/thumbnail?id=1PKYhXSS5Sm7GYwRzIPiXVVCceJTDqUv_&amp;sz=w1600</image:loc>
+      <image:title>Fruta 79 — Aguacate cortado por la mitad</image:title>
+      <image:caption>Aguacate partido a la mitad con la semilla expuesta, vista superior, sobre fondo blanco, en calidad 4K.</image:caption>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://fondoblanco.co/textura/akebi-fruta-japonesa-abierta/</loc>
+    <lastmod>2026-07-24</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://drive.google.com/thumbnail?id=1cTV22sSDWE0nkOPLqYy_iTZsA3an4VoF&amp;sz=w1600</image:loc>
+      <image:title>Fruta 80 — Akebi, fruta japonesa abierta</image:title>
+      <image:caption>Akebi morado partido, mostrando su pulpa blanca y semillas negras, sobre fondo blanco, en calidad 4K.</image:caption>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://fondoblanco.co/textura/arandanos-y-manzana-congelados/</loc>
+    <lastmod>2026-07-24</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://drive.google.com/thumbnail?id=1MdSXUIdXxoU-uTk8JdanWmhcDdoua_xJ&amp;sz=w1600</image:loc>
+      <image:title>Fruta 81 — Arándanos y manzana congelados</image:title>
+      <image:caption>Arándanos y manzanas verdes cubiertos de escarcha, sobre fondo blanco, en calidad 4K.</image:caption>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://fondoblanco.co/textura/cerezas-rojas-con-tallo/</loc>
+    <lastmod>2026-07-24</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://drive.google.com/thumbnail?id=1Vi_s69OpyXh3gEv7Yx0Fp2Onh3-HZJQv&amp;sz=w1600</image:loc>
+      <image:title>Fruta 82 — Cerezas rojas con tallo</image:title>
+      <image:caption>Par de cerezas rojas brillantes con su tallo y hoja verde, sobre fondo blanco, en calidad 4K.</image:caption>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://fondoblanco.co/textura/coco-en-hojuelas-y-chips-de-platano/</loc>
+    <lastmod>2026-07-24</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://drive.google.com/thumbnail?id=10fdEfh6yeSOcX9QA5UHuLfqK8SHMbrk5&amp;sz=w1600</image:loc>
+      <image:title>Fruta 83 — Coco en hojuelas y chips de plátano</image:title>
+      <image:caption>Hojuelas de coco, chips de plátano y fresa deshidratada, sobre fondo blanco, en calidad 4K.</image:caption>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://fondoblanco.co/textura/coleccion-tropical-de-frutas/</loc>
+    <lastmod>2026-07-24</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://drive.google.com/thumbnail?id=1Hqu1WRzxGvFlflLV31C9wH27Kgc943Qn&amp;sz=w1600</image:loc>
+      <image:title>Fruta 84 — Colección tropical de frutas</image:title>
+      <image:caption>Composición de frutas tropicales variadas: plátano, pera, kiwi y más, sobre fondo blanco, en calidad 4K.</image:caption>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://fondoblanco.co/textura/fresa-banada-en-chocolate/</loc>
+    <lastmod>2026-07-24</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://drive.google.com/thumbnail?id=1K3lCs81B0VrKC5bFkxODnT9jNlPJmGp3&amp;sz=w1600</image:loc>
+      <image:title>Fruta 85 — Fresa bañada en chocolate</image:title>
+      <image:caption>Fresa cubierta con hilos de chocolate derretido, sobre fondo blanco, en calidad 4K.</image:caption>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://fondoblanco.co/textura/composicion-de-frutas-mixtas/</loc>
+    <lastmod>2026-07-24</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://drive.google.com/thumbnail?id=14t3moKFphOtRMMPYVcUX4l6WArqonYV7&amp;sz=w1600</image:loc>
+      <image:title>Fruta 86 — Composición de frutas mixtas</image:title>
+      <image:caption>Uvas, durazno, manzana y naranja juntos en una composición fresca y colorida, sobre fondo blanco, en calidad 4K.</image:caption>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://fondoblanco.co/textura/racimo-de-jabuticaba/</loc>
+    <lastmod>2026-07-24</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://drive.google.com/thumbnail?id=1XPEHVtAPPRUZZ0hFUiDN8r3owtiP7qWX&amp;sz=w1600</image:loc>
+      <image:title>Fruta 87 — Racimo de jabuticaba</image:title>
+      <image:caption>Jabuticabas moradas y negras en racimo, típicas de Brasil, sobre fondo blanco, en calidad 4K.</image:caption>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://fondoblanco.co/textura/kiwano-o-melon-cuerno/</loc>
+    <lastmod>2026-07-24</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://drive.google.com/thumbnail?id=1eKbAn8idullmgJAhO4LTPmjl_fRKH1tc&amp;sz=w1600</image:loc>
+      <image:title>Fruta 88 — Kiwano o melón cuerno</image:title>
+      <image:caption>Kiwano cortado a la mitad, con su pulpa gelatinosa verde y piel espinosa naranja, sobre fondo blanco, en calidad 4K.</image:caption>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://fondoblanco.co/textura/kiwi-en-rodajas/</loc>
+    <lastmod>2026-07-24</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://drive.google.com/thumbnail?id=1eJoXLhIiLRJOGt6a25cDo5wrfR5DAHSh&amp;sz=w1600</image:loc>
+      <image:title>Fruta 89 — Kiwi en rodajas</image:title>
+      <image:caption>Rodajas de kiwi verde apiladas en abanico, mostrando sus semillas negras, sobre fondo blanco, en calidad 4K.</image:caption>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://fondoblanco.co/textura/limon-con-gotas-de-jugo/</loc>
+    <lastmod>2026-07-24</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://drive.google.com/thumbnail?id=1eTzc81K_yuJTfmbzt5YpsDT5mHBdw5Yd&amp;sz=w1600</image:loc>
+      <image:title>Fruta 90 — Limón con gotas de jugo</image:title>
+      <image:caption>Primer plano de un limón en rodaja con gotas de jugo, sobre fondo blanco, en calidad 4K.</image:caption>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://fondoblanco.co/textura/lulo-colombiano-cortado/</loc>
+    <lastmod>2026-07-24</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://drive.google.com/thumbnail?id=1Idf4ZLR0b_VvouqOxpPOxXckVXhKN2u_&amp;sz=w1600</image:loc>
+      <image:title>Fruta 91 — Lulo colombiano cortado</image:title>
+      <image:caption>Lulo partido a la mitad, mostrando su pulpa verde ácida, sobre fondo blanco, en calidad 4K.</image:caption>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://fondoblanco.co/textura/mandarina-pelada-en-espiral/</loc>
+    <lastmod>2026-07-24</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://drive.google.com/thumbnail?id=1d2yoUEF4IWC0WpJSOFyVmz5gr50doIx3&amp;sz=w1600</image:loc>
+      <image:title>Fruta 92 — Mandarina pelada en espiral</image:title>
+      <image:caption>Cáscara de mandarina desenrollándose en espiral sobre la fruta pelada, fondo blanco, en calidad 4K.</image:caption>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://fondoblanco.co/textura/mango-maduro-y-cubos-de-mango/</loc>
+    <lastmod>2026-07-24</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://drive.google.com/thumbnail?id=1sqokXeZ2VMn_TiUxRNWNaRF2oX37_mg8&amp;sz=w1600</image:loc>
+      <image:title>Fruta 93 — Mango maduro y cubos de mango</image:title>
+      <image:caption>Mango entero junto a cubos de mango picado sobre una cuchara, fondo blanco, en calidad 4K.</image:caption>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://fondoblanco.co/textura/mango-rodeado-de-jugo/</loc>
+    <lastmod>2026-07-24</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://drive.google.com/thumbnail?id=1jmpjZIhV5Cpk6xo2kU3YMRompitvRYb2&amp;sz=w1600</image:loc>
+      <image:title>Fruta 94 — Mango rodeado de jugo</image:title>
+      <image:caption>Mango entero con una salpicadura de jugo envolviéndolo, sobre fondo blanco, en calidad 4K.</image:caption>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://fondoblanco.co/textura/mano-de-buda-fruta-citrica/</loc>
+    <lastmod>2026-07-24</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://drive.google.com/thumbnail?id=1yiaQnuK4ZTbZz0rzQcrCr9jKk6z0trwr&amp;sz=w1600</image:loc>
+      <image:title>Fruta 95 — Mano de Buda, fruta cítrica</image:title>
+      <image:caption>Cítrico en forma de mano con sus característicos dedos amarillos, macrofotografía sobre fondo blanco, en calidad 4K.</image:caption>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://fondoblanco.co/textura/manzana-roja-entera/</loc>
+    <lastmod>2026-07-24</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://drive.google.com/thumbnail?id=16tx3uLXRq1Q3qb5DQiJDNuEu1YOUG7F5&amp;sz=w1600</image:loc>
+      <image:title>Fruta 96 — Manzana roja entera</image:title>
+      <image:caption>Manzana roja brillante con su hoja, fotografía clásica sobre fondo blanco, en calidad 4K.</image:caption>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://fondoblanco.co/textura/naranja-cortada-con-salpicadura-de-agua/</loc>
+    <lastmod>2026-07-24</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://drive.google.com/thumbnail?id=1e9vQfyeiSiTzYKi5OurGRwGLSkW63BZU&amp;sz=w1600</image:loc>
+      <image:title>Fruta 97 — Naranja cortada con salpicadura de agua</image:title>
+      <image:caption>Mitad de naranja con gotas y salpicadura de agua a su alrededor, sobre fondo blanco, en calidad 4K.</image:caption>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://fondoblanco.co/textura/dragon-fruit-o-pitahaya/</loc>
+    <lastmod>2026-07-24</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://drive.google.com/thumbnail?id=1aefDyKm1H-8T81cuAqqE_0w1zYv0KLyr&amp;sz=w1600</image:loc>
+      <image:title>Fruta 98 — Dragón fruit o pitahaya</image:title>
+      <image:caption>Pitahaya cortada a la mitad, pulpa blanca con semillas negras y piel rosada, sobre fondo blanco, en calidad 4K.</image:caption>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://fondoblanco.co/textura/pina-con-fresas/</loc>
+    <lastmod>2026-07-24</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://drive.google.com/thumbnail?id=1WY37gVvqsJMUde4hUKNtcs9wrkunxGvA&amp;sz=w1600</image:loc>
+      <image:title>Fruta 99 — Piña con fresas</image:title>
+      <image:caption>Rodajas de piña junto a fresas frescas, composición veraniega sobre fondo blanco, en calidad 4K.</image:caption>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://fondoblanco.co/textura/tres-platanos-en-fila/</loc>
+    <lastmod>2026-07-24</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://drive.google.com/thumbnail?id=1GsJm3r1XuEHPyVLh-cd9twtRMW-tVjpx&amp;sz=w1600</image:loc>
+      <image:title>Fruta 100 — Tres plátanos en fila</image:title>
+      <image:caption>Tres plátanos amarillos maduros dispuestos en fila, sobre fondo blanco, en calidad 4K.</image:caption>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://fondoblanco.co/textura/rambutan-con-pulpa-blanca/</loc>
+    <lastmod>2026-07-24</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://drive.google.com/thumbnail?id=17O5laK19hnhPnYRztHC0NSV2NJs7t9TH&amp;sz=w1600</image:loc>
+      <image:title>Fruta 101 — Rambután con pulpa blanca</image:title>
+      <image:caption>Rambután abierto mostrando su pulpa blanca translúcida y piel roja peluda, sobre fondo blanco, en calidad 4K.</image:caption>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://fondoblanco.co/textura/sandia-partida-en-explosion/</loc>
+    <lastmod>2026-07-24</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://drive.google.com/thumbnail?id=1KUctDZwUa4jBU7dB9pwiXoQei_f5m44f&amp;sz=w1600</image:loc>
+      <image:title>Fruta 102 — Sandía partida en explosión</image:title>
+      <image:caption>Mitades de sandía con un efecto de explosión de jugo y semillas, sobre fondo blanco, en calidad 4K.</image:caption>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://fondoblanco.co/textura/surtido-variado-de-frutas/</loc>
+    <lastmod>2026-07-24</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://drive.google.com/thumbnail?id=1MlrizQjUKeEY0S8w5RS5-ZGCeaDhF5rU&amp;sz=w1600</image:loc>
+      <image:title>Fruta 103 — Surtido variado de frutas</image:title>
+      <image:caption>Manzana, naranja, uvas y fresa juntas en una composición colorida, sobre fondo blanco, en calidad 4K.</image:caption>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://fondoblanco.co/textura/toronja-congelada-en-hielo/</loc>
+    <lastmod>2026-07-24</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://drive.google.com/thumbnail?id=1uOsJypdzwlYesSHe0r2dqonSrs24ZU4B&amp;sz=w1600</image:loc>
+      <image:title>Fruta 104 — Toronja congelada en hielo</image:title>
+      <image:caption>Rodajas de toronja rosada congeladas dentro de un bloque de hielo, sobre fondo blanco, en calidad 4K.</image:caption>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://fondoblanco.co/textura/uvas-y-kiwi-en-rodajas/</loc>
+    <lastmod>2026-07-24</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://drive.google.com/thumbnail?id=1xy-tCrcHaBrAdU2dgyMq1AgUc_-jwdRJ&amp;sz=w1600</image:loc>
+      <image:title>Fruta 105 — Uvas y kiwi en rodajas</image:title>
+      <image:caption>Racimo de uvas moradas junto a rodajas de kiwi verde, sobre fondo blanco, en calidad 4K.</image:caption>
+    </image:image>
+  </url>
 </urlset>
