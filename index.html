@@ -160,8 +160,6 @@
   }
   .img-wrap .fallback{padding:34px 16px;text-align:center;font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--ink-soft);}
   .mat-bottom{display:none;}
-  .ad-slot{display:flex;flex-direction:column;align-items:center;gap:6px;margin:12px 0 4px;overflow:hidden;}
-  .ad-slot iframe{max-width:100%;border:0;}
   figure.plate figcaption{display:none;}
   .plate-title{font-family:'Fraunces',serif;font-weight:560;font-size:19px;margin:0 0 4px;letter-spacing:-.01em;}
   .plate-meta{font-family:'IBM Plex Mono',monospace;font-size:10.5px;letter-spacing:.04em;text-transform:uppercase;color:var(--terracotta);margin:0 0 20px;}
@@ -291,10 +289,10 @@
   <span id="footerBrand">Fondo Blanco — banco de imágenes</span>
   <span>Colección — Fondos 2026</span>
   <span>Todas las descargas abren en una pestaña nueva</span>
-  <span><a href="#" id="footerPolicyLink" style="text-decoration:underline;">Política de Cookies y Uso</a></span>
+  <span><a href="/politica-de-privacidad/" style="text-decoration:underline;">Política de Privacidad</a></span>
+  <span><a href="/contacto/" style="text-decoration:underline;">Contacto</a></span>
+  <span><a href="#" id="footerPolicyLink" style="text-decoration:underline;">Términos de uso</a></span>
 </footer>
-
-<div class="ad-slot" id="ad-site-bottom" style="padding:20px 6vw 40px;"></div>
 
 <!-- ============ DETALLE DE IMAGEN ============ -->
 <div class="overlay" id="detailOverlay">
@@ -671,48 +669,6 @@
     return String(str).replace(/[&<>"']/g, s => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[s]));
   }
 
-  // ---------- Publicidad ----------
-  // Cada anuncio se monta dentro de su propio <iframe> aislado, así el script
-  // de la red publicitaria (que usa document.write) no borra el resto de la página
-  // y la variable global "atOptions" no se pisa entre un anuncio y otro.
-  const AD_UNITS = [
-    { key:'fb9921bce1a87f009b4c5495a5af6e2f', width:300, height:250 },
-    { key:'6be047e0c4ce65c11ef08b36a8497fcf', width:320, height:50  }
-  ];
-  const SITE_BOTTOM_AD_UNIT = { key:'b9b30440f04feaa6f4621f9c2aa9b82f', width:728, height:90 };
-
-  function injectAdIntoIframe(iframe, unit){
-    const doc = iframe.contentWindow.document;
-    doc.open();
-    doc.write(
-      '<!DOCTYPE html><html><head><style>html,body{margin:0;padding:0;overflow:hidden;}</style></head><body>' +
-      '<script>atOptions={"key":"' + unit.key + '","format":"iframe","height":' + unit.height + ',"width":' + unit.width + ',"params":{}};<' + '/script>' +
-      '<script src="https://www.highperformanceformat.com/' + unit.key + '/invoke.js"><' + '/script>' +
-      '</body></html>'
-    );
-    doc.close();
-  }
-
-  function renderAdSlot(slotId, units){
-    const slot = document.getElementById(slotId);
-    if(!slot) return;
-    slot.innerHTML = '';
-    (units || AD_UNITS).forEach(unit=>{
-      const iframe = document.createElement('iframe');
-      iframe.width = unit.width;
-      iframe.height = unit.height;
-      iframe.style.width = unit.width + 'px';
-      iframe.style.height = unit.height + 'px';
-      iframe.style.border = '0';
-      iframe.scrolling = 'no';
-      iframe.loading = 'lazy';
-      iframe.setAttribute('frameborder','0');
-      iframe.title = 'Publicidad';
-      slot.appendChild(iframe);
-      injectAdIntoIframe(iframe, unit);
-    });
-  }
-
   // ---------- Buscador ----------
   const searchInput = document.getElementById('searchInput');
   const searchClearBtn = document.getElementById('searchClearBtn');
@@ -977,7 +933,6 @@
           Enlace de esta ficha:<br>${window.location.origin}${window.location.pathname}#pin-${item.id}
           <button type="button" id="copyLinkBtn">Copiar enlace</button>
         </div>
-        <div class="ad-slot" id="ad-detail-${item.id}"></div>
       </div>
     `;
 
@@ -985,8 +940,6 @@
     setImageWithFallback(detailImgTag, candidates, ()=>{
       detailImgTag.parentElement.innerHTML = '<div class="fallback">Vista previa no disponible</div>';
     });
-
-    renderAdSlot('ad-detail-' + item.id);
 
     document.getElementById('copyLinkBtn').addEventListener('click', ()=>{
       const url = `${window.location.origin}${window.location.pathname}#pin-${item.id}`;
@@ -1076,35 +1029,6 @@
     renderGallery();
     updatePageUrl(currentPage, true);
     handleHash();
-    const bottomAdSlot = document.getElementById('ad-site-bottom');
-    // En pantallas angostas, el banner de escritorio (728x90) llega igual pero se
-    // reescala por CSS y se ve borroso/recortado; en su lugar pedimos el formato
-    // 320x50 que ya existe para el anuncio del detalle, más liviano y hecho para móvil.
-    const MOBILE_BOTTOM_AD_UNIT = AD_UNITS[1];
-    const runBottomAd = ()=> renderAdSlot('ad-site-bottom', [window.innerWidth <= 480 ? MOBILE_BOTTOM_AD_UNIT : SITE_BOTTOM_AD_UNIT]);
-
-    // Doble candado para que este anuncio nunca compita con los recursos críticos
-    // del primer render: (1) el margen del observer es chico (no 600px), porque un
-    // margen grande hace que el slot ya "intersecte" desde el primer instante en
-    // catálogos que no son mucho más altos que la pantalla; y (2) aunque intersecte,
-    // se espera a que el navegador esté libre antes de inyectar el script del anuncio.
-    const scheduleBottomAd = ()=>{
-      if('requestIdleCallback' in window){ requestIdleCallback(runBottomAd, {timeout:2000}); }
-      else { setTimeout(runBottomAd, 500); }
-    };
-    if(bottomAdSlot && 'IntersectionObserver' in window){
-      const bottomAdObserver = new IntersectionObserver((entries)=>{
-        entries.forEach(entry=>{
-          if(entry.isIntersecting){
-            bottomAdObserver.disconnect();
-            scheduleBottomAd();
-          }
-        });
-      }, { rootMargin: '100px 0px' });
-      bottomAdObserver.observe(bottomAdSlot);
-    }else{
-      scheduleBottomAd();
-    }
   })();
 
 })();
