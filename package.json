@@ -1,0 +1,13 @@
+{
+  "name": "fondoblanco",
+  "private": true,
+  "type": "module",
+  "description": "Generador estático de fondoblanco.co",
+  "scripts": {
+    "imagenes": "node _build/imagenes.mjs",
+    "build": "node _build/build.mjs"
+  },
+  "devDependencies": {
+    "sharp": "^0.34.5"
+  }
+}

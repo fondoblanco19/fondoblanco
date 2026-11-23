@@ -1,0 +1,613 @@
+{
+ "escritorio-minimalista-con-portatil": {
+  "w": 2688,
+  "h": 1520,
+  "bytes": 353059,
+  "paleta": [
+   "#d2c4b6",
+   "#c1a388",
+   "#9f8569",
+   "#6c5b32",
+   "#ebe7d9"
+  ],
+  "color": "#beab95"
+ },
+ "bowl-de-verduras-asadas-y-garbanzos": {
+  "w": 2688,
+  "h": 1520,
+  "bytes": 868461,
+  "paleta": [
+   "#c9a88e",
+   "#b19174",
+   "#946e3f",
+   "#65481c",
+   "#e3cfc0"
+  ],
+  "color": "#b09070"
+ },
+ "toallas-y-aceite-de-spa": {
+  "w": 2688,
+  "h": 1520,
+  "bytes": 604927,
+  "paleta": [
+   "#a8a88b",
+   "#c3c0a7",
+   "#8c8666",
+   "#ded7c3",
+   "#65633a"
+  ],
+  "color": "#aca98d"
+ },
+ "manos-sosteniendo-un-brote": {
+  "w": 2688,
+  "h": 1520,
+  "bytes": 330172,
+  "paleta": [
+   "#5b5f17",
+   "#867d26",
+   "#b89848",
+   "#35310f",
+   "#e1ba91"
+  ],
+  "color": "#7e732e"
+ },
+ "sendero-de-bosque-al-atardecer": {
+  "w": 2688,
+  "h": 1520,
+  "bytes": 1052182,
+  "paleta": [
+   "#2f3217",
+   "#545020",
+   "#d4b39b",
+   "#6d5f4a",
+   "#917e77"
+  ],
+  "color": "#716549"
+ },
+ "sala-luminosa-con-sofa-blanco": {
+  "w": 2688,
+  "h": 1520,
+  "bytes": 720831,
+  "paleta": [
+   "#b0987d",
+   "#9c7e5d",
+   "#c3b49b",
+   "#775e3a",
+   "#e1dbca"
+  ],
+  "color": "#ac967a"
+ },
+ "ondas-turquesa-y-doradas": {
+  "w": 2688,
+  "h": 1520,
+  "bytes": 174818,
+  "paleta": [
+   "#e5eddd",
+   "#a9dedf",
+   "#6dc5cc",
+   "#dcd3a2",
+   "#1d9ca1"
+  ],
+  "color": "#a2d4cb"
+ },
+ "recepcion-de-consultorio-moderno": {
+  "w": 2688,
+  "h": 1520,
+  "bytes": 266508,
+  "paleta": [
+   "#d4d8df",
+   "#bfa486",
+   "#e3e6ec",
+   "#a0b6c4",
+   "#c0c6ca"
+  ],
+  "color": "#c7c7c6"
+ },
+ "libros-lapices-y-manzana-en-escritorio": {
+  "w": 2688,
+  "h": 1520,
+  "bytes": 421329,
+  "paleta": [
+   "#e5b352",
+   "#bd7f3b",
+   "#eae0d7",
+   "#c3ac8d",
+   "#5d5748"
+  ],
+  "color": "#caa265"
+ },
+ "calabazas-y-hojas-de-otono-en-madera": {
+  "w": 2688,
+  "h": 1520,
+  "bytes": 982720,
+  "paleta": [
+   "#9a6745",
+   "#864625",
+   "#d36017",
+   "#5e210b",
+   "#dab795"
+  ],
+  "color": "#9e5d37"
+ },
+ "playa-tropical-vista-aerea": {
+  "w": 2688,
+  "h": 1520,
+  "bytes": 1073391,
+  "paleta": [
+   "#099591",
+   "#4e6318",
+   "#d1cdbf",
+   "#64c2af",
+   "#8c8976"
+  ],
+  "color": "#5f9e84"
+ },
+ "red-digital-de-conexiones": {
+  "w": 2688,
+  "h": 1520,
+  "bytes": 159188,
+  "paleta": [
+   "#001047",
+   "#0d247d",
+   "#081a62",
+   "#2230a9",
+   "#575ee5"
+  ],
+  "color": "#0e1f70"
+ },
+ "cafe-de-filtro-recien-servido": {
+  "w": 2688,
+  "h": 1520,
+  "bytes": 448201,
+  "paleta": [
+   "#542911",
+   "#341709",
+   "#764527",
+   "#a56d43",
+   "#d6a77a"
+  ],
+  "color": "#6a3e23"
+ },
+ "cajas-de-frutas-y-verduras-frescas": {
+  "w": 2688,
+  "h": 1520,
+  "bytes": 1243707,
+  "paleta": [
+   "#58592e",
+   "#332b14",
+   "#89784f",
+   "#8f3114",
+   "#d47d29"
+  ],
+  "color": "#6f5229"
+ },
+ "cocina-blanca-con-isla-de-madera": {
+  "w": 2688,
+  "h": 1520,
+  "bytes": 487535,
+  "paleta": [
+   "#c6b6a1",
+   "#b2a284",
+   "#806239",
+   "#d8ceba",
+   "#99825a"
+  ],
+  "color": "#b19f82"
+ },
+ "rincon-de-meditacion-con-bonsai": {
+  "w": 2688,
+  "h": 1520,
+  "bytes": 503087,
+  "paleta": [
+   "#a99179",
+   "#90765b",
+   "#c4b19c",
+   "#6a5236",
+   "#e1d5c2"
+  ],
+  "color": "#a8927a"
+ },
+ "granja-solar-al-amanecer": {
+  "w": 2688,
+  "h": 1520,
+  "bytes": 965301,
+  "paleta": [
+   "#2b405f",
+   "#323c1a",
+   "#eeb77d",
+   "#96a2bc",
+   "#826829"
+  ],
+  "color": "#706d5f"
+ },
+ "manos-con-celular-de-pantalla-negra": {
+  "w": 2688,
+  "h": 1520,
+  "bytes": 288589,
+  "paleta": [
+   "#c9a68c",
+   "#d3c5bb",
+   "#7e92a0",
+   "#070603",
+   "#75614a"
+  ],
+  "color": "#97897d"
+ },
+ "dormitorio-con-ropa-de-cama-de-lino": {
+  "w": 2688,
+  "h": 1520,
+  "bytes": 477050,
+  "paleta": [
+   "#ad947b",
+   "#997d60",
+   "#c9b196",
+   "#7b5b39",
+   "#e3d2b6"
+  ],
+  "color": "#ad9378"
+ },
+ "macetas-de-hierbas-y-herramientas-de-jardin": {
+  "w": 2688,
+  "h": 1520,
+  "bytes": 816189,
+  "paleta": [
+   "#97856c",
+   "#525926",
+   "#6f7641",
+   "#323a11",
+   "#bea998"
+  ],
+  "color": "#716f47"
+ },
+ "sombrero-y-limonada-en-la-arena": {
+  "w": 2688,
+  "h": 1520,
+  "bytes": 1055960,
+  "paleta": [
+   "#e7cfb6",
+   "#d7ad7a",
+   "#91663a",
+   "#ced7dc",
+   "#2eafba"
+  ],
+  "color": "#beb296"
+ },
+ "chocolate-caliente-con-luces-navidenas": {
+  "w": 2688,
+  "h": 1520,
+  "bytes": 401879,
+  "paleta": [
+   "#845835",
+   "#614222",
+   "#af8057",
+   "#3a2b0a",
+   "#d6b089"
+  ],
+  "color": "#835e3a"
+ },
+ "flores-de-cerezo-y-cielo-azul": {
+  "w": 2688,
+  "h": 1520,
+  "bytes": 288737,
+  "paleta": [
+   "#b6d0f1",
+   "#ecd4e1",
+   "#bfbdd4",
+   "#d1ada5",
+   "#a07a48"
+  ],
+  "color": "#c7c5d6"
+ },
+ "orquidea-blanca-y-piedras-zen": {
+  "w": 2688,
+  "h": 1520,
+  "bytes": 268327,
+  "paleta": [
+   "#5e5e5d",
+   "#757573",
+   "#4a4a48",
+   "#1d1e18",
+   "#b9b7b2"
+  ],
+  "color": "#5f5f5d"
+ },
+ "formas-3d-en-tonos-pastel": {
+  "w": 2688,
+  "h": 1520,
+  "bytes": 276043,
+  "paleta": [
+   "#f9c8b3",
+   "#f2b59e",
+   "#d0bfd0",
+   "#adaeaa",
+   "#be877a"
+  ],
+  "color": "#e1b9ad"
+ },
+ "marmol-negro-y-blanco-con-vetas-doradas": {
+  "w": 2688,
+  "h": 1520,
+  "bytes": 447967,
+  "paleta": [
+   "#121213",
+   "#d7d4d2",
+   "#34302d",
+   "#aca194",
+   "#6b6258"
+  ],
+  "color": "#54514f"
+ },
+ "lago-de-montana-con-reflejo-al-amanecer": {
+  "w": 2688,
+  "h": 1520,
+  "bytes": 577207,
+  "paleta": [
+   "#bf9dbc",
+   "#393e2d",
+   "#ecb0a9",
+   "#676066",
+   "#9e8189"
+  ],
+  "color": "#977d81"
+ },
+ "bokeh-de-luces-de-colores": {
+  "w": 2688,
+  "h": 1520,
+  "bytes": 130007,
+  "paleta": [
+   "#031f49",
+   "#4f2d53",
+   "#b1445c",
+   "#f1a254",
+   "#256fbf"
+  ],
+  "color": "#393454"
+ },
+ "libro-abierto-junto-a-ventana-con-lluvia": {
+  "w": 2688,
+  "h": 1520,
+  "bytes": 484586,
+  "paleta": [
+   "#67675e",
+   "#66432b",
+   "#37200f",
+   "#8f694d",
+   "#cfb196"
+  ],
+  "color": "#715f4d"
+ },
+ "mujer-trabajando-en-casa-con-portatil": {
+  "w": 2688,
+  "h": 1520,
+  "bytes": 318418,
+  "paleta": [
+   "#c6c3bd",
+   "#afa69a",
+   "#917e69",
+   "#ecebe7",
+   "#463e2c"
+  ],
+  "color": "#b5ada3"
+ },
+ "doctora-con-tablet-en-consulta": {
+  "w": 2688,
+  "h": 1520,
+  "bytes": 237743,
+  "paleta": [
+   "#c7d4e7",
+   "#b7c7dc",
+   "#a2afc0",
+   "#53585d",
+   "#948682"
+  ],
+  "color": "#a9b3c2"
+ },
+ "mujer-corriendo-en-sendero-al-atardecer": {
+  "w": 2688,
+  "h": 1520,
+  "bytes": 292275,
+  "paleta": [
+   "#e9cfc1",
+   "#604d2d",
+   "#fcd0a0",
+   "#9d744d",
+   "#da9e6a"
+  ],
+  "color": "#bc9c7c"
+ },
+ "panadera-colgando-letrero-de-abierto": {
+  "w": 2688,
+  "h": 1520,
+  "bytes": 665750,
+  "paleta": [
+   "#b8916f",
+   "#976d49",
+   "#6e4a2d",
+   "#432a13",
+   "#d3bea6"
+  ],
+  "color": "#916f51"
+ },
+ "cafe-latte-en-mesa-de-madera": {
+  "w": 2688,
+  "h": 1520,
+  "bytes": 390713,
+  "paleta": [
+   "#61462f",
+   "#8c6541",
+   "#412b13",
+   "#bb9268",
+   "#dfc1a0"
+  ],
+  "color": "#826345"
+ },
+ "bowl-de-ensalada-con-quinoa-y-aguacate": {
+  "w": 2688,
+  "h": 1520,
+  "bytes": 715664,
+  "paleta": [
+   "#d1c4bb",
+   "#e8ddd6",
+   "#9b8548",
+   "#6c531a",
+   "#b4a183"
+  ],
+  "color": "#c0b099"
+ },
+ "sala-moderna-con-plantas-grandes": {
+  "w": 2688,
+  "h": 1520,
+  "bytes": 838966,
+  "paleta": [
+   "#ab9778",
+   "#c5b69e",
+   "#e0dcce",
+   "#8a744f",
+   "#575221"
+  ],
+  "color": "#aea083"
+ },
+ "barrio-con-paneles-solares-al-atardecer": {
+  "w": 2688,
+  "h": 1520,
+  "bytes": 769147,
+  "paleta": [
+   "#4a452c",
+   "#7ba8db",
+   "#967149",
+   "#bec8d6",
+   "#f5cd93"
+  ],
+  "color": "#8a8981"
+ },
+ "playa-con-muelle-al-amanecer": {
+  "w": 2688,
+  "h": 1520,
+  "bytes": 435888,
+  "paleta": [
+   "#c8b4bb",
+   "#9faed2",
+   "#ecb48c",
+   "#6da5b0",
+   "#5c5c30"
+  ],
+  "color": "#aaa5a5"
+ },
+ "bosque-de-otono-con-niebla": {
+  "w": 2688,
+  "h": 1520,
+  "bytes": 640218,
+  "paleta": [
+   "#e6cdb6",
+   "#93562c",
+   "#ba8157",
+   "#512e16",
+   "#d9ae88"
+  ],
+  "color": "#ba9171"
+ },
+ "cerebro-digital-inteligencia-artificial": {
+  "w": 2688,
+  "h": 1520,
+  "bytes": 486481,
+  "paleta": [
+   "#000b1c",
+   "#001730",
+   "#02386d",
+   "#1193d8",
+   "#065fa4"
+  ],
+  "color": "#032d50"
+ },
+ "candado-de-ciberseguridad-en-circuito": {
+  "w": 2688,
+  "h": 1520,
+  "bytes": 209812,
+  "paleta": [
+   "#021f3a",
+   "#02182e",
+   "#0b4065",
+   "#1d72a2",
+   "#a1c0d6"
+  ],
+  "color": "#092b48"
+ },
+ "monedas-y-planta-ahorro-e-inversion": {
+  "w": 2688,
+  "h": 1520,
+  "bytes": 375811,
+  "paleta": [
+   "#a69c81",
+   "#948957",
+   "#755534",
+   "#483020",
+   "#d7bfa4"
+  ],
+  "color": "#8e7d5c"
+ },
+ "ilustracion-de-oficina-con-equipo": {
+  "w": 2688,
+  "h": 1520,
+  "bytes": 304625,
+  "paleta": [
+   "#fbfafb",
+   "#e1dfe8",
+   "#b2b9c8",
+   "#edc4a3",
+   "#80947d"
+  ],
+  "color": "#dcdada"
+ },
+ "set-de-iconos-de-servicio-al-cliente": {
+  "w": 2688,
+  "h": 1520,
+  "bytes": 311865,
+  "paleta": [
+   "#fdfdfd",
+   "#6298c9",
+   "#9cbddc",
+   "#e2e1de",
+   "#f6a95f"
+  ],
+  "color": "#dce1e5"
+ },
+ "patron-de-hojas-y-bayas-en-acuarela": {
+  "w": 2688,
+  "h": 1520,
+  "bytes": 759595,
+  "paleta": [
+   "#efe4c4",
+   "#fcf6dd",
+   "#ded1aa",
+   "#d1b98c",
+   "#aba068"
+  ],
+  "color": "#e2d6b1"
+ },
+ "acuarela-azul-y-durazno": {
+  "w": 2688,
+  "h": 1520,
+  "bytes": 251912,
+  "paleta": [
+   "#f0ece9",
+   "#fce5d6",
+   "#fdcfb9",
+   "#cddfeb",
+   "#9ec9e7"
+  ],
+  "color": "#eae1dc"
+ },
+ "regalos-kraft-con-pino-y-naranja-seca": {
+  "w": 2688,
+  "h": 1520,
+  "bytes": 691040,
+  "paleta": [
+   "#d5c9c1",
+   "#e2d7cf",
+   "#b6875a",
+   "#f3ebe3",
+   "#6f5228"
+  ],
+  "color": "#c7b29e"
+ }
+}
