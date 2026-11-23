@@ -85,7 +85,7 @@ ${jsonld.map((j) => `<script type="application/ld+json">${JSON.stringify(j)}</sc
 <body>
 <a class="skip" href="#contenido">Saltar al contenido</a>
 <header class="top"><div class="wrap">
-<a class="brand" href="/" aria-label="Fondo Blanco, inicio">${ICON.reg}<span>Fondo Blanco</span></a>
+<a class="brand" href="/" aria-label="Fondo Blanco, inicio"><span>Fondo Blanco</span></a>
 <nav class="nav" aria-label="Principal">
 <a href="/#colecciones" class="hide-s"${nav === 'colecciones' ? ' aria-current="page"' : ''}>Colecciones</a>
 <a href="/licencia/"${nav === 'licencia' ? ' aria-current="page"' : ''}>Licencia</a>
@@ -112,7 +112,7 @@ function footer() {
 <div><h2>Sitio</h2><ul><li><a href="/licencia/">Licencia y uso</a></li><li><a href="/privacidad/">Privacidad</a></li><li><a href="/contacto/">Contacto</a></li></ul></div>
 </div>
 <div class="foot-mark" aria-hidden="true">Fondo Blanco</div>
-<div class="foot-legal"><span>© ${new Date().getFullYear()} Fondo Blanco · Imágenes bajo ${sitio.licencia.nombre}</span><span>Tipografía: Placa, Acumin Pro y Source Code Pro vía Adobe Fonts</span></div>
+<div class="foot-legal"><span>© ${new Date().getFullYear()} Fondo Blanco · Imágenes bajo ${sitio.licencia.nombre}</span><span>Tipografía: Archivo Black, Acumin Pro y Source Code Pro vía Adobe Fonts</span></div>
 </div></footer>`;
 }
 
@@ -343,10 +343,10 @@ ${urls.map((u) => `<url><loc>${URL}${u.loc}</loc><lastmod>${HOY}</lastmod><prior
 // ---------- iconos e imágenes para redes ----------
 async function graficos() {
   const mark = (fg, bg, pad = 0) => `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64"><rect width="64" height="64" rx="${pad ? 0 : 14}" fill="${bg}"/><g fill="none" stroke="${fg}" stroke-width="3.4"><circle cx="32" cy="32" r="13"/><path d="M32 ${10 + pad}v${44 - 2 * pad}M${10 + pad} 32h${44 - 2 * pad}"/></g><circle cx="32" cy="32" r="4.6" fill="${fg}"/></svg>`;
-  write('favicon.svg', mark('#e5341d', '#fafaf7'));
-  await sharp(Buffer.from(mark('#e5341d', '#fafaf7'))).resize(192, 192).png().toFile(path.join(ROOT, 'icon-192.png'));
-  await sharp(Buffer.from(mark('#e5341d', '#fafaf7', 6))).resize(512, 512).png().toFile(path.join(ROOT, 'icon-512.png'));
-  await sharp(Buffer.from(mark('#e5341d', '#fafaf7', 4))).resize(180, 180).png().toFile(path.join(ROOT, 'apple-touch-icon.png'));
+  write('favicon.svg', mark('#151513', '#fafaf7'));
+  await sharp(Buffer.from(mark('#151513', '#fafaf7'))).resize(192, 192).png().toFile(path.join(ROOT, 'icon-192.png'));
+  await sharp(Buffer.from(mark('#151513', '#fafaf7', 6))).resize(512, 512).png().toFile(path.join(ROOT, 'icon-512.png'));
+  await sharp(Buffer.from(mark('#151513', '#fafaf7', 4))).resize(180, 180).png().toFile(path.join(ROOT, 'apple-touch-icon.png'));
   fs.mkdirSync(path.join(ROOT, 'img/og'), { recursive: true });
   for (const f of fotos) {
     const out = path.join(ROOT, 'img/og', `${f.slug}.jpg`);

@@ -34,4 +34,4 @@ Banco de fotos de stock gratis — [fondoblanco.co](https://fondoblanco.co). Sit
 
 ## Tipografías
 
-Placa, Acumin Pro y Source Code Pro vía Adobe Fonts (kit `ccm6jic`, dominios: fondoblanco.co, www, fondoblanco19.github.io y localhost).
+Archivo Black, Acumin Pro y Source Code Pro vía Adobe Fonts (kit `nzg5tvo`, dominios: fondoblanco.co, www, fondoblanco19.github.io y localhost).
