@@ -293,9 +293,9 @@ ${textoHtml}
 }
 
 // ---------- páginas de texto ----------
-function pagina(slug, { title, h1, intro, html, desc, nav }) {
+function pagina(slug, { title, h1, intro, html, desc, nav, script = '' }) {
   const body = `<div class="wrap"><header class="page-head"><p class="mono" style="color:var(--signal-ink);margin:0">Fondo Blanco</p><h1>${h1}</h1><p>${intro}</p></header><div class="prose">${html}</div></div>`;
-  write(`${slug}/index.html`, layout({ title, desc, canon: `/${slug}/`, body, nav }));
+  write(`${slug}/index.html`, layout({ title, desc, canon: `/${slug}/`, body, nav, script: script ? SCRIPT_COMUN + script : '' }));
 }
 
 function paginas() {
@@ -312,20 +312,32 @@ function paginas() {
   pagina('privacidad', {
     title: 'Política de privacidad — Fondo Blanco', h1: 'Privacidad',
     desc: 'Fondo Blanco no usa cookies de seguimiento, no pide registro y no recopila datos personales.',
-    intro: `Resumen corto: no usamos cookies, no hay registro y no recopilamos tus datos. Actualizado el ${HOY}.`,
-    html: `<h2>Qué datos recopilamos</h2><p>Ninguno. Fondo Blanco es un sitio estático: no tiene cuentas, formularios ni sistema de comentarios, y no usamos herramientas de analítica ni publicidad.</p>
+    intro: `Resumen corto: no usamos cookies, no hay registro y solo recibimos los datos que tú envíes por el formulario de contacto. Actualizado el ${HOY}.`,
+    html: `<h2>Qué datos recopilamos</h2><p>Ninguno al navegar. Fondo Blanco es un sitio estático: no tiene cuentas ni comentarios, y no usamos analítica ni publicidad. Solo recibimos lo que escribas en el formulario de contacto.</p>
 <h2>Cookies</h2><p>Este sitio no instala cookies propias. Tampoco guarda información en el almacenamiento de tu navegador.</p>
 <h2>Servicios de terceros</h2><ul><li><strong>GitHub Pages</strong> aloja el sitio. Como cualquier servidor web, puede registrar datos técnicos de la visita (como la dirección IP) por motivos de seguridad. Consulta la <a href="https://docs.github.com/es/site-policy/privacy-policies/github-general-privacy-statement" rel="noopener">declaración de privacidad de GitHub</a>.</li><li><strong>Adobe Fonts</strong> sirve las tipografías. Adobe registra datos técnicos para calcular el uso de las fuentes y no usa cookies. Consulta la <a href="https://www.adobe.com/es/privacy/policies/adobe-fonts.html" rel="noopener">política de privacidad de Adobe Fonts</a>.</li></ul>
-<h2>Contacto</h2><p>Si tienes preguntas sobre privacidad, escríbenos desde la página de <a href="/contacto/">contacto</a>.</p>` });
+<h2>Formulario de contacto</h2><p>Si nos escribes desde la página de <a href="/contacto/">contacto</a>, recibimos tu nombre, tu correo y tu mensaje, solo para responderte. El envío lo procesa <strong>FormSubmit</strong>, que reenvía el mensaje a nuestro correo. No usamos esos datos para publicidad.</p><h2>Contacto</h2><p>Si tienes preguntas sobre privacidad, escríbenos desde la página de <a href="/contacto/">contacto</a>.</p>` });
 
-  const mail = sitio.email;
+  const tok = sitio.formToken;
+  const form = tok ? `<form class="cform" id="cform" action="https://formsubmit.co/${esc(tok)}" method="POST">
+<div class="f"><label for="cn">Nombre</label><input id="cn" name="name" required autocomplete="name" maxlength="80"></div>
+<div class="f"><label for="ce">Tu correo (para responderte)</label><input id="ce" name="email" type="email" required autocomplete="email" maxlength="120"></div>
+<div class="f"><label for="cm">Motivo</label><select id="cm" name="motivo"><option>Soporte</option><option>Reportar una foto</option><option>Duda sobre la licencia</option><option>Sugerir fotos</option><option>Otro</option></select></div>
+<div class="f"><label for="cx">Mensaje</label><textarea id="cx" name="message" rows="6" required minlength="10" maxlength="3000"></textarea></div>
+<input type="text" name="_honey" tabindex="-1" autocomplete="off" style="display:none">
+<input type="hidden" name="_subject" value="Mensaje desde fondoblanco.co">
+<input type="hidden" name="_template" value="table">
+<input type="hidden" name="_next" value="${URL}/contacto/?enviado=1">
+<button class="btn primary" type="submit"><span>Enviar mensaje</span></button>
+<p class="note" id="cnote" role="status" aria-live="polite"></p>
+</form>` : '<div class="callout"><p>El formulario de contacto estará disponible pronto.</p></div>';
+  const formScript = `(()=>{const f=document.getElementById('cform'),n=document.getElementById('cnote');if(!f)return;if(location.search.includes('enviado=1')){n.textContent='¡Gracias! Recibimos tu mensaje y te responderemos pronto.'}
+f.addEventListener('submit',async e=>{e.preventDefault();const b=f.querySelector('button');b.disabled=true;n.textContent='Enviando…';try{const r=await fetch('https://formsubmit.co/ajax/${tok}',{method:'POST',headers:{Accept:'application/json'},body:new FormData(f)});const d=await r.json();if(d.success==='true'||d.success===true){f.reset();n.textContent='¡Gracias! Recibimos tu mensaje y te responderemos pronto.'}else throw 0}catch(_){n.textContent='No se pudo enviar. Inténtalo de nuevo en un momento.'}b.disabled=false})})();`;
   pagina('contacto', {
-    title: 'Contacto — Fondo Blanco', h1: 'Contacto', nav: 'contacto',
-    desc: 'Escríbenos para sugerir fotos, reportar un problema o preguntar por la licencia de Fondo Blanco.',
-    intro: '¿Buscas una foto que no encuentras, viste un error o tienes una duda sobre la licencia? Escríbenos.',
-    html: mail
-      ? `<div class="callout"><p><strong>Correo:</strong> <a href="mailto:${esc(mail)}">${esc(mail)}</a></p></div><h2>Antes de escribir</h2><ul><li>Para dudas de uso, revisa primero la <a href="/licencia/">licencia</a>.</li><li>Si reportas una foto, incluye su código (por ejemplo <code>FB-001</code>).</li></ul>`
-      : `<div class="callout"><p><strong>Correo de contacto:</strong> lo publicaremos pronto.</p></div><h2>Antes de escribir</h2><ul><li>Para dudas de uso, revisa primero la <a href="/licencia/">licencia</a>.</li><li>Si reportas una foto, incluye su código (por ejemplo <code>FB-001</code>).</li></ul>` });
+    title: 'Contacto y soporte — Fondo Blanco', h1: 'Contacto y soporte', nav: 'contacto', script: tok ? formScript : '',
+    desc: 'Escríbenos para pedir soporte, reportar una foto, sugerir imágenes o preguntar por la licencia de Fondo Blanco.',
+    intro: '¿Necesitas ayuda, encontraste un error o tienes una duda sobre la licencia? Escríbenos y te respondemos.',
+    html: `${form}<h2>Antes de escribir</h2><ul><li>Para dudas de uso, revisa primero la <a href="/licencia/">licencia</a>.</li><li>Si reportas una foto, incluye su código (por ejemplo <code>FB-001</code>).</li></ul>` });
 
   write('404.html', layout({ title: 'Página no encontrada — Fondo Blanco', desc: 'Esta página no existe.', canon: '/404.html', noindex: true,
     body: `<div class="wrap"><header class="page-head"><p class="mono" style="color:var(--signal-ink);margin:0">Error 404</p><h1>Fuera de cuadro</h1><p>Esta página no existe o cambió de lugar. Las fotos del sitio anterior se reorganizaron en colecciones nuevas.</p></header>
