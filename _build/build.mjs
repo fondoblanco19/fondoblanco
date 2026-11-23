@@ -123,7 +123,6 @@ function card(f, { eager = false } = {}) {
 <a href="${f.url}"><figure class="print" style="--c:${f.color}">${picture(f, { sizes: '(max-width:600px) calc(100vw - 32px), (max-width:1024px) calc(50vw - 40px), min(31vw, 460px)', eager })}</figure>
 <div class="card-meta"><span class="mono">${f.code}</span><span class="mono">${esc(f.col.nombre)}</span><h3>${esc(f.titulo)}</h3></div></a>
 ${f.espacio ? '<span class="badge" aria-hidden="true">Espacio para texto</span>' : ''}
-<a class="card-dl" href="${f.dl}" download aria-label="Descargar ${esc(f.titulo)} (JPG, ${mb(f.bytes)})">${ICON.dl}</a>
 </li>`;
 }
 
