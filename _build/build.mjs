@@ -9,6 +9,7 @@ const read = (p) => JSON.parse(fs.readFileSync(path.join(ROOT, p), 'utf8'));
 const sitio = read('_src/sitio.json');
 const { colecciones, fotos: fotosRaw } = read('_src/fotos.json');
 const meta = read('_src/meta.json');
+const seoCol = read('_src/colecciones-seo.json');
 const legado = fs.existsSync(path.join(ROOT, '_src/legado.json')) ? read('_src/legado.json') : [];
 const CSS = fs.readFileSync(path.join(ROOT, '_build/estilos.css'), 'utf8')
   .replace(/\/\*[\s\S]*?\*\//g, '').replace(/\s+/g, ' ').replace(/\s*([{}:;,>])\s*/g, '$1').replace(/;}/g, '}').trim();
@@ -259,18 +260,28 @@ function ficha(f) {
 
 // ---------- colección ----------
 function coleccion(c) {
+  const sc = seoCol[c.slug] || { texto: [], faqs: [] };
+  const otras = colecciones.filter((x) => x.slug !== c.slug);
+  const textoHtml = sc.texto.length ? `<section class="prose seo-text" aria-labelledby="h-sobre"><h2 id="h-sobre">Sobre esta colección</h2>${sc.texto.map((t) => `<p>${esc(t)}</p>`).join('')}
+<h2>Preguntas frecuentes</h2>${sc.faqs.map(([q, a]) => `<h3>${esc(q)}</h3><p>${esc(a)}</p>`).join('')}
+<h2>Más colecciones</h2><ul>${otras.map((x) => `<li><a href="/coleccion/${x.slug}/">${esc(x.nombre)}</a></li>`).join('')}</ul></section>` : '';
   const body = `<div class="wrap">
 <header class="page-head"><nav class="crumbs mono" aria-label="Ruta" style="margin:0"><a href="/">Inicio</a><span aria-hidden="true">/</span><a href="/#colecciones">Colecciones</a></nav>
-<h1>${esc(c.nombre)}</h1><p>${esc(c.desc)}</p></header>
+<h1>${esc(sc.h1 || c.nombre)}</h1><p>${esc(c.desc)}</p></header>
 <div class="toolbar" style="margin-top:0"><div class="toolbar-in">
 ${colecciones.map((x) => `<a class="chip" href="/coleccion/${x.slug}/"${x.slug === c.slug ? ' aria-current="page"' : ''}>${esc(x.nombre)} <small>${x.fotos.length}</small></a>`).join('\n')}
 </div></div>
 <p class="count mono">${c.fotos.length} fotos</p>
 <ul class="grid">${c.fotos.map((f, i) => card(f, { eager: i < 3 })).join('\n')}</ul>
+${textoHtml}
 </div>`;
-  const jsonld = [{ '@context': 'https://schema.org', '@type': 'CollectionPage', name: `${c.nombre} — Fondo Blanco`, description: c.desc, url: `${URL}/coleccion/${c.slug}/`,
+  const jsonld = [{ '@context': 'https://schema.org', '@type': 'BreadcrumbList', itemListElement: [
+      { '@type': 'ListItem', position: 1, name: 'Inicio', item: URL + '/' },
+      { '@type': 'ListItem', position: 2, name: c.nombre, item: `${URL}/coleccion/${c.slug}/` }] },
+    ...(sc.faqs.length ? [{ '@context': 'https://schema.org', '@type': 'FAQPage', mainEntity: sc.faqs.map(([q, a]) => ({ '@type': 'Question', name: q, acceptedAnswer: { '@type': 'Answer', text: a } })) }] : []),
+    { '@context': 'https://schema.org', '@type': 'CollectionPage', name: `${c.nombre} — Fondo Blanco`, description: c.desc, url: `${URL}/coleccion/${c.slug}/`,
     mainEntity: { '@type': 'ItemList', numberOfItems: c.fotos.length, itemListElement: c.fotos.map((f, i) => ({ '@type': 'ListItem', position: i + 1, url: URL + f.url, name: f.titulo })) } }];
-  write(`coleccion/${c.slug}/index.html`, layout({ title: `Fotos gratis de ${c.nombre.toLowerCase()} — Fondo Blanco`, desc: `${c.desc} ${c.fotos.length} fotos en alta resolución para descargar gratis.`,
+  write(`coleccion/${c.slug}/index.html`, layout({ title: `${sc.h1 || 'Fotos gratis de ' + c.nombre.toLowerCase()} en alta resolución — Fondo Blanco`, desc: `${c.desc} ${c.fotos.length} fotos en alta resolución para descargar gratis.`,
     canon: `/coleccion/${c.slug}/`, og: `${URL}/img/og/${c.fotos[0].slug}.jpg`, body, jsonld, nav: 'colecciones' }));
 }
 

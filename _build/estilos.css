@@ -189,6 +189,8 @@ a:focus-visible>.print::before{opacity:1}
 .page-head p{max-width:60ch;color:var(--ink-2);margin:0;font-size:19px}
 .prose{max-width:70ch;padding:clamp(24px,4vw,48px) 0}
 .prose h2{font-family:var(--f-display);font-weight:500;text-transform:uppercase;font-size:26px;line-height:1.1;margin:36px 0 10px}
+.prose h3{font-family:var(--f-display);font-weight:500;font-size:18px;line-height:1.25;margin:22px 0 6px}
+.seo-text{margin-top:clamp(24px,4vw,56px);border-top:1px solid var(--line,#ddd)}
 .prose p,.prose li{color:var(--ink-2)}
 .prose strong{color:var(--ink)}
 .prose ul{padding-left:20px}
