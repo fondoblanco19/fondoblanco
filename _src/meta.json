@@ -609,5 +609,616 @@
    "#6f5228"
   ],
   "color": "#c7b29e"
+ },
+ "sala-calida-con-sofa-beige-y-ficus": {
+  "w": 2688,
+  "h": 1520,
+  "bytes": 509193,
+  "paleta": [
+   "#cab9a8",
+   "#bca38a",
+   "#a0815f",
+   "#6a532a",
+   "#eae3d4"
+  ],
+  "color": "#baa68e"
+ },
+ "bano-de-marmol-con-vela-y-toalla": {
+  "w": 2688,
+  "h": 1520,
+  "bytes": 467593,
+  "paleta": [
+   "#817860",
+   "#baaa97",
+   "#9e917b",
+   "#dbcebd",
+   "#535920"
+  ],
+  "color": "#9c9179"
+ },
+ "comedor-de-madera-con-luz-dorada": {
+  "w": 2688,
+  "h": 1520,
+  "bytes": 550475,
+  "paleta": [
+   "#9c795b",
+   "#855b38",
+   "#b89b7d",
+   "#623c1a",
+   "#e3d5c8"
+  ],
+  "color": "#9a785a"
+ },
+ "tagliatelle-con-albahaca-y-parmesano": {
+  "w": 2688,
+  "h": 1520,
+  "bytes": 788451,
+  "paleta": [
+   "#7c5b22",
+   "#432b08",
+   "#a2825e",
+   "#c38f2d",
+   "#dbbe96"
+  ],
+  "color": "#8f6e3a"
+ },
+ "pan-artesanal-sobre-tabla-de-madera": {
+  "w": 2688,
+  "h": 1520,
+  "bytes": 825828,
+  "paleta": [
+   "#ab8a6c",
+   "#c4af9d",
+   "#8f6441",
+   "#dfd7d2",
+   "#5e3920"
+  ],
+  "color": "#aa8d76"
+ },
+ "jugo-de-naranja-con-hielo": {
+  "w": 2688,
+  "h": 1520,
+  "bytes": 500908,
+  "paleta": [
+   "#e8e9ee",
+   "#f8ab1a",
+   "#e0860e",
+   "#e5b465",
+   "#d1c3b9"
+  ],
+  "color": "#e7bf81"
+ },
+ "paneles-solares-en-tejado-al-atardecer": {
+  "w": 2688,
+  "h": 1520,
+  "bytes": 636165,
+  "paleta": [
+   "#4e342c",
+   "#7e4837",
+   "#251e13",
+   "#c97453",
+   "#f68027"
+  ],
+  "color": "#7f4b30"
+ },
+ "hoja-de-monstera-con-gotas": {
+  "w": 2688,
+  "h": 1520,
+  "bytes": 445653,
+  "paleta": [
+   "#27480e",
+   "#466825",
+   "#102304",
+   "#708c4c",
+   "#adba96"
+  ],
+  "color": "#3e5b25"
+ },
+ "mujer-con-tablet-en-cafe": {
+  "w": 2688,
+  "h": 1520,
+  "bytes": 486855,
+  "paleta": [
+   "#928a6c",
+   "#b1b49b",
+   "#282625",
+   "#645b4a",
+   "#d8ded4"
+  ],
+  "color": "#858270"
+ },
+ "equipo-revisando-graficos-de-ventas": {
+  "w": 2688,
+  "h": 1520,
+  "bytes": 454607,
+  "paleta": [
+   "#cfdeee",
+   "#9a9593",
+   "#afb8c4",
+   "#6c6255",
+   "#262320"
+  ],
+  "color": "#95979b"
+ },
+ "celular-con-grafico-de-crecimiento": {
+  "w": 2688,
+  "h": 1520,
+  "bytes": 279786,
+  "paleta": [
+   "#857262",
+   "#162126",
+   "#a89f9a",
+   "#484a3d",
+   "#d0d7da"
+  ],
+  "color": "#6b6862"
+ },
+ "yoga-en-terraza-al-atardecer": {
+  "w": 2688,
+  "h": 1520,
+  "bytes": 511807,
+  "paleta": [
+   "#46401b",
+   "#d7dcdd",
+   "#827050",
+   "#b89d7c",
+   "#f4deb4"
+  ],
+  "color": "#9f9379"
+ },
+ "ensalada-fresca-en-bowl-de-ceramica": {
+  "w": 2688,
+  "h": 1520,
+  "bytes": 568171,
+  "paleta": [
+   "#fbfaf9",
+   "#c7bfae",
+   "#b49723",
+   "#b09c7d",
+   "#714c22"
+  ],
+  "color": "#c2b28d"
+ },
+ "degradado-verde-menta-y-crema": {
+  "w": 2688,
+  "h": 1520,
+  "bytes": 42861,
+  "paleta": [
+   "#b3edc9",
+   "#c8f0cf",
+   "#dff3d4",
+   "#f7f5dd",
+   "#9de7c2"
+  ],
+  "color": "#c9efcf"
+ },
+ "madera-clara-de-roble": {
+  "w": 2688,
+  "h": 1520,
+  "bytes": 739587,
+  "paleta": [
+   "#d6b188",
+   "#d3ac81",
+   "#d0a579",
+   "#d8b690",
+   "#ca9d6e"
+  ],
+  "color": "#d3ac82"
+ },
+ "navidad-con-chocolate-caliente-y-velas": {
+  "w": 2688,
+  "h": 1520,
+  "bytes": 767656,
+  "paleta": [
+   "#af6a3b",
+   "#301204",
+   "#8e4c25",
+   "#5e2e0f",
+   "#ce8f5d"
+  ],
+  "color": "#854d29"
+ },
+ "sendero-de-piedra-con-hojas-de-arce": {
+  "w": 2688,
+  "h": 1520,
+  "bytes": 1082220,
+  "paleta": [
+   "#4f2a12",
+   "#7a573c",
+   "#912712",
+   "#b96227",
+   "#c6956b"
+  ],
+  "color": "#844929"
+ },
+ "biblioteca-con-escalera-y-sillon-verde": {
+  "w": 2688,
+  "h": 1520,
+  "bytes": 614718,
+  "paleta": [
+   "#704e33",
+   "#866448",
+   "#54351c",
+   "#37210e",
+   "#bb9064"
+  ],
+  "color": "#6a4a30"
+ },
+ "terraza-cubierta-con-lluvia-tropical": {
+  "w": 2688,
+  "h": 1520,
+  "bytes": 561042,
+  "paleta": [
+   "#0c202a",
+   "#442a15",
+   "#254343",
+   "#475c61",
+   "#98765a"
+  ],
+  "color": "#293333"
+ },
+ "rincon-de-lectura-en-buhardilla": {
+  "w": 2688,
+  "h": 1520,
+  "bytes": 359745,
+  "paleta": [
+   "#c7c1c0",
+   "#bcb6b4",
+   "#a19994",
+   "#827871",
+   "#dfe0e4"
+  ],
+  "color": "#b9b3b1"
+ },
+ "pasillo-de-arcos-blancos-con-olivo": {
+  "w": 2688,
+  "h": 1520,
+  "bytes": 462403,
+  "paleta": [
+   "#c6b7b0",
+   "#ba9c8b",
+   "#e0dcdc",
+   "#f4f1f0",
+   "#7b553e"
+  ],
+  "color": "#c9b8b0"
+ },
+ "pasta-fresca-sobre-mesa-enharinada": {
+  "w": 2688,
+  "h": 1520,
+  "bytes": 1085402,
+  "paleta": [
+   "#986c49",
+   "#ae8a70",
+   "#734d28",
+   "#e0c1a0",
+   "#d99d50"
+  ],
+  "color": "#a67d57"
+ },
+ "tabla-de-quesos-con-higos-y-nueces": {
+  "w": 2688,
+  "h": 1520,
+  "bytes": 581134,
+  "paleta": [
+   "#1f1a18",
+   "#0e0907",
+   "#3e2b20",
+   "#884c20",
+   "#b68b5d"
+  ],
+  "color": "#3a281b"
+ },
+ "pan-de-masa-madre-recien-horneado": {
+  "w": 2688,
+  "h": 1520,
+  "bytes": 557549,
+  "paleta": [
+   "#371c09",
+   "#995529",
+   "#c07c47",
+   "#6b3615",
+   "#ebb073"
+  ],
+  "color": "#86522b"
+ },
+ "meditacion-frente-al-mar-al-amanecer": {
+  "w": 2688,
+  "h": 1520,
+  "bytes": 149202,
+  "paleta": [
+   "#efb7bc",
+   "#c59dc8",
+   "#fbb383",
+   "#cc847c",
+   "#673f3a"
+  ],
+  "color": "#daa1a3"
+ },
+ "bano-de-piedra-con-vapor": {
+  "w": 2688,
+  "h": 1520,
+  "bytes": 479947,
+  "paleta": [
+   "#907b66",
+   "#a38f7b",
+   "#78634d",
+   "#58472f",
+   "#d4c9b8"
+  ],
+  "color": "#907c67"
+ },
+ "campo-de-lavanda-al-atardecer": {
+  "w": 2688,
+  "h": 1520,
+  "bytes": 602853,
+  "paleta": [
+   "#a170a9",
+   "#85415d",
+   "#d37f8a",
+   "#4d2846",
+   "#f59557"
+  ],
+  "color": "#a16178"
+ },
+ "te-caliente-entre-manos-y-manta-rosa": {
+  "w": 2688,
+  "h": 1520,
+  "bytes": 411137,
+  "paleta": [
+   "#d1b5a7",
+   "#a36955",
+   "#ead8d0",
+   "#c28e7a",
+   "#7b402f"
+  ],
+  "color": "#bc9282"
+ },
+ "cascada-en-selva-con-neblina": {
+  "w": 2688,
+  "h": 1520,
+  "bytes": 788198,
+  "paleta": [
+   "#62907b",
+   "#436e56",
+   "#2c4f2c",
+   "#14270f",
+   "#99b9aa"
+  ],
+  "color": "#42674d"
+ },
+ "smoothies-en-frascos-con-frutas-tropicales": {
+  "w": 2688,
+  "h": 1520,
+  "bytes": 417675,
+  "paleta": [
+   "#76d3f2",
+   "#c3cfd3",
+   "#e5bb23",
+   "#6a8b35",
+   "#a12a52"
+  ],
+  "color": "#8fbbb8"
+ },
+ "dunas-de-desierto-al-amanecer": {
+  "w": 2688,
+  "h": 1520,
+  "bytes": 296875,
+  "paleta": [
+   "#fccaa5",
+   "#fabda2",
+   "#bf581a",
+   "#772c0c",
+   "#f2842e"
+  ],
+  "color": "#e49e74"
+ },
+ "aromaterapia-con-vela-lavanda-y-eucalipto": {
+  "w": 2688,
+  "h": 1520,
+  "bytes": 362519,
+  "paleta": [
+   "#e8e5e7",
+   "#e0dcdb",
+   "#a1957e",
+   "#6b6252",
+   "#ccbca4"
+  ],
+  "color": "#d1cbc6"
+ },
+ "girasoles-bajo-cielo-de-tormenta": {
+  "w": 2688,
+  "h": 1520,
+  "bytes": 741307,
+  "paleta": [
+   "#3d546d",
+   "#22342b",
+   "#695715",
+   "#c28308",
+   "#a59486"
+  ],
+  "color": "#5d5b40"
+ },
+ "degradado-fluido-violeta-y-coral": {
+  "w": 2688,
+  "h": 1520,
+  "bytes": 306318,
+  "paleta": [
+   "#562dcf",
+   "#9c38d7",
+   "#2b1ea2",
+   "#e8619f",
+   "#5ec3c7"
+  ],
+  "color": "#7039c2"
+ },
+ "papel-blanco-arrugado": {
+  "w": 2688,
+  "h": 1520,
+  "bytes": 385975,
+  "paleta": [
+   "#e1dfdd",
+   "#d3cfca",
+   "#bbb5af",
+   "#9d958b",
+   "#f9f6f1"
+  ],
+  "color": "#d5d1ce"
+ },
+ "terrazo-en-tonos-tierra-y-salvia": {
+  "w": 2688,
+  "h": 1520,
+  "bytes": 666283,
+  "paleta": [
+   "#ede4d9",
+   "#eae0d4",
+   "#e0d2c2",
+   "#c5b39f",
+   "#aa886b"
+  ],
+  "color": "#e4d7c9"
+ },
+ "acuarela-de-nubes-pastel": {
+  "w": 2688,
+  "h": 1520,
+  "bytes": 468573,
+  "paleta": [
+   "#fbe8e1",
+   "#eceff4",
+   "#cee2f8",
+   "#f7cbc8",
+   "#88c0f7"
+  ],
+  "color": "#e7e3e9"
+ },
+ "brunch-de-primavera-con-tulipanes": {
+  "w": 2688,
+  "h": 1520,
+  "bytes": 625643,
+  "paleta": [
+   "#8d9d4f",
+   "#c7b08d",
+   "#bcb656",
+   "#e5cabe",
+   "#6a7230"
+  ],
+  "color": "#aca76b"
+ },
+ "chimenea-y-chocolate-en-invierno": {
+  "w": 2688,
+  "h": 1520,
+  "bytes": 654678,
+  "paleta": [
+   "#21120e",
+   "#5b2913",
+   "#5f5055",
+   "#6b81aa",
+   "#b67849"
+  ],
+  "color": "#46302b"
+ },
+ "verano-junto-a-la-piscina": {
+  "w": 2688,
+  "h": 1520,
+  "bytes": 538387,
+  "paleta": [
+   "#06ccd7",
+   "#ddd1c0",
+   "#02bac7",
+   "#d6aa33",
+   "#21dae0"
+  ],
+  "color": "#58c6b7"
+ },
+ "puesto-de-mercado-de-otono": {
+  "w": 2688,
+  "h": 1520,
+  "bytes": 811608,
+  "paleta": [
+   "#672812",
+   "#8b4322",
+   "#ba7f8c",
+   "#3f150a",
+   "#c1662b"
+  ],
+  "color": "#844431"
+ },
+ "pared-de-notas-adhesivas-con-flujo-de-ideas": {
+  "w": 2688,
+  "h": 1520,
+  "bytes": 336639,
+  "paleta": [
+   "#edeae9",
+   "#c0d6c9",
+   "#e9d289",
+   "#749e83",
+   "#cb9923"
+  ],
+  "color": "#dddbc8"
+ },
+ "escritorio-con-laptop-vacia-y-planta": {
+  "w": 2688,
+  "h": 1520,
+  "bytes": 496250,
+  "paleta": [
+   "#e7c8ab",
+   "#d9b591",
+   "#958360",
+   "#f2f0ed",
+   "#4f5136"
+  ],
+  "color": "#d2b799"
+ },
+ "estacion-de-envios-con-cajas-kraft": {
+  "w": 2688,
+  "h": 1520,
+  "bytes": 482518,
+  "paleta": [
+   "#e7e1e0",
+   "#af835a",
+   "#c7a485",
+   "#dacbc1",
+   "#6f582a"
+  ],
+  "color": "#c8b29e"
+ },
+ "barras-de-cristal-de-crecimiento": {
+  "w": 2688,
+  "h": 1520,
+  "bytes": 198798,
+  "paleta": [
+   "#d1e6f9",
+   "#a0daeb",
+   "#f0f5fd",
+   "#69d2e3",
+   "#1fbac0"
+  ],
+  "color": "#a9deed"
+ },
+ "mapa-antiguo-con-brujula-y-diario": {
+  "w": 2688,
+  "h": 1520,
+  "bytes": 920690,
+  "paleta": [
+   "#1a0d04",
+   "#321a07",
+   "#633e18",
+   "#986225",
+   "#d29649"
+  ],
+  "color": "#503113"
+ },
+ "luciernagas-en-bosque-nocturno": {
+  "w": 2688,
+  "h": 1520,
+  "bytes": 598240,
+  "paleta": [
+   "#05232e",
+   "#05130f",
+   "#113e4d",
+   "#243213",
+   "#4b4f1f"
+  ],
+  "color": "#102826"
  }
 }
