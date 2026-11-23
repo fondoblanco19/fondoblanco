@@ -182,7 +182,10 @@ ${fotos.map((f, i) => card(f, { eager: i < 3 })).join('\n')}
 <div><div class="num">02</div><h3>Descarga</h3><p>Cada foto se descarga en JPG de ${fotos[0].w}×${fotos[0].h} px, sin registro y sin marcas de agua.</p></div>
 <div><div class="num">03</div><h3>Úsala y da crédito</h3><p>Úsala en proyectos personales o comerciales. Solo menciona «Foto: Fondo Blanco». <a href="/licencia/">Ver licencia</a>.</p></div>
 </div>
-</section>`;
+</section>
+
+<section class="wrap" aria-labelledby="h-sobre-fb"><div class="prose seo-text"><h2 id="h-sobre-fb">Fotos de stock gratis en alta resolución</h2>${seoCol._portada.texto.map((t) => `<p>${esc(t)}</p>`).join('')}
+<h2>Preguntas frecuentes</h2>${seoCol._portada.faqs.map(([q, a]) => `<h3>${esc(q)}</h3><p>${esc(a)}</p>`).join('')}</div></section>`;
 
   const script = `${SCRIPT_COMUN}(()=>{const q=document.getElementById('q'),cards=[...document.querySelectorAll('#grid .card')],chips=[...document.querySelectorAll('[data-filter]')],esp=document.getElementById('esp'),count=document.getElementById('count'),empty=document.getElementById('empty');
 const norm=s=>s.toLowerCase().normalize('NFD').replace(/[\\u0300-\\u036f]/g,'');let col='todas',soloEsp=false;
@@ -201,6 +204,7 @@ document.addEventListener('keydown',e=>{if(e.key==='/'&&document.activeElement!=
     { '@context': 'https://schema.org', '@type': 'WebSite', name: 'Fondo Blanco', url: URL + '/', inLanguage: 'es',
       potentialAction: { '@type': 'SearchAction', target: { '@type': 'EntryPoint', urlTemplate: `${URL}/?q={search_term_string}` }, 'query-input': 'required name=search_term_string' } },
     { '@context': 'https://schema.org', '@type': 'Organization', name: 'Fondo Blanco', url: URL + '/', logo: `${URL}/icon-512.png` },
+    { '@context': 'https://schema.org', '@type': 'FAQPage', mainEntity: seoCol._portada.faqs.map(([q, a]) => ({ '@type': 'Question', name: q, acceptedAnswer: { '@type': 'Answer', text: a } })) },
   ];
   write('index.html', layout({ title: 'Fondo Blanco — Fotos de stock gratis en alta resolución', desc: `Banco de imágenes gratis: ${total} fotos de stock en alta resolución de interiores, gastronomía, naturaleza, negocios, bienestar, fondos y temporadas. Descarga sin registro.`, canon: '/', body, script, jsonld }));
 }
@@ -211,6 +215,8 @@ function ficha(f) {
   const next = fotos[(f.i + 1) % fotos.length];
   const rel = f.col.fotos.filter((x) => x.slug !== f.slug).slice(0, 6);
   const extra = rel.length < 3 ? fotos.filter((x) => x.coleccion !== f.coleccion).slice(0, 3 - rel.length) : [];
+  const usos = (seoCol[f.coleccion] || {}).usos || 'proyectos web, redes sociales y presentaciones';
+  const contexto = `${f.titulo} es una foto gratis de la colección ${f.col.nombre.toLowerCase()}, en formato ${f.w >= f.h ? 'horizontal' : 'vertical'} de ${f.w}×${f.h} px. Sirve para ${usos}.${f.espacio ? ' Tiene espacio libre para añadir texto.' : ''} Se descarga sin registro; solo da crédito a Fondo Blanco.`;
   const credito = `Foto: Fondo Blanco (fondoblanco.co) · ${sitio.licencia.nombre}`;
   const body = `<div class="wrap">
 <nav class="crumbs mono" aria-label="Ruta"><a href="/">Inicio</a><span aria-hidden="true">/</span><a href="/coleccion/${f.coleccion}/">${esc(f.col.nombre)}</a><span aria-hidden="true">/</span><span aria-current="page">${f.code}</span></nav>
@@ -220,6 +226,7 @@ function ficha(f) {
 <p class="label">${f.code} · ${esc(f.col.nombre)}</p>
 <h1>${esc(f.titulo)}</h1>
 <p class="desc">${esc(f.desc)}</p>
+<p class="ctx">${esc(contexto)}</p>
 <div class="actions">
 <a class="btn primary" href="${f.dl}" download>${ICON.dl}<span>Descargar gratis <small>· JPG ${mb(f.bytes)}</small></span></a>
 <div class="row"><button class="btn ghost" type="button" id="credito" data-v="${esc(credito)}">${ICON.copy}Copiar crédito</button><button class="btn ghost" type="button" id="enlace">Copiar enlace</button></div>
