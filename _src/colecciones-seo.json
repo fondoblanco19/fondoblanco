@@ -187,5 +187,97 @@
    "Fondo Blanco es un banco de fotos de stock gratis en alta resolución para sitios web, redes sociales, presentaciones y piezas de diseño. El catálogo se organiza en siete colecciones: interiores, gastronomía, naturaleza y sostenibilidad, negocios y tecnología, salud y bienestar, fondos y texturas, y temporadas.",
    "Cada imagen se revisa a mano y se publica con su ficha: dimensiones, paleta de colores, etiquetas y si tiene espacio libre para escribir texto. No necesitas cuenta para descargar. La licencia CC BY 4.0 permite el uso personal y comercial; solo pedimos que menciones a Fondo Blanco."
   ]
+ },
+ "colombia": {
+  "h1": "Fotos gratis de Colombia y su cultura",
+  "texto": [
+   "Esta colección reúne imágenes que evocan Colombia: cafetales con neblina, calles coloniales llenas de buganvilias, chivas pintadas a mano, mercados de frutas tropicales y fincas con hamacas frente a las montañas. Son escenas pensadas para contar el país con color y calidez.",
+   "Las usan agencias de turismo, restaurantes, tostadoras de café, marcas de artesanías, blogs de viajes y medios que necesitan una imagen con identidad local sin organizar una sesión fotográfica. Algunas tienen cielo o zonas despejadas donde cabe un título; úsalas con el filtro «Con espacio para texto» en la portada.",
+   "Todas se descargan en JPG de alta resolución, sin registro y sin marca de agua. Al usarlas solo debes dar crédito a Fondo Blanco, tal como explica la página de licencia. Las imágenes se generaron con inteligencia artificial y se revisaron una por una, por lo que no muestran lugares reales ni personas identificables."
+  ],
+  "faqs": [
+   [
+    "¿Puedo usar estas fotos de Colombia en una campaña de turismo?",
+    "Sí. La licencia CC BY 4.0 permite uso comercial. Solo debes dar crédito a Fondo Blanco y aclarar que las imágenes son ilustrativas, ya que no son fotografías de un lugar real."
+   ],
+   [
+    "¿Son fotos de lugares reales?",
+    "No. Las imágenes se generaron con inteligencia artificial y evocan escenas típicas, pero no muestran lugares ni personas reales."
+   ],
+   [
+    "¿Sirven para el empaque o la web de una marca de café?",
+    "Sí. Descarga el JPG en alta resolución y úsalo en tu sitio, empaque o redes con el crédito a Fondo Blanco."
+   ]
+  ],
+  "usos": "campañas de turismo, restaurantes, marcas de café y artesanías, y blogs de viajes"
+ },
+ "productos": {
+  "h1": "Fotos gratis de productos y maquetas",
+  "texto": [
+   "Esta colección reúne productos fotografiados sobre fondos limpios y maquetas con superficies en blanco: camisetas, bolsas, tarjetas, frascos, calzado, relojes, audífonos y empaques. Están pensadas para quien necesita enseñar un diseño sobre un objeto real sin pagar un estudio.",
+   "Las usan emprendedores, diseñadores gráficos, tiendas en línea, imprentas y agencias que arman presentaciones, catálogos y tableros de ideas. Muchas dejan espacio libre para insertar un logotipo, una etiqueta o un texto encima; encuéntralas con el filtro «Con espacio para texto» en la portada.",
+   "Todas se descargan en JPG de alta resolución, sin registro y sin marca de agua. Al usarlas solo debes dar crédito a Fondo Blanco, tal como explica la página de licencia. Las imágenes se generaron con inteligencia artificial y se revisaron una por una, por lo que no muestran lugares reales ni personas identificables."
+  ],
+  "faqs": [
+   [
+    "¿Puedo poner mi logotipo sobre estos productos?",
+    "Sí. Descarga el JPG y úsalo como base en Photoshop, Canva o Figma. Incluye el crédito a Fondo Blanco al publicar el resultado."
+   ],
+   [
+    "¿Puedo vender productos que usen estas imágenes?",
+    "El uso comercial está permitido, pero no puedes revender las fotos como un banco de imágenes propio. Consulta la página de licencia."
+   ],
+   [
+    "¿Los productos son reales?",
+    "No. Son imágenes generadas con inteligencia artificial, así que no hay marcas ni modelos reales."
+   ]
+  ],
+  "usos": "maquetas de diseño, catálogos, tiendas en línea y presentaciones de marca"
+ },
+ "educacion": {
+  "h1": "Fotos gratis de educación y ciencia",
+  "texto": [
+   "Esta colección reúne aulas luminosas, laboratorios, estudiantes, maestros y útiles escolares. Son imágenes con luz natural y un estilo cálido, pensadas para ilustrar el aprendizaje en todas sus etapas, de la primaria a la universidad.",
+   "Las usan colegios, universidades, plataformas de cursos en línea, editoriales y blogs educativos para portadas, presentaciones y redes sociales. Algunas dejan espacio libre para un título o un llamado a la inscripción; actívalas con el filtro «Con espacio para texto» en la portada.",
+   "Todas se descargan en JPG de alta resolución, sin registro y sin marca de agua. Al usarlas solo debes dar crédito a Fondo Blanco, tal como explica la página de licencia. Las imágenes se generaron con inteligencia artificial y se revisaron una por una, por lo que no muestran lugares reales ni personas identificables."
+  ],
+  "faqs": [
+   [
+    "¿Puedo usar estas fotos en el sitio de mi colegio?",
+    "Sí. La licencia CC BY 4.0 permite uso comercial y educativo. Solo debes dar crédito a Fondo Blanco."
+   ],
+   [
+    "¿Hay fotos de laboratorio y ciencia?",
+    "Sí. Encontrarás microscopios, tubos de ensayo y experimentos escolares en esta colección."
+   ],
+   [
+    "¿Muestran personas reales?",
+    "No. Las personas de estas imágenes no existen: se generaron con inteligencia artificial y no son identificables."
+   ]
+  ],
+  "usos": "colegios, universidades, cursos en línea y materiales educativos"
+ },
+ "viajes": {
+  "h1": "Fotos gratis de viajes y ciudades",
+  "texto": [
+   "Esta colección reúne escenas de viaje: aeropuertos al atardecer, callejones mediterráneos, carreteras infinitas, terrazas con vista y escritorios de viajero con mapas y cámaras. Son imágenes que invitan a salir a explorar.",
+   "Las usan agencias de viajes, aerolíneas, hoteles, blogs de turismo y marcas de equipaje para portadas, banners y campañas. Varias tienen cielo o zonas despejadas para añadir un título; actívalas con el filtro «Con espacio para texto» en la portada.",
+   "Todas se descargan en JPG de alta resolución, sin registro y sin marca de agua. Al usarlas solo debes dar crédito a Fondo Blanco, tal como explica la página de licencia. Las imágenes se generaron con inteligencia artificial y se revisaron una por una, por lo que no muestran lugares reales ni personas identificables."
+  ],
+  "faqs": [
+   [
+    "¿Puedo usar estas fotos de viaje en mi agencia?",
+    "Sí. La licencia CC BY 4.0 permite uso comercial. Solo debes dar crédito a Fondo Blanco y aclarar que son imágenes ilustrativas."
+   ],
+   [
+    "¿Son lugares reales?",
+    "No. Las imágenes se generaron con inteligencia artificial y no muestran lugares reales."
+   ],
+   [
+    "¿Puedo recortarlas para redes sociales?",
+    "Sí. Descarga el JPG en alta resolución y recórtalo al formato que necesites."
+   ]
+  ],
+  "usos": "agencias de viajes, hoteles, blogs de turismo y campañas de verano"
  }
 }
