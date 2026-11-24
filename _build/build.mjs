@@ -78,8 +78,7 @@ ${noindex ? '<meta name="robots" content="noindex,follow">' : `<link rel="canoni
 <meta name="twitter:card" content="summary_large_image">
 <link rel="preconnect" href="https://use.typekit.net" crossorigin>
 <link rel="preconnect" href="https://p.typekit.net" crossorigin>
-<link rel="stylesheet" href="https://use.typekit.net/${sitio.adobeKit}.css" media="print" onload="this.media='all'">
-<noscript><link rel="stylesheet" href="https://use.typekit.net/${sitio.adobeKit}.css"></noscript>
+<link rel="stylesheet" href="https://use.typekit.net/${sitio.adobeKit}.css">
 <style>${CSS}</style>
 ${jsonld.map((j) => `<script type="application/ld+json">${JSON.stringify(j)}</script>`).join('\n')}
 </head>
