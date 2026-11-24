@@ -1220,5 +1220,1279 @@
    "#4b4f1f"
   ],
   "color": "#102826"
+ },
+ "patio-escolar-con-mesas-azules": {
+  "w": 2688,
+  "h": 1520,
+  "bytes": 836585,
+  "paleta": [
+   "#6f6a5c",
+   "#8f8983",
+   "#464639",
+   "#bcb8b6",
+   "#486082"
+  ],
+  "color": "#75746f"
+ },
+ "casilleros-azules-en-pasillo-escolar": {
+  "w": 2688,
+  "h": 1520,
+  "bytes": 421724,
+  "paleta": [
+   "#283a51",
+   "#918a85",
+   "#5b5d63",
+   "#c2b8af",
+   "#1c222b"
+  ],
+  "color": "#545b66"
+ },
+ "oficina-abierta-con-luz-dorada": {
+  "w": 2688,
+  "h": 1520,
+  "bytes": 546117,
+  "paleta": [
+   "#aa8b67",
+   "#dab589",
+   "#876d43",
+   "#f3debc",
+   "#443821"
+  ],
+  "color": "#b0926c"
+ },
+ "escritorio-flatlay-con-portatil-y-cafe": {
+  "w": 2688,
+  "h": 1520,
+  "bytes": 285672,
+  "paleta": [
+   "#d2c7bd",
+   "#3c3936",
+   "#e9dfd6",
+   "#b5a594",
+   "#857457"
+  ],
+  "color": "#a3998f"
+ },
+ "apreton-de-manos-corporativo": {
+  "w": 2688,
+  "h": 1520,
+  "bytes": 267002,
+  "paleta": [
+   "#e7ebea",
+   "#1c2338",
+   "#c0c8c2",
+   "#a79a88",
+   "#424f60"
+  ],
+  "color": "#8a8e94"
+ },
+ "sala-de-juntas-con-vista-al-atardecer": {
+  "w": 2688,
+  "h": 1520,
+  "bytes": 637978,
+  "paleta": [
+   "#6e6461",
+   "#4e413b",
+   "#9d8a84",
+   "#2c1e15",
+   "#cdb7aa"
+  ],
+  "color": "#71635c"
+ },
+ "mujer-escribiendo-en-laptop-con-cafe": {
+  "w": 2688,
+  "h": 1520,
+  "bytes": 460368,
+  "paleta": [
+   "#b09074",
+   "#beafa1",
+   "#926f41",
+   "#dbd8d1",
+   "#513c24"
+  ],
+  "color": "#a79078"
+ },
+ "equipo-en-sala-de-cristal-con-notas": {
+  "w": 2688,
+  "h": 1520,
+  "bytes": 379273,
+  "paleta": [
+   "#516b58",
+   "#21453b",
+   "#5da09e",
+   "#cedcd2",
+   "#c1a535"
+  ],
+  "color": "#6a846d"
+ },
+ "escritorio-pastel-con-calculadora-y-notas": {
+  "w": 2688,
+  "h": 1520,
+  "bytes": 478853,
+  "paleta": [
+   "#deb994",
+   "#b69973",
+   "#e6e8f2",
+   "#d1cfd0",
+   "#5c7027"
+  ],
+  "color": "#d3bb9f"
+ },
+ "escalera-de-concreto-con-brote-al-atardecer": {
+  "w": 2688,
+  "h": 1520,
+  "bytes": 349005,
+  "paleta": [
+   "#676061",
+   "#b6b6c1",
+   "#849abb",
+   "#eaceb2",
+   "#cf9671"
+  ],
+  "color": "#a19797"
+ },
+ "planos-compas-y-llave-dorada": {
+  "w": 2688,
+  "h": 1520,
+  "bytes": 369384,
+  "paleta": [
+   "#d9d5d9",
+   "#c8c4c9",
+   "#b7ada7",
+   "#908887",
+   "#665547"
+  ],
+  "color": "#bbb4b4"
+ },
+ "ejecutivo-mirando-la-ciudad-de-noche": {
+  "w": 2688,
+  "h": 1520,
+  "bytes": 346425,
+  "paleta": [
+   "#4a88c5",
+   "#261d19",
+   "#3b6a9e",
+   "#2e445e",
+   "#be7d3c"
+  ],
+  "color": "#446180"
+ },
+ "esfera-de-conexiones-azul-y-violeta": {
+  "w": 2688,
+  "h": 1520,
+  "bytes": 389738,
+  "paleta": [
+   "#070c2e",
+   "#141b5f",
+   "#0c1544",
+   "#144390",
+   "#3777d1"
+  ],
+  "color": "#122660"
+ },
+ "centro-de-datos-con-servidores-azules": {
+  "w": 2688,
+  "h": 1520,
+  "bytes": 839533,
+  "paleta": [
+   "#142941",
+   "#081524",
+   "#2d4965",
+   "#617e9f",
+   "#bccfdf"
+  ],
+  "color": "#2b4058"
+ },
+ "telefono-en-podio-con-formas-pastel": {
+  "w": 2688,
+  "h": 1520,
+  "bytes": 111338,
+  "paleta": [
+   "#d5c3f5",
+   "#c2cde5",
+   "#aee9d8",
+   "#dfeff7",
+   "#9facbb"
+  ],
+  "color": "#c6d2e9"
+ },
+ "nube-luminosa-con-fibras-de-luz": {
+  "w": 2688,
+  "h": 1520,
+  "bytes": 405026,
+  "paleta": [
+   "#002051",
+   "#043c78",
+   "#001133",
+   "#3480b9",
+   "#a4c9e5"
+  ],
+  "color": "#0e3565"
+ },
+ "candado-de-acero-sobre-teclado": {
+  "w": 2688,
+  "h": 1520,
+  "bytes": 535017,
+  "paleta": [
+   "#1f393d",
+   "#091718",
+   "#555e64",
+   "#056a6c",
+   "#bebcbb"
+  ],
+  "color": "#2d474a"
+ },
+ "cabeza-de-cristal-con-hilos-dorados": {
+  "w": 2688,
+  "h": 1520,
+  "bytes": 438095,
+  "paleta": [
+   "#2f2625",
+   "#1a1618",
+   "#5b3e2d",
+   "#946942",
+   "#d4b07f"
+  ],
+  "color": "#44342b"
+ },
+ "escritorio-con-dos-monitores-y-plantas": {
+  "w": 2688,
+  "h": 1520,
+  "bytes": 593265,
+  "paleta": [
+   "#201917",
+   "#553a1f",
+   "#8d563d",
+   "#3653a1",
+   "#e07e67"
+  ],
+  "color": "#573c32"
+ },
+ "tableta-con-interfaz-en-el-parque": {
+  "w": 2688,
+  "h": 1520,
+  "bytes": 273526,
+  "paleta": [
+   "#6a7b2c",
+   "#4a5b18",
+   "#979d3c",
+   "#dee0e3",
+   "#c4ba73"
+  ],
+  "color": "#8c9555"
+ },
+ "ciudad-isometrica-con-torres-conectadas": {
+  "w": 2688,
+  "h": 1520,
+  "bytes": 603940,
+  "paleta": [
+   "#bcc0e1",
+   "#e6d0dc",
+   "#99b1de",
+   "#90a2aa",
+   "#6d8671"
+  ],
+  "color": "#b0b6cc"
+ },
+ "yoga-de-guerrero-en-muelle-al-amanecer": {
+  "w": 2688,
+  "h": 1520,
+  "bytes": 216280,
+  "paleta": [
+   "#ef954a",
+   "#bd9c95",
+   "#eaa778",
+   "#593829",
+   "#ad6a4c"
+  ],
+  "color": "#bf845f"
+ },
+ "manos-con-taza-humeante-y-sueter": {
+  "w": 2688,
+  "h": 1520,
+  "bytes": 456039,
+  "paleta": [
+   "#816147",
+   "#a0836e",
+   "#c0a898",
+   "#dbd2ca",
+   "#52381f"
+  ],
+  "color": "#9f8572"
+ },
+ "agua-con-limon-cepillo-de-bambu-y-crema": {
+  "w": 2688,
+  "h": 1520,
+  "bytes": 690912,
+  "paleta": [
+   "#c4b8a9",
+   "#ada08c",
+   "#d3cac0",
+   "#8d836b",
+   "#5c5d3c"
+  ],
+  "color": "#aea491"
+ },
+ "excursionista-en-cresta-al-atardecer": {
+  "w": 2688,
+  "h": 1520,
+  "bytes": 887637,
+  "paleta": [
+   "#6f7472",
+   "#41472e",
+   "#776a31",
+   "#97a2ad",
+   "#e0bd93"
+  ],
+  "color": "#827e68"
+ },
+ "sala-de-meditacion-con-cojin-y-velas": {
+  "w": 2688,
+  "h": 1520,
+  "bytes": 691132,
+  "paleta": [
+   "#c8ae93",
+   "#f1efe8",
+   "#dccebe",
+   "#a88b68",
+   "#715f2f"
+  ],
+  "color": "#c6b49c"
+ },
+ "brindis-con-agua-de-citricos": {
+  "w": 2688,
+  "h": 1520,
+  "bytes": 630524,
+  "paleta": [
+   "#a38457",
+   "#bfa488",
+   "#765a32",
+   "#2f3a13",
+   "#dacbb7"
+  ],
+  "color": "#95815d"
+ },
+ "pies-descalzos-en-la-orilla-al-atardecer": {
+  "w": 2688,
+  "h": 1520,
+  "bytes": 404002,
+  "paleta": [
+   "#adbcce",
+   "#9b8683",
+   "#d58e5b",
+   "#926149",
+   "#efc18f"
+  ],
+  "color": "#b79a89"
+ },
+ "sala-con-lampara-y-libro-junto-a-ventana-lluviosa": {
+  "w": 2688,
+  "h": 1520,
+  "bytes": 868805,
+  "paleta": [
+   "#5a2e15",
+   "#2d1307",
+   "#85522e",
+   "#465046",
+   "#b78251"
+  ],
+  "color": "#5d3c24"
+ },
+ "bicicleta-con-cesta-de-flores": {
+  "w": 2688,
+  "h": 1520,
+  "bytes": 767604,
+  "paleta": [
+   "#b29993",
+   "#e0b5a7",
+   "#9e7f6c",
+   "#917332",
+   "#605426"
+  ],
+  "color": "#b09380"
+ },
+ "pan-rustico-partido-sobre-tabla": {
+  "w": 2688,
+  "h": 1520,
+  "bytes": 704886,
+  "paleta": [
+   "#91633f",
+   "#6f4524",
+   "#b4885c",
+   "#4b2c10",
+   "#d3b38b"
+  ],
+  "color": "#8c6440"
+ },
+ "bowl-de-quinoa-aguacate-y-garbanzos": {
+  "w": 2688,
+  "h": 1520,
+  "bytes": 638540,
+  "paleta": [
+   "#d6d8dd",
+   "#c1c1c4",
+   "#6c3628",
+   "#a37638",
+   "#aea07e"
+  ],
+  "color": "#b2a092"
+ },
+ "cafe-helado-con-pajita-en-mesa-de-azulejo": {
+  "w": 2688,
+  "h": 1520,
+  "bytes": 510001,
+  "paleta": [
+   "#935333",
+   "#c17b59",
+   "#41480c",
+   "#e7b797",
+   "#798c1e"
+  ],
+  "color": "#9b6e44"
+ },
+ "fresas-en-colador-blanco": {
+  "w": 2688,
+  "h": 1520,
+  "bytes": 632866,
+  "paleta": [
+   "#0c0a08",
+   "#30251c",
+   "#4f4e42",
+   "#922019",
+   "#91847a"
+  ],
+  "color": "#3d2b24"
+ },
+ "tagliatelle-en-nidos-con-tomates": {
+  "w": 2688,
+  "h": 1520,
+  "bytes": 979814,
+  "paleta": [
+   "#9e774c",
+   "#814f25",
+   "#d59942",
+   "#462c0c",
+   "#d7b78d"
+  ],
+  "color": "#9b7140"
+ },
+ "miel-goteando-de-cucharon": {
+  "w": 2688,
+  "h": 1520,
+  "bytes": 511498,
+  "paleta": [
+   "#5a471a",
+   "#997336",
+   "#b84d08",
+   "#d8ac6e",
+   "#e88d15"
+  ],
+  "color": "#a36d2b"
+ },
+ "especias-en-cuencos-de-madera": {
+  "w": 2688,
+  "h": 1520,
+  "bytes": 1060754,
+  "paleta": [
+   "#593927",
+   "#2f170f",
+   "#8c6638",
+   "#a2270a",
+   "#e19318"
+  ],
+  "color": "#6d3e1e"
+ },
+ "bowl-de-acai-con-platano-y-arandanos": {
+  "w": 2688,
+  "h": 1520,
+  "bytes": 346218,
+  "paleta": [
+   "#fbcadc",
+   "#b16d7a",
+   "#dbaaa2",
+   "#624757",
+   "#e7dad1"
+  ],
+  "color": "#dfb1be"
+ },
+ "chef-emplatando-carne-con-pinzas": {
+  "w": 2688,
+  "h": 1520,
+  "bytes": 418614,
+  "paleta": [
+   "#bda599",
+   "#967863",
+   "#d9d5d3",
+   "#191614",
+   "#5a4e42"
+  ],
+  "color": "#8c7c72"
+ },
+ "tabla-de-quesos-con-uvas-e-higos": {
+  "w": 2688,
+  "h": 1520,
+  "bytes": 609105,
+  "paleta": [
+   "#5f3a21",
+   "#8e5936",
+   "#2c1709",
+   "#bc8858",
+   "#e3bd92"
+  ],
+  "color": "#805839"
+ },
+ "bosque-con-niebla-y-rayos-de-sol": {
+  "w": 2688,
+  "h": 1520,
+  "bytes": 1098232,
+  "paleta": [
+   "#405a2e",
+   "#5c6d51",
+   "#7f8a79",
+   "#22391b",
+   "#b5b4a3"
+  ],
+  "color": "#5a6b4e"
+ },
+ "playa-tropical-con-muelle-vista-aerea": {
+  "w": 2688,
+  "h": 1520,
+  "bytes": 860123,
+  "paleta": [
+   "#067a85",
+   "#0fb2af",
+   "#5a621d",
+   "#83b7a3",
+   "#dcdacf"
+  ],
+  "color": "#449789"
+ },
+ "montanas-nevadas-reflejadas-en-lago": {
+  "w": 2688,
+  "h": 1520,
+  "bytes": 718473,
+  "paleta": [
+   "#827998",
+   "#333329",
+   "#bb8fa1",
+   "#555863",
+   "#ef9b79"
+  ],
+  "color": "#806b71"
+ },
+ "campo-de-lavanda-con-casita-al-amanecer": {
+  "w": 2688,
+  "h": 1520,
+  "bytes": 857091,
+  "paleta": [
+   "#724867",
+   "#f4b37e",
+   "#8e5878",
+   "#a98998",
+   "#4f3446"
+  ],
+  "color": "#996b73"
+ },
+ "camino-de-otono-entre-arboles-naranjas": {
+  "w": 2688,
+  "h": 1520,
+  "bytes": 1556187,
+  "paleta": [
+   "#9a4b19",
+   "#70411d",
+   "#c0671e",
+   "#aa7a62",
+   "#432a11"
+  ],
+  "color": "#8d4f22"
+ },
+ "ola-turquesa-con-salpicadura-al-atardecer": {
+  "w": 2688,
+  "h": 1520,
+  "bytes": 1040183,
+  "paleta": [
+   "#7999a5",
+   "#085c66",
+   "#328289",
+   "#c7bdb2",
+   "#daa36c"
+  ],
+  "color": "#668e8f"
+ },
+ "campamento-bajo-la-via-lactea": {
+  "w": 2688,
+  "h": 1520,
+  "bytes": 786811,
+  "paleta": [
+   "#293262",
+   "#0a1525",
+   "#1c233d",
+   "#4f4a8a",
+   "#9d769a"
+  ],
+  "color": "#2d3056"
+ },
+ "pradera-de-flores-silvestres-con-mariposas": {
+  "w": 2688,
+  "h": 1520,
+  "bytes": 488860,
+  "paleta": [
+   "#b0b56d",
+   "#698341",
+   "#87a48b",
+   "#d9d9ad",
+   "#cc381f"
+  ],
+  "color": "#9ca36e"
+ },
+ "dunas-con-huellas-al-amanecer": {
+  "w": 2688,
+  "h": 1520,
+  "bytes": 578008,
+  "paleta": [
+   "#273241",
+   "#c65521",
+   "#8b7f84",
+   "#f3872c",
+   "#7f412d"
+  ],
+  "color": "#855741"
+ },
+ "ventana-azul-en-calle-empedrada": {
+  "w": 2688,
+  "h": 1520,
+  "bytes": 749347,
+  "paleta": [
+   "#ccafa0",
+   "#987d69",
+   "#523718",
+   "#2c5a78",
+   "#a62a43"
+  ],
+  "color": "#8a7269"
+ },
+ "rascacielos-de-vidrio-al-cielo": {
+  "w": 2688,
+  "h": 1520,
+  "bytes": 763910,
+  "paleta": [
+   "#438ec9",
+   "#77adda",
+   "#246899",
+   "#0f4062",
+   "#c5dbf1"
+  ],
+  "color": "#4f8ab8"
+ },
+ "cabana-nevada-con-chimenea": {
+  "w": 2688,
+  "h": 1520,
+  "bytes": 690920,
+  "paleta": [
+   "#3672c5",
+   "#364a72",
+   "#688cd2",
+   "#693c25",
+   "#afa8ce"
+  ],
+  "color": "#4f6da7"
+ },
+ "tren-en-viaducto-de-piedra": {
+  "w": 2688,
+  "h": 1520,
+  "bytes": 1060575,
+  "paleta": [
+   "#374028",
+   "#4e5d56",
+   "#7a7d72",
+   "#94a2ae",
+   "#6d692d"
+  ],
+  "color": "#636b59"
+ },
+ "maleta-pasaporte-mapa-y-sombrero": {
+  "w": 2688,
+  "h": 1520,
+  "bytes": 806066,
+  "paleta": [
+   "#d49c6e",
+   "#9c5d3a",
+   "#542519",
+   "#b5c0b6",
+   "#e5c09b"
+  ],
+  "color": "#ae8669"
+ },
+ "piscina-infinita-con-vista-al-mar": {
+  "w": 2688,
+  "h": 1520,
+  "bytes": 554489,
+  "paleta": [
+   "#827f8c",
+   "#daa2aa",
+   "#e38d7a",
+   "#493f31",
+   "#91624d"
+  ],
+  "color": "#a17b77"
+ },
+ "escalera-de-caracol-vista-desde-arriba": {
+  "w": 2688,
+  "h": 1520,
+  "bytes": 511423,
+  "paleta": [
+   "#bcb9b6",
+   "#a2978d",
+   "#d7d9db",
+   "#937358",
+   "#cea687"
+  ],
+  "color": "#b6aca4"
+ },
+ "globos-aerostaticos-sobre-capadocia": {
+  "w": 2688,
+  "h": 1520,
+  "bytes": 766328,
+  "paleta": [
+   "#846249",
+   "#a98573",
+   "#eeb57e",
+   "#aeb6c9",
+   "#4b432c"
+  ],
+  "color": "#9d826d"
+ },
+ "calle-lluviosa-de-noche-con-paraguas": {
+  "w": 2688,
+  "h": 1520,
+  "bytes": 849498,
+  "paleta": [
+   "#181412",
+   "#363134",
+   "#7d4439",
+   "#cd8569",
+   "#567c94"
+  ],
+  "color": "#483937"
+ },
+ "muelle-de-madera-con-bote-al-amanecer": {
+  "w": 2688,
+  "h": 1520,
+  "bytes": 361206,
+  "paleta": [
+   "#5f6578",
+   "#e8beb7",
+   "#b3abc2",
+   "#86889e",
+   "#3f4047"
+  ],
+  "color": "#958c99"
+ },
+ "ondas-degradadas-en-tonos-pastel": {
+  "w": 2688,
+  "h": 1520,
+  "bytes": 116283,
+  "paleta": [
+   "#d1a6e1",
+   "#fdb99b",
+   "#efa8be",
+   "#fb9a84",
+   "#fdd6b9"
+  ],
+  "color": "#e9afbd"
+ },
+ "marmol-blanco-con-vetas-grises": {
+  "w": 2688,
+  "h": 1520,
+  "bytes": 204747,
+  "paleta": [
+   "#e9e9eb",
+   "#e3e3e6",
+   "#eeeef0",
+   "#dbdbde",
+   "#cbcbcf"
+  ],
+  "color": "#e4e5e7"
+ },
+ "pizarra-gris-azulada": {
+  "w": 2688,
+  "h": 1520,
+  "bytes": 1038741,
+  "paleta": [
+   "#48545d",
+   "#4e5b65",
+   "#414c56",
+   "#55636e",
+   "#37414a"
+  ],
+  "color": "#48545e"
+ },
+ "tablones-de-roble-claro": {
+  "w": 2688,
+  "h": 1520,
+  "bytes": 840707,
+  "paleta": [
+   "#cf9a64",
+   "#c8915a",
+   "#d3a26d",
+   "#d9ab78",
+   "#b7804d"
+  ],
+  "color": "#ce9a64"
+ },
+ "fondo-geometrico-de-papeles-verde-y-amarillo": {
+  "w": 2688,
+  "h": 1520,
+  "bytes": 325584,
+  "paleta": [
+   "#f1e0c5",
+   "#07716b",
+   "#eca91c",
+   "#72b3a2",
+   "#e4c37c"
+  ],
+  "color": "#b9bd92"
+ },
+ "metal-dorado-cepillado": {
+  "w": 2688,
+  "h": 1520,
+  "bytes": 483662,
+  "paleta": [
+   "#d8a538",
+   "#bf8a26",
+   "#eec04c",
+   "#fadb69",
+   "#9e6713"
+  ],
+  "color": "#d7a73d"
+ },
+ "acuarela-azul-y-verde-menta": {
+  "w": 2688,
+  "h": 1520,
+  "bytes": 383002,
+  "paleta": [
+   "#d2f1f7",
+   "#def6f9",
+   "#c0e8f8",
+   "#b9ece3",
+   "#a2d9f7"
+  ],
+  "color": "#caeef5"
+ },
+ "papel-blanco-arrugado-con-relieve": {
+  "w": 2688,
+  "h": 1520,
+  "bytes": 386327,
+  "paleta": [
+   "#d6d5d7",
+   "#e3e2e4",
+   "#c9c8c9",
+   "#efeff1",
+   "#b6b5b5"
+  ],
+  "color": "#d7d6d8"
+ },
+ "bokeh-dorado-sobre-granate": {
+  "w": 2688,
+  "h": 1520,
+  "bytes": 147685,
+  "paleta": [
+   "#5f050d",
+   "#410207",
+   "#871415",
+   "#b65a1e",
+   "#f2b456"
+  ],
+  "color": "#6d1712"
+ },
+ "pared-de-concreto-gris": {
+  "w": 2688,
+  "h": 1520,
+  "bytes": 881374,
+  "paleta": [
+   "#b4b4b3",
+   "#a9a9a9",
+   "#bdbdbd",
+   "#9c9b9a",
+   "#898786"
+  ],
+  "color": "#abaaaa"
+ },
+ "monedas-con-planta-brotando": {
+  "w": 2688,
+  "h": 1520,
+  "bytes": 380771,
+  "paleta": [
+   "#fefefd",
+   "#585518",
+   "#9b934a",
+   "#ccb994",
+   "#e8dfcb"
+  ],
+  "color": "#d9d6c3"
+ },
+ "bombilla-con-planta-dentro": {
+  "w": 2688,
+  "h": 1520,
+  "bytes": 184566,
+  "paleta": [
+   "#acacb0",
+   "#9d9ea1",
+   "#8b8c85",
+   "#d1d0d1",
+   "#484627"
+  ],
+  "color": "#a2a2a3"
+ },
+ "reloj-de-arena-dorado": {
+  "w": 2688,
+  "h": 1520,
+  "bytes": 291299,
+  "paleta": [
+   "#121011",
+   "#2c211c",
+   "#543622",
+   "#875c36",
+   "#cda16a"
+  ],
+  "color": "#402e22"
+ },
+ "ajedrez-caballo-frente-a-peones": {
+  "w": 2688,
+  "h": 1520,
+  "bytes": 287589,
+  "paleta": [
+   "#231b19",
+   "#442d25",
+   "#b08560",
+   "#7a563f",
+   "#dbba95"
+  ],
+  "color": "#654c3c"
+ },
+ "avion-de-papel-rojo-entre-blancos": {
+  "w": 2688,
+  "h": 1520,
+  "bytes": 128981,
+  "paleta": [
+   "#fefefe",
+   "#f5f5f6",
+   "#dddcde",
+   "#b8afaf",
+   "#c82121"
+  ],
+  "color": "#f4f1f2"
+ },
+ "brujula-sobre-mapa-antiguo": {
+  "w": 2688,
+  "h": 1520,
+  "bytes": 657167,
+  "paleta": [
+   "#946d3e",
+   "#ba8c51",
+   "#6c4825",
+   "#e1b16f",
+   "#351e09"
+  ],
+  "color": "#966f3f"
+ },
+ "puzzle-de-colores-con-pieza-en-mano": {
+  "w": 2688,
+  "h": 1520,
+  "bytes": 260485,
+  "paleta": [
+   "#fcfbfb",
+   "#b1c5e7",
+   "#d6d0c2",
+   "#f5cb8a",
+   "#9b6b50"
+  ],
+  "color": "#dbd3cc"
+ },
+ "alcancia-con-planta-y-monedas": {
+  "w": 2688,
+  "h": 1520,
+  "bytes": 332507,
+  "paleta": [
+   "#c3bdb0",
+   "#baa986",
+   "#dbd6cc",
+   "#9b8755",
+   "#617116"
+  ],
+  "color": "#b8b092"
+ },
+ "paraguas-rojo-entre-grises": {
+  "w": 2688,
+  "h": 1520,
+  "bytes": 804822,
+  "paleta": [
+   "#43464a",
+   "#5c6268",
+   "#262220",
+   "#788089",
+   "#c81e2a"
+  ],
+  "color": "#5d4c51"
+ },
+ "estetoscopio-azul-sobre-fondo-claro": {
+  "w": 2688,
+  "h": 1520,
+  "bytes": 200778,
+  "paleta": [
+   "#e8edf8",
+   "#99c7e3",
+   "#bdd9ec",
+   "#788fa7",
+   "#22436f"
+  ],
+  "color": "#afc9df"
+ },
+ "libro-abierto-en-aula-con-manzana": {
+  "w": 2688,
+  "h": 1520,
+  "bytes": 375080,
+  "paleta": [
+   "#a97845",
+   "#eadfd5",
+   "#7b5124",
+   "#383624",
+   "#caa675"
+  ],
+  "color": "#a28461"
+ },
+ "bloques-de-colores-en-cuarto-infantil": {
+  "w": 2688,
+  "h": 1520,
+  "bytes": 349886,
+  "paleta": [
+   "#e0d9cd",
+   "#bbaf87",
+   "#8e633d",
+   "#e1a123",
+   "#1977c0"
+  ],
+  "color": "#bcad8c"
+ },
+ "mancuernas-botella-y-mat-de-yoga": {
+  "w": 2688,
+  "h": 1520,
+  "bytes": 799646,
+  "paleta": [
+   "#d1b69a",
+   "#a29364",
+   "#2995a1",
+   "#dedade",
+   "#4c622d"
+  ],
+  "color": "#9ba38b"
+ },
+ "pastillas-blancas-sobre-fondo-azul": {
+  "w": 2688,
+  "h": 1520,
+  "bytes": 237807,
+  "paleta": [
+   "#88c7e0",
+   "#e1e4e7",
+   "#64a2bc",
+   "#bccbd2",
+   "#428098"
+  ],
+  "color": "#93c1d5"
+ },
+ "helice-de-adn-luminosa": {
+  "w": 2688,
+  "h": 1520,
+  "bytes": 454601,
+  "paleta": [
+   "#041423",
+   "#0a2b46",
+   "#34596b",
+   "#3f95c1",
+   "#b79b52"
+  ],
+  "color": "#213c4a"
+ },
+ "manos-plantando-un-brote": {
+  "w": 2688,
+  "h": 1520,
+  "bytes": 458625,
+  "paleta": [
+   "#6b592c",
+   "#322a19",
+   "#aa7956",
+   "#a6ac1d",
+   "#dec69c"
+  ],
+  "color": "#7a6637"
+ },
+ "globo-terraqueo-con-lampara-y-libros": {
+  "w": 2688,
+  "h": 1520,
+  "bytes": 640214,
+  "paleta": [
+   "#6f4a2d",
+   "#3a2716",
+   "#a66e46",
+   "#dfac84",
+   "#3d6878"
+  ],
+  "color": "#7a593e"
+ },
+ "globo-y-libros-al-atardecer": {
+  "w": 2688,
+  "h": 1520,
+  "bytes": 645156,
+  "paleta": [
+   "#684125",
+   "#302015",
+   "#aa693b",
+   "#546d8a",
+   "#e3aa79"
+  ],
+  "color": "#6d4c35"
+ },
+ "cientifica-con-pipeta-y-guantes": {
+  "w": 2688,
+  "h": 1520,
+  "bytes": 333832,
+  "paleta": [
+   "#a6bcd1",
+   "#cddbed",
+   "#809bb1",
+   "#2186b5",
+   "#1d4865"
+  ],
+  "color": "#82a7c1"
+ },
+ "sala-clara-con-sofa-y-plantas": {
+  "w": 2688,
+  "h": 1520,
+  "bytes": 840869,
+  "paleta": [
+   "#baaf9e",
+   "#a5927d",
+   "#88755e",
+   "#dbd9cb",
+   "#5e5039"
+  ],
+  "color": "#a69884"
+ },
+ "cocina-blanca-con-isla-de-marmol": {
+  "w": 2688,
+  "h": 1520,
+  "bytes": 587939,
+  "paleta": [
+   "#dbd6d2",
+   "#bfb5ac",
+   "#a49172",
+   "#756544",
+   "#c3b98a"
+  ],
+  "color": "#c0b6a6"
+ },
+ "decoracion-navidena-con-mono-rojo": {
+  "w": 2688,
+  "h": 1520,
+  "bytes": 654073,
+  "paleta": [
+   "#030f07",
+   "#182312",
+   "#3a4527",
+   "#854621",
+   "#e4bf94"
+  ],
+  "color": "#282917"
+ },
+ "calabazas-en-banco-de-madera": {
+  "w": 2688,
+  "h": 1520,
+  "bytes": 766799,
+  "paleta": [
+   "#8d6549",
+   "#c7a280",
+   "#de8027",
+   "#5d361e",
+   "#af5612"
+  ],
+  "color": "#a36c3f"
+ },
+ "ramas-de-cerezo-en-flor-y-cielo": {
+  "w": 2688,
+  "h": 1520,
+  "bytes": 363216,
+  "paleta": [
+   "#a3c7ee",
+   "#bcd5f4",
+   "#c09aa1",
+   "#dfbfd2",
+   "#9a7756"
+  ],
+  "color": "#b9bbd1"
+ },
+ "fiesta-de-cumpleanos-con-globos": {
+  "w": 2688,
+  "h": 1520,
+  "bytes": 507048,
+  "paleta": [
+   "#d3b5ae",
+   "#dedbdb",
+   "#b3877e",
+   "#f4ae22",
+   "#63adcd"
+  ],
+  "color": "#cab4a5"
+ },
+ "accesorios-de-playa-sobre-arena": {
+  "w": 2688,
+  "h": 1520,
+  "bytes": 1102465,
+  "paleta": [
+   "#d3c8c0",
+   "#e7e0db",
+   "#b8a289",
+   "#81755d",
+   "#2f3d55"
+  ],
+  "color": "#b8aea6"
+ },
+ "chocolate-caliente-en-tazas-de-punto": {
+  "w": 2688,
+  "h": 1520,
+  "bytes": 687829,
+  "paleta": [
+   "#69767b",
+   "#c28e5e",
+   "#471e14",
+   "#b7b6b4",
+   "#8e5936"
+  ],
+  "color": "#8a715f"
+ },
+ "anillos-de-oro-sobre-seda": {
+  "w": 2688,
+  "h": 1520,
+  "bytes": 413919,
+  "paleta": [
+   "#c0ad9c",
+   "#d4c8bc",
+   "#be9c6c",
+   "#e9e5e1",
+   "#98763f"
+  ],
+  "color": "#c7b49e"
+ },
+ "cuna-blanca-en-cuarto-de-bebe": {
+  "w": 2688,
+  "h": 1520,
+  "bytes": 550288,
+  "paleta": [
+   "#c8b5a4",
+   "#ad9378",
+   "#dccfc2",
+   "#f2f1eb",
+   "#6a5534"
+  ],
+  "color": "#c7b6a5"
  }
 }
