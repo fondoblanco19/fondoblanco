@@ -41,7 +41,7 @@
 <nav class="nav" aria-label="Principal">
 <a href="/#colecciones" class="hide-s">Colecciones</a>
 <a href="/ampliar/">Ampliar<span class="hide-s"> imagen</span></a>
-<a href="/quitar-fondo/">Quitar<span class="hide-s"> fondo</span></a>
+<a href="/quitar-fondo/" class="hide-s">Quitar<span class="hide-s"> fondo</span></a>
 <a href="/licencia/" class="hide-s">Licencia</a>
 <a href="/contacto/">Contacto</a>
 </nav>
@@ -121,6 +121,7 @@ function close(){h.classList.remove('cc-need','cc-lock','cc-soft');parts.forEach
 document.getElementById('cc-ok').addEventListener('click',()=>{document.cookie='fb_terms=2026-11-25; Max-Age=31536000; Path=/; SameSite=Lax'+(location.protocol==='https:'?'; Secure':'');document.cookie='fb_consent=; Max-Age=0; Path=/';close()});
 document.querySelectorAll('[data-cookies]').forEach(b=>b.addEventListener('click',()=>{document.cookie='fb_terms=; Max-Age=0; Path=/';open()}));
 if(h.classList.contains('cc-need'))open()})();</script>
+<script src="/asistente.js?v=bb9a5215" defer></script>
 <script src="/4k/fb4k.js" defer data-engine="/4k/" data-slug="ballena-jorobada-saltando-sobre-el-mar" data-fallback="/img/ballena-jorobada-saltando-sobre-el-mar-1600.webp"></script>
 </body>
 </html>

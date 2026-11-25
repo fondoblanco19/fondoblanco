@@ -42,6 +42,14 @@ Todo corre en el navegador del visitante (WebGPU si existe, CPU si no); ninguna 
 - `4k/model/` (Real-ESRGAN `realesr-general-x4v3`, ONNX) y `4k/ort/` (ONNX Runtime Web 1.22.0). Créditos en `4k/LEEME.txt`.
 - `4k/quitar.js` + `4k/model/u2netp.onnx` (U²-Net-p, 4,4 MB, Apache-2.0): página **/quitar-fondo/**, la genera `quitarFondo()` en `build.mjs`. Corre en el navegador (WASM) en 2-4 s. Está pensada solo para imágenes sencillas (un objeto sobre fondo liso); con fondos complejos o personas falla.
 
+## Asistente de preguntas frecuentes
+
+Un botón «¿Dudas?» (abajo a la derecha, en todas las páginas) abre un chat que responde preguntas sobre el sitio. **No es una IA generativa**: no usa servidor ni claves y no guarda ni envía los mensajes. Busca, entre las respuestas que tú preparaste, la que más se parece a lo que escribe la persona; si no encuentra una, ofrece preguntas parecidas y el enlace al contacto. También entiende «fotos de café» y lleva a la página de esa búsqueda.
+
+- **Preguntas y respuestas:** `_src/asistente.json`. Para agregar una, copia un bloque de `entradas`: `t` es la pregunta que se muestra, `p` otras formas de preguntarla, `k` palabras clave y `r` la respuesta. En `r` puedes usar `[texto](/ruta/)` para enlaces, `**negrita**` y los datos `{{total}}`, `{{ncol}}`, `{{colecciones}}` y `{{ancho}}`. Luego `npm run build`.
+- **Motor y estilos:** `_build/asistente-cliente.js`. `build.mjs` los junta con los datos en `/asistente.js` (la función `asistente()`).
+- **Si dos preguntas se confunden,** quita la palabra clave que comparten de una de las dos. Si algún día quieres un asistente que redacte sus propias respuestas, necesitará un servidor y una clave de una API de IA (con costo).
+
 ## Textos legales, aviso de aceptación e imágenes de IA
 
 - **Textos:** `_build/legal.mjs` genera `/licencia/`, `/aviso-ia/`, `/terminos/` y `/privacidad/`. Están aparte para revisarlos con un abogado.
