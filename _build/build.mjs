@@ -18,6 +18,7 @@ const CSS = (fs.readFileSync(path.join(ROOT, '_build/estilos.css'), 'utf8') + '\
   .replace(/\/\*[\s\S]*?\*\//g, '').replace(/\s+/g, ' ').replace(/\s*([{}:;,>])\s*/g, '$1').replace(/;}/g, '}').trim();
 const HOY = new Date().toISOString().slice(0, 10);
 const URL = sitio.url;
+let ASIS_V = '';   // huella de /asistente.js (la fija asistente()); sirve para que el navegador no use una copia vieja
 
 // ---------- datos ----------
 const colMap = Object.fromEntries(colecciones.map((c) => [c.slug, c]));
@@ -164,7 +165,7 @@ ${jsonld.map((j) => `<script type="application/ld+json">${JSON.stringify(j)}</sc
 <nav class="nav" aria-label="Principal">
 <a href="/#colecciones" class="hide-s"${nav === 'colecciones' ? ' aria-current="page"' : ''}>Colecciones</a>
 <a href="/ampliar/"${nav === 'ampliar' ? ' aria-current="page"' : ''}>Ampliar<span class="hide-s"> imagen</span></a>
-<a href="/quitar-fondo/"${nav === 'quitar' ? ' aria-current="page"' : ''}>Quitar<span class="hide-s"> fondo</span></a>
+<a href="/quitar-fondo/" class="hide-s"${nav === 'quitar' ? ' aria-current="page"' : ''}>Quitar<span class="hide-s"> fondo</span></a>
 <a href="/licencia/" class="hide-s"${nav === 'licencia' ? ' aria-current="page"' : ''}>Licencia</a>
 <a href="/contacto/"${nav === 'contacto' ? ' aria-current="page"' : ''}>Contacto</a>
 </nav>
@@ -177,6 +178,7 @@ ${footer()}
 ${CC_HTML}
 ${script ? `<script>${script}</script>` : ''}
 <script>${CC_SCRIPT}</script>
+${ASIS_V ? `<script src="/asistente.js?v=${ASIS_V}" defer></script>` : ''}
 ${ext}
 </body>
 </html>
@@ -634,6 +636,28 @@ function bannerPage() {
   write('banner/index.html', layout({ title: 'Hacer un banner con tus fotos gratis — Fondo Blanco', desc: 'Crea banners para redes, Pinterest, YouTube y presentaciones con fotos de Fondo Blanco. Recorta, añade texto y descarga en PNG. Gratis y sin registro.', canon: '/banner/', body, script: BANNER_JS }));
 }
 
+// ---------- asistente de preguntas frecuentes (widget en todas las páginas) ----------
+// Sin servidor ni IA generativa: busca la respuesta preparada más parecida (ver _build/asistente-cliente.js).
+// Preguntas y respuestas: _src/asistente.json. Aquí se les inyectan datos reales del sitio y se escribe /asistente.js.
+function asistente() {
+  const cfg = read('_src/asistente.json');
+  const lista = colecciones.map((c) => `[${c.nombre}](/coleccion/${c.slug}/) (${c.fotos.length})`).join(', ');
+  const ancho = Math.max(...fotos.map((f) => f.w));
+  const rellenar = (t) => t.replaceAll('{{total}}', fotos.length).replaceAll('{{ncol}}', colecciones.length).replaceAll('{{colecciones}}', lista).replaceAll('{{ancho}}', ancho);
+  const datos = {
+    entradas: cfg.entradas.map((e) => ({ id: e.id, t: e.t, p: e.p || [], k: e.k || [], r: rellenar(e.r) })),
+    saludos: cfg.saludos,
+    sugeridas: ['gratis', 'comercial', 'credito', 'ia', 'quitar', 'banner'],
+    colecciones: colecciones.map((c) => ({ n: c.nombre, u: `/coleccion/${c.slug}/`, c: c.fotos.length })),
+    etiquetas: etiquetas.map((e) => ({ n: e.nombre, u: e.url, c: e.fotos.length })),
+  };
+  const ids = new Set(datos.entradas.map((e) => e.id));
+  for (const s of datos.sugeridas) if (!ids.has(s)) throw new Error('asistente.json: falta la entrada sugerida «' + s + '»');
+  const js = 'window.__FBA=' + JSON.stringify(datos) + ';\n' + fs.readFileSync(path.join(ROOT, '_build/asistente-cliente.js'), 'utf8');
+  write('asistente.js', js);
+  ASIS_V = crypto.createHash('sha1').update(js).digest('hex').slice(0, 8);
+}
+
 // ---------- páginas de etiqueta (/fotos/<etiqueta>/) e índice (/fotos/) ----------
 function etiqueta(e) {
   const n = e.fotos.length;
@@ -810,6 +834,7 @@ async function graficos() {
 }
 
 await graficos();
+asistente();
 portada();
 fotos.forEach(ficha);
 colecciones.forEach(coleccion);

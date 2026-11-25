@@ -1,0 +1,164 @@
+{
+  "_ayuda": "Preguntas y respuestas del asistente. Para agregar una, copia un bloque: t = pregunta que se muestra, p = otras formas de preguntarla, k = palabras clave, r = respuesta. En r puedes usar [texto](/ruta/) para enlaces, **negrita**, \\n para salto de línea, y {{total}} {{ncol}} {{colecciones}} {{ancho}}. Después ejecuta npm run build.",
+  "entradas": [
+    {
+      "id": "gratis",
+      "t": "¿Las fotos son gratis?",
+      "p": ["son gratis las fotos", "tiene costo", "cuánto cuesta", "hay que pagar", "necesito registrarme", "hay que crear una cuenta", "es gratuito"],
+      "k": ["gratis", "precio", "registro", "cuenta", "suscripción", "marca de agua"],
+      "r": "Sí. Todas las fotos se descargan **gratis**, sin registro, sin cuenta y sin marca de agua, bajo la licencia CC BY 4.0. Solo debes dar crédito a Fondo Blanco ([cómo dar crédito](/licencia/))."
+    },
+    {
+      "id": "comercial",
+      "t": "¿Puedo usarlas en mi negocio?",
+      "p": ["puedo usarlas en proyectos comerciales", "puedo usar las fotos en mi tienda", "uso comercial", "puedo usarlas en publicidad", "puedo venderlas", "puedo modificar las imágenes", "las puedo editar"],
+      "k": ["comercial", "negocio", "empresa", "tienda", "publicidad", "modificar", "editar", "adaptar"],
+      "r": "Sí. La licencia **CC BY 4.0** permite el uso personal y comercial, y adaptar las imágenes, dando crédito a Fondo Blanco (en la medida en que existan derechos sobre ellas). Como son imágenes hechas con IA, lee antes el [aviso sobre imágenes de IA](/aviso-ia/): el uso es bajo tu responsabilidad. Para una marca, logotipo o campaña grande, consulta con un abogado."
+    },
+    {
+      "id": "credito",
+      "t": "¿Cómo doy crédito?",
+      "p": ["cómo menciono a Fondo Blanco", "qué texto pongo de crédito", "atribución", "cómo cito las fotos", "dónde pongo el crédito"],
+      "k": ["crédito", "atribución", "mencionar", "citar", "copiar crédito"],
+      "r": "Escribe «**Foto: Fondo Blanco**» junto a la imagen. En cada ficha hay botones para copiar el crédito como texto o con enlace (HTML). Más detalles en la [licencia](/licencia/)."
+    },
+    {
+      "id": "ia",
+      "t": "¿Son fotos reales?",
+      "p": ["las fotos son reales", "están hechas con inteligencia artificial", "son generadas con IA", "son fotografías de verdad", "hay personas reales"],
+      "k": ["real", "ia", "inteligencia artificial", "generada", "personas"],
+      "r": "No son fotografías reales: se **generaron con inteligencia artificial** y se revisaron a mano una por una. Las personas que aparecen no son reales. Lee el [aviso sobre imágenes de IA](/aviso-ia/) para saber qué implica usarlas."
+    },
+    {
+      "id": "formato",
+      "t": "¿En qué formato y tamaño se descargan?",
+      "p": ["qué tamaño tienen las fotos", "resolución de las imágenes", "calidad de las fotos", "cuántos píxeles tienen", "descargan en jpg o png"],
+      "k": ["formato", "jpg", "tamaño", "resolución", "calidad", "píxeles", "dimensiones"],
+      "r": "Se descargan en **JPG de alta resolución** (hasta {{ancho}} px de ancho), sin marca de agua. Las dimensiones y el peso exactos aparecen en la ficha de cada foto."
+    },
+    {
+      "id": "descargar",
+      "t": "¿Cómo descargo una foto?",
+      "p": ["dónde está el botón de descargar", "cómo bajo una imagen", "cómo guardo una foto"],
+      "k": ["descargar", "bajar", "guardar", "botón"],
+      "r": "Toca la foto en la cuadrícula para abrir su ficha y pulsa «**Descargar gratis**». No necesitas registrarte."
+    },
+    {
+      "id": "buscar",
+      "t": "¿Cómo encuentro una foto?",
+      "p": ["cómo busco una imagen", "hay buscador", "cómo filtro por tema", "cómo encuentro fotos de un tema"],
+      "k": ["buscar", "encontrar", "buscador", "filtrar"],
+      "r": "Usa el buscador de la [portada](/#fotos): escribe una palabra (por ejemplo «café» o «playa») o filtra por colección. También puedes entrar a las [búsquedas populares](/fotos/). Si necesitas lugar para un título, activa «Con espacio para texto»."
+    },
+    {
+      "id": "espacio",
+      "t": "¿Qué es «Con espacio para texto»?",
+      "p": ["fotos con espacio para escribir", "fotos para poner texto encima", "espacio para título"],
+      "k": ["espacio", "texto", "título", "escribir"],
+      "r": "Son fotos con una zona despejada donde cabe un título, un precio o un llamado a la acción. Actívalo con el filtro «**Con espacio para texto**» en la [portada](/#fotos)."
+    },
+    {
+      "id": "colecciones",
+      "t": "¿Qué colecciones hay?",
+      "p": ["qué temas tienen", "qué tipo de fotos hay", "cuántas fotos hay", "qué categorías hay"],
+      "k": ["colección", "categoría", "temas", "cuántas", "total"],
+      "r": "Hay **{{total}} fotos** en {{ncol}} colecciones: {{colecciones}}."
+    },
+    {
+      "id": "quienes",
+      "t": "¿Qué es Fondo Blanco?",
+      "p": ["qué es fondo blanco", "de qué trata este sitio", "para qué sirve la página", "quiénes son", "qué ofrecen"],
+      "k": ["fondo blanco", "banco de imágenes", "ofrecen"],
+      "r": "Fondo Blanco es un banco de imágenes gratis ({{total}} fotos creadas con IA) con herramientas para [ampliar imágenes](/ampliar/), [quitar fondos](/quitar-fondo/) y [hacer banners](/banner/). No necesitas registrarte."
+    },
+    {
+      "id": "ampliar",
+      "t": "¿Puedo ampliar una imagen?",
+      "p": ["cómo agrando una foto pequeña", "mejorar la resolución", "ampliar a 4K", "aumentar la calidad de una imagen", "imagen borrosa"],
+      "k": ["ampliar", "agrandar", "4k", "escalar", "borrosa"],
+      "r": "Sí, con la herramienta gratis [Ampliar imagen](/ampliar/): subes tu imagen y la amplía hasta 4 veces con IA. Todo ocurre en tu navegador; no se sube a ningún servidor. En cada ficha también hay un botón «Ampliar a 4K»."
+    },
+    {
+      "id": "quitar",
+      "t": "¿Cómo quito el fondo de una imagen?",
+      "p": ["puedo quitar el fondo", "cómo recorto una imagen", "png transparente", "eliminar el fondo de una foto", "sacar el fondo"],
+      "k": ["quitar", "fondo", "recortar", "transparente", "png", "eliminar"],
+      "r": "Con [Quitar fondo](/quitar-fondo/). Está pensada **solo para imágenes sencillas**: un objeto sobre un fondo de un solo color, como el blanco. Con fondos complejos o personas puede fallar. Descargas un PNG transparente y no se sube nada a ningún servidor."
+    },
+    {
+      "id": "banner",
+      "t": "¿Cómo hago un banner?",
+      "p": ["crear una publicación para redes", "poner texto sobre una foto", "recortar para Instagram", "miniatura de YouTube", "hacer una portada", "post para Facebook"],
+      "k": ["banner", "instagram", "youtube", "facebook", "redes", "historia", "miniatura", "texto sobre foto"],
+      "r": "Con [Hacer un banner](/banner/): eliges el formato (post, historia, pin de Pinterest, miniatura de YouTube, web o presentación), escribes el título y descargas el PNG. También hay un botón «Hacer un banner con esta foto» en cada ficha."
+    },
+    {
+      "id": "licencia",
+      "t": "¿Qué licencia tienen las fotos?",
+      "p": ["qué es CC BY 4.0", "qué significa la licencia", "bajo qué licencia están", "permisos de uso"],
+      "k": ["licencia", "cc by", "permiso", "términos"],
+      "r": "Se ofrecen bajo **CC BY 4.0**: puedes usarlas, incluso comercialmente, y adaptarlas, dando crédito a Fondo Blanco. Aplica en la medida en que existan derechos sobre imágenes de IA. Lee la [licencia](/licencia/) completa y los [términos de uso](/terminos/)."
+    },
+    {
+      "id": "derechos",
+      "t": "¿Tienen derechos de autor?",
+      "p": ["puedo registrar una imagen como marca", "puedo usar una foto en mi logo", "es seguro usarlas en una campaña", "tengo problemas legales si las uso", "copyright"],
+      "k": ["derechos de autor", "copyright", "legal", "abogado", "logo", "logotipo", "marca", "registrar"],
+      "r": "Los derechos de autor sobre imágenes de IA pueden no existir o variar según el país, así que no podemos darte garantías. Las fotos se ofrecen «tal como están» y el uso es bajo tu responsabilidad. Para un logotipo, registro de marca o campaña grande, **consulta con un abogado**. Más en el [aviso de IA](/aviso-ia/) y los [términos](/terminos/)."
+    },
+    {
+      "id": "personas",
+      "t": "¿Puedo usar las personas de las fotos como clientes?",
+      "p": ["las personas son reales", "puedo usar una foto como testimonio", "puedo presentarlas como empleados"],
+      "k": ["personas", "clientes", "testimonio", "empleados", "pacientes", "retrato"],
+      "r": "No. Las personas que aparecen no son reales, así que no las uses para presentarlas como clientes, pacientes, empleados o testimonios, ni para atribuirles opiniones o hechos. Mira el [aviso de IA](/aviso-ia/)."
+    },
+    {
+      "id": "privacidad",
+      "t": "¿Guardan mis datos?",
+      "p": ["usan cookies", "qué información recopilan", "se suben mis imágenes a un servidor", "es seguro", "privacidad"],
+      "k": ["datos", "cookies", "privacidad", "información", "servidor", "seguro"],
+      "r": "Al navegar no recopilamos datos: no hay cuentas, analítica ni publicidad. Solo usamos una cookie técnica que recuerda que aceptaste los términos. Las herramientas de ampliar y quitar fondo procesan tu imagen **en tu propio equipo**. Detalles en la [política de privacidad](/privacidad/)."
+    },
+    {
+      "id": "contacto",
+      "t": "¿Cómo los contacto?",
+      "p": ["quiero reportar una foto", "quiero que retiren una imagen", "encontré un error", "necesito ayuda", "soporte", "escribirles un correo"],
+      "k": ["contacto", "contactar", "reportar", "retirar", "error", "ayuda", "soporte", "correo"],
+      "r": "Escríbenos desde la página de [contacto](/contacto/). Si reportas una foto, incluye su código (por ejemplo FB-001) y el motivo; revisamos cada solicitud."
+    },
+    {
+      "id": "sugerir",
+      "t": "¿Puedo pedir o sugerir una foto?",
+      "p": ["pueden agregar más fotos", "tienen fotos de Colombia", "quiero una imagen que no veo", "sugerir una imagen"],
+      "k": ["sugerir", "pedir", "agregar", "nuevas", "colombia"],
+      "r": "Cuéntanos qué imagen te gustaría ver desde el [contacto](/contacto/). Mientras tanto, mira la colección [Colombia y cultura](/coleccion/colombia/)."
+    },
+    {
+      "id": "pinterest",
+      "t": "¿Tienen Pinterest?",
+      "p": ["dónde los sigo", "redes sociales", "están en Pinterest"],
+      "k": ["pinterest", "seguir", "redes sociales"],
+      "r": "Sí, estamos en [Pinterest](https://co.pinterest.com/bacanacrea/): ahí publicamos pines con las fotos del sitio."
+    },
+    {
+      "id": "paleta",
+      "t": "¿Puedo copiar los colores de una foto?",
+      "p": ["qué es la paleta de colores", "código de color de una foto", "colores principales"],
+      "k": ["paleta", "colores", "hexadecimal", "color"],
+      "r": "Sí. Cada ficha muestra los colores principales de la foto; tócalos para copiar el código hexadecimal."
+    },
+    {
+      "id": "falla",
+      "t": "La herramienta no funciona o tarda mucho",
+      "p": ["se queda cargando", "ampliar tarda demasiado", "error al quitar el fondo", "no me deja subir la imagen"],
+      "k": ["falla", "error", "tarda", "cargando", "no funciona", "lento"],
+      "r": "Las herramientas corren en tu navegador. Si tardan o fallan: usa un Chrome o Edge actualizado, prueba con una imagen más pequeña (hasta 25 MB) y recarga la página. «Ampliar imagen» es mucho más rápida con WebGPU. Si sigue fallando, escríbenos desde [contacto](/contacto/)."
+    }
+  ],
+  "saludos": {
+    "hola": "¡Hola! Pregúntame lo que quieras sobre las fotos, la licencia o las herramientas de Fondo Blanco.",
+    "gracias": "¡De nada! Si tienes otra duda, aquí estoy.",
+    "adios": "¡Hasta pronto! Que tengas un buen día."
+  }
+}
