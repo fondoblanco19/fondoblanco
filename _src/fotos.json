@@ -4098,6 +4098,1378 @@
       ],
       "coleccion": "naturaleza",
       "espacio": false
+    },
+    {
+      "n": 290,
+      "slug": "cafetal-al-amanecer-con-finca-entre-colinas",
+      "titulo": "Cafetal al amanecer con finca entre colinas",
+      "desc": "Ramas de café con frutos rojos en primer plano y una finca entre colinas con neblina y el sol saliendo.",
+      "tags": [
+        "café",
+        "cafetal",
+        "amanecer",
+        "finca"
+      ],
+      "coleccion": "colombia",
+      "espacio": true
+    },
+    {
+      "n": 291,
+      "slug": "cafetero-recogiendo-granos-rojos",
+      "titulo": "Cafetero recogiendo granos rojos",
+      "desc": "Hombre con sombrero de paja recolectando granos de café maduros en un canasto, con cafetales desenfocados al fondo.",
+      "tags": [
+        "cafetero",
+        "cosecha",
+        "café",
+        "campo"
+      ],
+      "coleccion": "colombia",
+      "espacio": false
+    },
+    {
+      "n": 292,
+      "slug": "secado-de-cafe-con-rastrillo-de-madera",
+      "titulo": "Secado de café con rastrillo de madera",
+      "desc": "Granos de café extendidos para secar sobre una plataforma de madera, removidos con un rastrillo.",
+      "tags": [
+        "café",
+        "secado",
+        "granos",
+        "textura"
+      ],
+      "coleccion": "colombia",
+      "espacio": false
+    },
+    {
+      "n": 293,
+      "slug": "taza-de-cafe-junto-a-ventana-con-vista-a-pueblo",
+      "titulo": "Taza de café junto a ventana con vista a pueblo",
+      "desc": "Taza de café humeante sobre un alféizar de madera con una ruana y vista a un pueblo entre montañas con neblina.",
+      "tags": [
+        "café",
+        "ventana",
+        "montañas",
+        "pueblo"
+      ],
+      "coleccion": "colombia",
+      "espacio": false
+    },
+    {
+      "n": 294,
+      "slug": "valle-con-palmas-de-cera-y-neblina",
+      "titulo": "Valle con palmas de cera y neblina",
+      "desc": "Palmas de cera altas en un valle verde con sendero y neblina entre las montañas.",
+      "tags": [
+        "palma de cera",
+        "valle",
+        "neblina",
+        "paisaje"
+      ],
+      "coleccion": "naturaleza",
+      "espacio": true
+    },
+    {
+      "n": 295,
+      "slug": "calle-de-pueblo-con-casas-blancas-y-buganvillas",
+      "titulo": "Calle de pueblo con casas blancas y buganvillas",
+      "desc": "Calle empedrada de pueblo con casas blancas, puertas azules, balcones con flores y buganvillas al atardecer.",
+      "tags": [
+        "pueblo",
+        "calle",
+        "buganvilla",
+        "colonial"
+      ],
+      "coleccion": "colombia",
+      "espacio": true
+    },
+    {
+      "n": 296,
+      "slug": "chiva-de-colores-en-camino-rural",
+      "titulo": "Chiva de colores en camino rural",
+      "desc": "Bus tradicional pintado de colores con costales y una bicicleta en el techo sobre un camino rural entre montañas.",
+      "tags": [
+        "chiva",
+        "bus",
+        "camino rural",
+        "tradición"
+      ],
+      "coleccion": "colombia",
+      "espacio": false
+    },
+    {
+      "n": 297,
+      "slug": "puesto-de-frutas-tropicales-con-etiquetas-en-blanco",
+      "titulo": "Puesto de frutas tropicales en mercado",
+      "desc": "Mangos, papaya, guanábana, pitahaya y maracuyá en cestas y cajas con etiquetas en blanco en un mercado.",
+      "tags": [
+        "frutas tropicales",
+        "mercado",
+        "mango",
+        "pitahaya"
+      ],
+      "coleccion": "gastronomia",
+      "espacio": false
+    },
+    {
+      "n": 298,
+      "slug": "bandeja-paisa-sobre-mesa-de-madera",
+      "titulo": "Bandeja paisa sobre mesa de madera",
+      "desc": "Bandeja paisa con chicharrón, carne molida, arroz, frijoles, huevo frito, aguacate, plátano y arepa sobre madera rústica.",
+      "tags": [
+        "bandeja paisa",
+        "comida colombiana",
+        "almuerzo",
+        "tradicional"
+      ],
+      "coleccion": "colombia",
+      "espacio": false
+    },
+    {
+      "n": 299,
+      "slug": "arepas-con-queso-en-fogon-de-lena",
+      "titulo": "Arepas con queso en fogón de leña",
+      "desc": "Arepas asadas en un budare sobre fogón, una de ellas abierta con queso derretido, con vapor y fondo oscuro.",
+      "tags": [
+        "arepas",
+        "queso",
+        "fogón",
+        "comida colombiana"
+      ],
+      "coleccion": "colombia",
+      "espacio": true
+    },
+    {
+      "n": 300,
+      "slug": "empanadas-con-aji-en-bandeja-de-madera",
+      "titulo": "Empanadas con ají en bandeja de madera",
+      "desc": "Empanadas doradas con ají, limón y cilantro en una bandeja de madera sobre mesa rústica.",
+      "tags": [
+        "empanadas",
+        "ají",
+        "antojitos",
+        "comida colombiana"
+      ],
+      "coleccion": "colombia",
+      "espacio": true
+    },
+    {
+      "n": 301,
+      "slug": "cacao-abierto-con-chocolate-y-molinillo",
+      "titulo": "Cacao abierto con chocolate y molinillo",
+      "desc": "Mazorca de cacao abierta, trozos de chocolate, granos y molinillo de madera sobre fondo oscuro de pizarra.",
+      "tags": [
+        "cacao",
+        "chocolate",
+        "molinillo",
+        "tradición"
+      ],
+      "coleccion": "colombia",
+      "espacio": true
+    },
+    {
+      "n": 302,
+      "slug": "dulces-navidenos-con-natilla-y-bunuelos",
+      "titulo": "Dulces navideños con natilla y buñuelos",
+      "desc": "Natilla con canela, buñuelos y manjar blanco junto a velas, pesebre y poinsetias sobre fondo verde.",
+      "tags": [
+        "navidad",
+        "natilla",
+        "buñuelos",
+        "velitas"
+      ],
+      "coleccion": "colombia",
+      "espacio": true
+    },
+    {
+      "n": 303,
+      "slug": "mochilas-tejidas-de-colores-sobre-banca",
+      "titulo": "Mochilas tejidas de colores sobre banca",
+      "desc": "Tres mochilas tejidas con diseños geométricos y borlas sobre una banca rústica, con bugambilia y pared clara.",
+      "tags": [
+        "mochilas",
+        "artesanía",
+        "tejido",
+        "colores"
+      ],
+      "coleccion": "colombia",
+      "espacio": true
+    },
+    {
+      "n": 304,
+      "slug": "alfareria-y-cesteria-en-taller-artesanal",
+      "titulo": "Alfarería y cestería en taller artesanal",
+      "desc": "Estantes con vasijas de barro, cerámica negra pintada, cestas tejidas y un artesano moldeando una vasija.",
+      "tags": [
+        "alfarería",
+        "cestería",
+        "artesanías",
+        "barro"
+      ],
+      "coleccion": "colombia",
+      "espacio": true
+    },
+    {
+      "n": 305,
+      "slug": "balcon-con-hamaca-frente-a-las-montanas",
+      "titulo": "Balcón con hamaca frente a las montañas",
+      "desc": "Terraza de madera con hamaca, café humeante y manta tejida frente a montañas con nubes al amanecer.",
+      "tags": [
+        "balcón",
+        "hamaca",
+        "montañas",
+        "amanecer"
+      ],
+      "coleccion": "viajes",
+      "espacio": false
+    },
+    {
+      "n": 306,
+      "slug": "calle-colonial-con-buganvillas-al-atardecer",
+      "titulo": "Calle colonial con buganvillas al atardecer",
+      "desc": "Casas coloniales de colores con balcones y buganvillas junto a una muralla de piedra al atardecer.",
+      "tags": [
+        "calle colonial",
+        "buganvilla",
+        "muralla",
+        "atardecer"
+      ],
+      "coleccion": "colombia",
+      "espacio": true
+    },
+    {
+      "n": 307,
+      "slug": "playa-tropical-con-bote-de-pesca-al-amanecer",
+      "titulo": "Playa tropical con bote de pesca al amanecer",
+      "desc": "Mar turquesa, palmeras y un bote de pesca varado en la arena blanca con redes y cielo anaranjado.",
+      "tags": [
+        "playa",
+        "caribe",
+        "bote",
+        "palmeras"
+      ],
+      "coleccion": "viajes",
+      "espacio": true
+    },
+    {
+      "n": 308,
+      "slug": "colibri-junto-a-flor-naranja",
+      "titulo": "Colibrí junto a flor naranja",
+      "desc": "Colibrí con plumaje verde y morado en vuelo frente a una flor naranja con gotas de rocío y fondo verde desenfocado.",
+      "tags": [
+        "colibrí",
+        "flor",
+        "ave",
+        "selva"
+      ],
+      "coleccion": "naturaleza",
+      "espacio": true
+    },
+    {
+      "n": 309,
+      "slug": "orquidea-con-gotas-de-rocio-en-rama-con-musgo",
+      "titulo": "Orquídea con gotas de rocío en rama con musgo",
+      "desc": "Orquídea morada con garganta amarilla y gotas de rocío sobre una rama cubierta de musgo.",
+      "tags": [
+        "orquídea",
+        "rocío",
+        "flor",
+        "musgo"
+      ],
+      "coleccion": "naturaleza",
+      "espacio": true
+    },
+    {
+      "n": 310,
+      "slug": "silletero-con-flores-en-desfile",
+      "titulo": "Silletero con flores en desfile",
+      "desc": "Silletero de espaldas cargando una silla de flores con orquídeas, girasoles y rosas ante el público desenfocado.",
+      "tags": [
+        "silleta",
+        "flores",
+        "desfile",
+        "feria"
+      ],
+      "coleccion": "colombia",
+      "espacio": false
+    },
+    {
+      "n": 311,
+      "slug": "manos-tejiendo-un-sombrero-de-fibra-natural",
+      "titulo": "Manos tejiendo un sombrero de fibra natural",
+      "desc": "Manos de artesano tejiendo un sombrero con patrón geométrico en blanco y negro sobre una mesa de madera.",
+      "tags": [
+        "sombrero",
+        "tejido",
+        "artesano",
+        "manos"
+      ],
+      "coleccion": "colombia",
+      "espacio": true
+    },
+    {
+      "n": 312,
+      "slug": "mural-de-flores-en-calle-con-cafe",
+      "titulo": "Mural de flores en calle con café",
+      "desc": "Mural colorido de flores sobre un muro con escalera, mesa de café con capuchinos y casas de colores al fondo.",
+      "tags": [
+        "mural",
+        "flores",
+        "café",
+        "calle"
+      ],
+      "coleccion": "viajes",
+      "espacio": true
+    },
+    {
+      "n": 313,
+      "slug": "valle-de-montanas-con-neblina-al-amanecer",
+      "titulo": "Valle de montañas con neblina al amanecer",
+      "desc": "Valle verde con carretera, pueblo pequeño y neblina entre montañas con picos nevados al fondo.",
+      "tags": [
+        "montañas",
+        "valle",
+        "neblina",
+        "amanecer"
+      ],
+      "coleccion": "naturaleza",
+      "espacio": true
+    },
+    {
+      "n": 314,
+      "slug": "desierto-rojo-con-cactus-al-atardecer",
+      "titulo": "Desierto rojo con cactus al atardecer",
+      "desc": "Formaciones de arenisca roja y cactus bajo un cielo violeta y rosa con el sol sobre el horizonte.",
+      "tags": [
+        "desierto",
+        "cactus",
+        "atardecer",
+        "paisaje"
+      ],
+      "coleccion": "naturaleza",
+      "espacio": true
+    },
+    {
+      "n": 315,
+      "slug": "paramo-con-frailejones-y-laguna",
+      "titulo": "Páramo con frailejones y laguna",
+      "desc": "Frailejones junto a una laguna de páramo con montañas y neblina al fondo.",
+      "tags": [
+        "páramo",
+        "frailejones",
+        "laguna",
+        "montañas"
+      ],
+      "coleccion": "naturaleza",
+      "espacio": true
+    },
+    {
+      "n": 316,
+      "slug": "mesa-de-fiesta-con-torta-y-jugos",
+      "titulo": "Mesa de fiesta con torta y jugos",
+      "desc": "Mesa con torta de cumpleaños, jugos en dispensadores, frutas, banderines de papel picado y pueblo al fondo.",
+      "tags": [
+        "fiesta",
+        "cumpleaños",
+        "torta",
+        "jugos"
+      ],
+      "coleccion": "colombia",
+      "espacio": true
+    },
+    {
+      "n": 317,
+      "slug": "ciudad-con-rascacielos-y-cordillera-nevada-al-atardecer",
+      "titulo": "Ciudad con rascacielos y cordillera nevada al atardecer",
+      "desc": "Horizonte urbano con rascacielos, autopista y cordillera nevada bajo un cielo rosado al atardecer.",
+      "tags": [
+        "ciudad",
+        "rascacielos",
+        "cordillera",
+        "atardecer"
+      ],
+      "coleccion": "viajes",
+      "espacio": true
+    },
+    {
+      "n": 318,
+      "slug": "camara-cuaderno-y-boleto-sobre-lino",
+      "titulo": "Cámara, cuaderno y boleto sobre lino",
+      "desc": "Cámara analógica, cuaderno en blanco, gafas, mapa y boleto de avión sobre tela de lino con luz de ventana.",
+      "tags": [
+        "viaje",
+        "cámara",
+        "mapa",
+        "boleto"
+      ],
+      "coleccion": "viajes",
+      "espacio": true
+    },
+    {
+      "n": 319,
+      "slug": "desayuno-en-terraza-frente-al-mar",
+      "titulo": "Desayuno en terraza frente al mar",
+      "desc": "Manos con café y jugo de naranja junto a croissants y fruta en una terraza blanca con olivos frente al mar.",
+      "tags": [
+        "desayuno",
+        "terraza",
+        "mar",
+        "vacaciones"
+      ],
+      "coleccion": "viajes",
+      "espacio": true
+    },
+    {
+      "n": 320,
+      "slug": "tren-cruzando-viaducto-de-piedra-entre-colinas",
+      "titulo": "Tren cruzando viaducto de piedra entre colinas",
+      "desc": "Tren sobre un viaducto de piedra con arcos entre colinas verdes, río y neblina matutina.",
+      "tags": [
+        "tren",
+        "viaducto",
+        "colinas",
+        "naturaleza"
+      ],
+      "coleccion": "viajes",
+      "espacio": true
+    },
+    {
+      "n": 321,
+      "slug": "pareja-con-mapa-en-cafe-en-dia-de-lluvia",
+      "titulo": "Pareja con mapa en café en día de lluvia",
+      "desc": "Pareja con mochilas mirando un mapa en un café junto a una ventana con lluvia y luces de la ciudad.",
+      "tags": [
+        "café",
+        "lluvia",
+        "mapa",
+        "viajeros"
+      ],
+      "coleccion": "viajes",
+      "espacio": false
+    },
+    {
+      "n": 322,
+      "slug": "excursionista-frente-a-lago-con-montanas-nevadas",
+      "titulo": "Excursionista frente a lago con montañas nevadas",
+      "desc": "Excursionista con mochila naranja frente a un lago que refleja montañas nevadas al amanecer.",
+      "tags": [
+        "excursionista",
+        "lago",
+        "montañas",
+        "amanecer"
+      ],
+      "coleccion": "viajes",
+      "espacio": true
+    },
+    {
+      "n": 323,
+      "slug": "mercado-nocturno-con-farolillos-y-comida-callejera",
+      "titulo": "Mercado nocturno con farolillos y comida callejera",
+      "desc": "Calle de mercado nocturno con farolillos rojos, vapor de comida callejera y gente en movimiento.",
+      "tags": [
+        "mercado nocturno",
+        "farolillos",
+        "comida callejera",
+        "ciudad"
+      ],
+      "coleccion": "viajes",
+      "espacio": true
+    },
+    {
+      "n": 324,
+      "slug": "descapotable-verde-en-carretera-costera-al-atardecer",
+      "titulo": "Descapotable verde en carretera costera al atardecer",
+      "desc": "Descapotable clásico verde por una carretera junto al mar con acantilados y un cielo naranja.",
+      "tags": [
+        "descapotable",
+        "carretera",
+        "costa",
+        "atardecer"
+      ],
+      "coleccion": "viajes",
+      "espacio": true
+    },
+    {
+      "n": 325,
+      "slug": "cabana-nevada-con-luces-calidas-al-atardecer",
+      "titulo": "Cabaña nevada con luces cálidas al atardecer",
+      "desc": "Cabaña de madera con nieve, ventanas encendidas y pinos nevados frente a un valle al atardecer.",
+      "tags": [
+        "cabaña",
+        "nieve",
+        "invierno",
+        "atardecer"
+      ],
+      "coleccion": "temporadas",
+      "espacio": true
+    },
+    {
+      "n": 326,
+      "slug": "excursionista-sobre-mar-de-nubes-al-amanecer",
+      "titulo": "Excursionista sobre mar de nubes al amanecer",
+      "desc": "Excursionista con mochila mirando un mar de nubes y el sol saliendo entre montañas.",
+      "tags": [
+        "excursionista",
+        "nubes",
+        "amanecer",
+        "montañas"
+      ],
+      "coleccion": "naturaleza",
+      "espacio": true
+    },
+    {
+      "n": 327,
+      "slug": "puente-de-piedra-con-niebla-y-farolas-al-amanecer",
+      "titulo": "Puente de piedra con niebla y farolas al amanecer",
+      "desc": "Puente de piedra con farolas encendidas sobre un río con niebla, un ciclista y edificios de colores al fondo.",
+      "tags": [
+        "puente",
+        "niebla",
+        "ciudad",
+        "ciclista"
+      ],
+      "coleccion": "viajes",
+      "espacio": true
+    },
+    {
+      "n": 328,
+      "slug": "crucero-en-puerto-al-atardecer-violeta",
+      "titulo": "Crucero en puerto al atardecer violeta",
+      "desc": "Crucero iluminado atracado en un puerto con terrazas con luces y un cielo rosado y violeta reflejado en el agua.",
+      "tags": [
+        "crucero",
+        "puerto",
+        "atardecer",
+        "mar"
+      ],
+      "coleccion": "viajes",
+      "espacio": true
+    },
+    {
+      "n": 329,
+      "slug": "globos-aerostaticos-sobre-valle-rocoso-al-amanecer",
+      "titulo": "Globos aerostáticos sobre valle rocoso al amanecer",
+      "desc": "Decenas de globos aerostáticos sobre un valle de formaciones rocosas con cielo rosado y naranja.",
+      "tags": [
+        "globos aerostáticos",
+        "amanecer",
+        "valle",
+        "viaje"
+      ],
+      "coleccion": "viajes",
+      "espacio": true
+    },
+    {
+      "n": 330,
+      "slug": "mujer-esperando-el-metro-en-andén",
+      "titulo": "Mujer esperando el metro en el andén",
+      "desc": "Mujer con abrigo y bolsa de tela mirando un tren en movimiento en un andén de metro con pared gris.",
+      "tags": [
+        "metro",
+        "andén",
+        "ciudad",
+        "transporte"
+      ],
+      "coleccion": "viajes",
+      "espacio": true
+    },
+    {
+      "n": 331,
+      "slug": "cena-romantica-en-terraza-con-vista-a-la-ciudad",
+      "titulo": "Cena romántica en terraza con vista a la ciudad",
+      "desc": "Mesa para dos con velas, vino y rosas en una terraza con luces y el horizonte de una ciudad al anochecer.",
+      "tags": [
+        "cena",
+        "terraza",
+        "velas",
+        "ciudad"
+      ],
+      "coleccion": "viajes",
+      "espacio": true
+    },
+    {
+      "n": 332,
+      "slug": "familia-llegando-a-casa-de-piedra-con-jazmin",
+      "titulo": "Familia llegando a casa de piedra con jazmín",
+      "desc": "Familia con un perro caminando hacia una casa de piedra con arco, jazmín y lavanda al atardecer.",
+      "tags": [
+        "familia",
+        "vacaciones",
+        "casa de piedra",
+        "atardecer"
+      ],
+      "coleccion": "viajes",
+      "espacio": true
+    },
+    {
+      "n": 333,
+      "slug": "maestra-y-estudiantes-con-manos-levantadas-en-clase",
+      "titulo": "Maestra y estudiantes con manos levantadas en clase",
+      "desc": "Maestra sonriente frente a una pizarra con formas y niños levantando la mano en un salón luminoso.",
+      "tags": [
+        "clase",
+        "maestra",
+        "estudiantes",
+        "escuela"
+      ],
+      "coleccion": "educacion",
+      "espacio": true
+    },
+    {
+      "n": 334,
+      "slug": "estudiante-escribiendo-en-biblioteca-con-lampara",
+      "titulo": "Estudiante escribiendo en biblioteca con lámpara",
+      "desc": "Joven escribiendo en un cuaderno con laptop, café y libros en una biblioteca clásica con lámpara de latón.",
+      "tags": [
+        "estudiante",
+        "biblioteca",
+        "estudiar",
+        "libros"
+      ],
+      "coleccion": "educacion",
+      "espacio": false
+    },
+    {
+      "n": 335,
+      "slug": "nina-sonriendo-mientras-dibuja-con-lapices-de-colores",
+      "titulo": "Niña sonriendo mientras dibuja con lápices de colores",
+      "desc": "Niña con suéter de colores dibujando un sol, flores y una casa con lápices, con virutas sobre una mesa blanca.",
+      "tags": [
+        "niña",
+        "dibujo",
+        "lápices de colores",
+        "infancia"
+      ],
+      "coleccion": "educacion",
+      "espacio": true
+    },
+    {
+      "n": 336,
+      "slug": "pipeta-y-tubos-de-ensayo-de-colores-en-laboratorio",
+      "titulo": "Pipeta y tubos de ensayo de colores en laboratorio",
+      "desc": "Mano con guante azul usando una pipeta sobre tubos de ensayo con líquidos azules, verdes y ámbar junto a matraces.",
+      "tags": [
+        "laboratorio",
+        "pipeta",
+        "tubos de ensayo",
+        "ciencia"
+      ],
+      "coleccion": "educacion",
+      "espacio": true
+    },
+    {
+      "n": 337,
+      "slug": "microscopio-con-laminas-y-cuaderno-de-bocetos",
+      "titulo": "Microscopio con láminas y cuaderno de bocetos",
+      "desc": "Microscopio junto a una caja de láminas, un cuaderno con bocetos científicos y una lámpara de latón.",
+      "tags": [
+        "microscopio",
+        "ciencia",
+        "láminas",
+        "escritorio"
+      ],
+      "coleccion": "educacion",
+      "espacio": true
+    },
+    {
+      "n": 338,
+      "slug": "mujer-tomando-clase-en-linea-con-audifonos",
+      "titulo": "Mujer tomando clase en línea con audífonos",
+      "desc": "Mujer con audífonos tomando notas frente a una laptop con una clase en línea, con té y plantas en un escritorio.",
+      "tags": [
+        "clase en línea",
+        "estudiar",
+        "laptop",
+        "educación"
+      ],
+      "coleccion": "educacion",
+      "espacio": true
+    },
+    {
+      "n": 339,
+      "slug": "ninos-con-batas-observando-un-volcan-de-espuma",
+      "titulo": "Niños con batas observando un volcán de espuma",
+      "desc": "Niños con batas y gafas de seguridad mirando con asombro un volcán con espuma rosa en un experimento.",
+      "tags": [
+        "experimento",
+        "volcán",
+        "niños",
+        "ciencia"
+      ],
+      "coleccion": "educacion",
+      "espacio": false
+    },
+    {
+      "n": 340,
+      "slug": "ninos-armando-un-robot-con-laptop-de-programacion",
+      "titulo": "Niños armando un robot con laptop de programación",
+      "desc": "Cuatro niños armando un robot con sensores y una placa electrónica, con una laptop con bloques de programación.",
+      "tags": [
+        "robótica",
+        "programación",
+        "niños",
+        "STEM"
+      ],
+      "coleccion": "educacion",
+      "espacio": false
+    },
+    {
+      "n": 341,
+      "slug": "auditorio-con-conferencista-y-pantalla-en-blanco",
+      "titulo": "Auditorio con conferencista y pantalla en blanco",
+      "desc": "Auditorio lleno con un conferencista en el escenario frente a una pantalla grande con fondo azul vacío.",
+      "tags": [
+        "auditorio",
+        "conferencia",
+        "pantalla",
+        "público"
+      ],
+      "coleccion": "negocios",
+      "espacio": true
+    },
+    {
+      "n": 342,
+      "slug": "madre-y-nina-usando-una-tableta-en-sala-de-juegos",
+      "titulo": "Madre y niña usando una tableta en sala de juegos",
+      "desc": "Mujer sonriente y una niña con una tableta en una sala con juguetes de madera, ábaco y pared clara.",
+      "tags": [
+        "tableta",
+        "niña",
+        "aprendizaje",
+        "familia"
+      ],
+      "coleccion": "educacion",
+      "espacio": true
+    },
+    {
+      "n": 343,
+      "slug": "globo-terraqueo-sobre-libros-con-lapices-y-planta",
+      "titulo": "Globo terráqueo sobre libros con lápices y planta",
+      "desc": "Globo terráqueo sobre una pila de libros de colores junto a lápices y una planta, con pared clara.",
+      "tags": [
+        "globo terráqueo",
+        "libros",
+        "lápices",
+        "educación"
+      ],
+      "coleccion": "educacion",
+      "espacio": true
+    },
+    {
+      "n": 344,
+      "slug": "cientifica-tomando-muestra-de-agua-en-un-arroyo",
+      "titulo": "Científica tomando muestra de agua en un arroyo",
+      "desc": "Mujer con guantes recogiendo una muestra de agua de un arroyo, con maletín de análisis y cuaderno en la orilla.",
+      "tags": [
+        "muestra de agua",
+        "científica",
+        "río",
+        "medio ambiente"
+      ],
+      "coleccion": "educacion",
+      "espacio": false
+    },
+    {
+      "n": 345,
+      "slug": "cuaderno-con-figuras-geometricas-y-calculadora",
+      "titulo": "Cuaderno con figuras geométricas y calculadora",
+      "desc": "Cuaderno cuadriculado con figuras geométricas de colores, calculadora, compás, regla y lápices sobre madera clara.",
+      "tags": [
+        "geometría",
+        "matemáticas",
+        "cuaderno",
+        "calculadora"
+      ],
+      "coleccion": "educacion",
+      "espacio": true
+    },
+    {
+      "n": 346,
+      "slug": "pasillo-escolar-con-casilleros-azules-al-atardecer",
+      "titulo": "Pasillo escolar con casilleros azules al atardecer",
+      "desc": "Pasillo de escuela con casilleros azules, una banca con mochila y luz dorada entrando por las ventanas.",
+      "tags": [
+        "escuela",
+        "pasillo",
+        "casilleros",
+        "atardecer"
+      ],
+      "coleccion": "educacion",
+      "espacio": false
+    },
+    {
+      "n": 347,
+      "slug": "silueta-con-telescopio-al-atardecer-en-las-montanas",
+      "titulo": "Silueta con telescopio al atardecer en las montañas",
+      "desc": "Persona observando por un telescopio en una terraza de madera con montañas y cielo degradado de naranja a azul.",
+      "tags": [
+        "telescopio",
+        "astronomía",
+        "atardecer",
+        "montañas"
+      ],
+      "coleccion": "educacion",
+      "espacio": true
+    },
+    {
+      "n": 348,
+      "slug": "clase-de-acuarela-con-ninos-y-maestra",
+      "titulo": "Clase de acuarela con niños y maestra",
+      "desc": "Maestra y cinco niños pintando con acuarelas en una mesa con frascos de colores en un salón luminoso.",
+      "tags": [
+        "acuarela",
+        "pintura",
+        "niños",
+        "clase de arte"
+      ],
+      "coleccion": "educacion",
+      "espacio": true
+    },
+    {
+      "n": 349,
+      "slug": "mochila-escolar-con-utiles-y-lonchera",
+      "titulo": "Mochila escolar con útiles y lonchera",
+      "desc": "Mochila colorida, cuadernos, lápices, tijeras, pegante, manzana y lonchera con sándwich sobre mesa de madera clara.",
+      "tags": [
+        "regreso a clases",
+        "mochila",
+        "útiles",
+        "escuela"
+      ],
+      "coleccion": "educacion",
+      "espacio": true
+    },
+    {
+      "n": 350,
+      "slug": "taza-blanca-en-blanco-sobre-mesa-de-cocina",
+      "titulo": "Taza blanca en blanco sobre mesa de cocina",
+      "desc": "Taza blanca sin diseño sobre una mesa clara junto a un florero con eucalipto y un paño de lino.",
+      "tags": [
+        "taza",
+        "maqueta",
+        "cocina",
+        "producto"
+      ],
+      "coleccion": "productos",
+      "espacio": false
+    },
+    {
+      "n": 351,
+      "slug": "camiseta-blanca-doblada-con-sandalias",
+      "titulo": "Camiseta blanca doblada con sandalias",
+      "desc": "Camiseta blanca doblada junto a sandalias de cuero y una flor seca sobre tela de lino.",
+      "tags": [
+        "camiseta",
+        "maqueta",
+        "sandalias",
+        "ropa"
+      ],
+      "coleccion": "productos",
+      "espacio": false
+    },
+    {
+      "n": 352,
+      "slug": "bolsa-de-papel-kraft-sobre-mesa-de-piedra",
+      "titulo": "Bolsa de papel kraft sobre mesa de piedra",
+      "desc": "Bolsa de papel kraft con asas de cuerda junto a una planta, sobre una superficie de piedra y pared beige.",
+      "tags": [
+        "bolsa kraft",
+        "maqueta",
+        "empaque",
+        "compras"
+      ],
+      "coleccion": "productos",
+      "espacio": true
+    },
+    {
+      "n": 353,
+      "slug": "bolsa-de-tela-colgada-con-pasto-de-la-pampa",
+      "titulo": "Bolsa de tela colgada con pasto de la pampa",
+      "desc": "Bolsa de tela cruda colgada de un perchero de madera junto a un jarrón con plumas de pampa.",
+      "tags": [
+        "tote bag",
+        "maqueta",
+        "tela",
+        "ecológico"
+      ],
+      "coleccion": "productos",
+      "espacio": true
+    },
+    {
+      "n": 354,
+      "slug": "libro-de-tapa-en-blanco-con-cafe-y-boligrafo",
+      "titulo": "Libro de tapa en blanco con café y bolígrafo",
+      "desc": "Libro de tapa beige sin título sobre un escritorio de madera con taza de café, bolígrafo dorado y planta.",
+      "tags": [
+        "libro",
+        "maqueta",
+        "café",
+        "escritorio"
+      ],
+      "coleccion": "productos",
+      "espacio": false
+    },
+    {
+      "n": 355,
+      "slug": "portatil-con-pantalla-en-blanco-en-escritorio",
+      "titulo": "Portátil con pantalla en blanco en escritorio",
+      "desc": "Portátil con pantalla blanca, taza, audífonos, libros y planta sobre un escritorio junto a la ventana.",
+      "tags": [
+        "portátil",
+        "maqueta",
+        "escritorio",
+        "oficina"
+      ],
+      "coleccion": "negocios",
+      "espacio": false
+    },
+    {
+      "n": 356,
+      "slug": "celular-con-pantalla-en-blanco-sobre-podio-rosa",
+      "titulo": "Celular con pantalla en blanco sobre podio rosa",
+      "desc": "Teléfono con pantalla blanca sobre un podio rosa con cubo y esfera sobre fondo durazno.",
+      "tags": [
+        "celular",
+        "maqueta",
+        "podio",
+        "app"
+      ],
+      "coleccion": "productos",
+      "espacio": true
+    },
+    {
+      "n": 357,
+      "slug": "marco-en-blanco-sobre-mueble-con-sofa",
+      "titulo": "Marco en blanco sobre mueble con sofá",
+      "desc": "Marco de madera horizontal vacío apoyado sobre un mueble con florero, libros y sofá beige.",
+      "tags": [
+        "marco",
+        "maqueta",
+        "sala",
+        "decoración"
+      ],
+      "coleccion": "interiores",
+      "espacio": false
+    },
+    {
+      "n": 358,
+      "slug": "frascos-de-cosmetica-blancos-sobre-piedra-con-helechos",
+      "titulo": "Frascos de cosmética blancos sobre piedra con helechos",
+      "desc": "Frasco con gotero, dispensador y tarro blancos con gotas de agua sobre piedra gris con helechos.",
+      "tags": [
+        "cosmética",
+        "maqueta",
+        "skincare",
+        "helechos"
+      ],
+      "coleccion": "productos",
+      "espacio": false
+    },
+    {
+      "n": 359,
+      "slug": "caja-kraft-con-tarjeta-y-flores-secas",
+      "titulo": "Caja kraft con tarjeta y flores secas",
+      "desc": "Caja kraft atada con cuerda, tarjeta en blanco, lavanda y eucalipto secos sobre una mesa con luz de ventana.",
+      "tags": [
+        "regalo",
+        "tarjeta",
+        "flores secas",
+        "maqueta"
+      ],
+      "coleccion": "productos",
+      "espacio": false
+    },
+    {
+      "n": 360,
+      "slug": "valla-en-blanco-con-skyline-al-atardecer",
+      "titulo": "Valla publicitaria en blanco al atardecer",
+      "desc": "Valla vacía junto a una autopista con el horizonte de una ciudad y un cielo naranja al atardecer.",
+      "tags": [
+        "valla",
+        "publicidad",
+        "maqueta",
+        "atardecer"
+      ],
+      "coleccion": "negocios",
+      "espacio": true
+    },
+    {
+      "n": 361,
+      "slug": "reloj-dorado-con-libro-antiguo-y-brujula",
+      "titulo": "Reloj dorado con libro antiguo y brújula",
+      "desc": "Reloj de correa de cuero junto a un libro antiguo y una brújula de latón sobre madera oscura.",
+      "tags": [
+        "reloj",
+        "brújula",
+        "libro antiguo",
+        "vintage"
+      ],
+      "coleccion": "productos",
+      "espacio": false
+    },
+    {
+      "n": 362,
+      "slug": "audifonos-negros-con-detalle-metalico-sobre-blanco",
+      "titulo": "Audífonos negros sobre fondo blanco",
+      "desc": "Audífonos negros de diadema flotando sobre fondo blanco con sombra suave.",
+      "tags": [
+        "audífonos",
+        "producto",
+        "fondo blanco",
+        "tecnología"
+      ],
+      "coleccion": "productos",
+      "espacio": true
+    },
+    {
+      "n": 363,
+      "slug": "mochila-de-cuero-con-manta-y-jarron",
+      "titulo": "Mochila de cuero con manta y jarrón",
+      "desc": "Mochila de cuero marrón con hebillas junto a un jarrón con ramas de olivo y una manta a cuadros.",
+      "tags": [
+        "mochila de cuero",
+        "producto",
+        "moda",
+        "manta"
+      ],
+      "coleccion": "productos",
+      "espacio": false
+    },
+    {
+      "n": 364,
+      "slug": "manta-tejida-gruesa-en-banca-con-taza",
+      "titulo": "Manta tejida gruesa en banca con taza",
+      "desc": "Manta de punto grueso doblada sobre una banca de madera junto a una taza de café y una ventana.",
+      "tags": [
+        "manta",
+        "tejido",
+        "café",
+        "hogar"
+      ],
+      "coleccion": "interiores",
+      "espacio": false
+    },
+    {
+      "n": 365,
+      "slug": "gafas-de-sol-sobre-arena-con-concha",
+      "titulo": "Gafas de sol sobre arena con concha",
+      "desc": "Gafas de carey sobre arena con una concha y pasto de duna, con el mar y el sol reflejado en los lentes.",
+      "tags": [
+        "gafas de sol",
+        "playa",
+        "verano",
+        "concha"
+      ],
+      "coleccion": "temporadas",
+      "espacio": false
+    },
+    {
+      "n": 366,
+      "slug": "jabones-artesanales-con-cepillo-sobre-bandeja-de-piedra",
+      "titulo": "Jabones artesanales con cepillo de madera",
+      "desc": "Tres jabones artesanales apilados junto a un cepillo de madera sobre una bandeja de piedra con paño de lino.",
+      "tags": [
+        "jabón",
+        "artesanal",
+        "spa",
+        "cepillo"
+      ],
+      "coleccion": "productos",
+      "espacio": false
+    },
+    {
+      "n": 367,
+      "slug": "aceite-de-oliva-con-aceitunas-en-paisaje-mediterraneo",
+      "titulo": "Aceite de oliva con aceitunas en paisaje mediterráneo",
+      "desc": "Botella de aceite de oliva con etiqueta en blanco, aceitunas y ramas sobre tabla de madera con paisaje de colinas.",
+      "tags": [
+        "aceite de oliva",
+        "aceitunas",
+        "mediterráneo",
+        "maqueta"
+      ],
+      "coleccion": "gastronomia",
+      "espacio": false
+    },
+    {
+      "n": 368,
+      "slug": "bolsa-de-cafe-kraft-con-granos-y-cuchara",
+      "titulo": "Bolsa de café kraft con granos y cuchara",
+      "desc": "Bolsa kraft con etiqueta en blanco junto a granos de café y una cuchara de madera sobre yute.",
+      "tags": [
+        "café",
+        "empaque",
+        "granos",
+        "maqueta"
+      ],
+      "coleccion": "productos",
+      "espacio": false
+    },
+    {
+      "n": 369,
+      "slug": "vela-encendida-con-eucalipto-y-piedras",
+      "titulo": "Vela encendida con eucalipto y piedras",
+      "desc": "Vela encendida en vaso de vidrio junto a ramas de eucalipto, un cuenco con piedras y una manta de punto.",
+      "tags": [
+        "vela",
+        "eucalipto",
+        "relajación",
+        "calidez"
+      ],
+      "coleccion": "bienestar",
+      "espacio": false
+    },
+    {
+      "n": 370,
+      "slug": "caja-de-carton-abierta-con-tarjeta-y-cinta",
+      "titulo": "Caja de cartón abierta con tarjeta y cinta",
+      "desc": "Caja de cartón abierta con papel de seda y tarjeta en blanco, junto a cinta adhesiva, tijeras y una planta.",
+      "tags": [
+        "empaque",
+        "caja",
+        "envío",
+        "maqueta"
+      ],
+      "coleccion": "productos",
+      "espacio": false
+    },
+    {
+      "n": 371,
+      "slug": "tarjetas-en-blanco-con-boligrafo-y-suculenta",
+      "titulo": "Tarjetas en blanco con bolígrafo y suculenta",
+      "desc": "Tarjetas blancas en abanico con un bolígrafo y una suculenta sobre una superficie de mármol gris.",
+      "tags": [
+        "tarjetas",
+        "maqueta",
+        "papelería",
+        "oficina"
+      ],
+      "coleccion": "negocios",
+      "espacio": false
+    },
+    {
+      "n": 372,
+      "slug": "tapete-de-yoga-con-botella-y-toalla",
+      "titulo": "Tapete de yoga con botella y toalla",
+      "desc": "Tapete de yoga enrollado, toalla y botella verde en un estudio con plantas y luz de ventana.",
+      "tags": [
+        "yoga",
+        "tapete",
+        "botella",
+        "ejercicio"
+      ],
+      "coleccion": "bienestar",
+      "espacio": false
+    },
+    {
+      "n": 373,
+      "slug": "doctora-sonriente-en-consulta-con-paciente",
+      "titulo": "Doctora sonriente en consulta con paciente",
+      "desc": "Doctora con bata y estetoscopio conversando con un paciente en un consultorio con pared azul y planta.",
+      "tags": [
+        "doctora",
+        "consulta",
+        "salud",
+        "paciente"
+      ],
+      "coleccion": "bienestar",
+      "espacio": true
+    },
+    {
+      "n": 374,
+      "slug": "fisioterapeuta-guiando-ejercicio-con-banda-elastica",
+      "titulo": "Fisioterapeuta guiando ejercicio con banda elástica",
+      "desc": "Fisioterapeuta sonriente ayudando a una mujer mayor a hacer un ejercicio con banda elástica amarilla.",
+      "tags": [
+        "fisioterapia",
+        "rehabilitación",
+        "adulta mayor",
+        "ejercicio"
+      ],
+      "coleccion": "bienestar",
+      "espacio": false
+    },
+    {
+      "n": 375,
+      "slug": "mujer-en-pose-de-yoga-al-atardecer-en-terraza",
+      "titulo": "Mujer en pose de yoga al atardecer en terraza",
+      "desc": "Mujer de espaldas en pose de guerrero sobre un tapete en una terraza con la ciudad y el sol al fondo.",
+      "tags": [
+        "yoga",
+        "atardecer",
+        "terraza",
+        "ejercicio"
+      ],
+      "coleccion": "bienestar",
+      "espacio": true
+    },
+    {
+      "n": 376,
+      "slug": "corredora-en-sendero-de-bosque-al-amanecer",
+      "titulo": "Corredora en sendero de bosque al amanecer",
+      "desc": "Mujer corriendo por un sendero de tierra en un bosque con rayos de sol entre los árboles.",
+      "tags": [
+        "correr",
+        "bosque",
+        "deporte",
+        "amanecer"
+      ],
+      "coleccion": "bienestar",
+      "espacio": true
+    },
+    {
+      "n": 377,
+      "slug": "avena-con-fresas-y-nueces-con-agua-de-limon",
+      "titulo": "Avena con fresas y nueces con agua de limón",
+      "desc": "Tazón de avena con fresas, arándanos y nueces junto a un vaso de agua con limón, cerca de una ventana.",
+      "tags": [
+        "avena",
+        "desayuno",
+        "fresas",
+        "saludable"
+      ],
+      "coleccion": "gastronomia",
+      "espacio": true
+    },
+    {
+      "n": 378,
+      "slug": "mujer-meditando-en-sala-luminosa",
+      "titulo": "Mujer meditando en sala luminosa",
+      "desc": "Mujer sentada en un cojín con los ojos cerrados en una sala con luz de ventana, plantas y velas.",
+      "tags": [
+        "meditación",
+        "calma",
+        "bienestar",
+        "hogar"
+      ],
+      "coleccion": "bienestar",
+      "espacio": true
+    },
+    {
+      "n": 379,
+      "slug": "manos-sosteniendo-taza-humeante-con-manta-rosa",
+      "titulo": "Manos sosteniendo una taza humeante con manta rosa",
+      "desc": "Manos con una taza de café con espuma y vapor, envueltas en una manta rosa junto a una ventana.",
+      "tags": [
+        "café",
+        "manta",
+        "manos",
+        "calidez"
+      ],
+      "coleccion": "bienestar",
+      "espacio": true
+    },
+    {
+      "n": 380,
+      "slug": "consultorio-dental-moderno-con-pared-turquesa",
+      "titulo": "Consultorio dental moderno con pared turquesa",
+      "desc": "Consultorio con sillón dental blanco, lámpara, bandeja con instrumentos y ventana a un jardín.",
+      "tags": [
+        "dentista",
+        "consultorio",
+        "salud",
+        "clínica"
+      ],
+      "coleccion": "bienestar",
+      "espacio": true
+    },
+    {
+      "n": 381,
+      "slug": "enfermera-ajustando-suero-en-habitacion-de-hospital",
+      "titulo": "Enfermera ajustando suero en habitación de hospital",
+      "desc": "Enfermera de espaldas ajustando una bolsa de suero junto a un paciente en una cama de hospital.",
+      "tags": [
+        "enfermera",
+        "hospital",
+        "suero",
+        "salud"
+      ],
+      "coleccion": "bienestar",
+      "espacio": true
+    },
+    {
+      "n": 382,
+      "slug": "pareja-mayor-riendo-con-una-tableta-en-el-sofa",
+      "titulo": "Pareja mayor riendo con una tableta en el sofá",
+      "desc": "Hombre y mujer mayores riendo mientras usan una tableta en un sofá con tazas de té y flores.",
+      "tags": [
+        "pareja mayor",
+        "tableta",
+        "sofá",
+        "felicidad"
+      ],
+      "coleccion": "bienestar",
+      "espacio": true
+    },
+    {
+      "n": 383,
+      "slug": "paseo-con-perros-al-atardecer-de-otono",
+      "titulo": "Paseo con perros al atardecer de otoño",
+      "desc": "Mujer caminando con dos perros por un camino con hojas de otoño y un atardecer naranja.",
+      "tags": [
+        "otoño",
+        "perros",
+        "paseo",
+        "atardecer"
+      ],
+      "coleccion": "temporadas",
+      "espacio": true
+    },
+    {
+      "n": 384,
+      "slug": "piedras-orquidea-y-aceites-esenciales-de-spa",
+      "titulo": "Piedras, orquídea y aceites esenciales de spa",
+      "desc": "Piedras apiladas, orquídea blanca, toallas, aceites esenciales, difusor y vela en un ambiente de spa.",
+      "tags": [
+        "spa",
+        "aceites esenciales",
+        "orquídea",
+        "relajación"
+      ],
+      "coleccion": "bienestar",
+      "espacio": false
+    },
+    {
+      "n": 385,
+      "slug": "mujer-midiendo-su-presion-arterial-en-la-cocina",
+      "titulo": "Mujer midiendo su presión arterial en la cocina",
+      "desc": "Mujer mayor tomándose la presión con un tensiómetro, junto a una taza de té y un pastillero en una cocina soleada.",
+      "tags": [
+        "presión arterial",
+        "salud",
+        "adulta mayor",
+        "cocina"
+      ],
+      "coleccion": "bienestar",
+      "espacio": true
+    },
+    {
+      "n": 386,
+      "slug": "gimnasio-con-mancuernas-banco-y-kettlebell",
+      "titulo": "Gimnasio con mancuernas, banco y kettlebell",
+      "desc": "Rack de mancuernas, kettlebell, balón, banco con toalla y botella frente a un ventanal con árboles.",
+      "tags": [
+        "gimnasio",
+        "mancuernas",
+        "ejercicio",
+        "fitness"
+      ],
+      "coleccion": "bienestar",
+      "espacio": false
+    },
+    {
+      "n": 387,
+      "slug": "embarazada-junto-a-la-ventana-con-luz-calida",
+      "titulo": "Mujer embarazada junto a la ventana con luz cálida",
+      "desc": "Mujer embarazada de perfil con las manos sobre el vientre junto a una ventana con luz cálida y cortinas claras.",
+      "tags": [
+        "embarazo",
+        "maternidad",
+        "ventana",
+        "luz natural"
+      ],
+      "coleccion": "bienestar",
+      "espacio": true
     }
   ]
 }

@@ -119,9 +119,7 @@ function footer() {
 function card(f, { eager = false } = {}) {
   const q = norm([f.titulo, f.desc, f.col.nombre, ...f.tags].join(' '));
   return `<li class="card" data-c="${f.coleccion}" data-e="${f.espacio ? 1 : 0}" data-q="${esc(q)}">
-<a href="${f.url}"><figure class="print" style="--c:${f.color}">${picture(f, { sizes: '(max-width:600px) calc(100vw - 32px), (max-width:1024px) calc(50vw - 40px), min(31vw, 460px)', eager })}</figure>
-<div class="card-meta"><span class="mono">${f.code}</span><span class="mono">${esc(f.col.nombre)}</span><h3>${esc(f.titulo)}</h3></div></a>
-${f.espacio ? '<span class="badge" aria-hidden="true">Espacio para texto</span>' : ''}
+<a href="${f.url}" title="${esc(f.titulo)}" aria-label="${esc(f.titulo)} (${f.code})"><figure class="print" style="--c:${f.color}">${picture(f, { sizes: '(max-width:600px) 50vw, (max-width:1024px) 33vw, 25vw', eager })}</figure></a>
 </li>`;
 }
 
@@ -162,7 +160,7 @@ ${colecciones.map((c) => `<a href="/coleccion/${c.slug}/"><figure class="print" 
 </section>
 
 <section class="wrap" id="fotos" aria-labelledby="h-fotos">
-<div class="section-head"><h2 id="h-fotos">Todas las fotos</h2><p class="mono">Toca una foto para ver su ficha</p></div>
+<div class="section-head"><h2 id="h-fotos">Todas las fotos</h2><p class="mono">Toca una foto para ver su información y descargarla</p></div>
 <div class="toolbar"><div class="toolbar-in" role="group" aria-label="Filtrar por colección">
 <button class="chip" data-filter="todas" aria-pressed="true">Todas <small>${total}</small></button>
 ${colecciones.map((c) => `<button class="chip" data-filter="${c.slug}" aria-pressed="false">${esc(c.nombre)} <small>${c.fotos.length}</small></button>`).join('\n')}
