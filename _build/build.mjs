@@ -127,6 +127,9 @@ ${f.espacio ? '<span class="badge" aria-hidden="true">Espacio para texto</span>'
 
 const SCRIPT_COMUN = `const toast=(m)=>{const t=document.getElementById('toast');t.textContent=m;t.classList.add('on');clearTimeout(toast.h);toast.h=setTimeout(()=>t.classList.remove('on'),2200)};const copy=async(v,m)=>{try{await navigator.clipboard.writeText(v);toast(m)}catch(e){toast(v)}};`;
 
+// Rotación temporal: cada 8 h el orden de la cuadrícula se desplaza, para que no salgan siempre las mismas primero.
+const ROTAR = `(()=>{const g=document.querySelector('#grid,.grid');if(!g)return;const c=[...g.children],n=c.length;if(n<2)return;const k=(Math.floor(Date.now()/28800000)*9)%n;if(!k)return;c.slice(k).concat(c.slice(0,k)).forEach(e=>g.appendChild(e));g.querySelectorAll('img').forEach((im,i)=>{im.loading=i<3?'eager':'lazy'})})();`;
+
 // ---------- portada ----------
 function portada() {
   const total = fotos.length;
@@ -185,7 +188,7 @@ ${fotos.map((f, i) => card(f, { eager: i < 3 })).join('\n')}
 <section class="wrap" aria-labelledby="h-sobre-fb"><div class="prose seo-text"><h2 id="h-sobre-fb">Fotos de stock gratis en alta resolución</h2>${seoCol._portada.texto.map((t) => `<p>${esc(t)}</p>`).join('')}
 <h2>Preguntas frecuentes</h2>${seoCol._portada.faqs.map(([q, a]) => `<h3>${esc(q)}</h3><p>${esc(a)}</p>`).join('')}</div></section>`;
 
-  const script = `${SCRIPT_COMUN}(()=>{const q=document.getElementById('q'),cards=[...document.querySelectorAll('#grid .card')],chips=[...document.querySelectorAll('[data-filter]')],esp=document.getElementById('esp'),count=document.getElementById('count'),empty=document.getElementById('empty');
+  const script = `${SCRIPT_COMUN}${ROTAR}(()=>{const q=document.getElementById('q'),cards=[...document.querySelectorAll('#grid .card')],chips=[...document.querySelectorAll('[data-filter]')],esp=document.getElementById('esp'),count=document.getElementById('count'),empty=document.getElementById('empty');
 const norm=s=>s.toLowerCase().normalize('NFD').replace(/[\\u0300-\\u036f]/g,'');let col='todas',soloEsp=false;
 function apply(){const t=norm(q.value.trim()).split(/\\s+/).filter(Boolean);let n=0;for(const c of cards){const ok=(col==='todas'||c.dataset.c===col)&&(!soloEsp||c.dataset.e==='1')&&t.every(w=>c.dataset.q.includes(w));c.hidden=!ok;if(ok)n++}
 count.textContent=n+(n===1?' foto':' fotos')+(q.value.trim()?' para «'+q.value.trim()+'»':'');empty.hidden=n>0;chips.forEach(b=>b.setAttribute('aria-pressed',b.dataset.filter===col));esp.setAttribute('aria-pressed',soloEsp);
@@ -287,7 +290,7 @@ ${textoHtml}
     { '@context': 'https://schema.org', '@type': 'CollectionPage', name: `${c.nombre} — Fondo Blanco`, description: c.desc, url: `${URL}/coleccion/${c.slug}/`,
     mainEntity: { '@type': 'ItemList', numberOfItems: c.fotos.length, itemListElement: c.fotos.map((f, i) => ({ '@type': 'ListItem', position: i + 1, url: URL + f.url, name: f.titulo })) } }];
   write(`coleccion/${c.slug}/index.html`, layout({ title: `${sc.h1 || 'Fotos gratis de ' + c.nombre.toLowerCase()} en alta resolución — Fondo Blanco`, desc: `${c.desc} ${c.fotos.length} fotos en alta resolución para descargar gratis.`,
-    canon: `/coleccion/${c.slug}/`, og: `${URL}/img/og/${c.fotos[0].slug}.jpg`, body, jsonld, nav: 'colecciones' }));
+    canon: `/coleccion/${c.slug}/`, og: `${URL}/img/og/${c.fotos[0].slug}.jpg`, body, jsonld, nav: 'colecciones', script: ROTAR }));
 }
 
 // ---------- páginas de texto ----------
