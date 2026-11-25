@@ -8,8 +8,8 @@
   --f-text:"acumin-pro",system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
   --f-mono:"source-code-pro",ui-monospace,"SFMono-Regular",Menlo,Consolas,monospace;
   --ease-out:cubic-bezier(.23,1,.32,1);
-  --gutter:clamp(16px,4vw,48px);
-  --max:1440px;
+  --gutter:clamp(10px,1.6vw,24px);
+  --max:1920px;
   --radius:2px;
   color-scheme:light dark;
 }
@@ -33,6 +33,10 @@ button,input{font:inherit;color:inherit}
 .skip{position:absolute;left:var(--gutter);top:-60px;background:var(--ink);color:var(--paper);padding:10px 14px;z-index:99;text-decoration:none}
 .skip:focus{top:10px}
 .wrap{max-width:var(--max);margin:0 auto;padding:0 var(--gutter)}
+/* Las secciones con cuadrícula de fotos ocupan todo el ancho */
+#fotos,.wrap:has(.grid){max-width:none;padding-left:6px;padding-right:6px}
+#fotos>:not(.grid):not(.toolbar),.wrap:has(.grid)>:not(.grid):not(.toolbar){padding-left:max(0px,calc(var(--gutter) - 6px));padding-right:max(0px,calc(var(--gutter) - 6px))}
+#fotos .toolbar,.wrap:has(.grid) .toolbar{margin:0 -6px;padding-left:max(6px,var(--gutter));padding-right:max(6px,var(--gutter))}
 .mono{font-family:var(--f-mono);font-size:12px;letter-spacing:.04em;text-transform:uppercase}
 
 /* ---------- Cabecera ---------- */
