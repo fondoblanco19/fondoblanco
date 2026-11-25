@@ -8,7 +8,9 @@
   const ENGINE = new URL(_s?.dataset.engine || './', _s?.src || location.href).href;
   const MODEL_URL = ENGINE + 'model/realesr-general-x4v3.onnx';
   const ORT_DIR = ENGINE + 'ort/';
-  const MAX_PIXELS = 2.25e6;         // entrada máxima: ~1500×1500 → salida ≤ 36 MP
+  // Safari en iPhone/iPad no admite lienzos de más de 16,7 MP y la IA trabaja a ×4: ahí la entrada máxima es 1 MP.
+  const IOS = /iP(hone|ad|od)/.test(navigator.userAgent) || (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
+  const MAX_PIXELS = IOS ? 1.0e6 : 2.25e6;   // entrada máxima: ~1500×1500 → salida ≤ 36 MP (iOS: ≤ 16 MP)
   const MAX_BYTES = 25 * 1024 * 1024;
   const PAD = 16;                    // píxeles de contexto alrededor de cada bloque
 
@@ -136,7 +138,9 @@
     ort.env.wasm.wasmPaths = new URL(ORT_DIR, document.baseURI).href;  // absoluta: los import() se resuelven respecto al script
     ort.env.wasm.numThreads = self.crossOriginIsolated ? Math.min(navigator.hardwareConcurrency || 4, 8) : 1;
     ort.env.wasm.proxy = false;     // el modo proxy se cuelga en algunos navegadores; usamos bloques pequeños para no congelar la página
-    const buf = await (await fetch(MODEL_URL)).arrayBuffer();
+    const mr = await fetch(MODEL_URL);
+    if (!mr.ok) throw new Error('no se pudo descargar el modelo de IA. Revisa tu conexión.');
+    const buf = await mr.arrayBuffer();
     const make = eps => ort.InferenceSession.create(buf, { executionProviders: eps, graphOptimizationLevel: 'all' });
     try {
       state.session = await make(useGpu ? ['webgpu'] : ['wasm']);

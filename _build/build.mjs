@@ -2,6 +2,7 @@
 // Lee _src/*.json y escribe HTML listo para GitHub Pages. Uso: npm run build
 import fs from 'node:fs';
 import path from 'node:path';
+import crypto from 'node:crypto';
 import sharp from 'sharp';
 import { paginasLegales, TERMS_VERSION } from './legal.mjs';
 
@@ -56,7 +57,7 @@ function picture(f, { widths = [480, 960, 1600], sizes, eager = false, high = fa
 // Aviso de cookies y términos de uso. La respuesta se guarda en una cookie técnica (fb_terms=<versión>, 12 meses).
 // Si cambia TERMS_VERSION (en legal.mjs), el aviso vuelve a salir para todos.
 // En /terminos/, /aviso-ia/, /privacidad/ y /licencia/ se muestra como barra inferior para poder leerlas antes de aceptar.
-const CC_HEAD = `<script>(function(d){if(!/(?:^|; )fb_terms=${TERMS_VERSION}(?:;|$)/.test(d.cookie))d.documentElement.classList.add('cc-need')})(document)</script>`;
+const CC_HEAD = `(function(d){if(!/(?:^|; )fb_terms=${TERMS_VERSION}(?:;|$)/.test(d.cookie))d.documentElement.classList.add('cc-need')})(document)`;
 const CC_HTML = `<div class="cc" id="cc" role="dialog" aria-modal="true" aria-labelledby="cc-t" aria-describedby="cc-d">
 <div class="cc-box"><p class="label">Antes de seguir</p><h2 id="cc-t">Cookies y términos de uso</h2>
 <p id="cc-d">Todas las imágenes de Fondo Blanco están generadas con inteligencia artificial y se ofrecen sin garantías: el uso que hagas de ellas es tu responsabilidad. No usamos cookies de seguimiento ni publicidad; solo una cookie técnica, durante 12 meses, para recordar tu respuesta.</p>
@@ -69,12 +70,34 @@ document.getElementById('cc-ok').addEventListener('click',()=>{document.cookie='
 document.querySelectorAll('[data-cookies]').forEach(b=>b.addEventListener('click',()=>{document.cookie='fb_terms=; Max-Age=0; Path=/';open()}));
 if(h.classList.contains('cc-need'))open()})();`;
 
+// ---------- seguridad ----------
+// GitHub Pages no deja poner cabeceras HTTP, así que la política de seguridad (CSP) va en una etiqueta <meta>.
+// Solo se ejecutan los scripts del propio sitio y los scripts en línea cuya huella SHA-256 calcula este build:
+// si alguien lograra inyectar un script en una página, el navegador lo bloquearía.
+// 'wasm-unsafe-eval' es necesario para el motor de IA (ONNX Runtime en WebAssembly) de /4k/.
+const sha = (s) => `'sha256-${crypto.createHash('sha256').update(s, 'utf8').digest('base64')}'`;
+const csp = (inline) => [
+  "default-src 'self'",
+  `script-src 'self' 'wasm-unsafe-eval' ${inline.map(sha).join(' ')}`,
+  "style-src 'self' 'unsafe-inline' https://use.typekit.net https://p.typekit.net",
+  "font-src 'self' data: https://use.typekit.net",
+  "img-src 'self' data: blob: https://p.typekit.net",
+  "connect-src 'self' https://formsubmit.co",
+  "worker-src 'self' blob:",
+  "form-action 'self' https://formsubmit.co",
+  "base-uri 'self'",
+  "object-src 'none'",
+].join('; ');
+
 function layout({ title, desc, canon, og, ogAlt, body, jsonld = [], script = '', nav = '', noindex = false, type = 'website', ext = '' }) {
   const ogImg = og || `${URL}/img/og/sitio.jpg`;
+  const inline = [CC_HEAD, CC_SCRIPT, ...(script ? [script] : [])];
   return `<!doctype html>
 <html lang="es">
 <head>
 <meta charset="utf-8">
+<meta http-equiv="Content-Security-Policy" content="${csp(inline)}">
+<meta name="referrer" content="strict-origin-when-cross-origin">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <title>${esc(title)}</title>
 <meta name="description" content="${esc(desc)}">
@@ -100,7 +123,7 @@ ${noindex ? '<meta name="robots" content="noindex,follow">' : `<link rel="canoni
 <link rel="preconnect" href="https://p.typekit.net" crossorigin>
 <link rel="stylesheet" href="https://use.typekit.net/${sitio.adobeKit}.css">
 <style>${CSS}</style>
-${CC_HEAD}
+<script>${CC_HEAD}</script>
 ${jsonld.map((j) => `<script type="application/ld+json">${JSON.stringify(j)}</script>`).join('\n')}
 </head>
 <body>
@@ -238,7 +261,7 @@ document.addEventListener('keydown',e=>{if(e.key==='/'&&document.activeElement!=
     { '@context': 'https://schema.org', '@type': 'Organization', name: 'Fondo Blanco', url: URL + '/', logo: `${URL}/icon-512.png` },
     { '@context': 'https://schema.org', '@type': 'FAQPage', mainEntity: seoCol._portada.faqs.map(([q, a]) => ({ '@type': 'Question', name: q, acceptedAnswer: { '@type': 'Answer', text: a } })) },
   ];
-  write('index.html', layout({ title: 'Fondo Blanco — Fotos de stock gratis en alta resolución', desc: `Banco de imágenes gratis: ${total} fotos de stock en alta resolución de interiores, gastronomía, naturaleza, negocios, bienestar, fondos y temporadas. Descarga sin registro.`, canon: '/', body, script, jsonld }));
+  write('index.html', layout({ title: 'Fondo Blanco — Fotos de stock gratis en alta resolución', desc: cortar(`Banco de imágenes gratis: ${total} fotos de stock en alta resolución en ${colecciones.length} colecciones, como negocios, naturaleza, viajes y gastronomía. Descarga sin registro.`, 165), canon: '/', body, script, jsonld }));
 }
 
 // ---------- ficha de foto ----------
@@ -458,6 +481,11 @@ async function graficos() {
   await sharp(Buffer.from(mark('#151513', '#fafaf7'))).resize(192, 192).png().toFile(path.join(ROOT, 'icon-192.png'));
   await sharp(Buffer.from(mark('#151513', '#fafaf7', 6))).resize(512, 512).png().toFile(path.join(ROOT, 'icon-512.png'));
   await sharp(Buffer.from(mark('#151513', '#fafaf7', 4))).resize(180, 180).png().toFile(path.join(ROOT, 'apple-touch-icon.png'));
+  // favicon.ico: lo piden algunos navegadores y buscadores aunque exista favicon.svg. Contenedor ICO con un PNG de 48 px.
+  const png48 = await sharp(Buffer.from(mark('#151513', '#fafaf7'))).resize(48, 48).png().toBuffer();
+  const ico = Buffer.alloc(22); ico.writeUInt16LE(1, 2); ico.writeUInt16LE(1, 4);
+  ico[6] = 48; ico[7] = 48; ico.writeUInt16LE(1, 10); ico.writeUInt16LE(32, 12); ico.writeUInt32LE(png48.length, 14); ico.writeUInt32LE(22, 18);
+  fs.writeFileSync(path.join(ROOT, 'favicon.ico'), Buffer.concat([ico, png48]));
   fs.mkdirSync(path.join(ROOT, 'img/og'), { recursive: true });
   for (const f of fotos) {
     const out = path.join(ROOT, 'img/og', `${f.slug}.jpg`);

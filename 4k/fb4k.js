@@ -19,6 +19,9 @@
     quality: 0.92,
     pad: 16,
   };
+  // Safari en iPhone/iPad no admite lienzos de más de 16,7 MP; la IA trabaja en un lienzo ×4, así que ahí la entrada va a ≤ 1 MP.
+  const IOS = /iP(hone|ad|od)/.test(navigator.userAgent) || (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
+  const maxIn = () => IOS ? Math.min(CONFIG.maxInputPixels, 1.0e6) : CONFIG.maxInputPixels;
   const FB4K = window.FB4K = {
     config: CONFIG,
     /* Gancho de pago. Hoy: todo gratis. Mañana: consultar al servidor créditos/compra de {slug}. */
@@ -104,6 +107,7 @@
       const a = document.createElement('a');
       a.href = URL.createObjectURL(blob); a.download = `fondo-blanco-${slug}-4k.jpg`;
       document.body.appendChild(a); a.click(); a.remove();
+      setTimeout(() => URL.revokeObjectURL(a.href), 60000);   // libera la memoria del 4K cuando ya se descargó
       set(100, 'Listo. Tu descarga empezó. Recuerda dar crédito: «Foto: Fondo Blanco».', '', '¡Lista en 4K!');
       ui.querySelector('#fb4k-cancel').textContent = 'Cerrar';
     } catch (e) {
@@ -123,7 +127,9 @@
       ort.env.wasm.wasmPaths = ENGINE + 'ort/';
       ort.env.wasm.numThreads = self.crossOriginIsolated ? Math.min(navigator.hardwareConcurrency || 4, 8) : 1;
       ort.env.wasm.proxy = false;
-      const buf = await (await fetch(ENGINE + 'model/realesr-general-x4v3.onnx')).arrayBuffer();
+      const mr = await fetch(ENGINE + 'model/realesr-general-x4v3.onnx');
+      if (!mr.ok) throw new Error('No se pudo descargar el modelo de IA. Revisa tu conexión e inténtalo de nuevo.');
+      const buf = await mr.arrayBuffer();
       const make = eps => ort.InferenceSession.create(buf, { executionProviders: eps, graphOptimizationLevel: 'all' });
       let session, backend;
       try { session = await make(gpu ? ['webgpu'] : ['wasm']); backend = gpu ? 'webgpu' : 'wasm'; }
@@ -140,7 +146,7 @@
 
     // 1) tamaño de trabajo
     let w = bitmap.width, h = bitmap.height;
-    if (w * h > CONFIG.maxInputPixels) { const k = Math.sqrt(CONFIG.maxInputPixels / (w * h)); w = Math.round(w * k); h = Math.round(h * k); }
+    if (w * h > maxIn()) { const k = Math.sqrt(maxIn() / (w * h)); w = Math.round(w * k); h = Math.round(h * k); }
     const src = document.createElement('canvas'); src.width = w; src.height = h;
     const sg = src.getContext('2d', { willReadFrequently: true }); sg.imageSmoothingQuality = 'high'; sg.drawImage(bitmap, 0, 0, w, h);
     const sd = sg.getImageData(0, 0, w, h).data;
