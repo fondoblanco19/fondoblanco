@@ -1,6 +1,8 @@
 // Optimiza las fotos originales: AVIF + WebP en 3 anchos para la web
 // y un JPG de resolución completa para descargar. Calcula la paleta de colores.
 // Uso: npm run imagenes   (ORIGEN puede cambiarse con la variable FB_ORIGEN)
+// Cada foto se lee de ORIGEN/<n>.png o, si en fotos.json tiene «archivo», de IMAGENES/<archivo>
+// (p. ej. "IMAGENES STOCK 5/hf_….png"; la carpeta base se cambia con FB_IMAGENES). Así no hay que renombrar los originales.
 import fs from 'node:fs';
 import path from 'node:path';
 import sharp from 'sharp';
@@ -8,6 +10,7 @@ import { marcarArchivoIA } from './xmp.mjs';
 
 const ROOT = path.resolve(import.meta.dirname, '..');
 const ORIGEN = process.env.FB_ORIGEN || 'D:/Personal/Imagenes/IMAGENES STOCK';
+const IMAGENES = process.env.FB_IMAGENES || 'D:/Personal/Imagenes';
 const { fotos } = JSON.parse(fs.readFileSync(path.join(ROOT, '_src/fotos.json'), 'utf8'));
 const metaPath = path.join(ROOT, '_src/meta.json');
 const meta = fs.existsSync(metaPath) ? JSON.parse(fs.readFileSync(metaPath, 'utf8')) : {};
@@ -34,7 +37,7 @@ async function paleta(buf) {
 }
 
 for (const f of fotos) {
-  const src = path.join(ORIGEN, `${f.n}.png`);
+  const src = f.archivo ? path.join(IMAGENES, f.archivo) : path.join(ORIGEN, `${f.n}.png`);
   const dl = path.join(ROOT, 'descargas', `fondo-blanco-${f.slug}.jpg`);
   const listo = fs.existsSync(dl) && ANCHOS.every((w) => fs.existsSync(path.join(ROOT, 'img', `${f.slug}-${w}.avif`))) && meta[f.slug];
   if (listo) continue;

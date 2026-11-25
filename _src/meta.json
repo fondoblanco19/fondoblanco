@@ -4938,5 +4938,525 @@
    "#5b3922"
   ],
   "color": "#ccb398"
+ },
+ "hamburguesa-doble-con-tocino-y-queso-cheddar": {
+  "w": 2688,
+  "h": 1520,
+  "bytes": 738531,
+  "paleta": [
+   "#18100c",
+   "#492410",
+   "#994a16",
+   "#c9823d",
+   "#5f4735"
+  ],
+  "color": "#5b3419"
+ },
+ "pizza-de-pepperoni-junto-al-horno-de-lena": {
+  "w": 2688,
+  "h": 1520,
+  "bytes": 956092,
+  "paleta": [
+   "#9b451d",
+   "#693015",
+   "#bc6f38",
+   "#301609",
+   "#daa063"
+  ],
+  "color": "#8c4c26"
+ },
+ "perro-caliente-con-cebolla-caramelizada-en-food-truck": {
+  "w": 2688,
+  "h": 1520,
+  "bytes": 746511,
+  "paleta": [
+   "#793d15",
+   "#c9761b",
+   "#95663f",
+   "#311d14",
+   "#ddac6c"
+  ],
+  "color": "#945d2b"
+ },
+ "alitas-de-pollo-con-salsa-bufalo-y-barbacoa": {
+  "w": 2688,
+  "h": 1520,
+  "bytes": 868690,
+  "paleta": [
+   "#1e110c",
+   "#652b14",
+   "#8c5a2d",
+   "#cf5f1b",
+   "#d0a96c"
+  ],
+  "color": "#6e3e1f"
+ },
+ "papas-fritas-con-queso-cheddar-tocino-y-jalapenos": {
+  "w": 2688,
+  "h": 1520,
+  "bytes": 803039,
+  "paleta": [
+   "#844615",
+   "#3d1e0a",
+   "#db8d23",
+   "#a87846",
+   "#dab687"
+  ],
+  "color": "#96622d"
+ },
+ "salchipapa-colombiana-con-huevos-de-codorniz": {
+  "w": 2688,
+  "h": 1520,
+  "bytes": 817532,
+  "paleta": [
+   "#d5954c",
+   "#713c1f",
+   "#a76534",
+   "#331c11",
+   "#e9be8f"
+  ],
+  "color": "#9c693e"
+ },
+ "mazorcada-colombiana-con-maiz-y-carnes": {
+  "w": 2688,
+  "h": 1520,
+  "bytes": 841112,
+  "paleta": [
+   "#a45c27",
+   "#d69139",
+   "#6b3619",
+   "#29130a",
+   "#e6b278"
+  ],
+  "color": "#965f2f"
+ },
+ "pollo-frito-crujiente-con-papas-y-salsa-de-mostaza": {
+  "w": 2688,
+  "h": 1520,
+  "bytes": 926739,
+  "paleta": [
+   "#9f541d",
+   "#6c3112",
+   "#d17d24",
+   "#270f07",
+   "#e4ac61"
+  ],
+  "color": "#935420"
+ },
+ "tacos-de-birria-con-consome-y-limon": {
+  "w": 2688,
+  "h": 1520,
+  "bytes": 918488,
+  "paleta": [
+   "#6b3311",
+   "#301808",
+   "#8f5c2f",
+   "#cf7217",
+   "#d3a864"
+  ],
+  "color": "#804c20"
+ },
+ "nachos-con-carne-guacamole-y-jalapenos": {
+  "w": 2688,
+  "h": 1520,
+  "bytes": 920663,
+  "paleta": [
+   "#8a5520",
+   "#402511",
+   "#dc942e",
+   "#ac845b",
+   "#e4c394"
+  ],
+  "color": "#9c6d37"
+ },
+ "ramen-tonkotsu-con-chashu-y-huevo-marinado": {
+  "w": 2688,
+  "h": 1520,
+  "bytes": 756992,
+  "paleta": [
+   "#56331d",
+   "#c88339",
+   "#231007",
+   "#8b5a31",
+   "#e8b670"
+  ],
+  "color": "#84582e"
+ },
+ "surtido-de-sushi-y-sashimi-de-salmon-y-atun": {
+  "w": 2688,
+  "h": 1520,
+  "bytes": 876176,
+  "paleta": [
+   "#2d241f",
+   "#ca6635",
+   "#7a442c",
+   "#cea081",
+   "#826c5e"
+  ],
+  "color": "#875941"
+ },
+ "pad-thai-con-camarones-en-mercado-nocturno": {
+  "w": 2688,
+  "h": 1520,
+  "bytes": 852752,
+  "paleta": [
+   "#ad5e1a",
+   "#da943c",
+   "#57351f",
+   "#936c58",
+   "#d5b088"
+  ],
+  "color": "#a8713e"
+ },
+ "gyozas-doradas-con-salsa-de-soya": {
+  "w": 2688,
+  "h": 1520,
+  "bytes": 777531,
+  "paleta": [
+   "#5d391b",
+   "#975625",
+   "#c7853c",
+   "#261207",
+   "#e2b983"
+  ],
+  "color": "#86572c"
+ },
+ "pollo-glaseado-con-brocoli-sobre-arroz": {
+  "w": 2688,
+  "h": 1520,
+  "bytes": 837161,
+  "paleta": [
+   "#502f18",
+   "#240d06",
+   "#9f6a3d",
+   "#8b3516",
+   "#c9a98a"
+  ],
+  "color": "#663b22"
+ },
+ "bibimbap-coreano-en-olla-de-piedra": {
+  "w": 2688,
+  "h": 1520,
+  "bytes": 930228,
+  "paleta": [
+   "#673b20",
+   "#986340",
+   "#331b0c",
+   "#d58735",
+   "#d6b286"
+  ],
+  "color": "#855732"
+ },
+ "ositos-y-gusanos-de-gomita-de-colores": {
+  "w": 2688,
+  "h": 1520,
+  "bytes": 1191462,
+  "paleta": [
+   "#b0b91c",
+   "#d51f1f",
+   "#3495c6",
+   "#d9bd93",
+   "#e75e61"
+  ],
+  "color": "#b1885c"
+ },
+ "bombon-de-chocolate-con-caramelo-salado": {
+  "w": 2688,
+  "h": 1520,
+  "bytes": 610571,
+  "paleta": [
+   "#1a0b07",
+   "#3b180d",
+   "#60311d",
+   "#934f27",
+   "#bd9680"
+  ],
+  "color": "#4f2a19"
+ },
+ "donas-glaseadas-de-fresa-con-chispas": {
+  "w": 2688,
+  "h": 1520,
+  "bytes": 634554,
+  "paleta": [
+   "#e0b2ab",
+   "#cc897f",
+   "#f0dedb",
+   "#d27044",
+   "#8e4031"
+  ],
+  "color": "#d59e92"
+ },
+ "algodon-de-azucar-en-una-feria-al-atardecer": {
+  "w": 2688,
+  "h": 1520,
+  "bytes": 499687,
+  "paleta": [
+   "#de95ac",
+   "#f9c3a4",
+   "#8c9ebe",
+   "#d77a6d",
+   "#995449"
+  ],
+  "color": "#cb9397"
+ },
+ "macarons-de-pistacho-frambuesa-lavanda-y-limon": {
+  "w": 2688,
+  "h": 1520,
+  "bytes": 683547,
+  "paleta": [
+   "#d8c9c6",
+   "#b79193",
+   "#a2754d",
+   "#6d3e34",
+   "#dfbe6a"
+  ],
+  "color": "#b99985"
+ },
+ "churros-con-azucar-y-salsa-de-chocolate": {
+  "w": 2688,
+  "h": 1520,
+  "bytes": 820765,
+  "paleta": [
+   "#844320",
+   "#e09e66",
+   "#452111",
+   "#ca7231",
+   "#9d6a4d"
+  ],
+  "color": "#9b5e36"
+ },
+ "chupetines-en-espiral-de-colores": {
+  "w": 2688,
+  "h": 1520,
+  "bytes": 751956,
+  "paleta": [
+   "#ebbabe",
+   "#efb417",
+   "#dc201e",
+   "#e56b38",
+   "#3ebca7"
+  ],
+  "color": "#d08e5e"
+ },
+ "brownie-con-helado-de-vainilla-y-nueces": {
+  "w": 2688,
+  "h": 1520,
+  "bytes": 803914,
+  "paleta": [
+   "#4f2a1b",
+   "#2c1109",
+   "#79482f",
+   "#a7714d",
+   "#d0a57c"
+  ],
+  "color": "#704730"
+ },
+ "galletas-con-chispas-de-chocolate-recien-horneadas": {
+  "w": 2688,
+  "h": 1520,
+  "bytes": 831778,
+  "paleta": [
+   "#935932",
+   "#673b22",
+   "#c28249",
+   "#3d1b0a",
+   "#ddad7f"
+  ],
+  "color": "#895733"
+ },
+ "frascos-de-dulces-en-una-tienda-de-golosinas": {
+  "w": 2688,
+  "h": 1520,
+  "bytes": 979373,
+  "paleta": [
+   "#d67a43",
+   "#a64b2c",
+   "#bc8f7b",
+   "#5b3827",
+   "#ebbda5"
+  ],
+  "color": "#b17052"
+ },
+ "tablones-de-madera-rustica-con-nudos": {
+  "w": 2688,
+  "h": 1520,
+  "bytes": 1273809,
+  "paleta": [
+   "#844e27",
+   "#72411e",
+   "#995f32",
+   "#5a3217",
+   "#bb7d48"
+  ],
+  "color": "#834f28"
+ },
+ "marmol-blanco-con-vetas-grises-y-doradas": {
+  "w": 2688,
+  "h": 1520,
+  "bytes": 432298,
+  "paleta": [
+   "#f4f3f5",
+   "#ececed",
+   "#e3e1e0",
+   "#d7d3d0",
+   "#c1bfbd"
+  ],
+  "color": "#e6e5e5"
+ },
+ "metal-negro-cepillado-con-reflejo": {
+  "w": 2688,
+  "h": 1520,
+  "bytes": 629772,
+  "paleta": [
+   "#1b1c1e",
+   "#434548",
+   "#2e3032",
+   "#5f6266",
+   "#8c8e92"
+  ],
+  "color": "#3b3d3f"
+ },
+ "papel-artesanal-de-fibras-en-tono-ocre": {
+  "w": 2688,
+  "h": 1520,
+  "bytes": 1109300,
+  "paleta": [
+   "#bf8a55",
+   "#ba8550",
+   "#c58f5a",
+   "#b37e4a",
+   "#cd9862"
+  ],
+  "color": "#bf8a55"
+ },
+ "cuero-marron-envejecido": {
+  "w": 2688,
+  "h": 1520,
+  "bytes": 1165183,
+  "paleta": [
+   "#421a0b",
+   "#341307",
+   "#532410",
+   "#72381b",
+   "#a15b2f"
+  ],
+  "color": "#4c210f"
+ },
+ "tela-de-arpillera-beige-con-trama-gruesa": {
+  "w": 2688,
+  "h": 1520,
+  "bytes": 1140182,
+  "paleta": [
+   "#bdaa93",
+   "#c2b09a",
+   "#b7a38b",
+   "#c9b9a3",
+   "#ae9980"
+  ],
+  "color": "#bdaa93"
+ },
+ "ondas-de-arena-dorada-de-cerca": {
+  "w": 2688,
+  "h": 1520,
+  "bytes": 1223462,
+  "paleta": [
+   "#a76524",
+   "#90551d",
+   "#d88e38",
+   "#bf782d",
+   "#eea844"
+  ],
+  "color": "#be7a2e"
+ },
+ "pared-de-ladrillo-rojo-envejecido": {
+  "w": 2688,
+  "h": 1520,
+  "bytes": 1297063,
+  "paleta": [
+   "#974d34",
+   "#ab6043",
+   "#8d6650",
+   "#a17760",
+   "#7a523d"
+  ],
+  "color": "#975e46"
+ },
+ "agua-turquesa-de-piscina-con-reflejos": {
+  "w": 2688,
+  "h": 1520,
+  "bytes": 766160,
+  "paleta": [
+   "#12bfbf",
+   "#28ccc9",
+   "#47d8d3",
+   "#04b0b3",
+   "#76e6e0"
+  ],
+  "color": "#28c8c6"
+ },
+ "pelaje-gris-y-blanco-suave": {
+  "w": 2688,
+  "h": 1520,
+  "bytes": 1076517,
+  "paleta": [
+   "#a2a1a2",
+   "#8f8d8e",
+   "#797778",
+   "#b7b7b9",
+   "#5d5b5c"
+  ],
+  "color": "#919091"
+ },
+ "escamas-de-pez-naranjas-y-nacaradas": {
+  "w": 2688,
+  "h": 1520,
+  "bytes": 791560,
+  "paleta": [
+   "#d83a07",
+   "#cba693",
+   "#ed671c",
+   "#cc8659",
+   "#d9cbc6"
+  ],
+  "color": "#d77c53"
+ },
+ "plumas-de-pavo-real-en-primer-plano": {
+  "w": 2688,
+  "h": 1520,
+  "bytes": 1512347,
+  "paleta": [
+   "#384313",
+   "#0f2123",
+   "#2b6b32",
+   "#7b7132",
+   "#06639e"
+  ],
+  "color": "#314f32"
+ },
+ "piel-de-elefante-con-arrugas": {
+  "w": 2688,
+  "h": 1520,
+  "bytes": 1291669,
+  "paleta": [
+   "#58483b",
+   "#6b584a",
+   "#806a58",
+   "#423429",
+   "#9e8169"
+  ],
+  "color": "#695647"
+ },
+ "caparazon-de-tortuga-con-placas-ambar": {
+  "w": 2688,
+  "h": 1520,
+  "bytes": 900722,
+  "paleta": [
+   "#8e431b",
+   "#642a16",
+   "#be661c",
+   "#dd9342",
+   "#a06841"
+  ],
+  "color": "#9b5425"
  }
 }

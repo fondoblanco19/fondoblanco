@@ -8,7 +8,7 @@
     {
       "slug": "gastronomia",
       "nombre": "Gastronomía",
-      "desc": "Café, bowls saludables y productos frescos fotografiados desde arriba o en mesa de madera, ideales para menús y recetas."
+      "desc": "Café, bowls saludables, comida rápida, platos del mundo y postres con colores vivos, ideales para menús, recetas y redes sociales."
     },
     {
       "slug": "naturaleza",
@@ -28,7 +28,7 @@
     {
       "slug": "fondos",
       "nombre": "Fondos y texturas",
-      "desc": "Degradados, acuarelas, mármol, bokeh y patrones para fondos de pantalla, redes sociales y diseño gráfico."
+      "desc": "Degradados, acuarelas, mármol, madera, metal, ladrillo y texturas naturales para fondos de pantalla, redes sociales y diseño gráfico."
     },
     {
       "slug": "temporadas",
@@ -5470,6 +5470,646 @@
       ],
       "coleccion": "bienestar",
       "espacio": true
+    },
+    {
+      "n": 388,
+      "slug": "hamburguesa-doble-con-tocino-y-queso-cheddar",
+      "titulo": "Hamburguesa doble con tocino y queso cheddar",
+      "desc": "Hamburguesa doble con tocino crujiente, queso cheddar derretido, tomate y lechuga en pan brioche con ajonjolí, sobre una pizarra con fondo oscuro.",
+      "tags": [
+        "hamburguesa",
+        "comida rápida",
+        "tocino",
+        "queso cheddar",
+        "restaurante"
+      ],
+      "coleccion": "gastronomia",
+      "espacio": false,
+      "archivo": "IMAGENES STOCK 5/hf_20261125_114350_07433c09-cf8f-441f-b08e-6d9a2cb3b7c2.png"
+    },
+    {
+      "n": 389,
+      "slug": "pizza-de-pepperoni-junto-al-horno-de-lena",
+      "titulo": "Pizza de pepperoni junto al horno de leña",
+      "desc": "Pizza de pepperoni con albahaca y queso fundido que se estira al levantar una porción, frente a un horno de leña encendido.",
+      "tags": [
+        "pizza",
+        "pepperoni",
+        "horno de leña",
+        "queso",
+        "comida italiana"
+      ],
+      "coleccion": "gastronomia",
+      "espacio": false,
+      "archivo": "IMAGENES STOCK 5/hf_20261125_114431_3761a7f3-f1ed-4312-8108-c064d41ec0e7.png"
+    },
+    {
+      "n": 390,
+      "slug": "perro-caliente-con-cebolla-caramelizada-en-food-truck",
+      "titulo": "Perro caliente con cebolla caramelizada en food truck",
+      "desc": "Perro caliente con cebolla caramelizada, queso, mostaza, salsa y papitas trituradas en bandeja de cartón, con un food truck iluminado de fondo.",
+      "tags": [
+        "perro caliente",
+        "hot dog",
+        "comida callejera",
+        "food truck",
+        "comida rápida"
+      ],
+      "coleccion": "gastronomia",
+      "espacio": false,
+      "archivo": "IMAGENES STOCK 5/hf_20261125_114442_d577cf72-b44b-41a2-842d-452b6ee06fcd.png"
+    },
+    {
+      "n": 391,
+      "slug": "alitas-de-pollo-con-salsa-bufalo-y-barbacoa",
+      "titulo": "Alitas de pollo con salsa búfalo y barbacoa",
+      "desc": "Bandeja de alitas de pollo glaseadas con salsa búfalo y barbacoa, ajonjolí y cebollín, con apio y salsa blanca para mojar.",
+      "tags": [
+        "alitas",
+        "pollo",
+        "salsa búfalo",
+        "barbacoa",
+        "aperitivo"
+      ],
+      "coleccion": "gastronomia",
+      "espacio": false,
+      "archivo": "IMAGENES STOCK 5/hf_20261125_114502_1a063ef8-8de6-4d33-815e-37f9d8b9ca6f.png"
+    },
+    {
+      "n": 392,
+      "slug": "papas-fritas-con-queso-cheddar-tocino-y-jalapenos",
+      "titulo": "Papas fritas con queso cheddar, tocino y jalapeños",
+      "desc": "Plato de papas fritas cubiertas con queso cheddar fundido, tocino crujiente, jalapeños, cebollín y salsa blanca, sobre mesa de madera.",
+      "tags": [
+        "papas fritas",
+        "queso cheddar",
+        "tocino",
+        "jalapeños",
+        "comida rápida"
+      ],
+      "coleccion": "gastronomia",
+      "espacio": false,
+      "archivo": "IMAGENES STOCK 5/hf_20261125_114556_2465a4bb-67c1-4b71-bfa6-9955b6430ced.png"
+    },
+    {
+      "n": 393,
+      "slug": "salchipapa-colombiana-con-huevos-de-codorniz",
+      "titulo": "Salchipapa colombiana con huevos de codorniz",
+      "desc": "Salchipapa con salchicha, pollo desmechado, huevos de codorniz, papitas, queso y salsa rosada, con una bandera de Colombia de fondo.",
+      "tags": [
+        "salchipapa",
+        "comida colombiana",
+        "comida callejera",
+        "papas fritas",
+        "salsa rosada"
+      ],
+      "coleccion": "colombia",
+      "espacio": false,
+      "archivo": "IMAGENES STOCK 5/hf_20261125_114607_b7e69874-ee86-4879-9422-dae356d6b808.png"
+    },
+    {
+      "n": 394,
+      "slug": "mazorcada-colombiana-con-maiz-y-carnes",
+      "titulo": "Mazorcada colombiana con maíz, carnes y queso",
+      "desc": "Mazorcada con maíz tierno, pollo, res, chorizo, queso gratinado, papitas y salsas, junto a un letrero con sus ingredientes en un puesto callejero.",
+      "tags": [
+        "mazorcada",
+        "comida colombiana",
+        "maíz",
+        "comida callejera",
+        "queso"
+      ],
+      "coleccion": "colombia",
+      "espacio": false,
+      "archivo": "IMAGENES STOCK 5/hf_20261125_114646_68185628-6dce-4547-b81a-16af4b1b183d.png"
+    },
+    {
+      "n": 395,
+      "slug": "pollo-frito-crujiente-con-papas-y-salsa-de-mostaza",
+      "titulo": "Pollo frito crujiente con papas y salsa de mostaza",
+      "desc": "Canasta de pollo frito crujiente con una pieza abierta que muestra la carne jugosa, papas fritas y salsa de miel y mostaza.",
+      "tags": [
+        "pollo frito",
+        "papas fritas",
+        "comida rápida",
+        "crujiente",
+        "canasta"
+      ],
+      "coleccion": "gastronomia",
+      "espacio": false,
+      "archivo": "IMAGENES STOCK 5/hf_20261125_114700_e713f1b3-d0d1-4312-9e2c-7a4c5edb3ce1.png"
+    },
+    {
+      "n": 396,
+      "slug": "tacos-de-birria-con-consome-y-limon",
+      "titulo": "Tacos de birria con consomé y limón",
+      "desc": "Tacos de birria dorados con carne desmechada, queso fundido, cebolla y cilantro, servidos con un cuenco de consomé caliente y limón.",
+      "tags": [
+        "tacos",
+        "birria",
+        "comida mexicana",
+        "consomé",
+        "cilantro"
+      ],
+      "coleccion": "gastronomia",
+      "espacio": false,
+      "archivo": "IMAGENES STOCK 5/hf_20261125_114731_c1bfef90-79fd-4dec-8e69-57f4b25262bd.png"
+    },
+    {
+      "n": 397,
+      "slug": "nachos-con-carne-guacamole-y-jalapenos",
+      "titulo": "Nachos con carne, guacamole y jalapeños",
+      "desc": "Bandeja de nachos con carne molida, queso fundido, guacamole, crema, tomate, frijoles negros y jalapeños, con salsas y limón al lado.",
+      "tags": [
+        "nachos",
+        "guacamole",
+        "comida mexicana",
+        "queso",
+        "para compartir"
+      ],
+      "coleccion": "gastronomia",
+      "espacio": false,
+      "archivo": "IMAGENES STOCK 5/hf_20261125_114743_b4bec37c-3ab2-426c-ae00-3f7b8f64b5eb.png"
+    },
+    {
+      "n": 398,
+      "slug": "ramen-tonkotsu-con-chashu-y-huevo-marinado",
+      "titulo": "Ramen tonkotsu con chashu y huevo marinado",
+      "desc": "Tazón de ramen tonkotsu humeante con chashu, huevo marinado, alga nori, brotes de bambú y cebollín, y fideos levantados con palillos.",
+      "tags": [
+        "ramen",
+        "comida japonesa",
+        "fideos",
+        "sopa",
+        "huevo marinado"
+      ],
+      "coleccion": "gastronomia",
+      "espacio": false,
+      "archivo": "IMAGENES STOCK 5/hf_20261125_115138_5741c9d3-8880-4899-a218-9cd4ff720ac9.png"
+    },
+    {
+      "n": 399,
+      "slug": "surtido-de-sushi-y-sashimi-de-salmon-y-atun",
+      "titulo": "Surtido de sushi y sashimi de salmón y atún",
+      "desc": "Nigiris y sashimi de salmón y atún con rollos de aguacate y huevas, jengibre, wasabi y salsa de soya sobre una losa de piedra.",
+      "tags": [
+        "sushi",
+        "sashimi",
+        "comida japonesa",
+        "salmón",
+        "atún"
+      ],
+      "coleccion": "gastronomia",
+      "espacio": false,
+      "archivo": "IMAGENES STOCK 5/hf_20261125_115148_51e26297-3d92-48a4-a6d1-41056699c20e.png"
+    },
+    {
+      "n": 400,
+      "slug": "pad-thai-con-camarones-en-mercado-nocturno",
+      "titulo": "Pad thai con camarones en mercado nocturno",
+      "desc": "Plato de pad thai con camarones, tofu, huevo, brotes de soya, maní y limón, con un mercado nocturno iluminado de fondo.",
+      "tags": [
+        "pad thai",
+        "comida tailandesa",
+        "camarones",
+        "fideos",
+        "mercado nocturno"
+      ],
+      "coleccion": "gastronomia",
+      "espacio": false,
+      "archivo": "IMAGENES STOCK 5/hf_20261125_115226_202fd0fb-acb6-441c-aefa-129cf52a683f.png"
+    },
+    {
+      "n": 401,
+      "slug": "gyozas-doradas-con-salsa-de-soya",
+      "titulo": "Gyozas doradas a la plancha con salsa de soya",
+      "desc": "Gyozas doradas a la plancha con cebollín y ajonjolí, junto a un cuenco de salsa de soya con aceite de ají.",
+      "tags": [
+        "gyozas",
+        "empanadillas",
+        "comida asiática",
+        "salsa de soya",
+        "cebollín"
+      ],
+      "coleccion": "gastronomia",
+      "espacio": false,
+      "archivo": "IMAGENES STOCK 5/hf_20261125_115238_f95fac3a-85dd-4766-8c26-1d72f7e041e0.png"
+    },
+    {
+      "n": 402,
+      "slug": "pollo-glaseado-con-brocoli-sobre-arroz",
+      "titulo": "Pollo glaseado con brócoli y ajonjolí sobre arroz",
+      "desc": "Tazón de pollo frito glaseado con salsa agridulce, ajíes secos, brócoli y ajonjolí sobre arroz blanco.",
+      "tags": [
+        "pollo agridulce",
+        "comida china",
+        "arroz",
+        "brócoli",
+        "ajonjolí"
+      ],
+      "coleccion": "gastronomia",
+      "espacio": false,
+      "archivo": "IMAGENES STOCK 5/hf_20261125_115304_6e8eb0fe-7bca-4df1-b115-524a8002d650.png"
+    },
+    {
+      "n": 403,
+      "slug": "bibimbap-coreano-en-olla-de-piedra",
+      "titulo": "Bibimbap coreano en olla de piedra con huevo frito",
+      "desc": "Bibimbap en olla de piedra con carne, espinaca, zanahoria, hongos, brotes de soya, huevo frito y gochujang, con kimchi y sopa al lado.",
+      "tags": [
+        "bibimbap",
+        "comida coreana",
+        "arroz",
+        "kimchi",
+        "huevo frito"
+      ],
+      "coleccion": "gastronomia",
+      "espacio": false,
+      "archivo": "IMAGENES STOCK 5/hf_20261125_115317_13cf37c1-85bb-491b-9872-7748857878df.png"
+    },
+    {
+      "n": 404,
+      "slug": "ositos-y-gusanos-de-gomita-de-colores",
+      "titulo": "Ositos y gusanos de gomita de colores",
+      "desc": "Primer plano de ositos y gusanos de gomita azucarados en rojo, azul, amarillo y verde.",
+      "tags": [
+        "gomitas",
+        "dulces",
+        "golosinas",
+        "colores",
+        "azúcar"
+      ],
+      "coleccion": "gastronomia",
+      "espacio": false,
+      "archivo": "IMAGENES STOCK 5/hf_20261125_115357_9c35a5af-184a-485f-9f24-b5b99ee9b2ef.png"
+    },
+    {
+      "n": 405,
+      "slug": "bombon-de-chocolate-con-caramelo-salado",
+      "titulo": "Bombón de chocolate partido con caramelo salado",
+      "desc": "Bombón de chocolate partido por la mitad del que sale caramelo líquido, con escamas de sal sobre una pizarra oscura.",
+      "tags": [
+        "chocolate",
+        "caramelo",
+        "bombón",
+        "postre",
+        "sal en escamas"
+      ],
+      "coleccion": "gastronomia",
+      "espacio": false,
+      "archivo": "IMAGENES STOCK 5/hf_20261125_115409_fccfd41c-1e22-48c6-acae-3d5a912b48c7.png"
+    },
+    {
+      "n": 406,
+      "slug": "donas-glaseadas-de-fresa-con-chispas",
+      "titulo": "Donas glaseadas de fresa con chispas de colores",
+      "desc": "Donas con glaseado rosa de fresa, hilos de azúcar y chispas de colores en un pastelero, con fresas y una ventana luminosa de fondo.",
+      "tags": [
+        "donas",
+        "rosquillas",
+        "fresa",
+        "repostería",
+        "chispas de colores"
+      ],
+      "coleccion": "gastronomia",
+      "espacio": false,
+      "archivo": "IMAGENES STOCK 5/hf_20261125_115441_8c7d8aaa-945f-4f0e-bae4-15efea7eca49.png"
+    },
+    {
+      "n": 407,
+      "slug": "algodon-de-azucar-en-una-feria-al-atardecer",
+      "titulo": "Algodón de azúcar en una feria al atardecer",
+      "desc": "Algodón de azúcar rosa y azul a contraluz, con una rueda de la fortuna y luces de feria desenfocadas al atardecer.",
+      "tags": [
+        "algodón de azúcar",
+        "feria",
+        "dulces",
+        "atardecer",
+        "rueda de la fortuna"
+      ],
+      "coleccion": "gastronomia",
+      "espacio": true,
+      "archivo": "IMAGENES STOCK 5/hf_20261125_115453_3f27df37-ed7a-4665-94ec-ee61b714caea.png"
+    },
+    {
+      "n": 408,
+      "slug": "macarons-de-pistacho-frambuesa-lavanda-y-limon",
+      "titulo": "Macarons de pistacho, frambuesa, lavanda y limón",
+      "desc": "Hileras de macarons verdes, rosados, lilas y amarillos decorados con pistacho, frambuesa, lavanda y ralladura de limón sobre mármol blanco.",
+      "tags": [
+        "macarons",
+        "repostería francesa",
+        "postre",
+        "pastelería",
+        "colores pastel"
+      ],
+      "coleccion": "gastronomia",
+      "espacio": false,
+      "archivo": "IMAGENES STOCK 5/hf_20261125_115508_d4ae5735-f5a8-4fb6-8f35-42ecdc598f9d.png"
+    },
+    {
+      "n": 409,
+      "slug": "churros-con-azucar-y-salsa-de-chocolate",
+      "titulo": "Churros con azúcar y canela con salsa de chocolate",
+      "desc": "Churros espolvoreados con azúcar y canela en un cono de papel, y uno que se moja en un cuenco de chocolate caliente.",
+      "tags": [
+        "churros",
+        "chocolate",
+        "canela",
+        "postre",
+        "comida callejera"
+      ],
+      "coleccion": "gastronomia",
+      "espacio": false,
+      "archivo": "IMAGENES STOCK 5/hf_20261125_115518_3d7c8b97-6e2a-46f7-8a9b-079690659e4a.png"
+    },
+    {
+      "n": 410,
+      "slug": "chupetines-en-espiral-de-colores",
+      "titulo": "Chupetines en espiral de colores sobre fondo rosa",
+      "desc": "Chupetines grandes de caramelo en espiral con rojo, naranja, amarillo y turquesa sobre un fondo rosa.",
+      "tags": [
+        "chupetines",
+        "paletas",
+        "dulces",
+        "colores",
+        "caramelo"
+      ],
+      "coleccion": "gastronomia",
+      "espacio": false,
+      "archivo": "IMAGENES STOCK 5/hf_20261125_115536_464c6ada-530a-4f94-a013-43f7580ba327.png"
+    },
+    {
+      "n": 411,
+      "slug": "brownie-con-helado-de-vainilla-y-nueces",
+      "titulo": "Brownie con helado de vainilla, chocolate y nueces",
+      "desc": "Brownie caliente con una bola de helado de vainilla, salsa de chocolate, nueces y azúcar glas en un plato oscuro.",
+      "tags": [
+        "brownie",
+        "helado",
+        "chocolate",
+        "postre",
+        "nueces"
+      ],
+      "coleccion": "gastronomia",
+      "espacio": false,
+      "archivo": "IMAGENES STOCK 5/hf_20261125_115550_ba2394f9-ae2e-45d6-b16f-8411b4ff5029.png"
+    },
+    {
+      "n": 412,
+      "slug": "galletas-con-chispas-de-chocolate-recien-horneadas",
+      "titulo": "Galletas con chispas de chocolate recién horneadas",
+      "desc": "Galletas apiladas con trozos de chocolate derretido y escamas de sal sobre una rejilla, una de ellas partida.",
+      "tags": [
+        "galletas",
+        "chocolate",
+        "repostería",
+        "horneado",
+        "postre"
+      ],
+      "coleccion": "gastronomia",
+      "espacio": false,
+      "archivo": "IMAGENES STOCK 5/hf_20261125_115603_622d5fc6-853c-4863-8b76-911fad4d58f8.png"
+    },
+    {
+      "n": 413,
+      "slug": "frascos-de-dulces-en-una-tienda-de-golosinas",
+      "titulo": "Frascos de dulces en una tienda de golosinas",
+      "desc": "Frascos de vidrio con grageas, caramelos de menta, gomitas y masmelos de colores sobre un mostrador de madera en una tienda de dulces.",
+      "tags": [
+        "dulces",
+        "caramelos",
+        "golosinas",
+        "tienda",
+        "frascos"
+      ],
+      "coleccion": "gastronomia",
+      "espacio": false,
+      "archivo": "IMAGENES STOCK 5/hf_20261125_115616_b771d885-016d-4296-986e-4ef239ae4ddb.png"
+    },
+    {
+      "n": 414,
+      "slug": "tablones-de-madera-rustica-con-nudos",
+      "titulo": "Tablones de madera rústica con nudos",
+      "desc": "Textura de tablones horizontales de madera marrón envejecida con vetas marcadas, grietas y nudos.",
+      "tags": [
+        "madera",
+        "textura",
+        "rústico",
+        "tablones",
+        "fondo"
+      ],
+      "coleccion": "fondos",
+      "espacio": true,
+      "archivo": "IMAGENES STOCK 5/hf_20261125_115821_154269f5-6f66-4cab-adf4-5f49d6e465da.png"
+    },
+    {
+      "n": 415,
+      "slug": "marmol-blanco-con-vetas-grises-y-doradas",
+      "titulo": "Mármol blanco con vetas grises y doradas",
+      "desc": "Textura de mármol blanco con vetas grises y finas líneas doradas, ideal como fondo elegante.",
+      "tags": [
+        "mármol",
+        "textura",
+        "lujo",
+        "vetas doradas",
+        "fondo"
+      ],
+      "coleccion": "fondos",
+      "espacio": true,
+      "archivo": "IMAGENES STOCK 5/hf_20261125_115853_131066ff-f03c-46e1-b827-18e6272a54a3.png"
+    },
+    {
+      "n": 416,
+      "slug": "metal-negro-cepillado-con-reflejo",
+      "titulo": "Metal negro cepillado con reflejo de luz",
+      "desc": "Textura de metal oscuro cepillado con líneas horizontales finas y un reflejo de luz en la esquina superior.",
+      "tags": [
+        "metal",
+        "acero",
+        "textura",
+        "cepillado",
+        "fondo oscuro"
+      ],
+      "coleccion": "fondos",
+      "espacio": true,
+      "archivo": "IMAGENES STOCK 5/hf_20261125_115905_f0a1065e-2de2-4adf-a524-30016e8d7a65.png"
+    },
+    {
+      "n": 417,
+      "slug": "papel-artesanal-de-fibras-en-tono-ocre",
+      "titulo": "Papel artesanal de fibras en tono ocre",
+      "desc": "Textura de papel hecho a mano en tono ocre con fibras visibles y pequeñas motas de color.",
+      "tags": [
+        "papel artesanal",
+        "textura",
+        "fibras",
+        "papel reciclado",
+        "fondo"
+      ],
+      "coleccion": "fondos",
+      "espacio": true,
+      "archivo": "IMAGENES STOCK 5/hf_20261125_115923_8a9ceceb-a0ab-47c3-99af-b92a2c3e4a9c.png"
+    },
+    {
+      "n": 418,
+      "slug": "cuero-marron-envejecido",
+      "titulo": "Cuero marrón envejecido con textura natural",
+      "desc": "Textura de cuero marrón envejecido con pliegues, poros y variaciones de tono.",
+      "tags": [
+        "cuero",
+        "textura",
+        "marrón",
+        "vintage",
+        "fondo"
+      ],
+      "coleccion": "fondos",
+      "espacio": true,
+      "archivo": "IMAGENES STOCK 5/hf_20261125_115937_09c93901-2783-4a9b-9a11-073b0c276598.png"
+    },
+    {
+      "n": 419,
+      "slug": "tela-de-arpillera-beige-con-trama-gruesa",
+      "titulo": "Tela de arpillera beige con trama gruesa",
+      "desc": "Textura de tela de arpillera beige con trama gruesa y algunos nudos en el tejido.",
+      "tags": [
+        "arpillera",
+        "tela",
+        "yute",
+        "textura",
+        "fondo natural"
+      ],
+      "coleccion": "fondos",
+      "espacio": true,
+      "archivo": "IMAGENES STOCK 5/hf_20261125_115949_1505eec0-8320-42f5-8a51-ab82384c7f07.png"
+    },
+    {
+      "n": 420,
+      "slug": "ondas-de-arena-dorada-de-cerca",
+      "titulo": "Ondas de arena dorada vistas de cerca",
+      "desc": "Textura de arena del desierto con ondas suaves y marcadas iluminadas por luz dorada.",
+      "tags": [
+        "arena",
+        "desierto",
+        "ondas",
+        "textura",
+        "dorado"
+      ],
+      "coleccion": "fondos",
+      "espacio": true,
+      "archivo": "IMAGENES STOCK 5/hf_20261125_120001_e7855e34-43cd-41ad-bffa-463e103f760c.png"
+    },
+    {
+      "n": 421,
+      "slug": "pared-de-ladrillo-rojo-envejecido",
+      "titulo": "Pared de ladrillo rojo envejecido",
+      "desc": "Textura de pared de ladrillo rojo con desgaste, manchas blancas y juntas de mortero gris.",
+      "tags": [
+        "ladrillo",
+        "pared",
+        "textura",
+        "urbano",
+        "rojo"
+      ],
+      "coleccion": "fondos",
+      "espacio": true,
+      "archivo": "IMAGENES STOCK 5/hf_20261125_120012_d27ba025-7ca7-487a-9900-5d6665336859.png"
+    },
+    {
+      "n": 422,
+      "slug": "agua-turquesa-de-piscina-con-reflejos",
+      "titulo": "Agua turquesa de piscina con reflejos de luz",
+      "desc": "Superficie de agua turquesa con ondas y reflejos de sol que forman una red de luz.",
+      "tags": [
+        "agua",
+        "piscina",
+        "verano",
+        "turquesa",
+        "textura"
+      ],
+      "coleccion": "fondos",
+      "espacio": true,
+      "archivo": "IMAGENES STOCK 5/hf_20261125_120027_63010d10-c171-443c-9eb2-a5d42aa7a9d9.png"
+    },
+    {
+      "n": 423,
+      "slug": "pelaje-gris-y-blanco-suave",
+      "titulo": "Pelaje gris y blanco suave en primer plano",
+      "desc": "Textura de pelaje largo y suave en tonos gris y blanco con mechones ondulados.",
+      "tags": [
+        "pelaje",
+        "piel sintética",
+        "textura",
+        "suave",
+        "gris"
+      ],
+      "coleccion": "fondos",
+      "espacio": true,
+      "archivo": "IMAGENES STOCK 5/hf_20261125_120050_f6321125-b237-4e89-be62-72855f358481.png"
+    },
+    {
+      "n": 424,
+      "slug": "escamas-de-pez-naranjas-y-nacaradas",
+      "titulo": "Escamas de pez naranjas y nacaradas",
+      "desc": "Primer plano de escamas superpuestas en naranja, blanco nacarado y dorado, como las de un pez koi.",
+      "tags": [
+        "escamas",
+        "pez koi",
+        "textura",
+        "naranja",
+        "nácar"
+      ],
+      "coleccion": "fondos",
+      "espacio": true,
+      "archivo": "IMAGENES STOCK 5/hf_20261125_120101_e33f5f46-6b95-4962-ac27-e0f3ef4922c8.png"
+    },
+    {
+      "n": 425,
+      "slug": "plumas-de-pavo-real-en-primer-plano",
+      "titulo": "Plumas de pavo real en primer plano",
+      "desc": "Plumas de pavo real con ojos azules y bronce entre barbas verdes iridiscentes.",
+      "tags": [
+        "plumas",
+        "pavo real",
+        "textura",
+        "colores",
+        "naturaleza"
+      ],
+      "coleccion": "fondos",
+      "espacio": true,
+      "archivo": "IMAGENES STOCK 5/hf_20261125_120126_6257e334-2389-4979-975c-bdcf1466b82e.png"
+    },
+    {
+      "n": 426,
+      "slug": "piel-de-elefante-con-arrugas",
+      "titulo": "Piel de elefante con arrugas en primer plano",
+      "desc": "Textura de piel de elefante gris marrón con arrugas profundas y grietas finas.",
+      "tags": [
+        "piel de elefante",
+        "textura",
+        "arrugas",
+        "animal",
+        "natural"
+      ],
+      "coleccion": "fondos",
+      "espacio": true,
+      "archivo": "IMAGENES STOCK 5/hf_20261125_120136_b2fa4ed3-9b40-483b-b3f7-e5aa0301fb74.png"
+    },
+    {
+      "n": 427,
+      "slug": "caparazon-de-tortuga-con-placas-ambar",
+      "titulo": "Caparazón de tortuga con placas ámbar",
+      "desc": "Primer plano de un caparazón de tortuga con placas en tonos ámbar y marrón oscuro.",
+      "tags": [
+        "caparazón",
+        "tortuga",
+        "textura",
+        "carey",
+        "ámbar"
+      ],
+      "coleccion": "fondos",
+      "espacio": true,
+      "archivo": "IMAGENES STOCK 5/hf_20261125_120300_edae30e5-1847-4201-b783-79fe06d2add1.png"
     }
   ]
 }
