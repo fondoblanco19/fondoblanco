@@ -11,7 +11,7 @@ const { colecciones, fotos: fotosRaw } = read('_src/fotos.json');
 const meta = read('_src/meta.json');
 const seoCol = read('_src/colecciones-seo.json');
 const legado = fs.existsSync(path.join(ROOT, '_src/legado.json')) ? read('_src/legado.json') : [];
-const CSS = fs.readFileSync(path.join(ROOT, '_build/estilos.css'), 'utf8')
+const CSS = (fs.readFileSync(path.join(ROOT, '_build/estilos.css'), 'utf8') + '\n' + fs.readFileSync(path.join(ROOT, '_build/estilos-extra.css'), 'utf8'))
   .replace(/\/\*[\s\S]*?\*\//g, '').replace(/\s+/g, ' ').replace(/\s*([{}:;,>])\s*/g, '$1').replace(/;}/g, '}').trim();
 const HOY = new Date().toISOString().slice(0, 10);
 const URL = sitio.url;
@@ -49,7 +49,21 @@ function picture(f, { widths = [480, 960, 1600], sizes, eager = false, high = fa
 }
 
 // ---------- plantilla ----------
-function layout({ title, desc, canon, og, ogAlt, body, jsonld = [], script = '', nav = '', noindex = false, type = 'website' }) {
+// Aviso de cookies y términos de uso. La respuesta se guarda en una cookie técnica (fb_consent, 12 meses).
+// En /terminos/, /privacidad/ y /licencia/ se muestra como barra inferior para poder leerlas antes de aceptar.
+const CC_HEAD = `<script>(function(d){if(!/(?:^|; )fb_consent=1/.test(d.cookie))d.documentElement.classList.add('cc-need')})(document)</script>`;
+const CC_HTML = `<div class="cc" id="cc" role="dialog" aria-modal="true" aria-labelledby="cc-t" aria-describedby="cc-d">
+<div class="cc-box"><p class="label">Antes de seguir</p><h2 id="cc-t">Cookies y términos de uso</h2>
+<p id="cc-d">Fondo Blanco no usa cookies de seguimiento ni publicidad. Solo guardamos una cookie técnica, durante 12 meses, para recordar tu respuesta. Para continuar, acepta los <a href="/terminos/">Términos de uso</a> y la <a href="/privacidad/">Política de privacidad</a>.</p>
+<div class="cc-act"><button class="btn primary" type="button" id="cc-ok">Aceptar y continuar</button></div></div></div>`;
+const CC_SCRIPT = `(()=>{const h=document.documentElement,cc=document.getElementById('cc');if(!cc)return;const soft=/^\\/(terminos|privacidad|licencia)\\//.test(location.pathname),parts=['.top','main','.foot'].map(s=>document.querySelector(s)).filter(Boolean);
+function open(){h.classList.add('cc-need');if(soft){h.classList.add('cc-soft');cc.setAttribute('aria-modal','false')}else{h.classList.add('cc-lock');parts.forEach(e=>{e.inert=true})}cc.querySelector('button').focus({preventScroll:true})}
+function close(){h.classList.remove('cc-need','cc-lock','cc-soft');parts.forEach(e=>{e.inert=false})}
+document.getElementById('cc-ok').addEventListener('click',()=>{document.cookie='fb_consent=1; Max-Age=31536000; Path=/; SameSite=Lax'+(location.protocol==='https:'?'; Secure':'');close()});
+document.querySelectorAll('[data-cookies]').forEach(b=>b.addEventListener('click',()=>{document.cookie='fb_consent=; Max-Age=0; Path=/';open()}));
+if(h.classList.contains('cc-need'))open()})();`;
+
+function layout({ title, desc, canon, og, ogAlt, body, jsonld = [], script = '', nav = '', noindex = false, type = 'website', ext = '' }) {
   const ogImg = og || `${URL}/img/og/sitio.jpg`;
   return `<!doctype html>
 <html lang="es">
@@ -80,6 +94,7 @@ ${noindex ? '<meta name="robots" content="noindex,follow">' : `<link rel="canoni
 <link rel="preconnect" href="https://p.typekit.net" crossorigin>
 <link rel="stylesheet" href="https://use.typekit.net/${sitio.adobeKit}.css">
 <style>${CSS}</style>
+${CC_HEAD}
 ${jsonld.map((j) => `<script type="application/ld+json">${JSON.stringify(j)}</script>`).join('\n')}
 </head>
 <body>
@@ -88,7 +103,8 @@ ${jsonld.map((j) => `<script type="application/ld+json">${JSON.stringify(j)}</sc
 <a class="brand" href="/" aria-label="Fondo Blanco, inicio"><span>Fondo Blanco</span></a>
 <nav class="nav" aria-label="Principal">
 <a href="/#colecciones" class="hide-s"${nav === 'colecciones' ? ' aria-current="page"' : ''}>Colecciones</a>
-<a href="/licencia/"${nav === 'licencia' ? ' aria-current="page"' : ''}>Licencia</a>
+<a href="/ampliar/"${nav === 'ampliar' ? ' aria-current="page"' : ''}>Ampliar<span class="hide-s"> imagen</span></a>
+<a href="/licencia/" class="hide-s"${nav === 'licencia' ? ' aria-current="page"' : ''}>Licencia</a>
 <a href="/contacto/"${nav === 'contacto' ? ' aria-current="page"' : ''}>Contacto</a>
 </nav>
 </div></header>
@@ -97,7 +113,10 @@ ${body}
 </main>
 ${footer()}
 <div class="toast" id="toast" role="status" aria-live="polite"></div>
+${CC_HTML}
 ${script ? `<script>${script}</script>` : ''}
+<script>${CC_SCRIPT}</script>
+${ext}
 </body>
 </html>
 `;
@@ -109,7 +128,7 @@ function footer() {
 <div><h2>Fondo Blanco</h2><p>Banco de imágenes gratis en alta resolución. Descarga, usa y da crédito: así de simple.</p></div>
 <div><h2>Colecciones</h2><ul>${colecciones.slice(0, 4).map((c) => `<li><a href="/coleccion/${c.slug}/">${esc(c.nombre)}</a></li>`).join('')}</ul></div>
 <div><h2>Más</h2><ul>${colecciones.slice(4).map((c) => `<li><a href="/coleccion/${c.slug}/">${esc(c.nombre)}</a></li>`).join('')}</ul></div>
-<div><h2>Sitio</h2><ul><li><a href="/licencia/">Licencia y uso</a></li><li><a href="/privacidad/">Privacidad</a></li><li><a href="/contacto/">Contacto</a></li></ul></div>
+<div><h2>Sitio</h2><ul><li><a href="/ampliar/">Ampliar imagen</a></li><li><a href="/licencia/">Licencia y uso</a></li><li><a href="/terminos/">Términos de uso</a></li><li><a href="/privacidad/">Privacidad</a></li><li><button class="linkbtn" type="button" data-cookies>Preferencias de cookies</button></li><li><a href="/contacto/">Contacto</a></li></ul></div>
 </div>
 <div class="foot-mark" aria-hidden="true">Fondo Blanco</div>
 <div class="foot-legal"><span>© ${new Date().getFullYear()} Fondo Blanco · Imágenes bajo ${sitio.licencia.nombre}</span><span>Tipografía: Archivo Black, Acumin Pro y Source Code Pro vía Adobe Fonts</span></div>
@@ -156,6 +175,14 @@ ${ICON.search}<label class="sr" for="q">Buscar fotos</label>
 <div class="section-head"><h2 id="h-col">Colecciones</h2><p class="mono">${colecciones.length} temas</p></div>
 <div class="strip">
 ${colecciones.map((c) => `<a href="/coleccion/${c.slug}/"><figure class="print" style="--c:${c.fotos[0].color}">${picture(c.fotos[0], { widths: [480, 960], sizes: '(max-width:600px) 60vw, 240px' })}</figure><h3>${esc(c.nombre)}</h3><span class="mono">${c.fotos.length} fotos</span></a>`).join('\n')}
+</div>
+</section>
+
+<section class="wrap" aria-labelledby="h-amp">
+<div class="section-head"><h2 id="h-amp">Ampliar imagen</h2><p class="mono">Herramienta gratis</p></div>
+<div class="amp-promo">
+<div><p class="amp-big">¿Tienes una imagen pequeña?</p><p>Súbela y la ampliamos hasta 4 veces con inteligencia artificial, con más nitidez y menos píxeles visibles. Se procesa en tu equipo: tu imagen no se sube a ningún servidor.</p><a class="btn primary" href="/ampliar/">Ampliar mi imagen →</a></div>
+<ol class="amp-steps"><li><b>01</b><span>Arrastra o pega tu imagen (JPG, PNG o WebP).</span></li><li><b>02</b><span>Elige 2×, 3× o 4× y compara el antes y el después.</span></li><li><b>03</b><span>Descárgala sin marcas de agua.</span></li></ol>
 </div>
 </section>
 
@@ -261,7 +288,9 @@ function ficha(f) {
       { '@type': 'ListItem', position: 3, name: f.titulo, item: URL + f.url }] },
   ];
   write(`foto/${f.slug}/index.html`, layout({ title: `${f.titulo} — Foto gratis en alta resolución | Fondo Blanco`, desc: `${f.desc} Descarga gratis en JPG ${f.w}×${f.h}.`, canon: f.url,
-    og: `${URL}/img/og/${f.slug}.jpg`, ogAlt: f.desc, body, script, jsonld, type: 'article' }));
+    og: `${URL}/img/og/${f.slug}.jpg`, ogAlt: f.desc, body, script, jsonld, type: 'article',
+    // Botón «Ampliar a 4K»: usa el JPG original; si no existe, la versión de 1600 px.
+    ext: `<script src="/4k/fb4k.js" defer data-engine="/4k/" data-slug="${f.slug}" data-fallback="/img/${f.slug}-1600.webp"></script>` }));
 }
 
 // ---------- colección ----------
@@ -310,12 +339,27 @@ function paginas() {
 
   pagina('privacidad', {
     title: 'Política de privacidad — Fondo Blanco', h1: 'Privacidad',
-    desc: 'Fondo Blanco no usa cookies de seguimiento, no pide registro y no recopila datos personales.',
-    intro: `Resumen corto: no usamos cookies, no hay registro y solo recibimos los datos que tú envíes por el formulario de contacto. Actualizado el ${HOY}.`,
+    desc: 'Fondo Blanco no usa cookies de seguimiento ni publicidad, no pide registro y no recopila datos personales. Solo guarda una cookie técnica con tu aceptación.',
+    intro: `Resumen corto: no usamos cookies de seguimiento ni publicidad, no hay registro y solo recibimos los datos que tú envíes por el formulario de contacto. Actualizado el ${HOY}.`,
     html: `<h2>Qué datos recopilamos</h2><p>Ninguno al navegar. Fondo Blanco es un sitio estático: no tiene cuentas ni comentarios, y no usamos analítica ni publicidad. Solo recibimos lo que escribas en el formulario de contacto.</p>
-<h2>Cookies</h2><p>Este sitio no instala cookies propias. Tampoco guarda información en el almacenamiento de tu navegador.</p>
+<h2>Cookies</h2><p>Este sitio solo instala una cookie técnica propia, <code>fb_consent</code>, que dura 12 meses y sirve para recordar que aceptaste los <a href="/terminos/">Términos de uso</a> y esta política, para no preguntarte en cada página. No contiene datos personales ni sirve para seguirte. Puedes borrarla cuando quieras desde el botón «Preferencias de cookies» del pie de página o desde tu navegador; si la borras, te volveremos a pedir la aceptación para continuar.</p>
+<h2>Herramientas de ampliación</h2><p>«Ampliar imagen» y «Ampliar a 4K» procesan las imágenes dentro de tu navegador, con tu propio equipo. La imagen que elijas <strong>no se envía a ningún servidor</strong> ni a terceros. Al usarlas, tu navegador descarga desde este mismo sitio el modelo de inteligencia artificial y sus archivos de apoyo.</p>
 <h2>Servicios de terceros</h2><ul><li><strong>GitHub Pages</strong> aloja el sitio. Como cualquier servidor web, puede registrar datos técnicos de la visita (como la dirección IP) por motivos de seguridad. Consulta la <a href="https://docs.github.com/es/site-policy/privacy-policies/github-general-privacy-statement" rel="noopener">declaración de privacidad de GitHub</a>.</li><li><strong>Adobe Fonts</strong> sirve las tipografías. Adobe registra datos técnicos para calcular el uso de las fuentes y no usa cookies. Consulta la <a href="https://www.adobe.com/es/privacy/policies/adobe-fonts.html" rel="noopener">política de privacidad de Adobe Fonts</a>.</li></ul>
 <h2>Formulario de contacto</h2><p>Si nos escribes desde la página de <a href="/contacto/">contacto</a>, recibimos tu nombre, tu correo y tu mensaje, solo para responderte. El envío lo procesa <strong>FormSubmit</strong>, que reenvía el mensaje a nuestro correo. No usamos esos datos para publicidad.</p><h2>Contacto</h2><p>Si tienes preguntas sobre privacidad, escríbenos desde la página de <a href="/contacto/">contacto</a>.</p>` });
+
+  pagina('terminos', {
+    title: 'Términos de uso — Fondo Blanco', h1: 'Términos de uso', nav: '',
+    desc: 'Condiciones para usar fondoblanco.co: fotos gratis con licencia CC BY 4.0, imágenes generadas con IA y herramientas de ampliación que funcionan en tu navegador.',
+    intro: `Al seguir navegando en fondoblanco.co aceptas estas condiciones. Actualizado el ${HOY}.`,
+    html: `<h2>1. Qué es Fondo Blanco</h2><p>Fondo Blanco es un banco de fotos de stock gratuito y un conjunto de herramientas para ampliar imágenes. El sitio se ofrece tal como está, sin necesidad de registro.</p>
+<h2>2. Uso de las fotos</h2><p>Las fotos se publican bajo la licencia <a href="${sitio.licencia.url}" rel="license">${sitio.licencia.nombre}</a>: puedes usarlas gratis, también con fines comerciales, dando crédito a Fondo Blanco. Los detalles están en la página de <a href="/licencia/">licencia</a>.</p>
+<h2>3. Imágenes creadas con inteligencia artificial</h2><p>Las fotos se generaron con inteligencia artificial y se revisaron una a una. Las personas que aparecen no son personas reales identificables. No las uses para engañar, por ejemplo presentándolas como hechos reales o documentales, ni para suplantar a nadie.</p>
+<h2>4. Herramientas «Ampliar imagen» y «Ampliar a 4K»</h2><ul><li>Funcionan dentro de tu navegador: tus imágenes no se envían a nuestros servidores.</li><li>El resultado lo genera un modelo de inteligencia artificial que reconstruye detalle; puede suavizar texturas o inventar detalles que no existían. Revisa siempre el resultado antes de usarlo.</li><li>Eres responsable de tener derecho a usar y modificar las imágenes que amplíes. No las uses con contenido ilegal ni que vulnere derechos de terceros.</li><li>La velocidad depende de tu dispositivo. Pueden tardar varios minutos en equipos sin tarjeta gráfica compatible.</li></ul>
+<h2>5. Uso aceptable</h2><p>No intentes dañar, saturar ni sobrecargar el sitio, ni usar sistemas automáticos para descargar la colección completa y redistribuirla como si fuera un banco de imágenes propio.</p>
+<h2>6. Disponibilidad y garantías</h2><p>Hacemos lo posible por que el sitio funcione siempre, pero no garantizamos que esté disponible sin interrupciones ni libre de errores. El contenido y las herramientas se ofrecen sin garantías de ningún tipo, y no nos hacemos responsables de los daños que puedan derivarse de su uso, en la medida que lo permita la ley.</p>
+<h2>7. Enlaces y servicios de terceros</h2><p>El sitio usa servicios de terceros, como el alojamiento en GitHub Pages y las tipografías de Adobe Fonts, que se rigen por sus propias condiciones. Más detalles en la <a href="/privacidad/">política de privacidad</a>.</p>
+<h2>8. Cambios</h2><p>Podemos actualizar estos términos. La versión vigente es la publicada en esta página, con su fecha de actualización.</p>
+<h2>9. Contacto</h2><p>Si tienes dudas sobre estos términos, escríbenos desde la página de <a href="/contacto/">contacto</a>.</p>` });
 
   const tok = sitio.formToken;
   const form = tok ? `<form class="cform" id="cform" action="https://formsubmit.co/${esc(tok)}" method="POST">
@@ -344,6 +388,62 @@ f.addEventListener('submit',async e=>{e.preventDefault();const b=f.querySelector
 <div class="section-head"><h2>Colecciones</h2></div><div class="strip">${colecciones.map((c) => `<a href="/coleccion/${c.slug}/"><figure class="print" style="--c:${c.fotos[0].color}">${picture(c.fotos[0], { widths: [480, 960], sizes: '240px' })}</figure><h3>${esc(c.nombre)}</h3></a>`).join('')}</div></div>` }));
 }
 
+// ---------- Ampliar imagen (herramienta para imágenes propias) ----------
+// El motor corre en el navegador (Real-ESRGAN con ONNX Runtime Web) desde /4k/. Ver 4k/ampliar.js.
+function ampliar() {
+  const radio = (name, id, val, label, on) => `<input type="radio" name="${name}" id="${id}" value="${val}"${on ? ' checked' : ''}><label for="${id}">${label}</label>`;
+  const body = `<div class="wrap">
+<header class="page-head"><p class="mono" style="color:var(--signal-ink);margin:0">Herramienta gratis</p><h1>Ampliar imagen</h1><p>¿Tienes una imagen pequeña o borrosa? Súbela y aumenta su resolución y su nitidez con inteligencia artificial, hasta 4 veces. Todo ocurre en tu equipo: tu imagen no se sube a ningún servidor.</p></header>
+<section class="amp" aria-label="Ampliador de imágenes">
+<div class="amp-stage" id="stage">
+<div class="amp-drop" id="drop" tabindex="0" role="button" aria-label="Elegir una imagen"><div>
+<svg viewBox="0 0 48 48" aria-hidden="true"><path d="M24 34V12M14 21l10-10 10 10M8 38h32"/></svg>
+<p class="amp-big">Suelta tu imagen aquí</p><p>o toca para elegir un archivo. También puedes pegarla con Ctrl+V.</p><span class="mono">JPG · PNG · WebP · hasta 25 MB</span></div></div>
+<div class="amp-view" id="view" hidden><div class="amp-cmp" id="cmp">
+<img id="imgBefore" alt="Imagen original"><div class="amp-after" id="afterWrap" hidden><img id="imgAfter" alt="Imagen ampliada"></div>
+<div class="amp-bar" id="bar" hidden></div><div class="amp-knob" id="knob" hidden>↔</div>
+<span class="amp-tag" id="tagL">Original</span><span class="amp-tag r" id="tagR" hidden>Ampliada</span>
+<input type="range" id="slider" min="0" max="100" value="50" aria-label="Comparar original y ampliada" hidden></div></div>
+<div class="amp-working" id="working" hidden role="status" aria-live="polite"><div class="amp-wbox">
+<div class="amp-pct" id="pct">0%</div><div class="amp-progress"><i id="bar2"></i></div><p id="stageTxt">Preparando…</p><p class="mono" id="eta"></p><button class="btn ghost" type="button" id="cancel">Cancelar</button></div></div>
+</div>
+<aside class="amp-panel" aria-label="Ajustes">
+<div class="amp-engine" id="engine"><i></i><span id="engineTxt">Detectando equipo…</span></div>
+<div class="amp-field"><p class="label">Tamaño final</p><div class="amp-seg" role="radiogroup" aria-label="Escala">${radio('scale', 's2', 2, '2×')}${radio('scale', 's3', 3, '3×')}${radio('scale', 's4', 4, '4×', true)}</div><p class="amp-hint" id="sizeHint">Elige una imagen para ver el tamaño resultante.</p></div>
+<div class="amp-field"><label class="label" for="sharp">Nitidez final <output id="sharpOut">20</output></label><input class="amp-range" type="range" id="sharp" min="0" max="100" value="20"><p class="amp-hint">Un toque suave de enfoque. Súbelo solo si la imagen sigue viéndose blanda.</p></div>
+<div class="amp-field"><p class="label">Formato</p><div class="amp-seg" role="radiogroup" aria-label="Formato">${radio('fmt', 'fj', 'jpg', 'JPG', true)}${radio('fmt', 'fw', 'webp', 'WebP')}${radio('fmt', 'fp', 'png', 'PNG')}</div></div>
+<div class="amp-field" id="qField"><label class="label" for="qual">Calidad <output id="qualOut">92</output></label><input class="amp-range" type="range" id="qual" min="60" max="100" value="92"></div>
+<p class="amp-note" id="note" hidden></p>
+<div class="amp-row"><button class="btn primary" id="go" type="button" disabled>Ampliar imagen</button><a class="btn primary" id="dl" hidden download>Descargar resultado</a><button class="btn ghost" id="again" type="button" hidden>Elegir otra imagen</button></div>
+<div class="amp-meta" id="meta" hidden></div>
+</aside>
+<noscript><p class="amp-note">Para ampliar imágenes necesitas activar JavaScript en tu navegador.</p></noscript>
+</section>
+<div class="steps">
+<div><div class="num">01</div><h3>Elige</h3><p>Arrastra o pega una imagen. Funciona mejor con imágenes pequeñas, borrosas o con compresión visible.</p></div>
+<div><div class="num">02</div><h3>Amplía</h3><p>Una red neuronal (Real-ESRGAN) reconstruye detalle y bordes. Se ejecuta en la tarjeta gráfica de tu equipo.</p></div>
+<div><div class="num">03</div><h3>Compara y descarga</h3><p>Desliza la barra para ver el antes y el después. Descarga en JPG, WebP o PNG, sin marcas de agua.</p></div>
+</div>
+<div class="prose seo-text"><h2>Preguntas frecuentes</h2>
+<h3>¿Se sube mi imagen a algún servidor?</h3><p>No. El modelo se descarga una sola vez a tu navegador y la imagen se procesa en tu propio equipo. Nada sale de tu dispositivo.</p>
+<h3>¿Por qué a veces tarda?</h3><p>Con una tarjeta gráfica compatible con WebGPU tarda segundos o pocos minutos. Si tu navegador no la tiene, usa el procesador y puede tardar bastante más. Verás el avance y el tiempo estimado, y puedes cancelar.</p>
+<h3>¿Qué tamaño máximo admite?</h3><p>Hasta unos 2,2 megapíxeles de entrada (por ejemplo 1500×1500 px). Si tu imagen es más grande se reduce antes de ampliar, porque ampliar algo ya grande no aporta detalle nuevo.</p>
+<h3>¿Inventa detalles?</h3><p>La IA reconstruye texturas plausibles, no recupera información perdida. Funciona muy bien en paisajes, objetos y fotos de stock; en rostros pequeños o texto muy borroso puede dar resultados irregulares.</p>
+<h3>¿Tiene costo?</h3><p>No, es gratis y no necesitas registrarte. Al usarla aceptas los <a href="/terminos/">Términos de uso</a>.</p></div>
+</div>`;
+  const jsonld = [
+    { '@context': 'https://schema.org', '@type': 'WebApplication', name: 'Ampliar imagen — Fondo Blanco', url: `${URL}/ampliar/`, applicationCategory: 'MultimediaApplication',
+      operatingSystem: 'Cualquiera con navegador moderno', inLanguage: 'es', isAccessibleForFree: true, offers: { '@type': 'Offer', price: '0', priceCurrency: 'COP' },
+      description: 'Amplía y mejora la resolución de tus imágenes con inteligencia artificial, gratis y sin subir nada: todo ocurre en tu navegador.' },
+    { '@context': 'https://schema.org', '@type': 'BreadcrumbList', itemListElement: [
+      { '@type': 'ListItem', position: 1, name: 'Inicio', item: URL + '/' },
+      { '@type': 'ListItem', position: 2, name: 'Ampliar imagen', item: `${URL}/ampliar/` }] },
+  ];
+  write('ampliar/index.html', layout({ title: 'Ampliar imagen con IA gratis — Fondo Blanco', canon: '/ampliar/', nav: 'ampliar', body, jsonld,
+    desc: 'Amplía y mejora la calidad de tus imágenes hasta 4 veces con inteligencia artificial. Gratis, sin registro y sin subir nada: todo ocurre en tu navegador.',
+    ext: '<script src="/4k/ampliar.js" defer data-engine="/4k/"></script>' }));
+}
+
 // ---------- redirecciones del sitio anterior ----------
 function redirecciones() {
   for (const s of legado) {
@@ -357,7 +457,7 @@ function seo() {
     { loc: '/', pr: '1.0' },
     ...colecciones.map((c) => ({ loc: `/coleccion/${c.slug}/`, pr: '0.8' })),
     ...fotos.map((f) => ({ loc: f.url, pr: '0.7', img: f })),
-    { loc: '/licencia/', pr: '0.4' }, { loc: '/contacto/', pr: '0.3' }, { loc: '/privacidad/', pr: '0.2' },
+    { loc: '/ampliar/', pr: '0.6' }, { loc: '/licencia/', pr: '0.4' }, { loc: '/contacto/', pr: '0.3' }, { loc: '/terminos/', pr: '0.2' }, { loc: '/privacidad/', pr: '0.2' },
   ];
   write('sitemap.xml', `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
@@ -397,6 +497,7 @@ portada();
 fotos.forEach(ficha);
 colecciones.forEach(coleccion);
 paginas();
+ampliar();
 redirecciones();
 seo();
 console.log(`Listo: ${fotos.length} fotos, ${colecciones.length} colecciones, ${legado.length} redirecciones.`);
