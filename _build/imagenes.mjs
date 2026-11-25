@@ -49,7 +49,7 @@ for (const f of fotos) {
     await base.clone().avif({ quality: 52, effort: 5 }).toFile(path.join(ROOT, 'img', `${f.slug}-${w}.avif`));
     await base.clone().webp({ quality: 74, effort: 5 }).toFile(path.join(ROOT, 'img', `${f.slug}-${w}.webp`));
   }
-  await sharp(buf).jpeg({ quality: 88, mozjpeg: true, progressive: true }).withMetadata({ exif: { IFD0: { Copyright: 'Fondo Blanco - fondoblanco.co - CC BY 4.0', Artist: 'Fondo Blanco' } } }).toFile(dl);
+  await sharp(buf).jpeg({ quality: 88, mozjpeg: true, progressive: true }).withMetadata({ exif: { IFD0: { Copyright: 'Fondo Blanco - fondoblanco.co', Artist: 'Fondo Blanco' } } }).toFile(dl);
   marcarArchivoIA(dl, { titulo: f.titulo, url: `https://fondoblanco.co/foto/${f.slug}/` });   // metadatos «generado con IA»
   meta[f.slug] = { w: m.width, h: m.height, bytes: fs.statSync(dl).size, ...(await paleta(buf)) };
   fs.writeFileSync(metaPath, JSON.stringify(meta, null, 1));

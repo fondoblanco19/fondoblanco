@@ -55,7 +55,7 @@ Un botón «¿Dudas?» (abajo a la derecha, en todas las páginas) abre un chat 
 - **Textos:** `_build/legal.mjs` genera `/licencia/`, `/aviso-ia/`, `/terminos/` y `/privacidad/`. Están aparte para revisarlos con un abogado.
 - **Aceptación:** una barra inferior no bloqueante («Al seguir usando el sitio aceptas…») con el botón «Aceptar y continuar»; deja leer y navegar sin aceptar. Se guarda la cookie técnica `fb_terms=<versión>` (12 meses); se revoca con «Preferencias de cookies» del pie. Código en `CC_HEAD`, `CC_HTML` y `CC_SCRIPT` de `build.mjs`.
 - **Si cambias los términos de fondo, sube `TERMS_VERSION`** en `legal.mjs`: el aviso vuelve a salir y todos aceptan la versión nueva.
-- **Metadatos de IA:** `_build/xmp.mjs` añade a cada JPG de `descargas/` el marcado IPTC «trainedAlgorithmicMedia», crédito, licencia y enlace a `/aviso-ia/`, sin recomprimir. `npm run imagenes` lo aplica a las fotos nuevas, y el botón 4K hace lo mismo con sus archivos.
+- **Metadatos de IA:** `_build/xmp.mjs` añade a cada JPG de `descargas/` el marcado IPTC «trainedAlgorithmicMedia», derechos y enlace a `/aviso-ia/`, sin recomprimir. `npm run imagenes` lo aplica a las fotos nuevas, y el botón 4K hace lo mismo con sus archivos.
 - Si algún día se añade analítica o publicidad, hay que actualizar `/privacidad/`, el aviso y subir `TERMS_VERSION`.
 
 ## Tipografías
