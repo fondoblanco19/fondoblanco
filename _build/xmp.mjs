@@ -14,12 +14,11 @@ function paquete({ titulo = '', url = '' } = {}) {
  xmlns:photoshop="http://ns.adobe.com/photoshop/1.0/"
  xmlns:xmpRights="http://ns.adobe.com/xap/1.0/rights/"
  Iptc4xmpExt:DigitalSourceType="http://cv.iptc.org/newscodes/digitalsourcetype/trainedAlgorithmicMedia"
- photoshop:Credit="Fondo Blanco (fondoblanco.co)"
  xmpRights:Marked="True"
  xmpRights:WebStatement="https://fondoblanco.co/aviso-ia/">
 <dc:creator><rdf:Seq><rdf:li>Fondo Blanco</rdf:li></rdf:Seq></dc:creator>
-<dc:rights><rdf:Alt><rdf:li xml:lang="x-default">Fondo Blanco - fondoblanco.co - CC BY 4.0. Imagen generada con inteligencia artificial, sin garantías.</rdf:li></rdf:Alt></dc:rights>
-<xmpRights:UsageTerms><rdf:Alt><rdf:li xml:lang="x-default">CC BY 4.0 en la medida en que existan derechos. Imagen generada con IA; uso bajo tu responsabilidad. https://fondoblanco.co/aviso-ia/</rdf:li></rdf:Alt></xmpRights:UsageTerms>
+<dc:rights><rdf:Alt><rdf:li xml:lang="x-default">Fondo Blanco - fondoblanco.co. Imagen generada con inteligencia artificial, sin garantías.</rdf:li></rdf:Alt></dc:rights>
+<xmpRights:UsageTerms><rdf:Alt><rdf:li xml:lang="x-default">Uso libre, en la medida en que existan derechos. Imagen generada con IA; uso bajo tu responsabilidad. https://fondoblanco.co/aviso-ia/</rdf:li></rdf:Alt></xmpRights:UsageTerms>
 ${titulo ? `<dc:title><rdf:Alt><rdf:li xml:lang="es">${x(titulo)}</rdf:li></rdf:Alt></dc:title>` : ''}
 ${url ? `<dc:source>${x(url)}</dc:source>` : ''}
 </rdf:Description></rdf:RDF></x:xmpmeta>

@@ -188,13 +188,13 @@ ${ext}
 function footer() {
   return `<footer class="foot"><div class="wrap">
 <div class="foot-grid">
-<div><h2>Fondo Blanco</h2><p>Banco de imágenes gratis en alta resolución. Descarga, usa y da crédito: así de simple.</p></div>
+<div><h2>Fondo Blanco</h2><p>Banco de imágenes gratis en alta resolución. Descarga y usa: así de simple.</p></div>
 <div><h2>Colecciones</h2><ul>${colecciones.slice(0, 4).map((c) => `<li><a href="/coleccion/${c.slug}/">${esc(c.nombre)}</a></li>`).join('')}</ul></div>
 <div><h2>Más</h2><ul>${colecciones.slice(4).map((c) => `<li><a href="/coleccion/${c.slug}/">${esc(c.nombre)}</a></li>`).join('')}</ul></div>
 <div><h2>Sitio</h2><ul><li><a href="/ampliar/">Ampliar imagen</a></li><li><a href="/quitar-fondo/">Quitar fondo</a></li><li><a href="/banner/">Hacer un banner</a></li><li><a href="/licencia/">Licencia y uso</a></li><li><a href="/terminos/">Términos de uso</a></li><li><a href="/aviso-ia/">Imágenes de IA</a></li><li><a href="/privacidad/">Privacidad</a></li><li><button class="linkbtn" type="button" data-cookies>Preferencias de cookies</button></li><li><a href="/contacto/">Contacto</a></li></ul></div>
 </div>
 <div class="foot-mark" aria-hidden="true">Fondo Blanco</div>
-<div class="foot-legal"><span>© ${new Date().getFullYear()} Fondo Blanco · Imágenes bajo ${sitio.licencia.nombre}</span><span>Tipografía: Archivo Black, Acumin Pro y Source Code Pro vía Adobe Fonts</span></div>
+<div class="foot-legal"><span>© ${new Date().getFullYear()} Fondo Blanco · Imágenes de uso libre</span><span>Tipografía: Archivo Black, Acumin Pro y Source Code Pro vía Adobe Fonts</span></div>
 </div></footer>`;
 }
 
@@ -274,7 +274,7 @@ ${fotos.map((f, i) => card(f, { eager: i < 3 })).join('\n')}
 <div class="steps">
 <div><div class="num">01</div><h3>Busca</h3><p>Filtra por colección o busca por palabra. Usa «Con espacio para texto» si necesitas lugar para tu mensaje.</p></div>
 <div><div class="num">02</div><h3>Descarga</h3><p>Cada foto se descarga en JPG de ${fotos[0].w}×${fotos[0].h} px, sin registro y sin marcas de agua.</p></div>
-<div><div class="num">03</div><h3>Úsala y da crédito</h3><p>Úsala en proyectos personales o comerciales. Solo menciona «Foto: Fondo Blanco». <a href="/licencia/">Ver licencia</a>.</p></div>
+<div><div class="num">03</div><h3>Úsala donde quieras</h3><p>Úsala en proyectos personales o comerciales, sin necesidad de dar crédito. <a href="/licencia/">Ver licencia</a>.</p></div>
 </div>
 </section>
 
@@ -310,9 +310,7 @@ function ficha(f) {
   const rel = f.col.fotos.filter((x) => x.slug !== f.slug).slice(0, 6);
   const extra = rel.length < 3 ? fotos.filter((x) => x.coleccion !== f.coleccion).slice(0, 3 - rel.length) : [];
   const usos = (seoCol[f.coleccion] || {}).usos || 'proyectos web, redes sociales y presentaciones';
-  const contexto = `${f.titulo} es una foto gratis de la colección ${f.col.nombre.toLowerCase()}, en formato ${f.w >= f.h ? 'horizontal' : 'vertical'} de ${f.w}×${f.h} px. Sirve para ${usos}.${f.espacio ? ' Tiene espacio libre para añadir texto.' : ''} Se descarga sin registro; solo da crédito a Fondo Blanco.`;
-  const credito = `Foto: Fondo Blanco (fondoblanco.co) · ${sitio.licencia.nombre}`;
-  const creditoHtml = `Foto: <a href="${URL}${f.url}">Fondo Blanco</a> · <a href="${sitio.licencia.url}" rel="license">${sitio.licencia.nombre}</a>`;
+  const contexto = `${f.titulo} es una foto gratis de la colección ${f.col.nombre.toLowerCase()}, en formato ${f.w >= f.h ? 'horizontal' : 'vertical'} de ${f.w}×${f.h} px. Sirve para ${usos}.${f.espacio ? ' Tiene espacio libre para añadir texto.' : ''} Se descarga sin registro.`;
   const body = `<div class="wrap">
 <nav class="crumbs mono" aria-label="Ruta"><a href="/">Inicio</a><span aria-hidden="true">/</span><a href="/coleccion/${f.coleccion}/">${esc(f.col.nombre)}</a><span aria-hidden="true">/</span><span aria-current="page">${f.code}</span></nav>
 <article class="photo">
@@ -324,7 +322,7 @@ function ficha(f) {
 <p class="ctx">${esc(contexto)}</p>
 <div class="actions">
 <a class="btn primary" href="${f.dl}" download>${ICON.dl}<span>Descargar gratis <small>· JPG ${mb(f.bytes)}</small></span></a>
-<div class="row"><button class="btn ghost" type="button" id="credito" data-v="${esc(credito)}">${ICON.copy}Copiar crédito</button><button class="btn ghost" type="button" id="enlace">Copiar enlace</button><button class="btn ghost wide" type="button" id="credito-html" data-v="${esc(creditoHtml)}">${ICON.copy}Copiar crédito con enlace (HTML)</button></div>
+<div class="row"><button class="btn ghost" type="button" id="enlace">Copiar enlace</button></div>
 </div>
 <p class="banner-cta"><a class="btn ghost" href="/banner/?foto=${f.slug}">Hacer un banner con esta foto →</a></p>
 <p class="note ia-note">Imagen generada con IA. Se ofrece sin garantías y su uso es tu responsabilidad. <a href="/aviso-ia/">Lee el aviso</a>.</p>
@@ -346,12 +344,11 @@ function ficha(f) {
 <section aria-labelledby="h-rel"><div class="section-head"><h2 id="h-rel">Más de ${esc(f.col.nombre)}</h2><a class="mono" href="/coleccion/${f.coleccion}/">Ver colección →</a></div>
 <ul class="grid">${[...rel, ...extra].map((x) => card(x)).join('\n')}</ul></section>
 </div>`;
-  const script = `${SCRIPT_COMUN}document.getElementById('credito').addEventListener('click',e=>copy(e.currentTarget.dataset.v,'Crédito copiado'));document.getElementById('credito-html').addEventListener('click',e=>copy(e.currentTarget.dataset.v,'Crédito con enlace copiado'));document.getElementById('enlace').addEventListener('click',()=>copy(location.href.split('#')[0],'Enlace copiado'));document.querySelectorAll('.swatch').forEach(b=>b.addEventListener('click',()=>copy(b.dataset.v,'Color '+b.dataset.v+' copiado')));`;
+  const script = `${SCRIPT_COMUN}document.getElementById('enlace').addEventListener('click',()=>copy(location.href.split('#')[0],'Enlace copiado'));document.querySelectorAll('.swatch').forEach(b=>b.addEventListener('click',()=>copy(b.dataset.v,'Color '+b.dataset.v+' copiado')));`;
   const jsonld = [
     { '@context': 'https://schema.org', '@type': 'ImageObject', name: f.titulo, description: f.desc, contentUrl: URL + f.dl,
       thumbnailUrl: `${URL}/img/${f.slug}-480.webp`, url: URL + f.url, width: f.w, height: f.h, encodingFormat: 'image/jpeg',
-      keywords: f.tags.join(', '), license: sitio.licencia.url, acquireLicensePage: `${URL}/licencia/`, creditText: 'Fondo Blanco',
-      copyrightNotice: 'Fondo Blanco', creator: { '@type': 'Organization', name: 'Fondo Blanco', url: URL + '/' },
+      keywords: f.tags.join(', '), license: sitio.licencia.url, acquireLicensePage: `${URL}/licencia/`, creator: { '@type': 'Organization', name: 'Fondo Blanco', url: URL + '/' },
       isAccessibleForFree: true, digitalSourceType: 'http://cv.iptc.org/newscodes/digitalsourcetype/trainedAlgorithmicMedia', inLanguage: 'es' },
     { '@context': 'https://schema.org', '@type': 'BreadcrumbList', itemListElement: [
       { '@type': 'ListItem', position: 1, name: 'Inicio', item: URL + '/' },
@@ -596,7 +593,6 @@ function dibujar(){
     lt.forEach(l=>{ctx.fillText(l,x,y);y+=fT*1.05});
     if(ls.length){y+=gap;ctx.font='400 '+fS+'px Arial, sans-serif';ls.forEach(l=>{ctx.fillText(l,x,y);y+=fS*1.3})}
   }
-  if($('#credito').checked){ctx.fillStyle=claro?'rgba(250,250,247,0.9)':'rgba(21,21,19,0.8)';ctx.font='500 '+Math.round(m*0.024)+'px Arial, sans-serif';ctx.textAlign='right';ctx.textBaseline='bottom';ctx.fillText('Foto: Fondo Blanco',W*0.92,H*0.95)}
 }
 sel.addEventListener('change',dibujar);
 document.querySelectorAll('input,select,textarea').forEach(e=>e.addEventListener('input',dibujar));
@@ -625,8 +621,6 @@ function bannerPage() {
 <label class="check"><input id="velo" type="checkbox" checked> Velo suave para leer mejor el texto</label>
 <label>Encuadre horizontal<input id="fx" type="range" min="0" max="100" value="50"></label>
 <label>Encuadre vertical<input id="fy" type="range" min="0" max="100" value="50"></label>
-<label class="check"><input id="credito" type="checkbox" checked> Agregar «Foto: Fondo Blanco»</label>
-<p class="banner-help">La licencia CC BY 4.0 pide dar crédito. Si quitas la línea, da el crédito cerca de la pieza donde la publiques. <a href="/licencia/">Ver licencia</a>.</p>
 <button class="btn primary" id="bajar" type="button">Descargar PNG</button>
 <p id="aviso" class="mono" role="status" aria-live="polite"></p>
 </form>
@@ -664,7 +658,7 @@ function etiqueta(e) {
   const cols = [...new Set(e.fotos.map((f) => f.col))];
   const conEsp = e.fotos.filter((f) => f.espacio).length;
   const rel = etiquetasDe(e.fotos, { excluir: e.slug, max: 14 });
-  const intro = `${n} fotos gratis de ${e.nombre} en alta resolución para tu web, tus redes sociales o tus presentaciones. Se descargan en JPG sin registro y sin marcas de agua, con licencia ${sitio.licencia.nombre} para uso personal y comercial.`;
+  const intro = `${n} fotos gratis de ${e.nombre} en alta resolución para tu web, tus redes sociales o tus presentaciones. Se descargan en JPG sin registro y sin marcas de agua, de uso libre, personal y comercial.`;
   const enCols = `Están en ${cols.length === 1 ? 'la colección' : 'las colecciones'} ${lista(cols.map((c) => `<a href="/coleccion/${c.slug}/">${esc(c.nombre.toLowerCase())}</a>`))}.`;
   const esp = conEsp ? ` ${conEsp === n ? 'Todas tienen' : `${conEsp} de ellas tienen`} espacio libre para añadir texto.` : '';
   const body = `<div class="wrap">
@@ -673,7 +667,7 @@ function etiqueta(e) {
 <p class="count mono">${n} fotos</p>
 <ul class="grid">${e.fotos.map((f, i) => card(f, { eager: i < 3 })).join('\n')}</ul>
 ${rel.length ? `<section aria-labelledby="h-rel"><div class="section-head"><h2 id="h-rel">Búsquedas relacionadas</h2><a class="mono" href="/fotos/">Todas las búsquedas →</a></div>${chipsEtiquetas(rel)}</section>` : ''}
-<section class="prose seo-text" aria-labelledby="h-sobre"><h2 id="h-sobre">Sobre estas fotos de ${esc(e.nombre)}</h2><p>${enCols}${esp}</p><p>Para usarlas solo tienes que dar crédito: «Foto: Fondo Blanco». Todas están generadas con inteligencia artificial y revisadas una a una; <a href="/aviso-ia/">lee el aviso</a> antes de usarlas en piezas sensibles.</p></section>
+<section class="prose seo-text" aria-labelledby="h-sobre"><h2 id="h-sobre">Sobre estas fotos de ${esc(e.nombre)}</h2><p>${enCols}${esp}</p><p>Todas están generadas con inteligencia artificial y revisadas una a una; <a href="/aviso-ia/">lee el aviso</a> antes de usarlas en piezas sensibles.</p></section>
 </div>`;
   const jsonld = [
     { '@context': 'https://schema.org', '@type': 'BreadcrumbList', itemListElement: [
@@ -685,7 +679,7 @@ ${rel.length ? `<section aria-labelledby="h-rel"><div class="section-head"><h2 i
   ];
   write(`fotos/${e.slug}/index.html`, layout({
     title: fit(`${cap(e.nombre)}: fotos gratis en alta resolución | Fondo Blanco`, fit(`${cap(e.nombre)}: fotos gratis | Fondo Blanco`, `${cap(e.nombre)} — Fondo Blanco`)),
-    desc: cortar(`${n} fotos de ${e.nombre} gratis en alta resolución. Descarga en JPG sin registro ni marcas de agua, con licencia ${sitio.licencia.nombre} para uso comercial.`, 160),
+    desc: cortar(`${n} fotos de ${e.nombre} gratis en alta resolución. Descarga en JPG sin registro ni marcas de agua, de uso libre, también comercial.`, 160),
     canon: e.url, og: `${URL}/img/og/${e.fotos[0].slug}.jpg`, ogAlt: e.fotos[0].desc, body, jsonld, nav: 'colecciones' }));
 }
 
@@ -756,7 +750,7 @@ function feed() {
     const len = fs.existsSync(pin) ? fs.statSync(pin).size : 0;
     const tags = f.tags.map((t) => `<category>${esc(t)}</category>`).join('');
     return `<item><title>${esc(`${f.titulo} — foto gratis`)}</title><link>${URL}${f.url}</link><guid isPermaLink="true">${URL}${f.url}</guid>
-<description>${esc(`${f.desc} Descarga gratis en alta resolución, licencia ${sitio.licencia.nombre}.`)}</description>${tags}
+<description>${esc(`${f.desc} Descarga gratis en alta resolución, de uso libre.`)}</description>${tags}
 <enclosure url="${URL}/pin/${f.slug}.jpg" length="${len}" type="image/jpeg"/><media:content url="${URL}/pin/${f.slug}.jpg" medium="image" type="image/jpeg" width="${PIN_W}" height="${PIN_H}"/></item>`;
   });
   write('feed.xml', `<?xml version="1.0" encoding="UTF-8"?>
