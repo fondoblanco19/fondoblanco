@@ -164,6 +164,7 @@ ${jsonld.map((j) => `<script type="application/ld+json">${JSON.stringify(j)}</sc
 <nav class="nav" aria-label="Principal">
 <a href="/#colecciones" class="hide-s"${nav === 'colecciones' ? ' aria-current="page"' : ''}>Colecciones</a>
 <a href="/ampliar/"${nav === 'ampliar' ? ' aria-current="page"' : ''}>Ampliar<span class="hide-s"> imagen</span></a>
+<a href="/quitar-fondo/"${nav === 'quitar' ? ' aria-current="page"' : ''}>Quitar<span class="hide-s"> fondo</span></a>
 <a href="/licencia/" class="hide-s"${nav === 'licencia' ? ' aria-current="page"' : ''}>Licencia</a>
 <a href="/contacto/"${nav === 'contacto' ? ' aria-current="page"' : ''}>Contacto</a>
 </nav>
@@ -188,7 +189,7 @@ function footer() {
 <div><h2>Fondo Blanco</h2><p>Banco de imágenes gratis en alta resolución. Descarga, usa y da crédito: así de simple.</p></div>
 <div><h2>Colecciones</h2><ul>${colecciones.slice(0, 4).map((c) => `<li><a href="/coleccion/${c.slug}/">${esc(c.nombre)}</a></li>`).join('')}</ul></div>
 <div><h2>Más</h2><ul>${colecciones.slice(4).map((c) => `<li><a href="/coleccion/${c.slug}/">${esc(c.nombre)}</a></li>`).join('')}</ul></div>
-<div><h2>Sitio</h2><ul><li><a href="/ampliar/">Ampliar imagen</a></li><li><a href="/banner/">Hacer un banner</a></li><li><a href="/licencia/">Licencia y uso</a></li><li><a href="/terminos/">Términos de uso</a></li><li><a href="/aviso-ia/">Imágenes de IA</a></li><li><a href="/privacidad/">Privacidad</a></li><li><button class="linkbtn" type="button" data-cookies>Preferencias de cookies</button></li><li><a href="/contacto/">Contacto</a></li></ul></div>
+<div><h2>Sitio</h2><ul><li><a href="/ampliar/">Ampliar imagen</a></li><li><a href="/quitar-fondo/">Quitar fondo</a></li><li><a href="/banner/">Hacer un banner</a></li><li><a href="/licencia/">Licencia y uso</a></li><li><a href="/terminos/">Términos de uso</a></li><li><a href="/aviso-ia/">Imágenes de IA</a></li><li><a href="/privacidad/">Privacidad</a></li><li><button class="linkbtn" type="button" data-cookies>Preferencias de cookies</button></li><li><a href="/contacto/">Contacto</a></li></ul></div>
 </div>
 <div class="foot-mark" aria-hidden="true">Fondo Blanco</div>
 <div class="foot-legal"><span>© ${new Date().getFullYear()} Fondo Blanco · Imágenes bajo ${sitio.licencia.nombre}</span><span>Tipografía: Archivo Black, Acumin Pro y Source Code Pro vía Adobe Fonts</span></div>
@@ -482,6 +483,63 @@ function ampliar() {
     ext: '<script src="/4k/ampliar.js" defer data-engine="/4k/"></script>' }));
 }
 
+// ---------- quitar fondo (/quitar-fondo/) ----------
+// U²-Netp (Apache-2.0) en el navegador con ONNX Runtime Web. La lógica está en 4k/quitar.js (se sirve tal cual).
+function quitarFondo() {
+  const radio = (name, id, val, label, on) => `<input type="radio" name="${name}" id="${id}" value="${val}"${on ? ' checked' : ''}><label for="${id}">${label}</label>`;
+  const faqs = [
+    ['¿Con qué imágenes funciona?', 'Solo está pensada para imágenes sencillas: un producto, objeto o plato fotografiado sobre un fondo de un solo color, como el blanco. Con fondos complejos, escenas cargadas, vidrio, pelo muy fino o personas el recorte puede salir incompleto. Si el objeto es del mismo color que el fondo (por ejemplo, blanco sobre blanco) pueden quedar restos claros; prueba los controles de sensibilidad y suavidad.'],
+    ['¿Se sube mi imagen a algún servidor?', 'No. El modelo (4 MB) se descarga una sola vez a tu navegador y la imagen se procesa en tu propio equipo. Nada sale de tu dispositivo.'],
+    ['¿Qué tamaño máximo admite?', 'Hasta 25 MB. Si el lado mayor pasa de 2000 px se reduce antes de procesar, para que funcione bien en cualquier equipo.'],
+    ['¿Qué formato descargo?', 'PNG con fondo transparente, o con el color de fondo que elijas. Sin marcas de agua.'],
+    ['¿Tiene costo?', 'No, es gratis y no necesitas registrarte. Al usarla aceptas los <a href="/terminos/">Términos de uso</a>.'],
+  ];
+  const body = `<div class="wrap">
+<header class="page-head"><p class="mono" style="color:var(--signal-ink);margin:0">Herramienta gratis</p><h1>Quitar fondo</h1><p>Sube una imagen y descarga el recorte con fondo transparente. <strong>Solo para imágenes sencillas: un objeto sobre un fondo de un solo color, como el blanco.</strong> Todo ocurre en tu equipo: tu imagen no se sube a ningún servidor.</p></header>
+<section class="amp" aria-label="Quitar fondo de imágenes">
+<div class="amp-stage" id="stage">
+<div class="amp-drop" id="drop" tabindex="0" role="button" aria-label="Elegir una imagen"><div>
+<svg viewBox="0 0 48 48" aria-hidden="true"><path d="M24 34V12M14 21l10-10 10 10M8 38h32"/></svg>
+<p class="amp-big">Suelta tu imagen aquí</p><p>o toca para elegir un archivo. También puedes pegarla con Ctrl+V.</p><span class="mono">JPG · PNG · WebP · hasta 25 MB</span>
+<p class="amp-legal"><strong>Solo para imágenes sencillas, con fondo de un solo color como el blanco.</strong> Con fondos complejos, escenas cargadas o personas puede fallar.</p>
+<p class="amp-legal">Usa solo imágenes que tengas derecho a modificar. El resultado lo genera una IA y se ofrece sin garantías. <a href="/terminos/">Términos</a></p></div></div>
+<div class="amp-view" id="view" hidden><canvas id="lienzo" class="qf-canvas" role="img" aria-label="Imagen con el fondo quitado"></canvas></div>
+<div class="amp-working" id="working" hidden role="status" aria-live="polite"><div class="amp-wbox">
+<div class="amp-pct" id="pct">0%</div><div class="amp-progress"><i id="bar2"></i></div><p id="stageTxt">Preparando…</p></div></div>
+</div>
+<aside class="amp-panel" aria-label="Ajustes">
+<div class="amp-field"><p class="label">Fondo del resultado</p><div class="amp-seg" role="radiogroup" aria-label="Fondo">${radio('bg', 'bt', 'transparent', 'Transparente', true)}${radio('bg', 'bw', 'white', 'Blanco')}${radio('bg', 'bc', 'color', 'Color')}</div><p class="amp-hint"><input type="color" id="bgcolor" value="#ffffff" disabled aria-label="Color de fondo"> Elige «Color» para usar otro fondo.</p></div>
+<div class="amp-field"><label class="label" for="sens">Sensibilidad <output id="sensOut">50</output></label><input class="amp-range" type="range" id="sens" min="0" max="100" value="50"><p class="amp-hint">Súbela si el recorte se comió partes del objeto; bájala si quedan restos de fondo.</p></div>
+<div class="amp-field"><label class="label" for="soft">Suavidad del borde <output id="softOut">35</output></label><input class="amp-range" type="range" id="soft" min="0" max="100" value="35"></div>
+<div class="amp-field"><label class="qf-check"><input type="checkbox" id="refine" checked> Afinar los bordes con la foto</label></div>
+<p class="amp-note" id="note" hidden></p>
+<div class="amp-row"><button class="btn primary" id="go" type="button" disabled>Quitar fondo</button><a class="btn primary" id="dl" href="#" hidden>Descargar PNG</a><button class="btn ghost" id="orig" type="button" hidden>Mantén pulsado para ver el original</button><button class="btn ghost" id="again" type="button" hidden>Elegir otra imagen</button></div>
+<div class="amp-meta" id="meta" hidden></div>
+</aside>
+<noscript><p class="amp-note">Para quitar el fondo necesitas activar JavaScript en tu navegador.</p></noscript>
+</section>
+<div class="steps">
+<div><div class="num">01</div><h3>Elige</h3><p>Arrastra o pega una imagen sencilla, con un fondo liso: por ejemplo, un producto sobre blanco.</p></div>
+<div><div class="num">02</div><h3>Quita el fondo</h3><p>Una red neuronal (U²-Net) separa el objeto del fondo y afina el borde con la propia foto. Se ejecuta en tu navegador, en unos segundos.</p></div>
+<div><div class="num">03</div><h3>Ajusta y descarga</h3><p>Corrige con los controles, elige el fondo que quieras y descarga el PNG, sin marcas de agua.</p></div>
+</div>
+<div class="prose seo-text"><h2>Preguntas frecuentes</h2>
+${faqs.map(([q, a]) => `<h3>${q}</h3><p>${a}</p>`).join('\n')}</div>
+</div>`;
+  const jsonld = [
+    { '@context': 'https://schema.org', '@type': 'WebApplication', name: 'Quitar fondo — Fondo Blanco', url: `${URL}/quitar-fondo/`, applicationCategory: 'MultimediaApplication',
+      operatingSystem: 'Cualquiera con navegador moderno', inLanguage: 'es', isAccessibleForFree: true, offers: { '@type': 'Offer', price: '0', priceCurrency: 'COP' },
+      description: 'Quita el fondo de imágenes sencillas, con un objeto sobre un fondo de un solo color, con inteligencia artificial, gratis y sin subir nada: todo ocurre en tu navegador.' },
+    { '@context': 'https://schema.org', '@type': 'FAQPage', mainEntity: faqs.map(([q, a]) => ({ '@type': 'Question', name: q, acceptedAnswer: { '@type': 'Answer', text: a.replace(/<[^>]+>/g, '') } })) },
+    { '@context': 'https://schema.org', '@type': 'BreadcrumbList', itemListElement: [
+      { '@type': 'ListItem', position: 1, name: 'Inicio', item: URL + '/' },
+      { '@type': 'ListItem', position: 2, name: 'Quitar fondo', item: `${URL}/quitar-fondo/` }] },
+  ];
+  write('quitar-fondo/index.html', layout({ title: 'Quitar fondo de imágenes gratis — Fondo Blanco', canon: '/quitar-fondo/', nav: 'quitar', body, jsonld,
+    desc: 'Quita el fondo de imágenes sencillas, con un objeto sobre fondo liso como el blanco, y descarga un PNG transparente. Gratis, sin registro y sin subir nada.',
+    ext: '<script src="/4k/quitar.js" defer data-engine="/4k/"></script>' }));
+}
+
 // ---------- redirecciones del sitio anterior ----------
 // Fotos cuya dirección cambió (slug antiguo → nuevo). El enlace viejo sigue funcionando.
 const FOTOS_MOVIDAS = { 'mujer-esperando-el-metro-en-andén': 'mujer-esperando-el-metro-en-anden' };
@@ -711,7 +769,7 @@ function seo() {
     { loc: '/fotos/', pr: '0.7' },
     ...etiquetas.map((e) => ({ loc: e.url, pr: '0.7' })),
     ...fotos.map((f) => ({ loc: f.url, pr: '0.7', img: f })),
-    { loc: '/ampliar/', pr: '0.6' }, { loc: '/licencia/', pr: '0.4' }, { loc: '/contacto/', pr: '0.3' }, { loc: '/terminos/', pr: '0.2' }, { loc: '/aviso-ia/', pr: '0.2' }, { loc: '/privacidad/', pr: '0.2' },
+    { loc: '/ampliar/', pr: '0.6' }, { loc: '/quitar-fondo/', pr: '0.6' }, { loc: '/licencia/', pr: '0.4' }, { loc: '/contacto/', pr: '0.3' }, { loc: '/terminos/', pr: '0.2' }, { loc: '/aviso-ia/', pr: '0.2' }, { loc: '/privacidad/', pr: '0.2' },
   ];
   write('sitemap.xml', `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
@@ -760,6 +818,7 @@ indiceEtiquetas();
 bannerPage();
 paginas();
 ampliar();
+quitarFondo();
 redirecciones();
 const pinesNuevos = await pines();
 feed();

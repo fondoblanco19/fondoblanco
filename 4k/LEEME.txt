@@ -1,9 +1,11 @@
 Herramientas de ampliación de Fondo Blanco (corren en el navegador del visitante).
 
   fb4k.js      Botón "Ampliar a 4K" de las fichas de foto.
+  quitar.js    Página /quitar-fondo/ (quitar el fondo de imágenes sencillas, con fondo liso).
   ampliar.js   Página /ampliar/ (imágenes propias del visitante).
   model/       Real-ESRGAN realesr-general-x4v3 en ONNX (Xintao Wang et al., BSD-3-Clause).
                Exportación: huggingface.co/CoderViking/realesr-general-x4v3-onnx (BSD-3-Clause).
+               model/u2netp.onnx: U²-Net-p (Xuebin Qin et al., Apache-2.0), ONNX de huggingface.co/edgetools/u2netp (Apache-2.0).
   ort/         ONNX Runtime Web 1.22.0 (Microsoft, MIT).
 
 Las páginas se generan con "npm run build" (ver README.md); estos archivos se sirven tal cual.

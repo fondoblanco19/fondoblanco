@@ -40,6 +40,7 @@ Todo corre en el navegador del visitante (WebGPU si existe, CPU si no); ninguna 
 - `4k/fb4k.js`: botón **Ampliar a 4K** que `build.mjs` añade a cada ficha de foto. Usa el JPG de `descargas/` y, si no existe, la versión de 1600 px.
 - `4k/ampliar.js`: lógica de la página **/ampliar/** (el visitante trae su propia imagen). La página la genera `ampliar()` en `build.mjs`.
 - `4k/model/` (Real-ESRGAN `realesr-general-x4v3`, ONNX) y `4k/ort/` (ONNX Runtime Web 1.22.0). Créditos en `4k/LEEME.txt`.
+- `4k/quitar.js` + `4k/model/u2netp.onnx` (U²-Net-p, 4,4 MB, Apache-2.0): página **/quitar-fondo/**, la genera `quitarFondo()` en `build.mjs`. Corre en el navegador (WASM) en 2-4 s. Está pensada solo para imágenes sencillas (un objeto sobre fondo liso); con fondos complejos o personas falla.
 
 ## Textos legales, aviso de aceptación e imágenes de IA
 
