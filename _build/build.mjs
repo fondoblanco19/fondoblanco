@@ -30,6 +30,9 @@ for (const c of colecciones) c.fotos = fotos.filter((f) => f.coleccion === c.slu
 const esc = (s) => String(s).replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
 const norm = (s) => s.toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g, '');
 const mb = (b) => (b / 1048576).toLocaleString('es', { maximumFractionDigits: 1, minimumFractionDigits: 1 }) + ' MB';
+// Títulos (≤ 65 caracteres) y descripciones (≤ 160) que no se corten en Google
+const fit = (largo, corto, max = 65) => (largo.length <= max ? largo : corto);
+const cortar = (s, max) => (s.length <= max ? s : s.slice(0, max - 1).replace(/[\s,;:.]+\S*$/, '') + '…');
 function write(rel, html) {
   const file = path.join(ROOT, rel);
   fs.mkdirSync(path.dirname(file), { recursive: true });
@@ -287,7 +290,7 @@ function ficha(f) {
       { '@type': 'ListItem', position: 2, name: f.col.nombre, item: `${URL}/coleccion/${f.coleccion}/` },
       { '@type': 'ListItem', position: 3, name: f.titulo, item: URL + f.url }] },
   ];
-  write(`foto/${f.slug}/index.html`, layout({ title: `${f.titulo} — Foto gratis en alta resolución | Fondo Blanco`, desc: `${f.desc} Descarga gratis en JPG ${f.w}×${f.h}.`, canon: f.url,
+  write(`foto/${f.slug}/index.html`, layout({ title: fit(`${f.titulo} — Foto gratis en alta resolución | Fondo Blanco`, fit(`${f.titulo} — Foto gratis | Fondo Blanco`, `${f.titulo} | Fondo Blanco`)), desc: cortar(`${f.desc} Descarga gratis en JPG ${f.w}×${f.h}.`, 165), canon: f.url,
     og: `${URL}/img/og/${f.slug}.jpg`, ogAlt: f.desc, body, script, jsonld, type: 'article',
     // Botón «Ampliar a 4K»: usa el JPG original; si no existe, la versión de 1600 px.
     ext: `<script src="/4k/fb4k.js" defer data-engine="/4k/" data-slug="${f.slug}" data-fallback="/img/${f.slug}-1600.webp"></script>` }));
@@ -316,7 +319,8 @@ ${textoHtml}
     ...(sc.faqs.length ? [{ '@context': 'https://schema.org', '@type': 'FAQPage', mainEntity: sc.faqs.map(([q, a]) => ({ '@type': 'Question', name: q, acceptedAnswer: { '@type': 'Answer', text: a } })) }] : []),
     { '@context': 'https://schema.org', '@type': 'CollectionPage', name: `${c.nombre} — Fondo Blanco`, description: c.desc, url: `${URL}/coleccion/${c.slug}/`,
     mainEntity: { '@type': 'ItemList', numberOfItems: c.fotos.length, itemListElement: c.fotos.map((f, i) => ({ '@type': 'ListItem', position: i + 1, url: URL + f.url, name: f.titulo })) } }];
-  write(`coleccion/${c.slug}/index.html`, layout({ title: `${sc.h1 || 'Fotos gratis de ' + c.nombre.toLowerCase()} en alta resolución — Fondo Blanco`, desc: `${c.desc} ${c.fotos.length} fotos en alta resolución para descargar gratis.`,
+  const tCol = sc.h1 || 'Fotos gratis de ' + c.nombre.toLowerCase();
+  write(`coleccion/${c.slug}/index.html`, layout({ title: fit(`${tCol} en alta resolución — Fondo Blanco`, `${tCol} — Fondo Blanco`), desc: cortar(`${c.desc} ${c.fotos.length} fotos en alta resolución para descargar gratis.`, 160),
     canon: `/coleccion/${c.slug}/`, og: `${URL}/img/og/${c.fotos[0].slug}.jpg`, body, jsonld, nav: 'colecciones', script: ROTAR }));
 }
 
@@ -445,7 +449,12 @@ function ampliar() {
 }
 
 // ---------- redirecciones del sitio anterior ----------
+// Fotos cuya dirección cambió (slug antiguo → nuevo). El enlace viejo sigue funcionando.
+const FOTOS_MOVIDAS = { 'mujer-esperando-el-metro-en-andén': 'mujer-esperando-el-metro-en-anden' };
 function redirecciones() {
+  for (const [viejo, nuevo] of Object.entries(FOTOS_MOVIDAS)) {
+    write(`foto/${viejo}/index.html`, `<!doctype html><html lang="es"><head><meta charset="utf-8"><title>Fondo Blanco</title><meta name="robots" content="noindex,follow"><link rel="canonical" href="${URL}/foto/${nuevo}/"><meta http-equiv="refresh" content="0; url=/foto/${nuevo}/"></head><body><p>Esta foto cambió de dirección. <a href="/foto/${nuevo}/">Ir a la foto</a>.</p></body></html>`);
+  }
   for (const s of legado) {
     write(`textura/${s}/index.html`, `<!doctype html><html lang="es"><head><meta charset="utf-8"><title>Fondo Blanco</title><meta name="robots" content="noindex,follow"><link rel="canonical" href="${URL}/"><meta http-equiv="refresh" content="0; url=/"></head><body><p>Esta página se movió. <a href="/">Ir a Fondo Blanco</a>.</p></body></html>`);
   }
