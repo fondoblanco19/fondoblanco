@@ -41,9 +41,13 @@ Todo corre en el navegador del visitante (WebGPU si existe, CPU si no); ninguna 
 - `4k/ampliar.js`: lógica de la página **/ampliar/** (el visitante trae su propia imagen). La página la genera `ampliar()` en `build.mjs`.
 - `4k/model/` (Real-ESRGAN `realesr-general-x4v3`, ONNX) y `4k/ort/` (ONNX Runtime Web 1.22.0). Créditos en `4k/LEEME.txt`.
 
-## Cookies y términos de uso
+## Textos legales, aviso de aceptación e imágenes de IA
 
-Un aviso bloquea la navegación hasta pulsar «Aceptar y continuar» (en `/terminos/`, `/privacidad/` y `/licencia/` es una barra que deja leer). La respuesta se guarda en la cookie técnica `fb_consent` (12 meses) y se puede revocar con «Preferencias de cookies» del pie. El código está en `CC_HEAD`, `CC_HTML` y `CC_SCRIPT` de `build.mjs`. Si algún día se añade analítica o publicidad, hay que actualizar `/privacidad/` y el aviso.
+- **Textos:** `_build/legal.mjs` genera `/licencia/`, `/aviso-ia/`, `/terminos/` y `/privacidad/`. Están aparte para revisarlos con un abogado.
+- **Aceptación:** un aviso bloquea la navegación hasta pulsar «Aceptar y continuar» (en `/terminos/`, `/aviso-ia/`, `/privacidad/` y `/licencia/` es una barra que deja leer). Se guarda la cookie técnica `fb_terms=<versión>` (12 meses); se revoca con «Preferencias de cookies» del pie. Código en `CC_HEAD`, `CC_HTML` y `CC_SCRIPT` de `build.mjs`.
+- **Si cambias los términos de fondo, sube `TERMS_VERSION`** en `legal.mjs`: el aviso vuelve a salir y todos aceptan la versión nueva.
+- **Metadatos de IA:** `_build/xmp.mjs` añade a cada JPG de `descargas/` el marcado IPTC «trainedAlgorithmicMedia», crédito, licencia y enlace a `/aviso-ia/`, sin recomprimir. `npm run imagenes` lo aplica a las fotos nuevas, y el botón 4K hace lo mismo con sus archivos.
+- Si algún día se añade analítica o publicidad, hay que actualizar `/privacidad/`, el aviso y subir `TERMS_VERSION`.
 
 ## Tipografías
 

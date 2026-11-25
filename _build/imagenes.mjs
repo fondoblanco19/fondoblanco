@@ -4,6 +4,7 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import sharp from 'sharp';
+import { marcarArchivoIA } from './xmp.mjs';
 
 const ROOT = path.resolve(import.meta.dirname, '..');
 const ORIGEN = process.env.FB_ORIGEN || 'D:/Personal/Imagenes/IMAGENES STOCK';
@@ -46,6 +47,7 @@ for (const f of fotos) {
     await base.clone().webp({ quality: 74, effort: 5 }).toFile(path.join(ROOT, 'img', `${f.slug}-${w}.webp`));
   }
   await sharp(buf).jpeg({ quality: 88, mozjpeg: true, progressive: true }).withMetadata({ exif: { IFD0: { Copyright: 'Fondo Blanco - fondoblanco.co - CC BY 4.0', Artist: 'Fondo Blanco' } } }).toFile(dl);
+  marcarArchivoIA(dl, { titulo: f.titulo, url: `https://fondoblanco.co/foto/${f.slug}/` });   // metadatos «generado con IA»
   meta[f.slug] = { w: m.width, h: m.height, bytes: fs.statSync(dl).size, ...(await paleta(buf)) };
   fs.writeFileSync(metaPath, JSON.stringify(meta, null, 1));
   console.log('ok', f.n, f.slug);

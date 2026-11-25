@@ -193,7 +193,25 @@
     set(95, 'Afinando nitidez…');
     sharpen(fg, tw, th, CONFIG.sharpen);
     set(98, 'Generando el archivo…');
-    return await new Promise((res, rej) => fin.toBlob(b => b ? res(b) : rej(new Error('No pude generar el archivo.')), 'image/jpeg', CONFIG.quality));
+    const jpg = await new Promise((res, rej) => fin.toBlob(b => b ? res(b) : rej(new Error('No pude generar el archivo.')), 'image/jpeg', CONFIG.quality));
+    try { return await marcarIA(jpg); } catch { return jpg; }
+  }
+
+  /* Metadatos «generado con IA» (IPTC trainedAlgorithmicMedia), igual que los JPG de /descargas/ */
+  async function marcarIA(blob) {
+    const b = new Uint8Array(await blob.arrayBuffer());
+    if (b[0] !== 0xff || b[1] !== 0xd8) return blob;
+    let pos = 2, ins = 2;
+    while (pos + 4 <= b.length && b[pos] === 0xff && b[pos + 1] >= 0xe0 && b[pos + 1] <= 0xef) {
+      const len = (b[pos + 2] << 8) | b[pos + 3];
+      if (b[pos + 1] === 0xe0 || b[pos + 1] === 0xe1) ins = pos + 2 + len;
+      pos += 2 + len;
+    }
+    const xmp = `<?xpacket begin="﻿" id="W5M0MpCehiHzreSzNTczkc9d"?><x:xmpmeta xmlns:x="adobe:ns:meta/"><rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"><rdf:Description rdf:about="" xmlns:Iptc4xmpExt="http://iptc.org/std/Iptc4xmpExt/2008-02-29/" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:photoshop="http://ns.adobe.com/photoshop/1.0/" xmlns:xmpRights="http://ns.adobe.com/xap/1.0/rights/" Iptc4xmpExt:DigitalSourceType="http://cv.iptc.org/newscodes/digitalsourcetype/trainedAlgorithmicMedia" photoshop:Credit="Fondo Blanco (fondoblanco.co)" xmpRights:Marked="True" xmpRights:WebStatement="https://fondoblanco.co/aviso-ia/"><dc:creator><rdf:Seq><rdf:li>Fondo Blanco</rdf:li></rdf:Seq></dc:creator><dc:rights><rdf:Alt><rdf:li xml:lang="x-default">Fondo Blanco - fondoblanco.co - CC BY 4.0. Imagen generada con inteligencia artificial, sin garantías.</rdf:li></rdf:Alt></dc:rights><dc:source>${location.origin}/foto/${slug}/</dc:source></rdf:Description></rdf:RDF></x:xmpmeta><?xpacket end="w"?>`;
+    const body = new TextEncoder().encode('http://ns.adobe.com/xap/1.0/\0' + xmp);
+    const seg = new Uint8Array(4 + body.length);
+    seg.set([0xff, 0xe1, (body.length + 2) >> 8, (body.length + 2) & 0xff]); seg.set(body, 4);
+    return new Blob([b.slice(0, ins), seg, b.slice(ins)], { type: 'image/jpeg' });
   }
 
   function sharpen(g, W, H, amount) {

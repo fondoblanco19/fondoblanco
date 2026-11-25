@@ -3,6 +3,7 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import sharp from 'sharp';
+import { paginasLegales, TERMS_VERSION } from './legal.mjs';
 
 const ROOT = path.resolve(import.meta.dirname, '..');
 const read = (p) => JSON.parse(fs.readFileSync(path.join(ROOT, p), 'utf8'));
@@ -52,18 +53,20 @@ function picture(f, { widths = [480, 960, 1600], sizes, eager = false, high = fa
 }
 
 // ---------- plantilla ----------
-// Aviso de cookies y términos de uso. La respuesta se guarda en una cookie técnica (fb_consent, 12 meses).
-// En /terminos/, /privacidad/ y /licencia/ se muestra como barra inferior para poder leerlas antes de aceptar.
-const CC_HEAD = `<script>(function(d){if(!/(?:^|; )fb_consent=1/.test(d.cookie))d.documentElement.classList.add('cc-need')})(document)</script>`;
+// Aviso de cookies y términos de uso. La respuesta se guarda en una cookie técnica (fb_terms=<versión>, 12 meses).
+// Si cambia TERMS_VERSION (en legal.mjs), el aviso vuelve a salir para todos.
+// En /terminos/, /aviso-ia/, /privacidad/ y /licencia/ se muestra como barra inferior para poder leerlas antes de aceptar.
+const CC_HEAD = `<script>(function(d){if(!/(?:^|; )fb_terms=${TERMS_VERSION}(?:;|$)/.test(d.cookie))d.documentElement.classList.add('cc-need')})(document)</script>`;
 const CC_HTML = `<div class="cc" id="cc" role="dialog" aria-modal="true" aria-labelledby="cc-t" aria-describedby="cc-d">
 <div class="cc-box"><p class="label">Antes de seguir</p><h2 id="cc-t">Cookies y términos de uso</h2>
-<p id="cc-d">Fondo Blanco no usa cookies de seguimiento ni publicidad. Solo guardamos una cookie técnica, durante 12 meses, para recordar tu respuesta. Para continuar, acepta los <a href="/terminos/">Términos de uso</a> y la <a href="/privacidad/">Política de privacidad</a>.</p>
+<p id="cc-d">Todas las imágenes de Fondo Blanco están generadas con inteligencia artificial y se ofrecen sin garantías: el uso que hagas de ellas es tu responsabilidad. No usamos cookies de seguimiento ni publicidad; solo una cookie técnica, durante 12 meses, para recordar tu respuesta.</p>
+<p>Para continuar, acepta los <a href="/terminos/">Términos de uso</a>, el <a href="/aviso-ia/">Aviso sobre imágenes de IA</a> y la <a href="/privacidad/">Política de privacidad</a>.</p>
 <div class="cc-act"><button class="btn primary" type="button" id="cc-ok">Aceptar y continuar</button></div></div></div>`;
-const CC_SCRIPT = `(()=>{const h=document.documentElement,cc=document.getElementById('cc');if(!cc)return;const soft=/^\\/(terminos|privacidad|licencia)\\//.test(location.pathname),parts=['.top','main','.foot'].map(s=>document.querySelector(s)).filter(Boolean);
+const CC_SCRIPT = `(()=>{const h=document.documentElement,cc=document.getElementById('cc');if(!cc)return;const soft=/^\\/(terminos|aviso-ia|privacidad|licencia)\\//.test(location.pathname),parts=['.top','main','.foot'].map(s=>document.querySelector(s)).filter(Boolean);
 function open(){h.classList.add('cc-need');if(soft){h.classList.add('cc-soft');cc.setAttribute('aria-modal','false')}else{h.classList.add('cc-lock');parts.forEach(e=>{e.inert=true})}cc.querySelector('button').focus({preventScroll:true})}
 function close(){h.classList.remove('cc-need','cc-lock','cc-soft');parts.forEach(e=>{e.inert=false})}
-document.getElementById('cc-ok').addEventListener('click',()=>{document.cookie='fb_consent=1; Max-Age=31536000; Path=/; SameSite=Lax'+(location.protocol==='https:'?'; Secure':'');close()});
-document.querySelectorAll('[data-cookies]').forEach(b=>b.addEventListener('click',()=>{document.cookie='fb_consent=; Max-Age=0; Path=/';open()}));
+document.getElementById('cc-ok').addEventListener('click',()=>{document.cookie='fb_terms=${TERMS_VERSION}; Max-Age=31536000; Path=/; SameSite=Lax'+(location.protocol==='https:'?'; Secure':'');document.cookie='fb_consent=; Max-Age=0; Path=/';close()});
+document.querySelectorAll('[data-cookies]').forEach(b=>b.addEventListener('click',()=>{document.cookie='fb_terms=; Max-Age=0; Path=/';open()}));
 if(h.classList.contains('cc-need'))open()})();`;
 
 function layout({ title, desc, canon, og, ogAlt, body, jsonld = [], script = '', nav = '', noindex = false, type = 'website', ext = '' }) {
@@ -131,7 +134,7 @@ function footer() {
 <div><h2>Fondo Blanco</h2><p>Banco de imágenes gratis en alta resolución. Descarga, usa y da crédito: así de simple.</p></div>
 <div><h2>Colecciones</h2><ul>${colecciones.slice(0, 4).map((c) => `<li><a href="/coleccion/${c.slug}/">${esc(c.nombre)}</a></li>`).join('')}</ul></div>
 <div><h2>Más</h2><ul>${colecciones.slice(4).map((c) => `<li><a href="/coleccion/${c.slug}/">${esc(c.nombre)}</a></li>`).join('')}</ul></div>
-<div><h2>Sitio</h2><ul><li><a href="/ampliar/">Ampliar imagen</a></li><li><a href="/licencia/">Licencia y uso</a></li><li><a href="/terminos/">Términos de uso</a></li><li><a href="/privacidad/">Privacidad</a></li><li><button class="linkbtn" type="button" data-cookies>Preferencias de cookies</button></li><li><a href="/contacto/">Contacto</a></li></ul></div>
+<div><h2>Sitio</h2><ul><li><a href="/ampliar/">Ampliar imagen</a></li><li><a href="/licencia/">Licencia y uso</a></li><li><a href="/terminos/">Términos de uso</a></li><li><a href="/aviso-ia/">Imágenes de IA</a></li><li><a href="/privacidad/">Privacidad</a></li><li><button class="linkbtn" type="button" data-cookies>Preferencias de cookies</button></li><li><a href="/contacto/">Contacto</a></li></ul></div>
 </div>
 <div class="foot-mark" aria-hidden="true">Fondo Blanco</div>
 <div class="foot-legal"><span>© ${new Date().getFullYear()} Fondo Blanco · Imágenes bajo ${sitio.licencia.nombre}</span><span>Tipografía: Archivo Black, Acumin Pro y Source Code Pro vía Adobe Fonts</span></div>
@@ -247,6 +250,7 @@ function ficha(f) {
   const usos = (seoCol[f.coleccion] || {}).usos || 'proyectos web, redes sociales y presentaciones';
   const contexto = `${f.titulo} es una foto gratis de la colección ${f.col.nombre.toLowerCase()}, en formato ${f.w >= f.h ? 'horizontal' : 'vertical'} de ${f.w}×${f.h} px. Sirve para ${usos}.${f.espacio ? ' Tiene espacio libre para añadir texto.' : ''} Se descarga sin registro; solo da crédito a Fondo Blanco.`;
   const credito = `Foto: Fondo Blanco (fondoblanco.co) · ${sitio.licencia.nombre}`;
+  const creditoHtml = `Foto: <a href="${URL}${f.url}">Fondo Blanco</a> · <a href="${sitio.licencia.url}" rel="license">${sitio.licencia.nombre}</a>`;
   const body = `<div class="wrap">
 <nav class="crumbs mono" aria-label="Ruta"><a href="/">Inicio</a><span aria-hidden="true">/</span><a href="/coleccion/${f.coleccion}/">${esc(f.col.nombre)}</a><span aria-hidden="true">/</span><span aria-current="page">${f.code}</span></nav>
 <article class="photo">
@@ -258,15 +262,16 @@ function ficha(f) {
 <p class="ctx">${esc(contexto)}</p>
 <div class="actions">
 <a class="btn primary" href="${f.dl}" download>${ICON.dl}<span>Descargar gratis <small>· JPG ${mb(f.bytes)}</small></span></a>
-<div class="row"><button class="btn ghost" type="button" id="credito" data-v="${esc(credito)}">${ICON.copy}Copiar crédito</button><button class="btn ghost" type="button" id="enlace">Copiar enlace</button></div>
+<div class="row"><button class="btn ghost" type="button" id="credito" data-v="${esc(credito)}">${ICON.copy}Copiar crédito</button><button class="btn ghost" type="button" id="enlace">Copiar enlace</button><button class="btn ghost wide" type="button" id="credito-html" data-v="${esc(creditoHtml)}">${ICON.copy}Copiar crédito con enlace (HTML)</button></div>
 </div>
+<p class="note ia-note">Imagen generada con IA. Se ofrece sin garantías y su uso es tu responsabilidad. <a href="/aviso-ia/">Lee el aviso</a>.</p>
 <table class="specs"><tbody>
 <tr><th scope="row">Dimensiones</th><td>${f.w} × ${f.h} px</td></tr>
 <tr><th scope="row">Formato</th><td>JPG · ${mb(f.bytes)}</td></tr>
 <tr><th scope="row">Orientación</th><td>${f.w >= f.h ? 'Horizontal' : 'Vertical'}</td></tr>
 <tr><th scope="row">Espacio para texto</th><td>${f.espacio ? 'Sí' : 'No'}</td></tr>
 <tr><th scope="row">Licencia</th><td><a href="/licencia/">${sitio.licencia.nombre}</a> · uso comercial permitido</td></tr>
-<tr><th scope="row">Origen</th><td>Imagen generada con IA y revisada a mano</td></tr>
+<tr><th scope="row">Origen</th><td>Imagen generada con IA y revisada a mano · <a href="/aviso-ia/">qué significa</a></td></tr>
 </tbody></table>
 <p class="label">Paleta · toca para copiar</p>
 <div class="palette">${f.paleta.slice(0, 5).map((h) => `<button class="swatch" type="button" style="--s:${h}" data-v="${h}" aria-label="Copiar color ${h}"><i></i><span>${h}</span></button>`).join('')}</div>
@@ -278,7 +283,7 @@ function ficha(f) {
 <section aria-labelledby="h-rel"><div class="section-head"><h2 id="h-rel">Más de ${esc(f.col.nombre)}</h2><a class="mono" href="/coleccion/${f.coleccion}/">Ver colección →</a></div>
 <ul class="grid">${[...rel, ...extra].map((x) => card(x)).join('\n')}</ul></section>
 </div>`;
-  const script = `${SCRIPT_COMUN}document.getElementById('credito').addEventListener('click',e=>copy(e.currentTarget.dataset.v,'Crédito copiado'));document.getElementById('enlace').addEventListener('click',()=>copy(location.href.split('#')[0],'Enlace copiado'));document.querySelectorAll('.swatch').forEach(b=>b.addEventListener('click',()=>copy(b.dataset.v,'Color '+b.dataset.v+' copiado')));`;
+  const script = `${SCRIPT_COMUN}document.getElementById('credito').addEventListener('click',e=>copy(e.currentTarget.dataset.v,'Crédito copiado'));document.getElementById('credito-html').addEventListener('click',e=>copy(e.currentTarget.dataset.v,'Crédito con enlace copiado'));document.getElementById('enlace').addEventListener('click',()=>copy(location.href.split('#')[0],'Enlace copiado'));document.querySelectorAll('.swatch').forEach(b=>b.addEventListener('click',()=>copy(b.dataset.v,'Color '+b.dataset.v+' copiado')));`;
   const jsonld = [
     { '@context': 'https://schema.org', '@type': 'ImageObject', name: f.titulo, description: f.desc, contentUrl: URL + f.dl,
       thumbnailUrl: `${URL}/img/${f.slug}-480.webp`, url: URL + f.url, width: f.w, height: f.h, encodingFormat: 'image/jpeg',
@@ -331,45 +336,13 @@ function pagina(slug, { title, h1, intro, html, desc, nav, script = '' }) {
 }
 
 function paginas() {
-  pagina('licencia', {
-    title: 'Licencia y condiciones de uso — Fondo Blanco', h1: 'Licencia', nav: 'licencia',
-    desc: `Todas las fotos de Fondo Blanco se publican bajo ${sitio.licencia.nombre}: úsalas gratis, también con fines comerciales, dando crédito.`,
-    intro: `Todas las fotos se publican bajo la licencia <a href="${sitio.licencia.url}" rel="license">Creative Commons Atribución 4.0 (CC BY 4.0)</a>. Gratis, también para uso comercial.`,
-    html: `<div class="callout"><p><strong>En resumen:</strong> descarga, edita y usa las fotos donde quieras. Solo da crédito: <code>Foto: Fondo Blanco (fondoblanco.co)</code></p></div>
-<h2>Puedes</h2><ul><li>Usar las fotos en sitios web, redes sociales, presentaciones, publicidad, empaques e impresos.</li><li>Usarlas en proyectos personales y comerciales, sin pagar nada.</li><li>Recortarlas, editarlas, añadir texto y combinarlas con otros materiales.</li></ul>
-<h2>Debes</h2><ul><li>Dar crédito a <strong>Fondo Blanco</strong> de forma razonable, por ejemplo en el pie de foto, en los créditos del sitio o en la descripción de la publicación.</li><li>No dar a entender que Fondo Blanco respalda tu marca, producto u opinión.</li></ul>
-<h2>Ten en cuenta</h2><ul><li>Las imágenes se crearon con inteligencia artificial y se revisaron una a una. Las personas que aparecen no son personas reales identificables.</li><li>No uses las fotos para engañar, por ejemplo presentándolas como hechos reales o documentales.</li><li>No redistribuyas la colección completa como si fuera un banco de imágenes propio.</li></ul>
-<h2>Cómo dar crédito</h2><p>Cada ficha tiene un botón «Copiar crédito». El texto recomendado es: <code>Foto: Fondo Blanco (fondoblanco.co) · CC BY 4.0</code></p>` });
-
-  pagina('privacidad', {
-    title: 'Política de privacidad — Fondo Blanco', h1: 'Privacidad',
-    desc: 'Fondo Blanco no usa cookies de seguimiento ni publicidad, no pide registro y no recopila datos personales. Solo guarda una cookie técnica con tu aceptación.',
-    intro: `Resumen corto: no usamos cookies de seguimiento ni publicidad, no hay registro y solo recibimos los datos que tú envíes por el formulario de contacto. Actualizado el ${HOY}.`,
-    html: `<h2>Qué datos recopilamos</h2><p>Ninguno al navegar. Fondo Blanco es un sitio estático: no tiene cuentas ni comentarios, y no usamos analítica ni publicidad. Solo recibimos lo que escribas en el formulario de contacto.</p>
-<h2>Cookies</h2><p>Este sitio solo instala una cookie técnica propia, <code>fb_consent</code>, que dura 12 meses y sirve para recordar que aceptaste los <a href="/terminos/">Términos de uso</a> y esta política, para no preguntarte en cada página. No contiene datos personales ni sirve para seguirte. Puedes borrarla cuando quieras desde el botón «Preferencias de cookies» del pie de página o desde tu navegador; si la borras, te volveremos a pedir la aceptación para continuar.</p>
-<h2>Herramientas de ampliación</h2><p>«Ampliar imagen» y «Ampliar a 4K» procesan las imágenes dentro de tu navegador, con tu propio equipo. La imagen que elijas <strong>no se envía a ningún servidor</strong> ni a terceros. Al usarlas, tu navegador descarga desde este mismo sitio el modelo de inteligencia artificial y sus archivos de apoyo.</p>
-<h2>Servicios de terceros</h2><ul><li><strong>GitHub Pages</strong> aloja el sitio. Como cualquier servidor web, puede registrar datos técnicos de la visita (como la dirección IP) por motivos de seguridad. Consulta la <a href="https://docs.github.com/es/site-policy/privacy-policies/github-general-privacy-statement" rel="noopener">declaración de privacidad de GitHub</a>.</li><li><strong>Adobe Fonts</strong> sirve las tipografías. Adobe registra datos técnicos para calcular el uso de las fuentes y no usa cookies. Consulta la <a href="https://www.adobe.com/es/privacy/policies/adobe-fonts.html" rel="noopener">política de privacidad de Adobe Fonts</a>.</li></ul>
-<h2>Formulario de contacto</h2><p>Si nos escribes desde la página de <a href="/contacto/">contacto</a>, recibimos tu nombre, tu correo y tu mensaje, solo para responderte. El envío lo procesa <strong>FormSubmit</strong>, que reenvía el mensaje a nuestro correo. No usamos esos datos para publicidad.</p><h2>Contacto</h2><p>Si tienes preguntas sobre privacidad, escríbenos desde la página de <a href="/contacto/">contacto</a>.</p>` });
-
-  pagina('terminos', {
-    title: 'Términos de uso — Fondo Blanco', h1: 'Términos de uso', nav: '',
-    desc: 'Condiciones para usar fondoblanco.co: fotos gratis con licencia CC BY 4.0, imágenes generadas con IA y herramientas de ampliación que funcionan en tu navegador.',
-    intro: `Al seguir navegando en fondoblanco.co aceptas estas condiciones. Actualizado el ${HOY}.`,
-    html: `<h2>1. Qué es Fondo Blanco</h2><p>Fondo Blanco es un banco de fotos de stock gratuito y un conjunto de herramientas para ampliar imágenes. El sitio se ofrece tal como está, sin necesidad de registro.</p>
-<h2>2. Uso de las fotos</h2><p>Las fotos se publican bajo la licencia <a href="${sitio.licencia.url}" rel="license">${sitio.licencia.nombre}</a>: puedes usarlas gratis, también con fines comerciales, dando crédito a Fondo Blanco. Los detalles están en la página de <a href="/licencia/">licencia</a>.</p>
-<h2>3. Imágenes creadas con inteligencia artificial</h2><p>Las fotos se generaron con inteligencia artificial y se revisaron una a una. Las personas que aparecen no son personas reales identificables. No las uses para engañar, por ejemplo presentándolas como hechos reales o documentales, ni para suplantar a nadie.</p>
-<h2>4. Herramientas «Ampliar imagen» y «Ampliar a 4K»</h2><ul><li>Funcionan dentro de tu navegador: tus imágenes no se envían a nuestros servidores.</li><li>El resultado lo genera un modelo de inteligencia artificial que reconstruye detalle; puede suavizar texturas o inventar detalles que no existían. Revisa siempre el resultado antes de usarlo.</li><li>Eres responsable de tener derecho a usar y modificar las imágenes que amplíes. No las uses con contenido ilegal ni que vulnere derechos de terceros.</li><li>La velocidad depende de tu dispositivo. Pueden tardar varios minutos en equipos sin tarjeta gráfica compatible.</li></ul>
-<h2>5. Uso aceptable</h2><p>No intentes dañar, saturar ni sobrecargar el sitio, ni usar sistemas automáticos para descargar la colección completa y redistribuirla como si fuera un banco de imágenes propio.</p>
-<h2>6. Disponibilidad y garantías</h2><p>Hacemos lo posible por que el sitio funcione siempre, pero no garantizamos que esté disponible sin interrupciones ni libre de errores. El contenido y las herramientas se ofrecen sin garantías de ningún tipo, y no nos hacemos responsables de los daños que puedan derivarse de su uso, en la medida que lo permita la ley.</p>
-<h2>7. Enlaces y servicios de terceros</h2><p>El sitio usa servicios de terceros, como el alojamiento en GitHub Pages y las tipografías de Adobe Fonts, que se rigen por sus propias condiciones. Más detalles en la <a href="/privacidad/">política de privacidad</a>.</p>
-<h2>8. Cambios</h2><p>Podemos actualizar estos términos. La versión vigente es la publicada en esta página, con su fecha de actualización.</p>
-<h2>9. Contacto</h2><p>Si tienes dudas sobre estos términos, escríbenos desde la página de <a href="/contacto/">contacto</a>.</p>` });
+  paginasLegales({ pagina, sitio, HOY });
 
   const tok = sitio.formToken;
   const form = tok ? `<form class="cform" id="cform" action="https://formsubmit.co/${esc(tok)}" method="POST">
 <div class="f"><label for="cn">Nombre</label><input id="cn" name="name" required autocomplete="name" maxlength="80"></div>
 <div class="f"><label for="ce">Tu correo (para responderte)</label><input id="ce" name="email" type="email" required autocomplete="email" maxlength="120"></div>
-<div class="f"><label for="cm">Motivo</label><select id="cm" name="motivo"><option>Soporte</option><option>Reportar una foto</option><option>Duda sobre la licencia</option><option>Sugerir fotos</option><option>Otro</option></select></div>
+<div class="f"><label for="cm">Motivo</label><select id="cm" name="motivo"><option>Soporte</option><option>Reportar una foto</option><option>Retirar una imagen</option><option>Duda sobre la licencia</option><option>Mis datos personales</option><option>Sugerir fotos</option><option>Otro</option></select></div>
 <div class="f"><label for="cx">Mensaje</label><textarea id="cx" name="message" rows="6" required minlength="10" maxlength="3000"></textarea></div>
 <input type="text" name="_honey" tabindex="-1" autocomplete="off" style="display:none">
 <input type="hidden" name="_subject" value="Mensaje desde fondoblanco.co">
@@ -384,7 +357,7 @@ f.addEventListener('submit',async e=>{e.preventDefault();const b=f.querySelector
     title: 'Contacto y soporte — Fondo Blanco', h1: 'Contacto y soporte', nav: 'contacto', script: tok ? formScript : '',
     desc: 'Escríbenos para pedir soporte, reportar una foto, sugerir imágenes o preguntar por la licencia de Fondo Blanco.',
     intro: '¿Necesitas ayuda, encontraste un error o tienes una duda sobre la licencia? Escríbenos y te respondemos.',
-    html: `${form}<h2>Antes de escribir</h2><ul><li>Para dudas de uso, revisa primero la <a href="/licencia/">licencia</a>.</li><li>Si reportas una foto, incluye su código (por ejemplo <code>FB-001</code>).</li></ul>` });
+    html: `${form}<h2>Antes de escribir</h2><ul><li>Para dudas de uso, revisa primero la <a href="/licencia/">licencia</a>.</li><li>Si reportas una foto o pides retirarla, incluye su código (por ejemplo <code>FB-001</code>) y el motivo. Revisamos cada solicitud y, si corresponde, la retiramos lo antes posible.</li><li>Para consultar, corregir o borrar tus datos personales, elige el motivo «Mis datos personales».</li></ul>` });
 
   write('404.html', layout({ title: 'Página no encontrada — Fondo Blanco', desc: 'Esta página no existe.', canon: '/404.html', noindex: true,
     body: `<div class="wrap"><header class="page-head"><p class="mono" style="color:var(--signal-ink);margin:0">Error 404</p><h1>Fuera de cuadro</h1><p>Esta página no existe o cambió de lugar. Las fotos del sitio anterior se reorganizaron en colecciones nuevas.</p></header>
@@ -402,7 +375,7 @@ function ampliar() {
 <div class="amp-stage" id="stage">
 <div class="amp-drop" id="drop" tabindex="0" role="button" aria-label="Elegir una imagen"><div>
 <svg viewBox="0 0 48 48" aria-hidden="true"><path d="M24 34V12M14 21l10-10 10 10M8 38h32"/></svg>
-<p class="amp-big">Suelta tu imagen aquí</p><p>o toca para elegir un archivo. También puedes pegarla con Ctrl+V.</p><span class="mono">JPG · PNG · WebP · hasta 25 MB</span></div></div>
+<p class="amp-big">Suelta tu imagen aquí</p><p>o toca para elegir un archivo. También puedes pegarla con Ctrl+V.</p><span class="mono">JPG · PNG · WebP · hasta 25 MB</span><p class="amp-legal">Usa solo imágenes que tengas derecho a modificar. El resultado lo genera una IA y se ofrece sin garantías. <a href="/terminos/">Términos</a></p></div></div>
 <div class="amp-view" id="view" hidden><div class="amp-cmp" id="cmp">
 <img id="imgBefore" alt="Imagen original"><div class="amp-after" id="afterWrap" hidden><img id="imgAfter" alt="Imagen ampliada"></div>
 <div class="amp-bar" id="bar" hidden></div><div class="amp-knob" id="knob" hidden>↔</div>
@@ -466,7 +439,7 @@ function seo() {
     { loc: '/', pr: '1.0' },
     ...colecciones.map((c) => ({ loc: `/coleccion/${c.slug}/`, pr: '0.8' })),
     ...fotos.map((f) => ({ loc: f.url, pr: '0.7', img: f })),
-    { loc: '/ampliar/', pr: '0.6' }, { loc: '/licencia/', pr: '0.4' }, { loc: '/contacto/', pr: '0.3' }, { loc: '/terminos/', pr: '0.2' }, { loc: '/privacidad/', pr: '0.2' },
+    { loc: '/ampliar/', pr: '0.6' }, { loc: '/licencia/', pr: '0.4' }, { loc: '/contacto/', pr: '0.3' }, { loc: '/terminos/', pr: '0.2' }, { loc: '/aviso-ia/', pr: '0.2' }, { loc: '/privacidad/', pr: '0.2' },
   ];
   write('sitemap.xml', `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
