@@ -647,7 +647,7 @@ function asistente() {
   const datos = {
     entradas: cfg.entradas.map((e) => ({ id: e.id, t: e.t, p: e.p || [], k: e.k || [], r: rellenar(e.r) })),
     saludos: cfg.saludos,
-    sugeridas: ['gratis', 'comercial', 'credito', 'ia', 'quitar', 'banner'],
+    sugeridas: ['gratis', 'comercial', 'ia', 'quitar', 'banner'],
     colecciones: colecciones.map((c) => ({ n: c.nombre, u: `/coleccion/${c.slug}/`, c: c.fotos.length })),
     etiquetas: etiquetas.map((e) => ({ n: e.nombre, u: e.url, c: e.fotos.length })),
   };
