@@ -5458,5 +5458,408 @@
    "#a06841"
   ],
   "color": "#9b5425"
+ },
+ "piel-de-tigre-naranja-y-negra": {
+  "w": 2688,
+  "h": 1520,
+  "bytes": 1402022,
+  "paleta": [
+   "#da6208",
+   "#1f120e",
+   "#ea841c",
+   "#a94b0c",
+   "#652d0d"
+  ],
+  "color": "#9d4c0f"
+ },
+ "piel-de-serpiente-con-escamas-verdes-y-doradas": {
+  "w": 2688,
+  "h": 1520,
+  "bytes": 1039916,
+  "paleta": [
+   "#72562e",
+   "#513a1e",
+   "#997647",
+   "#311e11",
+   "#c6a678"
+  ],
+  "color": "#6f5432"
+ },
+ "panal-de-miel-con-gotas-doradas": {
+  "w": 2688,
+  "h": 1520,
+  "bytes": 808008,
+  "paleta": [
+   "#ce6708",
+   "#e38714",
+   "#b34a02",
+   "#f1a829",
+   "#f0b55f"
+  ],
+  "color": "#d87e1a"
+ },
+ "lana-rizada-color-crema": {
+  "w": 2688,
+  "h": 1520,
+  "bytes": 702806,
+  "paleta": [
+   "#d2bc9d",
+   "#deceb6",
+   "#c4a881",
+   "#eae1d0",
+   "#b08d61"
+  ],
+  "color": "#d2bea0"
+ },
+ "ala-de-mariposa-azul-en-primer-plano": {
+  "w": 2688,
+  "h": 1520,
+  "bytes": 1287462,
+  "paleta": [
+   "#025fe5",
+   "#033ac0",
+   "#089af3",
+   "#0f2e80",
+   "#1e203a"
+  ],
+  "color": "#0754c2"
+ },
+ "piel-blanca-con-manchas-negras-de-leopardo": {
+  "w": 2688,
+  "h": 1520,
+  "bytes": 1157323,
+  "paleta": [
+   "#b1afaf",
+   "#929193",
+   "#cdcccc",
+   "#68686b",
+   "#38383b"
+  ],
+  "color": "#929192"
+ },
+ "piel-de-jirafa-en-marron-y-crema": {
+  "w": 2688,
+  "h": 1520,
+  "bytes": 1296839,
+  "paleta": [
+   "#7d2e09",
+   "#672106",
+   "#e8c9a3",
+   "#994a1b",
+   "#bf875c"
+  ],
+  "color": "#8e4a26"
+ },
+ "cuero-de-cocodrilo-verde-oscuro": {
+  "w": 2688,
+  "h": 1520,
+  "bytes": 1192000,
+  "paleta": [
+   "#292719",
+   "#3c3825",
+   "#17170d",
+   "#574f37",
+   "#8d7e60"
+  ],
+  "color": "#363222"
+ },
+ "plumas-rosadas-en-primer-plano": {
+  "w": 2688,
+  "h": 1520,
+  "bytes": 957586,
+  "paleta": [
+   "#f097a3",
+   "#f07f84",
+   "#ef6763",
+   "#f2aeba",
+   "#ed4d43"
+  ],
+  "color": "#f08185"
+ },
+ "piel-de-cebra-en-blanco-y-negro": {
+  "w": 2688,
+  "h": 1520,
+  "bytes": 1023803,
+  "paleta": [
+   "#151314",
+   "#ebeae9",
+   "#363435",
+   "#afadab",
+   "#726f6d"
+  ],
+  "color": "#737171"
+ },
+ "coral-cerebro-dorado-en-detalle": {
+  "w": 2688,
+  "h": 1520,
+  "bytes": 1053318,
+  "paleta": [
+   "#c0903d",
+   "#845c26",
+   "#684315",
+   "#aa7628",
+   "#d6a858"
+  ],
+  "color": "#a17430"
+ },
+ "esferas-grises-y-perlas-sobre-una-superficie": {
+  "w": 2688,
+  "h": 1520,
+  "bytes": 792775,
+  "paleta": [
+   "#434142",
+   "#615d5b",
+   "#2a292c",
+   "#89837f",
+   "#c9c2bc"
+  ],
+  "color": "#595555"
+ },
+ "plumaje-de-buho-con-rayas-en-tonos-tierra": {
+  "w": 2688,
+  "h": 1520,
+  "bytes": 1129712,
+  "paleta": [
+   "#603e27",
+   "#805839",
+   "#a07955",
+   "#3e2618",
+   "#c1a488"
+  ],
+  "color": "#76543a"
+ },
+ "nacar-iridiscente-con-ondas-de-colores": {
+  "w": 2688,
+  "h": 1520,
+  "bytes": 809364,
+  "paleta": [
+   "#968fa7",
+   "#687b82",
+   "#b7b9d7",
+   "#3f5d5d",
+   "#3bb1b4"
+  ],
+  "color": "#768f9d"
+ },
+ "pelaje-rojizo-con-textura-suave": {
+  "w": 2688,
+  "h": 1520,
+  "bytes": 1147213,
+  "paleta": [
+   "#8a2609",
+   "#6a1907",
+   "#a83a0c",
+   "#3e1209",
+   "#c95917"
+  ],
+  "color": "#862a0b"
+ },
+ "nebulosa-de-colores-con-columnas-de-gas": {
+  "w": 2688,
+  "h": 1520,
+  "bytes": 1044840,
+  "paleta": [
+   "#26262a",
+   "#74452c",
+   "#305459",
+   "#b57e4c",
+   "#639585"
+  ],
+  "color": "#564f43"
+ },
+ "galaxia-espiral-con-polvo-estelar": {
+  "w": 2688,
+  "h": 1520,
+  "bytes": 1041156,
+  "paleta": [
+   "#0d0b18",
+   "#2e2344",
+   "#51426c",
+   "#7f6a99",
+   "#c5a2bb"
+  ],
+  "color": "#4b3e5d"
+ },
+ "superficie-lunar-con-crateres": {
+  "w": 2688,
+  "h": 1520,
+  "bytes": 1244424,
+  "paleta": [
+   "#757576",
+   "#878787",
+   "#626263",
+   "#9d9d9d",
+   "#474747"
+  ],
+  "color": "#767676"
+ },
+ "atmosfera-de-jupiter-con-tormentas": {
+  "w": 2688,
+  "h": 1520,
+  "bytes": 1039465,
+  "paleta": [
+   "#765f4b",
+   "#947e6a",
+   "#964511",
+   "#bea994",
+   "#bd7b3f"
+  ],
+  "color": "#987253"
+ },
+ "dunas-rojizas-con-relieve-rocoso": {
+  "w": 2688,
+  "h": 1520,
+  "bytes": 1166054,
+  "paleta": [
+   "#9d4824",
+   "#ba5a2b",
+   "#763b23",
+   "#d07038",
+   "#492517"
+  ],
+  "color": "#9d4d27"
+ },
+ "anillos-planetarios-de-cerca": {
+  "w": 2688,
+  "h": 1520,
+  "bytes": 1090786,
+  "paleta": [
+   "#a79078",
+   "#7f6f60",
+   "#d1b491",
+   "#4f433a",
+   "#040302"
+  ],
+  "color": "#83715e"
+ },
+ "laminas-de-metal-cruzadas-en-textura": {
+  "w": 2688,
+  "h": 1520,
+  "bytes": 1229679,
+  "paleta": [
+   "#7d7370",
+   "#655c58",
+   "#978e8a",
+   "#4d4543",
+   "#b8b2b0"
+  ],
+  "color": "#78706c"
+ },
+ "aurora-boreal-vista-desde-el-espacio": {
+  "w": 2688,
+  "h": 1520,
+  "bytes": 582731,
+  "paleta": [
+   "#0f1932",
+   "#28385d",
+   "#219363",
+   "#594ea1",
+   "#5dc7ac"
+  ],
+  "color": "#29495d"
+ },
+ "jaguar-descansando-sobre-una-rama": {
+  "w": 2688,
+  "h": 1520,
+  "bytes": 866768,
+  "paleta": [
+   "#686026",
+   "#4a4816",
+   "#887a39",
+   "#2a2909",
+   "#c0b154"
+  ],
+  "color": "#615b24"
+ },
+ "capibara-en-un-humedal-al-amanecer": {
+  "w": 2688,
+  "h": 1520,
+  "bytes": 733548,
+  "paleta": [
+   "#825321",
+   "#a36b31",
+   "#bf864f",
+   "#eca85c",
+   "#542d12"
+  ],
+  "color": "#a16c35"
+ },
+ "leopardo-de-las-nieves-entre-rocas-nevadas": {
+  "w": 2688,
+  "h": 1520,
+  "bytes": 673330,
+  "paleta": [
+   "#a1b0c5",
+   "#8793a7",
+   "#717987",
+   "#c3cee1",
+   "#57585f"
+  ],
+  "color": "#8d97a9"
+ },
+ "ballena-jorobada-saltando-sobre-el-mar": {
+  "w": 2688,
+  "h": 1520,
+  "bytes": 1032648,
+  "paleta": [
+   "#556475",
+   "#737f8f",
+   "#949ca8",
+   "#2e4050",
+   "#c8c9cd"
+  ],
+  "color": "#6f7b89"
+ },
+ "guacamaya-volando-sobre-la-selva": {
+  "w": 2688,
+  "h": 1520,
+  "bytes": 564080,
+  "paleta": [
+   "#526938",
+   "#273f28",
+   "#9b9743",
+   "#1e4d91",
+   "#ac2811"
+  ],
+  "color": "#53593c"
+ },
+ "lobo-en-un-bosque-con-niebla": {
+  "w": 2688,
+  "h": 1520,
+  "bytes": 468848,
+  "paleta": [
+   "#4d5c71",
+   "#3a4756",
+   "#6b7b94",
+   "#26303a",
+   "#ccbabe"
+  ],
+  "color": "#4b586a"
+ },
+ "buho-cornudo-entre-hojas-de-otono": {
+  "w": 2688,
+  "h": 1520,
+  "bytes": 722054,
+  "paleta": [
+   "#694b2f",
+   "#995b1c",
+   "#472c18",
+   "#d58621",
+   "#8f6f53"
+  ],
+  "color": "#825528"
+ },
+ "colibri-junto-a-una-flor-roja": {
+  "w": 2688,
+  "h": 1520,
+  "bytes": 501507,
+  "paleta": [
+   "#121b07",
+   "#2d431a",
+   "#a21814",
+   "#536d43",
+   "#b38558"
+  ],
+  "color": "#44371d"
  }
 }

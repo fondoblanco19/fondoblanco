@@ -6110,6 +6110,502 @@
       "coleccion": "fondos",
       "espacio": true,
       "archivo": "IMAGENES STOCK 5/hf_20261125_120300_edae30e5-1847-4201-b783-79fe06d2add1.png"
+    },
+    {
+      "n": 428,
+      "slug": "piel-de-tigre-naranja-y-negra",
+      "titulo": "Piel de tigre naranja y negra",
+      "desc": "Pelaje de tigre en primer plano, con franjas negras sobre naranja intenso. Textura de alto contraste.",
+      "tags": [
+        "tigre",
+        "animal print",
+        "textura",
+        "naranja",
+        "piel"
+      ],
+      "coleccion": "fondos",
+      "espacio": false,
+      "archivo": "IMAGENES STOCK 5/hf_20261125_120205_a5a24aed-23b6-4c83-b827-c87835ee13d9.png"
+    },
+    {
+      "n": 429,
+      "slug": "piel-de-serpiente-con-escamas-verdes-y-doradas",
+      "titulo": "Piel de serpiente con escamas verdes y doradas",
+      "desc": "Escamas de serpiente en detalle, en verde oliva, marrón y crema, con un patrón de rombos.",
+      "tags": [
+        "serpiente",
+        "animal print",
+        "escamas",
+        "textura",
+        "reptil"
+      ],
+      "coleccion": "fondos",
+      "espacio": false,
+      "archivo": "IMAGENES STOCK 5/hf_20261125_120227_2bcce969-ea37-4835-82fa-f6a72adc0dae.png"
+    },
+    {
+      "n": 430,
+      "slug": "panal-de-miel-con-gotas-doradas",
+      "titulo": "Panal de miel con gotas doradas",
+      "desc": "Panal hexagonal con miel brillante y gotas doradas. Textura natural y cálida.",
+      "tags": [
+        "miel",
+        "panal",
+        "textura",
+        "dorado",
+        "naturaleza"
+      ],
+      "coleccion": "fondos",
+      "espacio": false,
+      "archivo": "IMAGENES STOCK 5/hf_20261125_120239_c94474c0-f275-4ea6-8cd9-d478c46cff7a.png"
+    },
+    {
+      "n": 431,
+      "slug": "lana-rizada-color-crema",
+      "titulo": "Lana rizada color crema",
+      "desc": "Vellón de lana rizada en tono crema, con textura suave y esponjosa.",
+      "tags": [
+        "lana",
+        "textura",
+        "crema",
+        "suave",
+        "tela"
+      ],
+      "coleccion": "fondos",
+      "espacio": false,
+      "archivo": "IMAGENES STOCK 5/hf_20261125_120315_61f2d3b8-31cd-4330-a53f-9b93a31bf411.png"
+    },
+    {
+      "n": 432,
+      "slug": "ala-de-mariposa-azul-en-primer-plano",
+      "titulo": "Ala de mariposa azul en primer plano",
+      "desc": "Escamas azules iridiscentes y nervaduras oscuras de un ala de mariposa.",
+      "tags": [
+        "mariposa",
+        "azul",
+        "textura",
+        "naturaleza",
+        "iridiscente"
+      ],
+      "coleccion": "naturaleza",
+      "espacio": false,
+      "archivo": "IMAGENES STOCK 5/hf_20261125_120328_d7516995-c47a-4a0e-bfe7-4e9913e7bf9d.png"
+    },
+    {
+      "n": 433,
+      "slug": "piel-blanca-con-manchas-negras-de-leopardo",
+      "titulo": "Piel blanca con manchas negras de leopardo",
+      "desc": "Pelaje blanco y esponjoso con manchas negras en forma de rosetas.",
+      "tags": [
+        "animal print",
+        "leopardo",
+        "textura",
+        "blanco",
+        "piel"
+      ],
+      "coleccion": "fondos",
+      "espacio": false,
+      "archivo": "IMAGENES STOCK 5/hf_20261125_120348_df8cab51-a592-4885-805c-faa95c906a40.png"
+    },
+    {
+      "n": 434,
+      "slug": "piel-de-jirafa-en-marron-y-crema",
+      "titulo": "Piel de jirafa en marrón y crema",
+      "desc": "Manchas marrones separadas por líneas claras, como la piel de una jirafa.",
+      "tags": [
+        "jirafa",
+        "animal print",
+        "textura",
+        "marrón",
+        "piel"
+      ],
+      "coleccion": "fondos",
+      "espacio": false,
+      "archivo": "IMAGENES STOCK 5/hf_20261125_120404_0d310b2a-73ac-4c41-ad2f-de4dc4413449.png"
+    },
+    {
+      "n": 435,
+      "slug": "cuero-de-cocodrilo-verde-oscuro",
+      "titulo": "Cuero de cocodrilo verde oscuro",
+      "desc": "Escamas rectangulares de cuero de cocodrilo en verde oscuro, con relieve marcado.",
+      "tags": [
+        "cocodrilo",
+        "cuero",
+        "textura",
+        "verde",
+        "reptil"
+      ],
+      "coleccion": "fondos",
+      "espacio": false,
+      "archivo": "IMAGENES STOCK 5/hf_20261125_120410_022c4984-3a84-420a-a40e-e5d5929390cb.png"
+    },
+    {
+      "n": 436,
+      "slug": "plumas-rosadas-en-primer-plano",
+      "titulo": "Plumas rosadas en primer plano",
+      "desc": "Plumas suaves en tonos rosa y coral, superpuestas. Textura delicada.",
+      "tags": [
+        "plumas",
+        "rosa",
+        "textura",
+        "suave",
+        "coral"
+      ],
+      "coleccion": "fondos",
+      "espacio": false,
+      "archivo": "IMAGENES STOCK 5/hf_20261125_120427_2d2c9fde-81c0-4fe6-977a-6368e4ec6ad6.png"
+    },
+    {
+      "n": 437,
+      "slug": "piel-de-cebra-en-blanco-y-negro",
+      "titulo": "Piel de cebra en blanco y negro",
+      "desc": "Franjas blancas y negras onduladas, en detalle de pelaje de cebra.",
+      "tags": [
+        "cebra",
+        "animal print",
+        "textura",
+        "blanco y negro",
+        "piel"
+      ],
+      "coleccion": "fondos",
+      "espacio": false,
+      "archivo": "IMAGENES STOCK 5/hf_20261125_120438_cf9c9069-f216-49e7-9bdf-465150c68aea.png"
+    },
+    {
+      "n": 438,
+      "slug": "coral-cerebro-dorado-en-detalle",
+      "titulo": "Coral cerebro dorado en detalle",
+      "desc": "Estructura de coral con surcos sinuosos en tono dorado. Textura orgánica.",
+      "tags": [
+        "coral",
+        "textura",
+        "dorado",
+        "mar",
+        "naturaleza"
+      ],
+      "coleccion": "naturaleza",
+      "espacio": false,
+      "archivo": "IMAGENES STOCK 5/hf_20261125_120449_1f6c45cc-304e-40d6-9a61-ce83479d673c.png"
+    },
+    {
+      "n": 439,
+      "slug": "esferas-grises-y-perlas-sobre-una-superficie",
+      "titulo": "Esferas grises y perlas sobre una superficie",
+      "desc": "Esferas de distintos tamaños en tonos grises y crema, con reflejos brillantes.",
+      "tags": [
+        "perlas",
+        "textura",
+        "gris",
+        "esferas",
+        "abstracto"
+      ],
+      "coleccion": "fondos",
+      "espacio": false,
+      "archivo": "IMAGENES STOCK 5/hf_20261125_120504_f986caa7-2a3d-486a-8977-88c6d1618790.png"
+    },
+    {
+      "n": 440,
+      "slug": "plumaje-de-buho-con-rayas-en-tonos-tierra",
+      "titulo": "Plumaje de búho con rayas en tonos tierra",
+      "desc": "Plumas con rayas oscuras y claras en tonos marrón y crema, en capas superpuestas.",
+      "tags": [
+        "búho",
+        "plumas",
+        "textura",
+        "marrón",
+        "naturaleza"
+      ],
+      "coleccion": "fondos",
+      "espacio": false,
+      "archivo": "IMAGENES STOCK 5/hf_20261125_120518_979c1288-6084-42bb-a906-805d5a1b9718.png"
+    },
+    {
+      "n": 441,
+      "slug": "nacar-iridiscente-con-ondas-de-colores",
+      "titulo": "Nácar iridiscente con ondas de colores",
+      "desc": "Superficie de nácar con ondas y reflejos en turquesa, rosa y violeta.",
+      "tags": [
+        "nácar",
+        "iridiscente",
+        "textura",
+        "colores",
+        "abstracto"
+      ],
+      "coleccion": "fondos",
+      "espacio": false,
+      "archivo": "IMAGENES STOCK 5/hf_20261125_120533_7c50ba62-214d-4d70-adb2-0fff0d16afa5.png"
+    },
+    {
+      "n": 442,
+      "slug": "pelaje-rojizo-con-textura-suave",
+      "titulo": "Pelaje rojizo con textura suave",
+      "desc": "Pelaje espeso en tonos naranja y rojo oscuro, con movimiento suave.",
+      "tags": [
+        "pelaje",
+        "textura",
+        "rojo",
+        "naranja",
+        "piel"
+      ],
+      "coleccion": "fondos",
+      "espacio": false,
+      "archivo": "IMAGENES STOCK 5/hf_20261125_120558_870c9b03-70cc-4045-aad1-350036662cfe.png"
+    },
+    {
+      "n": 443,
+      "slug": "nebulosa-de-colores-con-columnas-de-gas",
+      "titulo": "Nebulosa de colores con columnas de gas",
+      "desc": "Nebulosa con gas en verde, naranja y violeta, y estrellas brillantes sobre un fondo oscuro.",
+      "tags": [
+        "nebulosa",
+        "espacio",
+        "estrellas",
+        "ciencia",
+        "universo"
+      ],
+      "coleccion": "educacion",
+      "espacio": true,
+      "archivo": "IMAGENES STOCK 5/hf_20261125_120939_0ab4d138-df81-4b7c-9125-6e3678583fea.png"
+    },
+    {
+      "n": 444,
+      "slug": "galaxia-espiral-con-polvo-estelar",
+      "titulo": "Galaxia espiral con polvo estelar",
+      "desc": "Galaxia en espiral con brazos morados y dorados, sobre un cielo oscuro lleno de estrellas.",
+      "tags": [
+        "galaxia",
+        "espacio",
+        "estrellas",
+        "universo",
+        "ciencia"
+      ],
+      "coleccion": "educacion",
+      "espacio": true,
+      "archivo": "IMAGENES STOCK 5/hf_20261125_120945_e2066474-edfa-4238-a0ff-2cb3f3fb71fd.png"
+    },
+    {
+      "n": 445,
+      "slug": "superficie-lunar-con-crateres",
+      "titulo": "Superficie lunar con cráteres",
+      "desc": "Cráteres y rayos de eyección sobre una superficie gris, al estilo de las fotos de la Luna.",
+      "tags": [
+        "luna",
+        "cráteres",
+        "espacio",
+        "ciencia",
+        "gris"
+      ],
+      "coleccion": "educacion",
+      "espacio": false,
+      "archivo": "IMAGENES STOCK 5/hf_20261125_121027_fa621ff4-223d-4979-b888-aea80cd420e9.png"
+    },
+    {
+      "n": 446,
+      "slug": "atmosfera-de-jupiter-con-tormentas",
+      "titulo": "Atmósfera de Júpiter con tormentas",
+      "desc": "Bandas de nubes en tonos naranja y crema, con una gran tormenta roja.",
+      "tags": [
+        "júpiter",
+        "planeta",
+        "espacio",
+        "tormenta",
+        "ciencia"
+      ],
+      "coleccion": "educacion",
+      "espacio": false,
+      "archivo": "IMAGENES STOCK 5/hf_20261125_121042_61ef60b9-3cdc-4b12-9fcb-3c3b98f41a4c.png"
+    },
+    {
+      "n": 447,
+      "slug": "dunas-rojizas-con-relieve-rocoso",
+      "titulo": "Dunas rojizas con relieve rocoso",
+      "desc": "Dunas de arena naranja con crestas y rocas, vistas desde arriba.",
+      "tags": [
+        "dunas",
+        "desierto",
+        "naranja",
+        "paisaje",
+        "arena"
+      ],
+      "coleccion": "naturaleza",
+      "espacio": false,
+      "archivo": "IMAGENES STOCK 5/hf_20261125_121114_a9bd070a-bfb8-4f1f-944b-c181af3b8622.png"
+    },
+    {
+      "n": 448,
+      "slug": "anillos-planetarios-de-cerca",
+      "titulo": "Anillos planetarios de cerca",
+      "desc": "Anillos de hielo y roca vistos de cerca, con un planeta gaseoso al fondo.",
+      "tags": [
+        "anillos",
+        "planeta",
+        "espacio",
+        "ciencia",
+        "universo"
+      ],
+      "coleccion": "educacion",
+      "espacio": false,
+      "archivo": "IMAGENES STOCK 5/hf_20261125_121124_f3e54f3a-e8ce-4839-82e6-37a7f58f2de6.png"
+    },
+    {
+      "n": 449,
+      "slug": "laminas-de-metal-cruzadas-en-textura",
+      "titulo": "Láminas de metal cruzadas en textura",
+      "desc": "Tiras de metal entrelazadas en diagonal, con acabado cepillado. Textura industrial.",
+      "tags": [
+        "metal",
+        "textura",
+        "industrial",
+        "gris",
+        "tecnología"
+      ],
+      "coleccion": "fondos",
+      "espacio": false,
+      "archivo": "IMAGENES STOCK 5/hf_20261125_121158_9affd35f-395f-44f1-a43a-9d6323931170.png"
+    },
+    {
+      "n": 450,
+      "slug": "aurora-boreal-vista-desde-el-espacio",
+      "titulo": "Aurora boreal vista desde el espacio",
+      "desc": "Aurora verde y morada sobre la Tierra de noche, con luces de ciudades abajo.",
+      "tags": [
+        "aurora",
+        "espacio",
+        "noche",
+        "tierra",
+        "ciencia"
+      ],
+      "coleccion": "educacion",
+      "espacio": true,
+      "archivo": "IMAGENES STOCK 5/hf_20261125_121208_f7109616-c572-44b5-aea1-5d0ff62cb393.png"
+    },
+    {
+      "n": 451,
+      "slug": "jaguar-descansando-sobre-una-rama",
+      "titulo": "Jaguar descansando sobre una rama",
+      "desc": "Jaguar en la selva, echado sobre una rama cubierta de musgo, mirando de frente.",
+      "tags": [
+        "jaguar",
+        "animales",
+        "selva",
+        "naturaleza",
+        "fauna"
+      ],
+      "coleccion": "naturaleza",
+      "espacio": false,
+      "archivo": "IMAGENES STOCK 5/hf_20261125_121333_54449471-c0cc-4b66-9a1a-96a0b11298b4.png"
+    },
+    {
+      "n": 452,
+      "slug": "capibara-en-un-humedal-al-amanecer",
+      "titulo": "Capibara en un humedal al amanecer",
+      "desc": "Capibara de pie en el agua de un humedal, con pasto alto y luz dorada.",
+      "tags": [
+        "capibara",
+        "humedal",
+        "animales",
+        "amanecer",
+        "naturaleza"
+      ],
+      "coleccion": "naturaleza",
+      "espacio": true,
+      "archivo": "IMAGENES STOCK 5/hf_20261125_121342_ab1a18ba-4405-4f4f-9512-3684e4058f10.png"
+    },
+    {
+      "n": 453,
+      "slug": "leopardo-de-las-nieves-entre-rocas-nevadas",
+      "titulo": "Leopardo de las nieves entre rocas nevadas",
+      "desc": "Leopardo de las nieves caminando sobre rocas cubiertas de nieve, con montañas al fondo.",
+      "tags": [
+        "leopardo de las nieves",
+        "montañas",
+        "animales",
+        "nieve",
+        "naturaleza"
+      ],
+      "coleccion": "naturaleza",
+      "espacio": false,
+      "archivo": "IMAGENES STOCK 5/hf_20261125_121359_291478e8-6772-46d6-9486-03c1184951cb.png"
+    },
+    {
+      "n": 454,
+      "slug": "ballena-jorobada-saltando-sobre-el-mar",
+      "titulo": "Ballena jorobada saltando sobre el mar",
+      "desc": "Ballena jorobada en pleno salto, con rayos de sol y salpicaduras de agua.",
+      "tags": [
+        "ballena",
+        "mar",
+        "animales",
+        "océano",
+        "naturaleza"
+      ],
+      "coleccion": "naturaleza",
+      "espacio": false,
+      "archivo": "IMAGENES STOCK 5/hf_20261125_121826_0ece40c4-f572-4154-baa6-41ecf35715af.png"
+    },
+    {
+      "n": 455,
+      "slug": "guacamaya-volando-sobre-la-selva",
+      "titulo": "Guacamaya volando sobre la selva",
+      "desc": "Guacamaya roja, amarilla y azul en vuelo, con la selva verde de fondo.",
+      "tags": [
+        "guacamaya",
+        "selva",
+        "aves",
+        "colombia",
+        "naturaleza"
+      ],
+      "coleccion": "naturaleza",
+      "espacio": false,
+      "archivo": "IMAGENES STOCK 5/hf_20261125_121850_eedc0293-107a-46d4-ae51-ddf520a83365.png"
+    },
+    {
+      "n": 456,
+      "slug": "lobo-en-un-bosque-con-niebla",
+      "titulo": "Lobo en un bosque con niebla",
+      "desc": "Lobo gris de pie sobre una roca, en un bosque de pinos con niebla azulada.",
+      "tags": [
+        "lobo",
+        "bosque",
+        "animales",
+        "niebla",
+        "naturaleza"
+      ],
+      "coleccion": "naturaleza",
+      "espacio": false,
+      "archivo": "IMAGENES STOCK 5/hf_20261125_122043_d6cb5c2a-76fe-474d-9b85-3d2e7b5891fb.png"
+    },
+    {
+      "n": 457,
+      "slug": "buho-cornudo-entre-hojas-de-otono",
+      "titulo": "Búho cornudo entre hojas de otoño",
+      "desc": "Búho posado en una rama, rodeado de hojas naranjas y un fondo cálido de otoño.",
+      "tags": [
+        "búho",
+        "otoño",
+        "aves",
+        "animales",
+        "naturaleza"
+      ],
+      "coleccion": "naturaleza",
+      "espacio": false,
+      "archivo": "IMAGENES STOCK 5/hf_20261125_122105_ce051ff4-546e-4605-82c7-1efe8fd92f81.png"
+    },
+    {
+      "n": 458,
+      "slug": "colibri-junto-a-una-flor-roja",
+      "titulo": "Colibrí junto a una flor roja",
+      "desc": "Colibrí verde y azul en vuelo, bebiendo de una flor roja con gotas de agua.",
+      "tags": [
+        "colibrí",
+        "flor",
+        "aves",
+        "selva",
+        "naturaleza"
+      ],
+      "coleccion": "naturaleza",
+      "espacio": false,
+      "archivo": "IMAGENES STOCK 5/hf_20261125_122132_8c6269e2-475e-44f7-a27e-ef159652677e.png"
     }
   ]
 }

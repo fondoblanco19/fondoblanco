@@ -3,6 +3,7 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import crypto from 'node:crypto';
+import { execSync } from 'node:child_process';
 import sharp from 'sharp';
 import { paginasLegales, TERMS_VERSION } from './legal.mjs';
 
@@ -187,7 +188,7 @@ function footer() {
 <div><h2>Fondo Blanco</h2><p>Banco de imágenes gratis en alta resolución. Descarga, usa y da crédito: así de simple.</p></div>
 <div><h2>Colecciones</h2><ul>${colecciones.slice(0, 4).map((c) => `<li><a href="/coleccion/${c.slug}/">${esc(c.nombre)}</a></li>`).join('')}</ul></div>
 <div><h2>Más</h2><ul>${colecciones.slice(4).map((c) => `<li><a href="/coleccion/${c.slug}/">${esc(c.nombre)}</a></li>`).join('')}</ul></div>
-<div><h2>Sitio</h2><ul><li><a href="/ampliar/">Ampliar imagen</a></li><li><a href="/licencia/">Licencia y uso</a></li><li><a href="/terminos/">Términos de uso</a></li><li><a href="/aviso-ia/">Imágenes de IA</a></li><li><a href="/privacidad/">Privacidad</a></li><li><button class="linkbtn" type="button" data-cookies>Preferencias de cookies</button></li><li><a href="/contacto/">Contacto</a></li></ul></div>
+<div><h2>Sitio</h2><ul><li><a href="/ampliar/">Ampliar imagen</a></li><li><a href="/banner/">Hacer un banner</a></li><li><a href="/licencia/">Licencia y uso</a></li><li><a href="/terminos/">Términos de uso</a></li><li><a href="/aviso-ia/">Imágenes de IA</a></li><li><a href="/privacidad/">Privacidad</a></li><li><button class="linkbtn" type="button" data-cookies>Preferencias de cookies</button></li><li><a href="/contacto/">Contacto</a></li></ul></div>
 </div>
 <div class="foot-mark" aria-hidden="true">Fondo Blanco</div>
 <div class="foot-legal"><span>© ${new Date().getFullYear()} Fondo Blanco · Imágenes bajo ${sitio.licencia.nombre}</span><span>Tipografía: Archivo Black, Acumin Pro y Source Code Pro vía Adobe Fonts</span></div>
@@ -322,6 +323,7 @@ function ficha(f) {
 <a class="btn primary" href="${f.dl}" download>${ICON.dl}<span>Descargar gratis <small>· JPG ${mb(f.bytes)}</small></span></a>
 <div class="row"><button class="btn ghost" type="button" id="credito" data-v="${esc(credito)}">${ICON.copy}Copiar crédito</button><button class="btn ghost" type="button" id="enlace">Copiar enlace</button><button class="btn ghost wide" type="button" id="credito-html" data-v="${esc(creditoHtml)}">${ICON.copy}Copiar crédito con enlace (HTML)</button></div>
 </div>
+<p class="banner-cta"><a class="btn ghost" href="/banner/?foto=${f.slug}">Hacer un banner con esta foto →</a></p>
 <p class="note ia-note">Imagen generada con IA. Se ofrece sin garantías y su uso es tu responsabilidad. <a href="/aviso-ia/">Lee el aviso</a>.</p>
 <table class="specs"><tbody>
 <tr><th scope="row">Dimensiones</th><td>${f.w} × ${f.h} px</td></tr>
@@ -487,9 +489,91 @@ function redirecciones() {
   for (const [viejo, nuevo] of Object.entries(FOTOS_MOVIDAS)) {
     write(`foto/${viejo}/index.html`, `<!doctype html><html lang="es"><head><meta charset="utf-8"><title>Fondo Blanco</title><meta name="robots" content="noindex,follow"><link rel="canonical" href="${URL}/foto/${nuevo}/"><meta http-equiv="refresh" content="0; url=/foto/${nuevo}/"></head><body><p>Esta foto cambió de dirección. <a href="/foto/${nuevo}/">Ir a la foto</a>.</p></body></html>`);
   }
+  // Las antiguas /textura/ no tienen una foto equivalente identificable, así que van a la colección
+  // más parecida (frutas → gastronomía; el resto → fondos y texturas), no a la portada.
+  const FRUTA = /fruta|naranja|mango|pina|platano|manzana|fresa|limon|kiwi|uva|sandia|aguacate|cereza|mandarina|akebi|arandano|coco|toronja|jabuticaba|lulo|rambutan|pitahaya|dragon|achachairu|melon|surtido|composicion|tres-platanos/;
   for (const s of legado) {
-    write(`textura/${s}/index.html`, `<!doctype html><html lang="es"><head><meta charset="utf-8"><title>Fondo Blanco</title><meta name="robots" content="noindex,follow"><link rel="canonical" href="${URL}/"><meta http-equiv="refresh" content="0; url=/"></head><body><p>Esta página se movió. <a href="/">Ir a Fondo Blanco</a>.</p></body></html>`);
+    const destino = FRUTA.test(s) ? '/coleccion/gastronomia/' : '/coleccion/fondos/';
+    write(`textura/${s}/index.html`, `<!doctype html><html lang="es"><head><meta charset="utf-8"><title>Fondo Blanco</title><meta name="robots" content="noindex,follow"><link rel="canonical" href="${URL}${destino}"><meta http-equiv="refresh" content="0; url=${destino}"></head><body><p>Esta página se movió. <a href="${destino}">Ver la colección</a>.</p></body></html>`);
   }
+}
+
+// ---------- generador de banners (/banner/) ----------
+// Todo corre en el navegador: la imagen nunca sale del equipo. Sin dependencias.
+const BANNER_JS = String.raw`(()=>{
+const $=s=>document.querySelector(s);
+const cv=$('#lienzo'),ctx=cv.getContext('2d');
+const FORMATOS=[['Post cuadrado (Instagram, Facebook)',1080,1080],['Historia o Reel (vertical)',1080,1920],['Pin de Pinterest',1000,1500],['Miniatura de YouTube',1280,720],['Web o enlace compartido',1200,630],['Presentación (16:9)',1920,1080]];
+const sel=$('#formato');
+FORMATOS.forEach((f,i)=>{const o=document.createElement('option');o.value=i;o.textContent=f[0]+' · '+f[1]+'×'+f[2];sel.appendChild(o)});
+let img=null;
+const aviso=t=>{$('#aviso').textContent=t||''};
+function cargar(src){const i=new Image();i.onload=()=>{img=i;aviso('');dibujar()};i.onerror=()=>aviso('No pude abrir esa imagen. Prueba con JPG, PNG o WebP.');i.src=src}
+function lineas(txt,maxW){const out=[];String(txt).split('\n').forEach(p=>{let l='';p.split(' ').forEach(w=>{const t=l?l+' '+w:w;if(l&&ctx.measureText(t).width>maxW){out.push(l);l=w}else l=t});if(l)out.push(l)});return out}
+function dibujar(){
+  const [,W,H]=FORMATOS[sel.value];cv.width=W;cv.height=H;
+  ctx.fillStyle='#fafaf7';ctx.fillRect(0,0,W,H);
+  if(!img){ctx.fillStyle='#55554f';ctx.font='400 '+Math.round(W*0.03)+'px Arial, sans-serif';ctx.textAlign='center';ctx.fillText('Carga una imagen para empezar',W/2,H/2);return}
+  const esc=Math.max(W/img.width,H/img.height),sw=W/esc,sh=H/esc;
+  const sx=(img.width-sw)*$('#fx').value/100,sy=(img.height-sh)*$('#fy').value/100;
+  ctx.drawImage(img,sx,sy,sw,sh,0,0,W,H);
+  const claro=$('#color').value==='claro';
+  if($('#velo').checked){const g=ctx.createLinearGradient(0,0,0,H);const c=claro?'0,0,0':'255,255,255';g.addColorStop(0,'rgba('+c+',0)');g.addColorStop(0.45,'rgba('+c+',0.18)');g.addColorStop(1,'rgba('+c+',0.5)');ctx.fillStyle=g;ctx.fillRect(0,0,W,H)}
+  const ink=claro?'#fafaf7':'#151513';
+  const t=$('#titulo').value.trim(),s=$('#sub').value.trim(),m=Math.min(W,H);
+  ctx.textAlign='left';ctx.textBaseline='top';
+  if(t||s){
+    const x=W*0.08,maxW=W*0.84;
+    const fT=Math.round(m*0.085),fS=Math.round(m*0.042),gap=Math.round(fT*0.3);
+    ctx.font='900 '+fT+'px "Archivo Black", "Arial Black", Arial, sans-serif';
+    const lt=t?lineas(t,maxW):[];
+    ctx.font='400 '+fS+'px Arial, sans-serif';
+    const ls=s?lineas(s,maxW):[];
+    const alto=lt.length*fT*1.05+(ls.length?gap+ls.length*fS*1.3:0);
+    let y=$('#pos').value==='arriba'?H*0.1:$('#pos').value==='centro'?(H-alto)/2:H*0.9-alto;
+    ctx.fillStyle=ink;
+    ctx.font='900 '+fT+'px "Archivo Black", "Arial Black", Arial, sans-serif';
+    lt.forEach(l=>{ctx.fillText(l,x,y);y+=fT*1.05});
+    if(ls.length){y+=gap;ctx.font='400 '+fS+'px Arial, sans-serif';ls.forEach(l=>{ctx.fillText(l,x,y);y+=fS*1.3})}
+  }
+  if($('#credito').checked){ctx.fillStyle=claro?'rgba(250,250,247,0.9)':'rgba(21,21,19,0.8)';ctx.font='500 '+Math.round(m*0.024)+'px Arial, sans-serif';ctx.textAlign='right';ctx.textBaseline='bottom';ctx.fillText('Foto: Fondo Blanco',W*0.92,H*0.95)}
+}
+sel.addEventListener('change',dibujar);
+document.querySelectorAll('input,select,textarea').forEach(e=>e.addEventListener('input',dibujar));
+$('#archivo').addEventListener('change',e=>{const f=e.target.files[0];if(!f)return;if(f.size>25*1024*1024){aviso('La imagen pesa más de 25 MB.');return}cargar(URL.createObjectURL(f))});
+$('#bajar').addEventListener('click',()=>{if(!img){aviso('Primero carga una imagen.');return}const [n,W,H]=FORMATOS[sel.value];cv.toBlob(b=>{const a=document.createElement('a');a.href=URL.createObjectURL(b);a.download='fondo-blanco-banner-'+W+'x'+H+'.png';a.click();setTimeout(()=>URL.revokeObjectURL(a.href),1000)},'image/png')});
+const q=new URLSearchParams(location.search);
+if(q.get('foto')&&/^[a-z0-9-]+$/.test(q.get('foto')))cargar('/descargas/fondo-blanco-'+q.get('foto')+'.jpg');
+dibujar();
+if(document.fonts&&document.fonts.load)document.fonts.load('900 40px "Archivo Black"').then(dibujar,()=>{});
+})();`;
+function bannerPage() {
+  const body = `<div class="wrap">
+<header class="page-head"><nav class="crumbs mono" aria-label="Ruta" style="margin:0"><a href="/">Inicio</a><span aria-hidden="true">/</span><span aria-current="page">Hacer un banner</span></nav>
+<h1>Haz un banner con tus fotos</h1><p>Elige el formato, escribe el título y descarga el PNG listo para publicar. Todo se hace en tu navegador: tu imagen no se sube a ningún servidor.</p></header>
+<div class="banner-grid">
+<form class="banner-panel" onsubmit="return false">
+<p class="label">1 · Imagen</p>
+<p class="banner-help">Usa una foto de Fondo Blanco (desde su ficha, con «Hacer un banner») o la tuya.</p>
+<label class="btn ghost banner-file"><span>Cargar mi imagen</span><input id="archivo" type="file" accept="image/jpeg,image/png,image/webp" hidden></label>
+<label>Formato<select id="formato"></select></label>
+<p class="label">2 · Texto</p>
+<label>Título<textarea id="titulo" rows="2" maxlength="90" placeholder="Escribe el título"></textarea></label>
+<label>Subtítulo<input id="sub" type="text" maxlength="120" placeholder="Opcional"></label>
+<label>Color del texto<select id="color"><option value="claro">Claro</option><option value="oscuro">Oscuro</option></select></label>
+<label>Posición del texto<select id="pos"><option value="abajo">Abajo</option><option value="centro">Centro</option><option value="arriba">Arriba</option></select></label>
+<label class="check"><input id="velo" type="checkbox" checked> Velo suave para leer mejor el texto</label>
+<label>Encuadre horizontal<input id="fx" type="range" min="0" max="100" value="50"></label>
+<label>Encuadre vertical<input id="fy" type="range" min="0" max="100" value="50"></label>
+<label class="check"><input id="credito" type="checkbox" checked> Agregar «Foto: Fondo Blanco»</label>
+<p class="banner-help">La licencia CC BY 4.0 pide dar crédito. Si quitas la línea, da el crédito cerca de la pieza donde la publiques. <a href="/licencia/">Ver licencia</a>.</p>
+<button class="btn primary" id="bajar" type="button">Descargar PNG</button>
+<p id="aviso" class="mono" role="status" aria-live="polite"></p>
+</form>
+<div class="banner-vista"><canvas id="lienzo" role="img" aria-label="Vista previa del banner"></canvas></div>
+</div>
+</div>`;
+  write('banner/index.html', layout({ title: 'Hacer un banner con tus fotos gratis — Fondo Blanco', desc: 'Crea banners para redes, Pinterest, YouTube y presentaciones con fotos de Fondo Blanco. Recorta, añade texto y descarga en PNG. Gratis y sin registro.', canon: '/banner/', body, script: BANNER_JS }));
 }
 
 // ---------- páginas de etiqueta (/fotos/<etiqueta>/) e índice (/fotos/) ----------
@@ -603,9 +687,26 @@ ${items.join('\n')}
 }
 
 // ---------- SEO: sitemap, robots, manifest ----------
+// Fecha real de la última confirmación de cada archivo (git). Lo que no está confirmado usa la fecha de hoy.
+// Así el sitemap solo marca como cambiada una página cuando de verdad cambió.
+const FECHAS_GIT = (() => {
+  const m = new Map();
+  try {
+    const out = execSync('git log --format=@@%cs --name-only', { cwd: ROOT, encoding: 'utf8', maxBuffer: 512 * 1024 * 1024, stdio: ['ignore', 'pipe', 'ignore'] });
+    let fecha = null;
+    for (const linea of out.split('\n')) {
+      if (linea.startsWith('@@')) { fecha = linea.slice(2); continue; }
+      if (linea && fecha && !m.has(linea)) m.set(linea, fecha);
+    }
+  } catch { /* sin git: se usa HOY */ }
+  return m;
+})();
+const fechaDe = (loc) => FECHAS_GIT.get(loc === '/' ? 'index.html' : `${loc.replace(/^\//, '').replace(/\/$/, '')}/index.html`) || HOY;
+
 function seo() {
   const urls = [
     { loc: '/', pr: '1.0' },
+    { loc: '/banner/', pr: '0.6' },
     ...colecciones.map((c) => ({ loc: `/coleccion/${c.slug}/`, pr: '0.8' })),
     { loc: '/fotos/', pr: '0.7' },
     ...etiquetas.map((e) => ({ loc: e.url, pr: '0.7' })),
@@ -614,7 +715,7 @@ function seo() {
   ];
   write('sitemap.xml', `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
-${urls.map((u) => `<url><loc>${URL}${u.loc}</loc><lastmod>${HOY}</lastmod><priority>${u.pr}</priority>${u.img ? `<image:image><image:loc>${URL}${u.img.dl}</image:loc></image:image>` : ''}</url>`).join('\n')}
+${urls.map((u) => `<url><loc>${URL}${u.loc}</loc><lastmod>${fechaDe(u.loc)}</lastmod><priority>${u.pr}</priority>${u.img ? `<image:image><image:loc>${URL}${u.img.dl}</image:loc></image:image>` : ''}</url>`).join('\n')}
 </urlset>
 `);
   write('robots.txt', `User-agent: *\nAllow: /\n\nSitemap: ${URL}/sitemap.xml\n`);
@@ -656,6 +757,7 @@ fotos.forEach(ficha);
 colecciones.forEach(coleccion);
 etiquetas.forEach(etiqueta);
 indiceEtiquetas();
+bannerPage();
 paginas();
 ampliar();
 redirecciones();
