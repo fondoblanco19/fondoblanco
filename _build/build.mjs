@@ -91,10 +91,10 @@ const CC_HEAD = `(function(d){if(!/(?:^|; )fb_terms=${TERMS_VERSION}(?:;|$)/.tes
 const CC_HTML = `<div class="cc" id="cc" role="dialog" aria-modal="true" aria-labelledby="cc-t" aria-describedby="cc-d">
 <div class="cc-box"><p class="label">Antes de seguir</p><h2 id="cc-t">Cookies y términos de uso</h2>
 <p id="cc-d">Todas las imágenes de Fondo Blanco están generadas con inteligencia artificial y se ofrecen sin garantías: el uso que hagas de ellas es tu responsabilidad. No usamos cookies de seguimiento ni publicidad; solo una cookie técnica, durante 12 meses, para recordar tu respuesta.</p>
-<p>Para continuar, acepta los <a href="/terminos/">Términos de uso</a>, el <a href="/aviso-ia/">Aviso sobre imágenes de IA</a> y la <a href="/privacidad/">Política de privacidad</a>.</p>
+<p>Al seguir usando el sitio aceptas los&nbsp;<a href="/terminos/">Términos de uso</a>, el <a href="/aviso-ia/">Aviso sobre imágenes de IA</a> y la <a href="/privacidad/">Política de privacidad</a>.</p>
 <div class="cc-act"><button class="btn primary" type="button" id="cc-ok">Aceptar y continuar</button></div></div></div>`;
-const CC_SCRIPT = `(()=>{const h=document.documentElement,cc=document.getElementById('cc');if(!cc)return;const soft=/^\\/(terminos|aviso-ia|privacidad|licencia)\\//.test(location.pathname),parts=['.top','main','.foot'].map(s=>document.querySelector(s)).filter(Boolean);
-function open(){h.classList.add('cc-need');if(soft){h.classList.add('cc-soft');cc.setAttribute('aria-modal','false')}else{h.classList.add('cc-lock');parts.forEach(e=>{e.inert=true})}cc.querySelector('button').focus({preventScroll:true})}
+const CC_SCRIPT = `(()=>{const h=document.documentElement,cc=document.getElementById('cc');if(!cc)return;const soft=true,parts=['.top','main','.foot'].map(s=>document.querySelector(s)).filter(Boolean);
+function open(){h.classList.add('cc-need');if(soft){h.classList.add('cc-soft');cc.setAttribute('aria-modal','false')}else{h.classList.add('cc-lock');parts.forEach(e=>{e.inert=true})}if(!soft)cc.querySelector('button').focus({preventScroll:true})}
 function close(){h.classList.remove('cc-need','cc-lock','cc-soft');parts.forEach(e=>{e.inert=false})}
 document.getElementById('cc-ok').addEventListener('click',()=>{document.cookie='fb_terms=${TERMS_VERSION}; Max-Age=31536000; Path=/; SameSite=Lax'+(location.protocol==='https:'?'; Secure':'');document.cookie='fb_consent=; Max-Age=0; Path=/';close()});
 document.querySelectorAll('[data-cookies]').forEach(b=>b.addEventListener('click',()=>{document.cookie='fb_terms=; Max-Age=0; Path=/';open()}));
