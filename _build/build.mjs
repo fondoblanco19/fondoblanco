@@ -35,6 +35,35 @@ const mb = (b) => (b / 1048576).toLocaleString('es', { maximumFractionDigits: 1,
 // Títulos (≤ 65 caracteres) y descripciones (≤ 160) que no se corten en Google
 const fit = (largo, corto, max = 65) => (largo.length <= max ? largo : corto);
 const cortar = (s, max) => (s.length <= max ? s : s.slice(0, max - 1).replace(/[\s,;:.]+\S*$/, '') + '…');
+const slugify = (s) => norm(s).replace(/[^a-z0-9]+/g, '-').replace(/^-+|-+$/g, '');
+const cap = (s) => s.charAt(0).toUpperCase() + s.slice(1);
+const lista = (xs) => (xs.length < 2 ? xs.join('') : `${xs.slice(0, -1).join(', ')} y ${xs[xs.length - 1]}`);
+
+// ---------- etiquetas: una página por búsqueda (/fotos/<etiqueta>/) ----------
+// Solo etiquetas con al menos MIN_ETIQUETA fotos, para no crear páginas pobres que Google ignore.
+const MIN_ETIQUETA = 5;
+const etiquetas = (() => {
+  const m = new Map();
+  for (const f of fotos) for (const t of f.tags) {
+    const slug = slugify(t);
+    if (!slug) continue;
+    if (!m.has(slug)) m.set(slug, { slug, nombre: t, url: `/fotos/${slug}/`, fotos: [] });
+    const e = m.get(slug);
+    if (!e.fotos.includes(f)) e.fotos.push(f);
+  }
+  return [...m.values()].filter((e) => e.fotos.length >= MIN_ETIQUETA)
+    .sort((a, b) => b.fotos.length - a.fotos.length || a.nombre.localeCompare(b.nombre, 'es'));
+})();
+const etiquetaPorSlug = Object.fromEntries(etiquetas.map((e) => [e.slug, e]));
+const tagHref = (t) => (etiquetaPorSlug[slugify(t)] || {}).url || `/?q=${encodeURIComponent(t)}`;
+// Etiquetas con página que más se repiten dentro de un grupo de fotos (para enlaces internos)
+function etiquetasDe(grupo, { excluir = '', max = 12 } = {}) {
+  const n = new Map();
+  for (const f of grupo) for (const t of new Set(f.tags.map(slugify))) if (etiquetaPorSlug[t] && t !== excluir) n.set(t, (n.get(t) || 0) + 1);
+  return [...n.entries()].sort((a, b) => b[1] - a[1]).slice(0, max).map(([s]) => etiquetaPorSlug[s]);
+}
+const chipsEtiquetas = (es) => `<ul class="tags">${es.map((e) => `<li><a href="${e.url}">${esc(e.nombre)} <small>${e.fotos.length}</small></a></li>`).join('')}</ul>`;
+
 function write(rel, html) {
   const file = path.join(ROOT, rel);
   fs.mkdirSync(path.dirname(file), { recursive: true });
@@ -108,6 +137,7 @@ ${noindex ? '<meta name="robots" content="noindex,follow">' : `<link rel="canoni
 <link rel="icon" href="/icon-192.png" type="image/png" sizes="192x192">
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
 <link rel="manifest" href="/manifest.webmanifest">
+<link rel="alternate" type="application/rss+xml" title="Fondo Blanco: fotos nuevas" href="/feed.xml">
 <meta property="og:type" content="${type}">
 <meta property="og:site_name" content="Fondo Blanco">
 <meta property="og:locale" content="es_CO">
@@ -207,6 +237,11 @@ ${colecciones.map((c) => `<a href="/coleccion/${c.slug}/"><figure class="print" 
 </div>
 </section>
 
+<section class="wrap" aria-labelledby="h-pop">
+<div class="section-head"><h2 id="h-pop">Búsquedas populares</h2><a class="mono" href="/fotos/">Ver las ${etiquetas.length} →</a></div>
+${chipsEtiquetas(etiquetas.slice(0, 24))}
+</section>
+
 <section class="wrap" aria-labelledby="h-amp">
 <div class="section-head"><h2 id="h-amp">Ampliar imagen</h2><p class="mono">Herramienta gratis</p></div>
 <div class="amp-promo">
@@ -299,7 +334,7 @@ function ficha(f) {
 <p class="label">Paleta · toca para copiar</p>
 <div class="palette">${f.paleta.slice(0, 5).map((h) => `<button class="swatch" type="button" style="--s:${h}" data-v="${h}" aria-label="Copiar color ${h}"><i></i><span>${h}</span></button>`).join('')}</div>
 <p class="label">Etiquetas</p>
-<ul class="tags">${f.tags.map((t) => `<li><a href="/?q=${encodeURIComponent(t)}">${esc(t)}</a></li>`).join('')}</ul>
+<ul class="tags">${f.tags.map((t) => `<li><a href="${tagHref(t)}">${esc(t)}</a></li>`).join('')}</ul>
 </div>
 </article>
 <nav class="pager" aria-label="Otras fotos"><a href="${prev.url}" rel="prev"><span class="mono">← Anterior</span><strong>${esc(prev.titulo)}</strong></a><a href="${next.url}" rel="next"><span class="mono">Siguiente →</span><strong>${esc(next.titulo)}</strong></a></nav>
@@ -339,6 +374,7 @@ ${colecciones.map((x) => `<a class="chip" href="/coleccion/${x.slug}/"${x.slug =
 </div></div>
 <p class="count mono">${c.fotos.length} fotos</p>
 <ul class="grid">${c.fotos.map((f, i) => card(f, { eager: i < 3 })).join('\n')}</ul>
+${(() => { const es = etiquetasDe(c.fotos); return es.length ? `<section aria-labelledby="h-busq"><div class="section-head"><h2 id="h-busq">Búsquedas relacionadas</h2><a class="mono" href="/fotos/">Todas las búsquedas →</a></div>${chipsEtiquetas(es)}</section>` : ''; })()}
 ${textoHtml}
 </div>`;
   const jsonld = [{ '@context': 'https://schema.org', '@type': 'BreadcrumbList', itemListElement: [
@@ -456,11 +492,123 @@ function redirecciones() {
   }
 }
 
+// ---------- páginas de etiqueta (/fotos/<etiqueta>/) e índice (/fotos/) ----------
+function etiqueta(e) {
+  const n = e.fotos.length;
+  const cols = [...new Set(e.fotos.map((f) => f.col))];
+  const conEsp = e.fotos.filter((f) => f.espacio).length;
+  const rel = etiquetasDe(e.fotos, { excluir: e.slug, max: 14 });
+  const intro = `${n} fotos gratis de ${e.nombre} en alta resolución para tu web, tus redes sociales o tus presentaciones. Se descargan en JPG sin registro y sin marcas de agua, con licencia ${sitio.licencia.nombre} para uso personal y comercial.`;
+  const enCols = `Están en ${cols.length === 1 ? 'la colección' : 'las colecciones'} ${lista(cols.map((c) => `<a href="/coleccion/${c.slug}/">${esc(c.nombre.toLowerCase())}</a>`))}.`;
+  const esp = conEsp ? ` ${conEsp === n ? 'Todas tienen' : `${conEsp} de ellas tienen`} espacio libre para añadir texto.` : '';
+  const body = `<div class="wrap">
+<header class="page-head"><nav class="crumbs mono" aria-label="Ruta" style="margin:0"><a href="/">Inicio</a><span aria-hidden="true">/</span><a href="/fotos/">Búsquedas</a></nav>
+<h1>${esc(cap(e.nombre))}: fotos gratis</h1><p>${esc(intro)}</p></header>
+<p class="count mono">${n} fotos</p>
+<ul class="grid">${e.fotos.map((f, i) => card(f, { eager: i < 3 })).join('\n')}</ul>
+${rel.length ? `<section aria-labelledby="h-rel"><div class="section-head"><h2 id="h-rel">Búsquedas relacionadas</h2><a class="mono" href="/fotos/">Todas las búsquedas →</a></div>${chipsEtiquetas(rel)}</section>` : ''}
+<section class="prose seo-text" aria-labelledby="h-sobre"><h2 id="h-sobre">Sobre estas fotos de ${esc(e.nombre)}</h2><p>${enCols}${esp}</p><p>Para usarlas solo tienes que dar crédito: «Foto: Fondo Blanco». Todas están generadas con inteligencia artificial y revisadas una a una; <a href="/aviso-ia/">lee el aviso</a> antes de usarlas en piezas sensibles.</p></section>
+</div>`;
+  const jsonld = [
+    { '@context': 'https://schema.org', '@type': 'BreadcrumbList', itemListElement: [
+      { '@type': 'ListItem', position: 1, name: 'Inicio', item: URL + '/' },
+      { '@type': 'ListItem', position: 2, name: 'Búsquedas', item: `${URL}/fotos/` },
+      { '@type': 'ListItem', position: 3, name: cap(e.nombre), item: URL + e.url }] },
+    { '@context': 'https://schema.org', '@type': 'CollectionPage', name: `${cap(e.nombre)}: fotos gratis — Fondo Blanco`, description: intro, url: URL + e.url, inLanguage: 'es',
+      mainEntity: { '@type': 'ItemList', numberOfItems: n, itemListElement: e.fotos.map((f, i) => ({ '@type': 'ListItem', position: i + 1, url: URL + f.url, name: f.titulo })) } },
+  ];
+  write(`fotos/${e.slug}/index.html`, layout({
+    title: fit(`${cap(e.nombre)}: fotos gratis en alta resolución | Fondo Blanco`, fit(`${cap(e.nombre)}: fotos gratis | Fondo Blanco`, `${cap(e.nombre)} — Fondo Blanco`)),
+    desc: cortar(`${n} fotos de ${e.nombre} gratis en alta resolución. Descarga en JPG sin registro ni marcas de agua, con licencia ${sitio.licencia.nombre} para uso comercial.`, 160),
+    canon: e.url, og: `${URL}/img/og/${e.fotos[0].slug}.jpg`, ogAlt: e.fotos[0].desc, body, jsonld, nav: 'colecciones' }));
+}
+
+function indiceEtiquetas() {
+  const porLetra = new Map();
+  for (const e of [...etiquetas].sort((a, b) => a.nombre.localeCompare(b.nombre, 'es'))) {
+    const l = norm(e.nombre).charAt(0).toUpperCase();
+    if (!porLetra.has(l)) porLetra.set(l, []);
+    porLetra.get(l).push(e);
+  }
+  const body = `<div class="wrap">
+<header class="page-head"><nav class="crumbs mono" aria-label="Ruta" style="margin:0"><a href="/">Inicio</a></nav>
+<h1>Búsquedas populares</h1><p>Las ${etiquetas.length} búsquedas con más fotos en Fondo Blanco. Cada una reúne fotos gratis en alta resolución de varias colecciones.</p></header>
+<section aria-labelledby="h-top"><div class="section-head"><h2 id="h-top">Las más buscadas</h2></div>${chipsEtiquetas(etiquetas.slice(0, 24))}</section>
+<section aria-labelledby="h-az"><div class="section-head"><h2 id="h-az">De la A a la Z</h2></div>
+${[...porLetra.entries()].map(([l, es]) => `<h3 class="mono">${l}</h3>${chipsEtiquetas(es)}`).join('\n')}</section>
+</div>`;
+  write('fotos/index.html', layout({ title: 'Búsquedas populares: fotos gratis por tema — Fondo Blanco',
+    desc: cortar(`Encuentra fotos gratis por tema: ${etiquetas.slice(0, 8).map((e) => e.nombre).join(', ')} y más. ${etiquetas.length} búsquedas en alta resolución.`, 160),
+    canon: '/fotos/', body, nav: 'colecciones',
+    jsonld: [{ '@context': 'https://schema.org', '@type': 'BreadcrumbList', itemListElement: [
+      { '@type': 'ListItem', position: 1, name: 'Inicio', item: URL + '/' },
+      { '@type': 'ListItem', position: 2, name: 'Búsquedas', item: `${URL}/fotos/` }] }] }));
+}
+
+// ---------- Pinterest: pines verticales (/pin/<slug>.jpg) y feed RSS (/feed.xml) ----------
+// Pinterest recomienda 2:3 (1000×1500). Foto arriba (recorte por zona de interés) y una franja con la marca y el título.
+// Solo se generan los pines que faltan. En Pinterest Business: Ajustes → Publicación automática → feed https://fondoblanco.co/feed.xml
+const PIN_W = 1000, PIN_H = 1500, PIN_FOTO = 1130;
+function lineas(texto, max) {
+  const out = [];
+  for (const w of texto.split(/\s+/)) {
+    const ult = out[out.length - 1];
+    if (ult && (ult + ' ' + w).length <= max) out[out.length - 1] = ult + ' ' + w; else out.push(w);
+  }
+  return out;
+}
+async function pines() {
+  fs.mkdirSync(path.join(ROOT, 'pin'), { recursive: true });
+  let nuevos = 0;
+  for (const f of fotos) {
+    const out = path.join(ROOT, 'pin', `${f.slug}.jpg`);
+    if (fs.existsSync(out)) continue;
+    let size = 58, max = 24, ls = lineas(f.titulo, max);
+    if (ls.length > 3) { size = 48; max = 30; ls = lineas(f.titulo, max); }
+    if (ls.length > 3) ls = [...ls.slice(0, 2), cortar(ls.slice(2).join(' '), max)];
+    const alto = PIN_H - PIN_FOTO, lh = Math.round(size * 1.12);
+    const y0 = Math.round(96 + (3 - ls.length) * lh * 0.5);
+    const svg = `<svg xmlns="http://www.w3.org/2000/svg" width="${PIN_W}" height="${alto}"><rect width="${PIN_W}" height="${alto}" fill="#fafaf7"/>
+<rect width="${PIN_W}" height="6" fill="#e5341d"/>
+<g transform="translate(64,40)" fill="none" stroke="#e5341d" stroke-width="3"><circle cx="16" cy="16" r="9"/><path d="M16 2v28M2 16h28"/></g><circle cx="80" cy="56" r="3.2" fill="#e5341d"/>
+<text x="112" y="66" font-family="Courier New, monospace" font-size="24" letter-spacing="3" fill="#55554f">FONDO BLANCO · FOTO GRATIS</text>
+${ls.map((l, i) => `<text x="64" y="${y0 + 40 + i * lh}" font-family="Arial Black, Arial, sans-serif" font-weight="900" font-size="${size}" fill="#151513">${esc(l)}</text>`).join('\n')}
+<text x="64" y="${alto - 44}" font-family="Arial, sans-serif" font-size="27" fill="#55554f">Descarga gratis en alta resolución · fondoblanco.co</text></svg>`;
+    // Se lee con fs (admite rutas largas en Windows) y se pasa el buffer a sharp
+    const foto = await sharp(fs.readFileSync(path.join(ROOT, 'img', `${f.slug}-1600.webp`))).resize(PIN_W, PIN_FOTO, { fit: 'cover', position: sharp.strategy.attention }).toBuffer();
+    await sharp({ create: { width: PIN_W, height: PIN_H, channels: 3, background: '#fafaf7' } })
+      .composite([{ input: foto, left: 0, top: 0 }, { input: Buffer.from(svg), left: 0, top: PIN_FOTO }])
+      .jpeg({ quality: 82, mozjpeg: true }).toFile(out);
+    nuevos++;
+  }
+  return nuevos;
+}
+function feed() {
+  // Las fotos más nuevas primero (las últimas de fotos.json). Pinterest toma las entradas nuevas del feed.
+  const items = [...fotos].reverse().map((f) => {
+    const pin = path.join(ROOT, 'pin', `${f.slug}.jpg`);
+    const len = fs.existsSync(pin) ? fs.statSync(pin).size : 0;
+    const tags = f.tags.map((t) => `<category>${esc(t)}</category>`).join('');
+    return `<item><title>${esc(`${f.titulo} — foto gratis`)}</title><link>${URL}${f.url}</link><guid isPermaLink="true">${URL}${f.url}</guid>
+<description>${esc(`${f.desc} Descarga gratis en alta resolución, licencia ${sitio.licencia.nombre}.`)}</description>${tags}
+<enclosure url="${URL}/pin/${f.slug}.jpg" length="${len}" type="image/jpeg"/><media:content url="${URL}/pin/${f.slug}.jpg" medium="image" type="image/jpeg" width="${PIN_W}" height="${PIN_H}"/></item>`;
+  });
+  write('feed.xml', `<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:media="http://search.yahoo.com/mrss/" xmlns:atom="http://www.w3.org/2005/Atom">
+<channel><title>Fondo Blanco — Fotos de stock gratis</title><link>${URL}/</link><description>Fotos de stock gratis en alta resolución.</description><language>es</language>
+<atom:link href="${URL}/feed.xml" rel="self" type="application/rss+xml"/>
+${items.join('\n')}
+</channel></rss>
+`);
+}
+
 // ---------- SEO: sitemap, robots, manifest ----------
 function seo() {
   const urls = [
     { loc: '/', pr: '1.0' },
     ...colecciones.map((c) => ({ loc: `/coleccion/${c.slug}/`, pr: '0.8' })),
+    { loc: '/fotos/', pr: '0.7' },
+    ...etiquetas.map((e) => ({ loc: e.url, pr: '0.7' })),
     ...fotos.map((f) => ({ loc: f.url, pr: '0.7', img: f })),
     { loc: '/ampliar/', pr: '0.6' }, { loc: '/licencia/', pr: '0.4' }, { loc: '/contacto/', pr: '0.3' }, { loc: '/terminos/', pr: '0.2' }, { loc: '/aviso-ia/', pr: '0.2' }, { loc: '/privacidad/', pr: '0.2' },
   ];
@@ -506,8 +654,12 @@ await graficos();
 portada();
 fotos.forEach(ficha);
 colecciones.forEach(coleccion);
+etiquetas.forEach(etiqueta);
+indiceEtiquetas();
 paginas();
 ampliar();
 redirecciones();
+const pinesNuevos = await pines();
+feed();
 seo();
-console.log(`Listo: ${fotos.length} fotos, ${colecciones.length} colecciones, ${legado.length} redirecciones.`);
+console.log(`Listo: ${fotos.length} fotos, ${colecciones.length} colecciones, ${etiquetas.length} búsquedas, ${pinesNuevos} pines nuevos, ${legado.length} redirecciones.`);
